@@ -31,7 +31,7 @@ namespace GoldensMisc.Global
 			{
 				if (player.armor[acc].type == mod.ItemType("UniversalMagnet") || player.armor[acc].type == mod.ItemType("MagnetismRing"))
 				{
-					grabRange += 20 * 16; //10 tiles, 16 pixels each
+					grabRange += 20 * 16; //20 tiles, 16 pixels each
 					break;
 				}
 			}
