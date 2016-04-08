@@ -6,8 +6,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>GoldensMisc</RootNamespace>
-    <AssemblyName>Miscellania</AssemblyName>
+    <RootNamespace>Miscellania</RootNamespace>
+    <AssemblyName>GoldensMisc</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <NoWin32Manifest>False</NoWin32Manifest>
@@ -67,7 +67,6 @@
     <Compile Include="Items\UniversalMagnet.cs" />
     <Compile Include="Projectiles\MagicSpear.cs" />
     <Compile Include="Projectiles\MagicSpearMini.cs" />
-    <Compile Include="Projectiles\MagicSpearMiniAlt.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Items" />

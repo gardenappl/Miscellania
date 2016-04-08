@@ -3,17 +3,25 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using GoldensMisc.Projectiles;
 
 namespace GoldensMisc
 {
 	public class GoldensMisc : Mod
 	{
-		public override void SetModInfo(out string name, ref ModProperties properties)
+		public GoldensMisc()
 		{
-			name = "GoldensMisc";
-			properties.Autoload = true;
-			properties.AutoloadGores = true;
-			properties.AutoloadSounds = true;
+			Properties = new ModProperties
+			{
+				Autoload = true,
+				AutoloadGores = true,
+				AutoloadSounds = true
+			};
+		}
+		
+		public override void Load()
+		{
+			AddProjectile("MagicSpearMiniAlt", new MagicSpearMini(), "GoldensMisc/Projectiles/MagicSpearMiniAlt");
 		}
 		
 		public override void AddRecipes()
