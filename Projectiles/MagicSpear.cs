@@ -11,7 +11,7 @@ namespace GoldensMisc.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			projectile.name = "Magic Spear";
+			projectile.name = "Spear of Justice";
 			projectile.scale = 1.3f;
 			projectile.width = 14;
 			projectile.height = 14;
