@@ -35,16 +35,16 @@ namespace GoldensMisc.Projectiles
 			switch(Main.rand.Next(4))
 			{
 				case 0: //Shoot right
-					Projectile.NewProjectile(target.position.X - 64, target.position.Y, 3f, 0f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
+					Projectile.NewProjectile(target.Left.X - 64, target.Left.Y, 3f, 0f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
 					return;
 				case 1: //Shoot down
-					Projectile.NewProjectile(target.position.X, target.position.Y - 64, 0f, 3f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
+					Projectile.NewProjectile(target.Top.X, target.Top.Y - 64, 0f, 3f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
 					return;
-				case 2: //Shoot right
-					Projectile.NewProjectile(target.position.X + 64, target.position.Y, -3f, 0f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
+				case 2: //Shoot left
+					Projectile.NewProjectile(target.Right.X + 64, target.Right.Y, -3f, 0f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
 					return;
 				case 3: //Shoot up
-					Projectile.NewProjectile(target.position.X, target.position.Y + 64, 0f, -3f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
+					Projectile.NewProjectile(target.Bottom.X, target.Bottom.Y + 64, 0f, -3f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
 					return;
 			}
 		}

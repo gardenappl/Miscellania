@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace GoldensMisc.Global
+namespace GoldensMisc
 {
 	public class MiscGlobalNPC : GlobalNPC
 	{

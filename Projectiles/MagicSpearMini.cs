@@ -11,8 +11,8 @@ namespace GoldensMisc.Projectiles
 	{
 		float timesSpawned
 		{
-			get{ return projectile.ai[1]; }
-			set{ projectile.ai[1] = value; }
+			get { return projectile.ai[1]; }
+			set { projectile.ai[1] = value; }
 		}
 		
 		public override void SetDefaults()
@@ -52,7 +52,7 @@ namespace GoldensMisc.Projectiles
 				case 1: //Shoot down
 					Projectile.NewProjectile(target.position.X, target.position.Y - 64, 0f, 3f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
 					return;
-				case 2: //Shoot right
+				case 2: //Shoot left
 					Projectile.NewProjectile(target.position.X + 64, target.position.Y, -3f, 0f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
 					return;
 				case 3: //Shoot up

@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Miscellania</RootNamespace>
+    <RootNamespace>GoldensMisc</RootNamespace>
     <AssemblyName>GoldensMisc</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -53,25 +53,33 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="tModLoader">
-      <HintPath>E:\Yurik\Steam\SteamApps\common\Terraria\tModLoader.exe</HintPath>
+      <HintPath>..\..\..\..\Steam\SteamApps\common\Terraria\tModLoader.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Global\MiscGlobalNPC.cs" />
-    <Compile Include="Global\MiscGlobalItem.cs" />
+    <Compile Include="Items\Placeable\AncientForge.cs" />
+    <Compile Include="Items\Placeable\AncientHellforge.cs" />
+    <Compile Include="MiscGlobalItem.cs" />
+    <Compile Include="MiscGlobalNPC.cs" />
+    <Compile Include="MiscPlayer.cs" />
+    <Compile Include="Items\BulletproofVest.cs" />
     <Compile Include="Items\MagicSpear.cs" />
     <Compile Include="Items\NinjaGear.cs" />
     <Compile Include="GoldensMisc.cs" />
     <Compile Include="Items\AncientMuramasa.cs" />
     <Compile Include="Items\MagnetismRing.cs" />
     <Compile Include="Items\UniversalMagnet.cs" />
+    <Compile Include="MiscWorld.cs" />
     <Compile Include="Projectiles\MagicSpear.cs" />
     <Compile Include="Projectiles\MagicSpearMini.cs" />
+    <Compile Include="Tiles\AncientForge.cs" />
+    <Compile Include="Tiles\AncientHellforge.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Items" />
-    <Folder Include="Global" />
+    <Folder Include="Items\Placeable" />
     <Folder Include="Projectiles" />
+    <Folder Include="Tiles" />
   </ItemGroup>
   <ItemGroup>
     <None Include="build.txt" />

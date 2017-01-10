@@ -1,6 +1,6 @@
 ﻿displayName = Miscellania
 author = goldenapple
-version = 0.3
+version = 0.6
 homepage = http://forums.terraria.org/index.php?threads/miscellania.39500/
 hideResources = false
 hideCode = false
