@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace GoldensMisc.Items
+namespace GoldensMisc.Items.Equipable
 {
 	public class NinjaGear : ModItem
 	{	

@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace GoldensMisc.Items
+namespace GoldensMisc.Items.Weapons
 {
 	public class AncientMuramasa : ModItem
 	{

@@ -3,7 +3,7 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace GoldensMisc.Items
+namespace GoldensMisc.Items.Equipable
 {
 	public class UniversalMagnet : ModItem
 	{
@@ -16,6 +16,11 @@ namespace GoldensMisc.Items
 			item.value = Item.buyPrice(0, 30);
 			item.rare = 4;
 			item.accessory = true;
+		}
+		
+		public override void UpdateAccessory(Player player, bool hideVisual)
+		{
+			player.GetModPlayer<MiscPlayer>(mod).Magnet = true;
 		}
 	}
 }

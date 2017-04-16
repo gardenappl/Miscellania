@@ -9,10 +9,16 @@ namespace GoldensMisc.Projectiles
 {
 	public class MagicSpearMini : ModProjectile
 	{
-		float timesSpawned
+		int timesSpawned
 		{
-			get { return projectile.ai[1]; }
+			get { return (int)projectile.ai[1]; }
 			set { projectile.ai[1] = value; }
+		}
+		
+		bool undying
+		{
+			get { return projectile.ai[0] > 0; }
+			set { projectile.ai[0] = value ? 1 : 0; }
 		}
 		
 		public override void SetDefaults()
@@ -40,26 +46,47 @@ namespace GoldensMisc.Projectiles
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if(timesSpawned > 2 || timesSpawned == -1)
+			{
 				return;
-			
+			}
 			int type = Main.rand.Next(2) == 0 ? mod.ProjectileType("MagicSpearMini") : mod.ProjectileType("MagicSpearMiniAlt");
 			
-			switch(Main.rand.Next(4))
+			if(undying)
 			{
-				case 0: //Shoot right
-					Projectile.NewProjectile(target.position.X - 64, target.position.Y, 3f, 0f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
-					return;
-				case 1: //Shoot down
-					Projectile.NewProjectile(target.position.X, target.position.Y - 64, 0f, 3f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
-					return;
-				case 2: //Shoot left
-					Projectile.NewProjectile(target.position.X + 64, target.position.Y, -3f, 0f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
-					return;
-				case 3: //Shoot up
-					Projectile.NewProjectile(target.position.X, target.position.Y + 64, 0f, -3f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
-					return;
+				switch(Main.rand.Next(4))
+				{
+					case 0: //Shoot right
+						Projectile.NewProjectile(target.Left.X - 100, target.Left.Y, 5f, 0f, type, projectile.damage, 1f, projectile.owner, 1, timesSpawned + 1);
+						return;
+					case 1: //Shoot down
+						Projectile.NewProjectile(target.Top.X, target.Top.Y - 100, 0f, 5f, type, projectile.damage, 1f, projectile.owner, 1, timesSpawned + 1);
+						return;
+					case 2: //Shoot left
+						Projectile.NewProjectile(target.Right.X + 100, target.Right.Y, -5f, 0f, type, projectile.damage, 1f, projectile.owner, 1, timesSpawned + 1);
+						return;
+					case 3: //Shoot up
+						Projectile.NewProjectile(target.Bottom.X, target.Bottom.Y + 100, 0f, -5f, type, projectile.damage, 1f, projectile.owner, 1, timesSpawned + 1);
+						return;
+				}
 			}
-			
+			else
+			{
+				switch(Main.rand.Next(4))
+				{
+					case 0: //Shoot right
+						Projectile.NewProjectile(target.Left.X - 80, target.Left.Y, 4f, 0f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
+						return;
+					case 1: //Shoot down
+						Projectile.NewProjectile(target.Top.X, target.Top.Y - 80, 0f, 4f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
+						return;
+					case 2: //Shoot left
+						Projectile.NewProjectile(target.Right.X + 80, target.Right.Y, -4f, 0f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
+						return;
+					case 3: //Shoot up
+						Projectile.NewProjectile(target.Bottom.X, target.Bottom.Y + 80, 0f, -4f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
+						return;
+				}
+			}
 			timesSpawned = -1; //A projectile should only spawn once
 		}
 	}

@@ -2,17 +2,23 @@
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
+using GoldensMisc.Projectiles;
 
 namespace GoldensMisc
 {
 	public class MiscPlayer : ModPlayer
 	{
 		public bool ExplosionResistant;
+		public bool DemonCrown;
+		public bool Magnet;
 		
 		public override void ResetEffects()
 		{
 			ExplosionResistant = false;
+			DemonCrown = false;
+			Magnet = false;
 		}
 		
 		bool shake;
@@ -46,30 +52,27 @@ namespace GoldensMisc
 				targetOffset = new Vector2();
 		}
 		
-//		public override bool CanHitPvpWithProj(Projectile proj, Player target)
-//		{
-//			Main.NewText("expl resist: " + ExplosionResistant);
-//			Main.NewText("ai: " + proj.aiStyle);
-//			Main.NewText("proj owner: " + proj.owner);
-//			Main.NewText("who am i: " + player.whoAmI);
-//			return false;
-//		}
-//		
-//		public override void OnHitPvpWithProj(Projectile proj, Player target, int damage, bool crit)
-//		{
-//			Main.NewText("expl resist: " + ExplosionResistant);
-//			Main.NewText("ai: " + proj.aiStyle);
-//			Main.NewText("proj owner: " + proj.owner);
-//			Main.NewText("who am i: " + player.whoAmI);
-//		}
+		public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
+		{
+			if(ExplosionResistant)
+			{
+				int projType = damageSource.SourceProjectileType;
+				var proj = new Projectile();
+				proj.SetDefaults(projType);
+				if(proj.aiStyle == 16 && damageSource.SourcePlayerIndex == player.whoAmI)
+				{
+					return false;
+				}
+			}
+			return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource);
+		}
 		
-//		public override bool CanBeHitByProjectile(Projectile proj)
-//		{
-//			Main.NewText("expl resist: " + ExplosionResistant);
-//			Main.NewText("ai: " + proj.aiStyle);
-//			Main.NewText("proj owner: " + proj.owner);
-//			Main.NewText("who am i: " + player.whoAmI);
-//			return !(ExplosionResistant && proj.aiStyle == 16 && proj.owner == player.whoAmI);
-//		}
+		public override void PostUpdateEquips()
+		{
+			if(DemonCrown && player.ownedProjectileCounts[mod.ProjectileType<RedCrystal>()] == 0)
+			{
+				Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<RedCrystal>(), 60, 8, player.whoAmI);
+			}
+		}
 	}
 }

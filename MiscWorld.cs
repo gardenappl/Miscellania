@@ -16,33 +16,41 @@ namespace GoldensMisc
 	{
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
-			int HellforgeIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Hellforge"));
-			if(HellforgeIndex != -1)
-				tasks.Insert(HellforgeIndex + 1, new PassLegacy("[Miscellania] Ancient Hellforge", progress => AddHellforges(progress)));
+			int index = tasks.FindIndex(genpass => genpass.Name.Equals("Hellforge"));
+			if(index != -1)
+			{
+				tasks.Insert(index + 1, new PassLegacy("[Miscellania] Ancient Hellforge", AddHellforges));
+			}
 			
-			int BuriedChestsIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Buried Chests"));
-			if(BuriedChestsIndex != -1)
-				tasks.Insert(BuriedChestsIndex + 1, new PassLegacy("[Miscellania] Ancient Forge", progress => AddForges(progress)));
+			index = tasks.FindIndex(genpass => genpass.Name.Equals("Buried Chests"));
+			if(index != -1)
+			{
+				tasks.Insert(index + 1, new PassLegacy("[Miscellania] Ancient Forge", AddForges));
+			}
 		}
 		
-		public void AddHellforges(GenerationProgress progress, bool command = false)
+		public void AddHellforges(GenerationProgress progress = null)
 		{
-			AddFurniture(progress, command, "ancient hellforges", mod.TileType<AncientHellforge>(), 1500, Main.maxTilesY - 250, Main.maxTilesY - 5, WallID.ObsidianBrickUnsafe, WallID.HellstoneBrickUnsafe);
+			AddFurniture(progress, "ancient hellforges", mod.TileType<AncientHellforge>(), 1500, Main.maxTilesY - 250, Main.maxTilesY - 5, WallID.ObsidianBrickUnsafe, WallID.HellstoneBrickUnsafe);
 		}
 		
-		public void AddForges(GenerationProgress progress, bool command = false)
+		public void AddForges(GenerationProgress progress = null)
 		{
-			AddFurniture(progress, command, "ancient forges", mod.TileType<AncientForge>(), 800, (int)Main.worldSurface, Main.maxTilesY - 300, WallID.Planked, WallID.BorealWood);
+			AddFurniture(progress, "ancient forges", mod.TileType<AncientForge>(), 800, (int)Main.worldSurface, Main.maxTilesY - 300, WallID.Planked, WallID.BorealWood);
 		}
 		
-		static void AddFurniture(GenerationProgress progress, bool command, string name, int type, int rarity, int minY, int maxY, params int[] wallIDs)
+		static void AddFurniture(GenerationProgress progress, string name, int type, int rarity, int minY, int maxY, params int[] wallIDs)
 		{
 			try
 			{
-				if(command)
-					Main.NewText("Adding " + name);
-				else
+				if (progress != null)
+				{
 					progress.Message = "Adding " + name;
+				}
+				else
+				{
+					Main.NewText("Adding " + name);
+				}
 				int generated = 0;
 				float toGenerate = Main.maxTilesX / rarity;
 				
@@ -56,7 +64,7 @@ namespace GoldensMisc
 					{
 //						if(watch.Elapsed.Seconds >= 10)
 //						{
-//							GoldensMisc.Log("SUCC FOR TOO LONG OHGODNO");
+//							GoldensMisc.Log("SUCC FOR TOO LONG IMMA NUT");
 //							GoldensMisc.Log("Generated {0}/{1} {2}", generated, toGenerate, name);
 //							watch.Stop();
 //							return;
@@ -69,7 +77,9 @@ namespace GoldensMisc
 							{
 //								GoldensMisc.Log("READY FOR THE SUCC {0} {1}", num, attempts);
 								while (!Main.tile[x, y].active())
+								{
 									y++;
+								}
 								y--;
 								WorldGen.PlaceObject(x, y, (ushort)type, true);
 								if (Main.tile[x, y].type == (ushort)type)
@@ -91,10 +101,14 @@ namespace GoldensMisc
 						}
 					}
 				}
-				if(command)
-					Main.NewText(String.Format("Generated {0}/{1} {2}", generated, toGenerate, name));
-				else
+				if(progress != null)
+				{
 					GoldensMisc.Log("Generated {0}/{1} {2}", generated, toGenerate, name);
+				}
+				else
+				{
+					Main.NewText(String.Format("Generated {0}/{1} {2}", generated, toGenerate, name));
+				}
 			}
 			//Vanilla Terraria does this, so I guess this is OK...?
 			catch(Exception e)

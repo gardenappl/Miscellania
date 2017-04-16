@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,25 +8,30 @@ using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
 {
-	public class MagicSpear : ModProjectile
+	public class UndyingSpear : ModProjectile
 	{
+		public override bool Autoload(ref string name, ref string texture)
+		{
+			if(!MiscGlowMasks.Loaded)
+			{
+				MiscGlowMasks.Load();
+			}
+			return base.Autoload(ref name, ref texture);
+		}
+		
 		public override void SetDefaults()
 		{
-			projectile.name = "Spear of Justice";
+			projectile.name = "Spear of Undying Justice";
 			projectile.scale = 1.3f;
 			projectile.width = 14;
 			projectile.height = 14;
 			projectile.aiStyle = 1;
 			projectile.friendly = true;
-			projectile.penetrate = 2;
+			projectile.penetrate = 3;
 			projectile.magic = true;
 			projectile.ignoreWater = true;
+			projectile.glowMask = MiscGlowMasks.UndyingSpearProjectile;
 			aiType = ProjectileID.JavelinFriendly;
-		}
-		
-		public override Color? GetAlpha(Color lightColor)
-		{
-			return Color.White;
 		}
 		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -35,16 +41,16 @@ namespace GoldensMisc.Projectiles
 			switch(Main.rand.Next(4))
 			{
 				case 0: //Shoot right
-					Projectile.NewProjectile(target.Left.X - 80, target.Left.Y, 4f, 0f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
+					Projectile.NewProjectile(target.Left.X - 100, target.Left.Y, 5f, 0f, type, projectile.damage / 2, 1f, projectile.owner, 1, 1);
 					return;
 				case 1: //Shoot down
-					Projectile.NewProjectile(target.Top.X, target.Top.Y - 80, 0f, 4f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
+					Projectile.NewProjectile(target.Top.X, target.Top.Y - 100, 0f, 5f, type, projectile.damage / 2, 1f, projectile.owner, 1, 1);
 					return;
 				case 2: //Shoot left
-					Projectile.NewProjectile(target.Right.X + 80, target.Right.Y, -4f, 0f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
+					Projectile.NewProjectile(target.Right.X + 100, target.Right.Y, -5f, 0f, type, projectile.damage / 2, 1f, projectile.owner, 1, 1);
 					return;
 				case 3: //Shoot up
-					Projectile.NewProjectile(target.Bottom.X, target.Bottom.Y + 80, 0f, -4f, type, projectile.damage / 3, 0.5f, projectile.owner, 0, 1);
+					Projectile.NewProjectile(target.Bottom.X, target.Bottom.Y + 100, 0f, -5f, type, projectile.damage / 2, 1f, projectile.owner, 1, 1);
 					return;
 			}
 		}
@@ -52,10 +58,10 @@ namespace GoldensMisc.Projectiles
 		public override void Kill(int timeLeft)
 		{
 			Main.PlaySound(2, projectile.position, 10);
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < 5; i++)
 			{
 				int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 59, projectile.velocity.X, projectile.velocity.Y);
-				Main.dust[dust].scale = 1.4f;
+				Main.dust[dust].scale = 1.5f;
 			}
 		}
 	}

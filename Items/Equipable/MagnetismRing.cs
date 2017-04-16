@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace GoldensMisc.Items
+namespace GoldensMisc.Items.Equipable
 {
 	public class MagnetismRing : ModItem
 	{
@@ -22,6 +22,7 @@ namespace GoldensMisc.Items
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
+			player.GetModPlayer<MiscPlayer>(mod).Magnet = true;
 			player.goldRing = true;
 			player.manaMagnet = true;
 		}
@@ -29,7 +30,7 @@ namespace GoldensMisc.Items
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "UniversalMagnet");
+			recipe.AddIngredient(mod.ItemType<UniversalMagnet>());
 			recipe.AddIngredient(ItemID.CelestialMagnet);
 			recipe.AddIngredient(ItemID.GoldRing);
 			recipe.AddTile(TileID.TinkerersWorkbench);

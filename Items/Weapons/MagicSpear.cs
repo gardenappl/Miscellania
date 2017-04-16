@@ -5,14 +5,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace GoldensMisc.Items
+namespace GoldensMisc.Items.Weapons
 {
 	public class MagicSpear : ModItem
 	{
 		public override void SetDefaults()
 		{
-			item.name = "Magic Spear";
-			item.value = Item.buyPrice(0, 30);
+			item.name = "Spear of Justice";
+			item.value = Item.sellPrice(0, 4);
 			item.useStyle = 1;
 			item.useAnimation = 25;
 			item.useTime = 25;
@@ -23,10 +23,10 @@ namespace GoldensMisc.Items
 			item.width = 42;
 			item.height = 42;
 			item.UseSound = SoundID.Item8;
-			item.damage = 48;
+			item.damage = 46;
 			item.knockBack = 4;
-			item.mana = 17;
-			item.shoot = mod.ProjectileType("MagicSpear");
+			item.mana = 15;
+			item.shoot = mod.ProjectileType(GetType().Name);
 			item.shootSpeed = 14f;
 			item.noMelee = true; //So that the swing itself doesn't do damage; this weapon is projectile-only
 			item.noUseGraphic = true; //No swing animation
@@ -44,6 +44,11 @@ namespace GoldensMisc.Items
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
+		}
+		
+		public override Color? GetAlpha(Color lightColor)
+		{
+			return Color.White;
 		}
 	}
 }
