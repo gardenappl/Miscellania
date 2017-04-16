@@ -1,8 +1,11 @@
 ﻿Miscellania is a small mod with a whole bunch of random ideas. There is no specific theme for the items.
 
 Current features include:
- -Ancient Muramasa [Drop from Dungeon enemies]
- -(normal) Ninja Gear [Tabi + Black Belt]
- -Universal Magnet [Bought from Goblin Tinkerer in Hardmode at night]
- -Magnetism Ring [Universal Magnet + Celestial Magnet + Gold Ring]
- -Spear of Justice [NGAHHH!]
+ -Reinforced Vest (protects player from their bombs and missiles)
+ -Spear of Justice (upgradeable)
+ -(yet another) Gaster Blaster minion
+ -Item magnets!
+ -Healing/Mana Stone (restores health & mana, can be used multiple times)
+ -Demon Crown and Red Crystal (from Cave Story)
+ 
+ And some more! Go to the forum page for the full list.

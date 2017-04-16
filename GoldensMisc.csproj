@@ -47,7 +47,6 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -57,27 +56,60 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\WorldGenCommand.cs" />
+    <Compile Include="Dusts\RedDust.cs" />
+    <Compile Include="Dusts\RedDustStatic.cs" />
+    <Compile Include="Items\Consumable\GodStone.cs" />
+    <Compile Include="Items\Consumable\InertStone.cs" />
+    <Compile Include="Items\Consumable\LifeStone.cs" />
+    <Compile Include="Items\Consumable\ManaStone.cs" />
+    <Compile Include="Items\Equipable\DemonCrown.cs" />
+    <Compile Include="Items\Equipable\HeartLocket.cs" />
+    <Compile Include="Items\Equipable\MagnetismRing.cs" />
+    <Compile Include="Items\Equipable\NinjaGear.cs" />
+    <Compile Include="Items\Equipable\ReinforcedHorseshoe.cs" />
+    <Compile Include="Items\Equipable\ReinforcedVest.cs" />
+    <Compile Include="Items\Equipable\UniversalMagnet.cs" />
+    <Compile Include="Items\IslandStaff.cs" />
     <Compile Include="Items\Placeable\AncientForge.cs" />
     <Compile Include="Items\Placeable\AncientHellforge.cs" />
+    <Compile Include="Items\Placeable\RedChimney.cs" />
+    <Compile Include="Items\Placeable\RedFireplace.cs" />
+    <Compile Include="Items\Weapons\AncientMuramasa.cs" />
+    <Compile Include="Items\Weapons\KarmaStaff.cs" />
+    <Compile Include="Items\Weapons\MagicSpear.cs" />
+    <Compile Include="Items\Weapons\UndyingSpear.cs" />
     <Compile Include="MiscGlobalItem.cs" />
     <Compile Include="MiscGlobalNPC.cs" />
+    <Compile Include="MiscGlowMasks.cs" />
     <Compile Include="MiscPlayer.cs" />
-    <Compile Include="Items\BulletproofVest.cs" />
-    <Compile Include="Items\MagicSpear.cs" />
-    <Compile Include="Items\NinjaGear.cs" />
+    <Compile Include="MiscUtils.cs" />
     <Compile Include="GoldensMisc.cs" />
-    <Compile Include="Items\AncientMuramasa.cs" />
-    <Compile Include="Items\MagnetismRing.cs" />
-    <Compile Include="Items\UniversalMagnet.cs" />
     <Compile Include="MiscWorld.cs" />
+    <Compile Include="Projectiles\GasterBlaster.cs" />
+    <Compile Include="Projectiles\Laputa.cs" />
+    <Compile Include="Projectiles\LaputaSky.cs" />
+    <Compile Include="Projectiles\GasterLaser.cs" />
     <Compile Include="Projectiles\MagicSpear.cs" />
     <Compile Include="Projectiles\MagicSpearMini.cs" />
+    <Compile Include="Projectiles\Minion.cs" />
+    <Compile Include="Projectiles\RedBullet.cs" />
+    <Compile Include="Projectiles\RedCrystal.cs" />
+    <Compile Include="Projectiles\UndyingSpear.cs" />
     <Compile Include="Tiles\AncientForge.cs" />
     <Compile Include="Tiles\AncientHellforge.cs" />
+    <Compile Include="Tiles\RedChimney.cs" />
+    <Compile Include="Tiles\RedChimneyTE.cs" />
+    <Compile Include="Tiles\RedFireplace.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Dusts" />
     <Folder Include="Items" />
+    <Folder Include="Items\Equipable" />
+    <Folder Include="Items\Consumable" />
+    <Folder Include="Items\Weapons" />
     <Folder Include="Items\Placeable" />
+    <Folder Include="Commands" />
     <Folder Include="Projectiles" />
     <Folder Include="Tiles" />
   </ItemGroup>
