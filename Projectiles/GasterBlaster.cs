@@ -54,8 +54,8 @@ namespace GoldensMisc.Projectiles
 			projectile.penetrate = -1;
 			projectile.timeLeft = Projectile.SentryLifeTime;
 			projectile.ignoreWater = true;
-			ProjectileID.Sets.TurretFeature[projectile.type] = true;
-			ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+			ProjectileID.Sets.Homing[projectile.type] = true;
+//			ProjectileID.Sets.TurretFeature[projectile.type] = true;
 			ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
 		}
 		
@@ -109,7 +109,7 @@ namespace GoldensMisc.Projectiles
 					#region Prepare to shoot
 					projectile.frame = 1;
 					
-					//Rotate (TODO: Spawn dust?)
+					//Rotate
 					var direction = TargetPos - projectile.Center;
 					projectile.rotation = projectile.rotation.AngleLerp(direction.ToRotation() + (float)Math.PI * 1.5f, 0.2f);
 					#endregion

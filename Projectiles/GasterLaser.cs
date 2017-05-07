@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -21,7 +22,6 @@ namespace GoldensMisc.Projectiles
 		
 		public override void SetDefaults()
 		{
-			ProjectileID.Sets.MinionShot[projectile.type] = true;
 			projectile.netImportant = true;
 			projectile.name = "Skull Laser";
 			projectile.width = 1;
@@ -32,6 +32,7 @@ namespace GoldensMisc.Projectiles
 			projectile.tileCollide = false;
 			projectile.ignoreWater = true;
 			projectile.scale = 1.5f;
+			ProjectileID.Sets.SentryShot[projectile.type] = true;
 		}
 		
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -75,8 +76,8 @@ namespace GoldensMisc.Projectiles
 //		{
 			var position = projectile.Center;
 			float r = unit.ToRotation() - MathHelper.PiOver2;
-			const int transDist = 80;
-			const int step = 8;
+			const int transDist = 50;
+			const int step = 7;
 
 			#region Draw laser body
 			for (float i = transDist; i <= BeamLength; i += step)
@@ -98,6 +99,11 @@ namespace GoldensMisc.Projectiles
 			                 new Rectangle(0, 56, 38, 22), Color.White, r, new Vector2(38 / 2, 22 / 2), projectile.scale, SpriteEffects.None, 0);
 			#endregion
 			return false;
+		}
+		
+		public override void DrawBehind(int index, List<int> drawCacheProjsBehindNPCsAndTiles, List<int> drawCacheProjsBehindNPCs, List<int> drawCacheProjsBehindProjectiles, List<int> drawCacheProjsOverWiresUI)
+		{
+			drawCacheProjsBehindProjectiles.Add(index);
 		}
 	}
 }

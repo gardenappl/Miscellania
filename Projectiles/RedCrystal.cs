@@ -57,11 +57,11 @@ namespace GoldensMisc.Projectiles
 		public override void Behaviour()
 		{
 			var player = Main.player[projectile.owner];
-			Rotation = MathHelper.WrapAngle(Rotation + 0.04f);
-			float distance = (float)Math.Sin(Main.time / 15 + (double)projectile.whoAmI / 50) * 64;
+			Rotation = MathHelper.WrapAngle(Rotation + 0.025f);
+			float distance = (float)Math.Sin(Main.time / 18 + (double)projectile.whoAmI / 50) * 64;
 			projectile.Center = (player.MountedCenter + new Vector2(0, distance)).RotatedBy(Rotation, player.MountedCenter);
 			
-			Lighting.AddLight(projectile.Center, Color.Red.ToVector3() * 0.3f);
+			Lighting.AddLight(projectile.Center, Color.Red.ToVector3() * 0.5f);
 			
 			ShootDelay--;
 			
@@ -94,15 +94,15 @@ namespace GoldensMisc.Projectiles
 			DustDelay--;
 			if(DustDelay <= 0)
 			{
-				Dust.NewDustPerfect(projectile.Center, mod.DustType<RedDustStatic>(), Vector2.Zero, Alpha: 80, Scale: 1.5f);
-				DustDelay = 15;
+				Dust.NewDustPerfect(projectile.Center, mod.DustType<RedDustStatic>(), Vector2.Zero, Alpha: 80, Scale: 1.3f);
+				DustDelay = 20;
 			}
 		}
 		
 		public override void Animate()
 		{
 			projectile.frameCounter++;
-			if(projectile.frameCounter >= 25)
+			if(projectile.frameCounter >= 40)
 			{
 				projectile.frame++;
 				if(projectile.frame > 1)
@@ -114,7 +114,7 @@ namespace GoldensMisc.Projectiles
 		
 		public override Color? GetAlpha(Color lightColor)
 		{
-			return Color.White;
+			return Color.White * 0.7f;
 		}
 		
 		public override bool? CanCutTiles()
