@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Equipable
 		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
 		{
 			equips.Add(EquipType.Neck);
-			return base.Autoload(ref name, ref texture, equips);
+			return Config.HeartLocket;
 		}
 		
 		public override void SetDefaults()

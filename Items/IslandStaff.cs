@@ -73,12 +73,13 @@ namespace GoldensMisc.Items
 			return true;
 		}
 		
-//		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		public override bool UseItem(Player player)
 		{
 			Projectile.NewProjectile(player.Center.X, player.Center.Y - 1, 0, -20f, mod.ProjectileType("Laputa"), 0, 0, player.whoAmI, player.Center.Y, cloudY);
 			if(!Main.dedServ)
+			{
 				SkyManager.Instance.Activate("GoldensMisc:Laputa");
+			}
 			WorldGen.CloudIsland(cloudX, cloudY);
 			
 			var dirt = FindDirt(cloudX, cloudY);
@@ -90,16 +91,26 @@ namespace GoldensMisc.Items
 			{
 				dirt = FindDirt(cloudX, cloudY, TileID.Grass);
 				if(dirt == Point.Zero)
+				{
 					return true;
+				}
 				
 				bool canPlaceTree = true;
 				for(int x = dirt.X - 1; x <= dirt.X + 1; x++)
+				{
 					if(!Main.tile[x, dirt.Y].active() || Main.tile[x, dirt.Y].type != TileID.Grass)
+					{
 						canPlaceTree = false;
+					}
+				}
 				
 				for(int x = dirt.X - 2; x <= dirt.X + 2; x++)
+				{
 					if(Main.tile[x, dirt.Y - 1].active())
+					{
 						canPlaceTree = false;
+					}
+				}
 				
 				if(canPlaceTree)
 				{
@@ -126,10 +137,14 @@ namespace GoldensMisc.Items
 					continue;
 				}
 				while(Main.tile[x, y].active())
+				{
 					y--;
+				}
 				
 				if(Main.tile[x, y + 1].type == dirt && !Main.tile[x, y].active())
+				{
 					return new Point(x, y + 1);
+				}
 				
 				attempts++;
 			}

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -7,6 +8,11 @@ namespace GoldensMisc.Items.Placeable
 {
 	public class RedFireplace : ModItem
 	{
+		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		{
+			return Config.RedBrickFurniture;
+		}
+		
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Fireplace);

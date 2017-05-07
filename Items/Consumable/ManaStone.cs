@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Terraria;
 using Terraria.ID;
@@ -10,6 +11,11 @@ namespace GoldensMisc.Items.Consumable
 {
 	public class ManaStone : ModItem
 	{
+		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		{
+			return Config.MagicStones;
+		}
+		
 		byte uses = 0;
 		const byte maxUses = 150;
 		

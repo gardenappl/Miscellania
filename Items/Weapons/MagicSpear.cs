@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -9,6 +10,11 @@ namespace GoldensMisc.Items.Weapons
 {
 	public class MagicSpear : ModItem
 	{
+		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		{
+			return Config.SpearofJustice;
+		}
+		
 		public override void SetDefaults()
 		{
 			item.name = "Spear of Justice";

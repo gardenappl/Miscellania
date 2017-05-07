@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -8,6 +9,11 @@ namespace GoldensMisc.Items.Consumable
 {
 	public class GodStone : ModItem
 	{
+		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		{
+			return Config.GodStone;
+		}
+		
 		public override void SetDefaults()
 		{
 			item.name = "God Stone";

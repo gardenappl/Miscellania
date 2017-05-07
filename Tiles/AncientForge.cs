@@ -10,6 +10,11 @@ namespace GoldensMisc.Tiles
 {
 	public class AncientForge : ModTile
 	{
+		public override bool Autoload(ref string name, ref string texture)
+		{
+			return Config.AncientForges;
+		}
+		
 		public override void SetDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;

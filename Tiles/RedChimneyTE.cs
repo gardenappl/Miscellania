@@ -11,6 +11,11 @@ namespace GoldensMisc.Tiles
 {
 	public class RedChimneyTE : ModTileEntity
 	{
+		public override bool Autoload(ref string name)
+		{
+			return Config.RedBrickFurniture;
+		}
+		
 		public enum State : byte
 		{
 			Deactivated,
@@ -76,12 +81,12 @@ namespace GoldensMisc.Tiles
 			CurrentState = (State)tag.GetByte("s");
 		}
 		
-		public override void NetSend(BinaryWriter writer)
+		public override void NetSend(BinaryWriter writer, bool lightSend)
 		{
 			writer.Write((byte)CurrentState);
 		}
 		
-		public override void NetReceive(BinaryReader reader)
+		public override void NetReceive(BinaryReader reader, bool lightReceive)
 		{
 			CurrentState = (State)reader.ReadByte();
 		}

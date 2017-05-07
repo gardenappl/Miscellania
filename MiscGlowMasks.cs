@@ -11,15 +11,15 @@ namespace GoldensMisc
 	{
 		public static short UndyingSpear;
 		public static short UndyingSpearProjectile;
-		const short MiscGlowMasksCount = 2;
-		static short MiscGlowMasksEnd;
+		const short Count = 2;
+		static short End;
 		public static bool Loaded;
 		
 		public static void Load()
 		{
-			Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length + MiscGlowMasksCount);
+			Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length + Count);
 			
-			short i = (short)(Main.glowMaskTexture.Length - MiscGlowMasksCount);
+			short i = (short)(Main.glowMaskTexture.Length - Count);
 			Main.glowMaskTexture[i] = ModLoader.GetTexture("GoldensMisc/Items/Weapons/UndyingSpear_Glow");
 			UndyingSpear = i;
 			
@@ -28,24 +28,29 @@ namespace GoldensMisc
 			UndyingSpearProjectile = i;
 			
 			i++;
-			MiscGlowMasksEnd = i;
+			End = i;
 			
 			Loaded = true;
 		}
 		
 		public static void Unload()
 		{
+			//Remove our glow masks
+			if(Main.glowMaskTexture.Length == End)
+			{
+				Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length - Count);
+			}
+			else if(Main.glowMaskTexture.Length > End)
+			{
+				for(int i = End - Count; i < End; i++)
+				{
+					Main.glowMaskTexture[i] = ModLoader.GetTexture("Terraria/Item_0");
+				}
+			}
 			Loaded = false;
 			UndyingSpear = 0;
 			UndyingSpearProjectile = 0;
-			MiscGlowMasksEnd = 0;
-			//If Miscellania was the last mod to add glow masks
-			if(Main.glowMaskTexture.Length == MiscGlowMasksEnd)
-			{
-				//Remove our glow masks
-				Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length - MiscGlowMasksCount);
-			}
-			//Otherwise just pray that everything will be fine
+			End = 0;
 		}
 	}
 }

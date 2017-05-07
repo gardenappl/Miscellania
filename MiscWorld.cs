@@ -16,16 +16,19 @@ namespace GoldensMisc
 	{
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
-			int index = tasks.FindIndex(genpass => genpass.Name.Equals("Hellforge"));
-			if(index != -1)
+			if(Config.AncientForges)
 			{
-				tasks.Insert(index + 1, new PassLegacy("[Miscellania] Ancient Hellforge", AddHellforges));
-			}
-			
-			index = tasks.FindIndex(genpass => genpass.Name.Equals("Buried Chests"));
-			if(index != -1)
-			{
-				tasks.Insert(index + 1, new PassLegacy("[Miscellania] Ancient Forge", AddForges));
+				int index = tasks.FindIndex(genpass => genpass.Name.Equals("Hellforge"));
+				if(index != -1)
+				{
+					tasks.Insert(index + 1, new PassLegacy("[Miscellania] Ancient Hellforge", AddHellforges));
+				}
+				
+				index = tasks.FindIndex(genpass => genpass.Name.Equals("Buried Chests"));
+				if(index != -1)
+				{
+					tasks.Insert(index + 1, new PassLegacy("[Miscellania] Ancient Forge", AddForges));
+				}
 			}
 		}
 		

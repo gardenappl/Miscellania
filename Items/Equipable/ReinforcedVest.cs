@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Equipable
 		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
 		{
 			equips.Add(EquipType.Body);
-			return base.Autoload(ref name, ref texture, equips);
+			return Config.ReinforcedVest;
 		}
 		
 		public override void AutoloadEquip(EquipType equip, ref string texture, ref string armTexture, ref string femaleTexture)

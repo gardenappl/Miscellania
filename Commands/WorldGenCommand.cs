@@ -38,10 +38,20 @@ namespace GoldensMisc.Commands
 			}
 			if(args[0].Equals("hellforge", StringComparison.OrdinalIgnoreCase))
 			{
+				if(!Config.AncientForges)
+				{
+					Main.NewText("Ancient Hellforges are disabled!");
+					return;
+				}
 				Task.Run(() => mod.GetModWorld<MiscWorld>().AddHellforges());
 			}
 			if(args[0].Equals("forge", StringComparison.OrdinalIgnoreCase))
 			{
+				if(!Config.AncientForges)
+				{
+					Main.NewText("Ancient Forges are disabled!");
+					return;
+				}
 				Task.Run(() => mod.GetModWorld<MiscWorld>().AddForges());
 			}
 			else

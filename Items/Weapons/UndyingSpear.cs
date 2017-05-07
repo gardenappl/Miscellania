@@ -11,11 +11,7 @@ namespace GoldensMisc.Items.Weapons
 	{
 		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
 		{
-			if(!MiscGlowMasks.Loaded)
-			{
-				MiscGlowMasks.Load();
-			}
-			return base.Autoload(ref name, ref texture, equips);
+			return Config.SpearofJustice;
 		}
 		
 		public override void SetDefaults()

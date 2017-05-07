@@ -11,6 +11,11 @@ namespace GoldensMisc.Tiles
 {
 	public class RedChimney : ModTile
 	{
+		public override bool Autoload(ref string name, ref string texture)
+		{
+			return Config.RedBrickFurniture;
+		}
+		
 		public override void SetDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;

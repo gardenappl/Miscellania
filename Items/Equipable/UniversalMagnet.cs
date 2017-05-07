@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -7,6 +8,11 @@ namespace GoldensMisc.Items.Equipable
 {
 	public class UniversalMagnet : ModItem
 	{
+		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		{
+			return Config.Magnets;
+		}
+		
 		public override void SetDefaults()
 		{
 			item.name = "Universal Magnet";

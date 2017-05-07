@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -10,6 +11,11 @@ namespace GoldensMisc.Items.Weapons
 {
 	public class KarmaStaff : ModItem
 	{
+		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		{
+			return Config.GasterBlaster;
+		}
+		
 		public override void SetDefaults()
 		{
 			item.name = "Karma Staff";
@@ -28,6 +34,8 @@ namespace GoldensMisc.Items.Weapons
 			item.value = Item.sellPrice(0, 3);
 			item.rare = 5;
 			item.shoot = mod.ProjectileType<GasterBlaster>();
+			ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true;
+			ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
 		}
 		
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

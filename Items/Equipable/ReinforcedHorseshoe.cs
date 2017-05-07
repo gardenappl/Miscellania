@@ -9,6 +9,11 @@ namespace GoldensMisc.Items.Equipable
 {
 	public class ReinforcedHorseshoe : ModItem
 	{
+		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		{
+			return Config.ReinforcedVest;
+		}
+		
 		public override void SetDefaults()
 		{
 			item.name = "Reinforced Horseshoe";

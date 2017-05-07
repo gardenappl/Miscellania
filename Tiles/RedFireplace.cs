@@ -10,6 +10,11 @@ namespace GoldensMisc.Tiles
 {
 	public class RedFireplace : ModTile
 	{
+		public override bool Autoload(ref string name, ref string texture)
+		{
+			return Config.RedBrickFurniture;
+		}
+		
 		const int animationFrameWidth = 54;
 		
 		public override void SetDefaults()

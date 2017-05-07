@@ -10,6 +10,11 @@ namespace GoldensMisc.Tiles
 {
 	public class AncientHellforge : ModTile
 	{
+		public override bool Autoload(ref string name, ref string texture)
+		{
+			return Config.AncientForges;
+		}
+		
 		public override void SetDefaults()
 		{
 			Main.tileObsidianKill[Type] = true;

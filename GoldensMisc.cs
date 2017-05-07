@@ -16,9 +16,18 @@ namespace GoldensMisc
 {
 	public class GoldensMisc : Mod
 	{
+		public GoldensMisc()
+		{
+			Config.Load();
+		}
+		
 		public override void Load()
 		{
-			SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
+			if(!Main.dedServ)
+			{
+				MiscGlowMasks.Load();
+				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
+			}
 			AddProjectile("MagicSpearMiniAlt", new MagicSpearMini(), "GoldensMisc/Projectiles/MagicSpearMiniAlt");
 		}
 		
@@ -29,39 +38,46 @@ namespace GoldensMisc
 		
 		public override void AddRecipeGroups()
 		{
-			var recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Main.itemName[ItemID.Muramasa], new int[]
+			if(Config.AncientMuramasa)
 			{
-				ItemID.Muramasa,
-				ItemType<AncientMuramasa>()
-			});
-			RecipeGroup.RegisterGroup("GoldensMisc:Muramasa", recipeGroup);
+				var recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Main.itemName[ItemID.Muramasa], new int[]
+				                                  {
+				                                  	ItemID.Muramasa,
+				                                  	ItemType<AncientMuramasa>()
+				                                  });
+				RecipeGroup.RegisterGroup("GoldensMisc:Muramasa", recipeGroup);
+			}
 		}
 		
 		public override void AddRecipes()
 		{
-			var finder = new RecipeFinder();
-			finder.AddIngredient(ItemID.TigerClimbingGear);
-			finder.AddIngredient(ItemID.Tabi);
-			finder.AddIngredient(ItemID.BlackBelt);
-			finder.SetResult(ItemID.MasterNinjaGear);
-			
-			var foundRecipes = finder.SearchRecipes();
-			foreach(var foundRecipe in foundRecipes)
+			if(Config.AncientMuramasa)
 			{
-				var editor = new RecipeEditor(foundRecipe);
-				editor.DeleteIngredient(ItemID.Tabi);
-				editor.DeleteIngredient(ItemID.BlackBelt);
-				editor.AddIngredient(ItemType<NinjaGear>());
+				var finder = new RecipeFinder();
+				finder.AddIngredient(ItemID.Muramasa);
+				var foundRecipes = finder.SearchRecipes();
+				foreach(var foundRecipe in foundRecipes)
+				{
+					var editor = new RecipeEditor(foundRecipe);
+					editor.AcceptRecipeGroup("GoldensMisc:Muramasa");
+				}
 			}
-			
-			finder = new RecipeFinder();
-			finder.AddIngredient(ItemID.Muramasa);
-			foundRecipes = finder.SearchRecipes();
-			Log("Found {0} recipes using the Muramasa", foundRecipes.Count);
-			foreach(var foundRecipe in foundRecipes)
+			if(Config.NinjaGear)
 			{
-				var editor = new RecipeEditor(foundRecipe);
-				editor.AcceptRecipeGroup("GoldensMisc:Muramasa");
+				var finder = new RecipeFinder();
+				finder.AddIngredient(ItemID.TigerClimbingGear);
+				finder.AddIngredient(ItemID.Tabi);
+				finder.AddIngredient(ItemID.BlackBelt);
+				finder.SetResult(ItemID.MasterNinjaGear);
+				
+				var foundRecipes = finder.SearchRecipes();
+				foreach(var foundRecipe in foundRecipes)
+				{
+					var editor = new RecipeEditor(foundRecipe);
+					editor.DeleteIngredient(ItemID.Tabi);
+					editor.DeleteIngredient(ItemID.BlackBelt);
+					editor.AddIngredient(ItemType<NinjaGear>());
+				}
 			}
 		}
 		

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,6 +9,11 @@ namespace GoldensMisc.Items.Consumable
 {
 	public class InertStone : ModItem
 	{
+		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		{
+			return Config.MagicStones;
+		}
+		
 		public override void SetDefaults()
 		{
 			item.name = "Inert Stone";

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,6 +9,11 @@ namespace GoldensMisc.Items.Equipable
 {
 	public class MagnetismRing : ModItem
 	{
+		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		{
+			return Config.Magnets;
+		}
+		
 		public override void SetDefaults()
 		{
 			item.name = "Magnetism Ring";
