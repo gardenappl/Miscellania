@@ -3,6 +3,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
@@ -21,9 +22,14 @@ namespace GoldensMisc.Projectiles
 			set { projectile.ai[0] = value ? 1 : 0; }
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Mini Spear of Justice");
+			DisplayName.AddTranslation(GameCulture.Russian, "Мини-копье правосудия");
+		}
+		
 		public override void SetDefaults()
 		{
-			projectile.name = "Magic Mini Spear";
 			projectile.width = 14;
 			projectile.height = 18;
 			projectile.scale = 1.3f;

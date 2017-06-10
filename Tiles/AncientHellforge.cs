@@ -25,7 +25,7 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.addTile(Type);
-			AddMapEntry(Color.Red, "Ancient Hellforge");
+			AddMapEntry(Color.Red, mod.GetItem(GetType().Name).DisplayName);
 			disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.Hellforge };
 		}

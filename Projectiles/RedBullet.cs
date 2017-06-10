@@ -3,6 +3,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using GoldensMisc.Dusts;
 
@@ -16,17 +17,24 @@ namespace GoldensMisc.Projectiles
 			set { projectile.localAI[0] = value; }
 		}
 		
-		public override bool Autoload(ref string name, ref string texture)
+		public override string Texture
 		{
-			texture = "Terraria/Projectile_" + ProjectileID.RubyBolt;
-			return base.Autoload(ref name, ref texture);
+			get
+			{
+				return "Terraria/Projectile_" + ProjectileID.RubyBolt;
+			}
+		}
+		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Ruby Bolt");
+			DisplayName.AddTranslation(GameCulture.Russian, "Красный снаряд");
 		}
 		
 		public override void SetDefaults()
 		{
 			projectile.CloneDefaults(ProjectileID.RubyBolt);
 			aiType = ProjectileID.RubyBolt;
-			projectile.name = "Red Bolt";
 		}
 		
 		public override void AI()

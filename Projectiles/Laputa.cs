@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
@@ -24,9 +25,14 @@ namespace GoldensMisc.Projectiles
 			set { projectile.ai[1] = value; }
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Laputa Light");
+			DisplayName.AddTranslation(GameCulture.Russian, "Свет Лапуты");
+		}
+		
 		public override void SetDefaults()
 		{
-			projectile.name = "Laputa";
 			projectile.width = 52;
 			projectile.height = 14;
 			projectile.friendly = true;

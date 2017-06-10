@@ -4,24 +4,21 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
 {
 	public class UndyingSpear : ModProjectile
 	{
-		public override bool Autoload(ref string name, ref string texture)
+		public override void SetStaticDefaults()
 		{
-			if(!MiscGlowMasks.Loaded)
-			{
-				MiscGlowMasks.Load();
-			}
-			return base.Autoload(ref name, ref texture);
+			DisplayName.SetDefault("Spear of Undying Justice");
+			DisplayName.AddTranslation(GameCulture.Russian, "Копьё бессмертного правосудия");
 		}
 		
 		public override void SetDefaults()
 		{
-			projectile.name = "Spear of Undying Justice";
 			projectile.scale = 1.3f;
 			projectile.width = 14;
 			projectile.height = 14;

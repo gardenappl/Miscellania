@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
@@ -39,24 +40,29 @@ namespace GoldensMisc.Projectiles
 		}
 		bool FirstSpawn = true;
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Autoblaster");
+			DisplayName.AddTranslation(GameCulture.Russian, "Авто-бластер");
+			Main.projFrames[projectile.type] = 2;
+			Main.projPet[projectile.type] = true;
+			ProjectileID.Sets.Homing[projectile.type] = true;
+//			ProjectileID.Sets.TurretFeature[projectile.type] = true;
+			ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+		}
+		
 		public override void SetDefaults()
 		{
 			projectile.netImportant = true;
-			projectile.name = "Gaster Blaster";
 			projectile.width = 44;
 			projectile.height = 48;
-			Main.projFrames[projectile.type] = 2;
 			projectile.friendly = true;
-			Main.projPet[projectile.type] = true;
 //			projectile.scale = 1.5f;
 			projectile.minion = true;
 			projectile.sentry = true;
 			projectile.penetrate = -1;
 			projectile.timeLeft = Projectile.SentryLifeTime;
 			projectile.ignoreWater = true;
-			ProjectileID.Sets.Homing[projectile.type] = true;
-//			ProjectileID.Sets.TurretFeature[projectile.type] = true;
-			ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
 		}
 		
 		public override void AI()

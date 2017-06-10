@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Graphics.Effects;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ID;
 
@@ -15,14 +16,35 @@ namespace GoldensMisc.Items
 	
 	public class IslandStaff : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return false;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Staff of Laputa");
+			Tooltip.SetDefault("Creates a floating island\n" +
+			                   "Shatters after one use");
+			DisplayName.AddTranslation(GameCulture.Russian, "Посох Лапуты");
+			Tooltip.AddTranslation(GameCulture.Russian, "Создаёт парящий остров\n" +
+			                       "Разрушается после одного использования");
+			
+			var text = mod.CreateTranslation("LaputaCannotUse");
+			text.SetDefault("Perhaps it's not a good idea to do this here.");
+			text.AddTranslation(GameCulture.Russian, "Возможно, не стоит это делать здесь.");
+			mod.AddTranslation(text);
+			text = mod.CreateTranslation("LaputaTooHigh");
+			text.SetDefault("You're too high above the ground.");
+			text.AddTranslation(GameCulture.Russian, "Вы находитесь слишком высоко над землёй.");
+			mod.AddTranslation(text);
+			text = mod.CreateTranslation("LaputaBlocked");
+			text.SetDefault("Something is in the way.");
+			text.AddTranslation(GameCulture.Russian, "Что-то закрывает над вами небо.");
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Staff of Laputa";
 			item.consumable = true;
 			item.width = 42;
 			item.height = 42;
@@ -32,8 +54,6 @@ namespace GoldensMisc.Items
 			item.useAnimation = 100;
 			item.useTime = 100;
 			item.rare = 10;
-			AddTooltip("Creates a floating island");
-			AddTooltip("Shatters after one use");
 			item.UseSound = SoundID.Item4;
 //			item.shoot = mod.ProjectileType("Laputa");
 //			item.shootSpeed = 20f;
@@ -52,8 +72,8 @@ namespace GoldensMisc.Items
 		{
 			if(player.position.Y / 16 < 170)
 			{
-				Main.NewText("Perhaps it's not a good idea to use this here.", 30, 200, 255);
-				Main.NewText("You're too high above the ground.", 30, 200, 255);
+				Main.NewText(Language.GetTextValue("Mods.GoldensMisc.LaputaCannotUse"), 30, 200, 255);
+				Main.NewText(Language.GetTextValue("Mods.GoldensMisc.LaputaTooHigh"), 30, 200, 255);
 				return false;
 			}
 			cloudX = (int)(MathHelper.Clamp(player.position.X / 16, 100, Main.maxTilesX - 100));
@@ -64,8 +84,8 @@ namespace GoldensMisc.Items
 				{
 					if(Main.tile[x, y].active() || Main.tile[x, y].wall != 0)
 					{
-						Main.NewText("Perhaps it's not a good idea to use this here.", 30, 200, 255);
-						Main.NewText("Something is in the way.", 30, 200, 255);
+						Main.NewText(Language.GetTextValue("Mods.GoldensMisc.LaputaCannotUse"), 30, 200, 255);
+						Main.NewText(Language.GetTextValue("Mods.GoldensMisc.LaputaBlocked"), 30, 200, 255);
 						return false;
 					}
 				}

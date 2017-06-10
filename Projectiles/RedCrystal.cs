@@ -4,6 +4,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using GoldensMisc.Dusts;
 
@@ -29,13 +30,18 @@ namespace GoldensMisc.Projectiles
 		
 		const float TargetDist = 450f;
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Red Crystal");
+			DisplayName.AddTranslation(GameCulture.Russian, "Красный кристалл");
+			Main.projFrames[projectile.type] = 2;
+		}
+		
 		public override void SetDefaults()
 		{
-			projectile.name = "Red Crystal";
 //			projectile.scale = 0.9f;
 			projectile.width = 16;
 			projectile.height = 25;
-			Main.projFrames[projectile.type] = 2;
 			projectile.friendly = true;
 			projectile.penetrate = -1;
 			projectile.ignoreWater = true;

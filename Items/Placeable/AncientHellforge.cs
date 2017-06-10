@@ -3,20 +3,26 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Placeable
 {
 	public class AncientHellforge : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.AncientForges;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Ancient Hellforge");
+			DisplayName.AddTranslation(GameCulture.Russian, "Древняя адская кузня");
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Ancient Hellforge";
 			item.width = 30;
 			item.height = 26;
 			item.maxStack = 99;

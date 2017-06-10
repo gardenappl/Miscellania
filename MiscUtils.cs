@@ -7,7 +7,7 @@ using Terraria.DataStructures;
 
 namespace GoldensMisc
 {
-	public static class MiscUtils
+	public class MiscUtils
 	{
 		//Thank you Iriazul for this!
 		public static bool DoesBeamCollide(Rectangle targetHitbox, Vector2 beamStart, float beamAngle, float beamWidth)
@@ -28,22 +28,8 @@ namespace GoldensMisc
 			{
 				return maxLength;
 			}
-			return (beamStart - collisionTile.ToWorldCoordinates()).Length();
-		}
-		
-		public static Point ToTileCoordinates(this Tuple<int, int> tuple)
-		{
-			return new Point(tuple.Item1, tuple.Item2);
-		}
-
-		public static Point16 ToTileCoordinates16(this Tuple<int, int> tuple)
-		{
-			return new Point16(tuple.Item1, tuple.Item2);
-		}
-
-		public static Vector2 ToWorldCoordinates(this Tuple<int, int> tuple, float autoAddX = 8f, float autoAddY = 8f)
-		{
-			return new Vector2(tuple.Item1 * 16 + autoAddX, tuple.Item2 * 16 + autoAddY);
+			var beamEnd = new Vector2(collisionTile.Item1 * 16 + 8, collisionTile.Item2 * 16 + 8);
+			return (beamStart - beamEnd).Length();
 		}
 	}
 }

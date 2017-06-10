@@ -2,25 +2,33 @@
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Equipable
 {
+	[AutoloadEquip(EquipType.Face)]
 	public class DemonCrown : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
-			equips.Add(EquipType.Face);
 			return Config.DemonCrown;
+		}
+		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Demon Crown");
+			Tooltip.SetDefault("Grants great magical powers\n" +
+			                   "Summons a Red Crystal to fight for you");
+			DisplayName.AddTranslation(GameCulture.Russian, "Демоническая корона");
+			Tooltip.AddTranslation(GameCulture.Russian, "Даёт великую магическую силу\n" +
+			                       "Призывает Красный кристалл, который сражается за вас");
 		}
 		
 		public override void SetDefaults()
 		{
-			item.name = "Demon Crown";
 			item.width = 22;
 			item.height = 30;
-			AddTooltip("Grants the wearer great magical powers");
-			AddTooltip("Summons a Red Crystal to protect you");
 			item.value = Item.sellPrice(0, 8);
 			item.rare = 5;
 			item.accessory = true;

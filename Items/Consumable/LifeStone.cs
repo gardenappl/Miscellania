@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -11,7 +12,7 @@ namespace GoldensMisc.Items.Consumable
 {
 	public class LifeStone : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.MagicStones;
 		}
@@ -19,9 +20,16 @@ namespace GoldensMisc.Items.Consumable
 		byte uses = 0;
 		const byte maxUses = 90;
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Healing Stone");
+			Tooltip.SetDefault("Can be used multiple times");
+			DisplayName.AddTranslation(GameCulture.Russian, "Лечебный камень");
+			Tooltip.AddTranslation(GameCulture.Russian, "Может быть использован несколько раз");
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Healing Stone";
 			item.width = 26;
 			item.height = 26;
 			item.healLife = 120;
@@ -31,7 +39,6 @@ namespace GoldensMisc.Items.Consumable
 			item.useAnimation = 30;
 			item.UseSound = SoundID.Item29;
 			item.consumable = true;
-			AddTooltip("Can be used multiple times");
 			item.rare = 4;
 			item.value = Item.sellPrice(0, 8);
 		}

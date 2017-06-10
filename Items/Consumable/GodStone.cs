@@ -3,20 +3,32 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Consumable
 {
 	public class GodStone : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.GodStone;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("God Stone");
+			Tooltip.SetDefault("Can be used infintely many times\n" +
+			                   "Does not cause potion sickness\n" +
+			                   "This is a cheater item");
+			DisplayName.AddTranslation(GameCulture.Russian, "Божественный камень");
+			Tooltip.AddTranslation(GameCulture.Russian, "Не тратится при использовании\n" +
+			                       "Не призводит к послезельевой болезни\n" +
+			                       "Предмет для читеров");
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "God Stone";
 			item.width = 26;
 			item.height = 26;
 			item.healLife = 1000;
@@ -26,9 +38,6 @@ namespace GoldensMisc.Items.Consumable
 			item.useTime = 30;
 			item.useAnimation = 30;
 			item.UseSound = SoundID.Item29;
-			AddTooltip("Can be used infinitely many times");
-			AddTooltip("Does not cause potion sickness");
-			AddTooltip2("This is a cheater item");
 			item.rare = 11;
 		}
 		

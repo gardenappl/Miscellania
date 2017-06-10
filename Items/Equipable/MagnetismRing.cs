@@ -3,24 +3,32 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Equipable
 {
 	public class MagnetismRing : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.Magnets;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Magnetism Ring");
+			Tooltip.SetDefault("Increases pickup range for items, coins and mana stars\n" +
+			                   "'You're really attractive'"); //not necessary to translate the shitty pun
+			DisplayName.AddTranslation(GameCulture.Russian, "Кольцо магнетизма");
+			Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает дистанцию взятия предметов, монет и звёзд маны\n" +
+			                       "'Вы очень притягательны'");
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Magnetism Ring";
 			item.width = 28;
 			item.height = 20;
-			AddTooltip("Increased pickup range for items, mana stars and coins");
-			AddTooltip2("'You're pretty attractive, huh?'");
 			item.value = Item.sellPrice(0, 10);
 			item.rare = 6;
 			item.accessory = true;

@@ -3,24 +3,32 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Equipable
 {
 	public class NinjaGear : ModItem
-	{	
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+	{
+		public override bool Autoload(ref string name)
 		{
 			return Config.NinjaGear;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Ninja Gear");
+			Tooltip.SetDefault("Allows the ability to dash\n" +
+			                   "Gives a chance to dodge attacks");
+			DisplayName.AddTranslation(GameCulture.Russian, "Снаряжение ниндзя");
+			Tooltip.AddTranslation(GameCulture.Russian, "Позволяет уклоняться от противников\n" +
+			                       "Дает шанс уклониться от атак");
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Ninja Gear";
 			item.width = 30;
 			item.height = 26;
-			AddTooltip("Allows the ability to dash");
-			AddTooltip("Gives a chance to dodge attacks");
 			item.value = Item.sellPrice(0, 5);
 			item.rare = 8;
 			item.accessory = true;

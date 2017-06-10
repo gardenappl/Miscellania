@@ -4,28 +4,36 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
 {
 	public class MagicSpear : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.SpearofJustice;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Spear of Justice");
+			Tooltip.SetDefault("Rapidly throws piecring spears\n" +
+			                   "'Ngahhh!!'");
+			DisplayName.AddTranslation(GameCulture.Russian, "Копье правосудия");
+			Tooltip.AddTranslation(GameCulture.Russian, "Быстро метает пронзающие копья\n" +
+			                       "'Аргххх!!'"); //перевод 10/10
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Spear of Justice";
 			item.value = Item.sellPrice(0, 4);
 			item.useStyle = 1;
 			item.useAnimation = 25;
 			item.useTime = 25;
 			item.autoReuse = true;
 			item.rare = 4;
-			AddTooltip("Rapidly throws piercing spears");
-			AddTooltip2("'Ngahhh!!'");
 			item.width = 42;
 			item.height = 42;
 			item.UseSound = SoundID.Item8;

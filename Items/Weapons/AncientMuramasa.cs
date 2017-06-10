@@ -4,21 +4,27 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
 {
 	public class AncientMuramasa : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.AncientMuramasa;
+		}
+		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Ancient Muramasa");
+			DisplayName.AddTranslation(GameCulture.Russian, "Древняя Мурамаса");
 		}
 		
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Muramasa);
-			item.name = "Ancient Muramasa";
 		}
 		
 		public override void MeleeEffects(Player player, Rectangle hitbox)

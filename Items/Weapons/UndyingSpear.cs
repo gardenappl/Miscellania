@@ -3,28 +3,36 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
 {
 	public class UndyingSpear : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.SpearofJustice;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Spear of Undying Justice");
+			Tooltip.SetDefault("Rapidly throws piercing spears\n" +
+			                   "'You're gonna have to try a little harder than THAT.'");
+			DisplayName.AddTranslation(GameCulture.Russian, "Копье бессмертного правосудия");
+			Tooltip.AddTranslation(GameCulture.Russian, "Быстро метает пронзающие копья\n" + 
+			                      "'Тебе придётся чуть-чуть сильнее постарться на ЭТОТ раз.'");
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Spear of Undying Justice";
 			item.value = Item.sellPrice(0, 7);
 			item.useStyle = 1;
 			item.useAnimation = 18;
 			item.useTime = 18;
 			item.autoReuse = true;
 			item.rare = 8;
-			AddTooltip("Rapidly throws piercing spears");
-			AddTooltip2("'You're gonna have to try a little harder than THAT.'");
 			item.width = 48;
 			item.height = 48;
 			item.UseSound = SoundID.Item8;

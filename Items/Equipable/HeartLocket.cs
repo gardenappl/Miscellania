@@ -3,24 +3,32 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Equipable
 {
+	[AutoloadEquip(EquipType.Neck)]
 	public class HeartLocket : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
-			equips.Add(EquipType.Neck);
 			return Config.HeartLocket;
+		}
+		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Heart Locket");
+			Tooltip.SetDefault("Increases movement speed and length of invincibility after being struck");
+			DisplayName.AddTranslation(GameCulture.Russian, "Медальон-сердце");
+			Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает продолжительность неуязвимости после получения урона\n" +
+			                       "После удара увеличивает скорость движения");
 		}
 		
 		public override void SetDefaults()
 		{
-			item.name = "Heart Locket";
 			item.width = 26;
 			item.height = 38;
-			AddTooltip("Increases movement speed and length of invincibility after being struck");
 			item.value = Item.sellPrice(0, 2);
 			item.rare = 5;
 			item.accessory = true;

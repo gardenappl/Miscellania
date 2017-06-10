@@ -3,23 +3,30 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Consumable
 {
 	public class InertStone : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.MagicStones;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Inert Stone");
+			Tooltip.SetDefault("'Has the potential to store magical energy'");
+			DisplayName.AddTranslation(GameCulture.Russian, "Инертный камень");
+			Tooltip.AddTranslation(GameCulture.Russian, "'Имеет потенциал для хранения магической энергии'");
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Inert Stone";
 			item.width = 26;
 			item.height = 26;
-			AddTooltip2("'Has the potential to store magical energy'");
 			item.rare = 3;
 			item.value = Item.buyPrice(0, 50);
 		}

@@ -22,7 +22,7 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.addTile(Type);
-			AddMapEntry(Color.Gray, "Ancient Forge");
+			AddMapEntry(Color.Gray, mod.GetItem(GetType().Name).DisplayName);
 			disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.Furnaces };
 		}

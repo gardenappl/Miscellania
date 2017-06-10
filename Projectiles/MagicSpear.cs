@@ -3,15 +3,21 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
 {
 	public class MagicSpear : ModProjectile
 	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Spear of Justice");
+			DisplayName.AddTranslation(GameCulture.Russian, "Копье правосулия");
+		}
+		
 		public override void SetDefaults()
 		{
-			projectile.name = "Spear of Justice";
 			projectile.scale = 1.3f;
 			projectile.width = 14;
 			projectile.height = 14;

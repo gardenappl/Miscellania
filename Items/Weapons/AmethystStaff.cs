@@ -3,20 +3,26 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
 {
 	public class AmethystStaff : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.AltStaffs;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			Item.staff[item.type] = true;
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Amethyst Staff";
+//			DisplayName.AddTranslation(Language.ActiveCulture, Lang.GetItemNameValue(ItemID.AmethystStaff));
 			item.mana = 4;
 			item.UseSound = SoundID.Item43;
 			item.useStyle = 5;
@@ -31,7 +37,6 @@ namespace GoldensMisc.Items.Weapons
 			item.value = Item.sellPrice(0, 0, 6);
 			item.magic = true;
 			item.noMelee = true;
-			Item.staff[item.type] = true;
 		}
 		
 		public override void AddRecipes()

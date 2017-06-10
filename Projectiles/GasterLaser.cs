@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
@@ -20,10 +21,15 @@ namespace GoldensMisc.Projectiles
 		}
 		Vector2 endPoint;
 		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Blaster Laser");
+			DisplayName.AddTranslation(GameCulture.Russian, "Лазер бластера");
+		}
+		
 		public override void SetDefaults()
 		{
 			projectile.netImportant = true;
-			projectile.name = "Skull Laser";
 			projectile.width = 1;
 			projectile.height = 1;
 			projectile.friendly = true;

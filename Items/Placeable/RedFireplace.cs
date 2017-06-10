@@ -2,21 +2,27 @@
 using System;
 using System.Collections.Generic;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Placeable
 {
 	public class RedFireplace : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.RedBrickFurniture;
+		}
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Red Fireplace");
+			DisplayName.AddTranslation(GameCulture.Russian, "Красный камин");
 		}
 		
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Fireplace);
-			item.name = "Red Fireplace";
 			item.createTile = mod.TileType(GetType().Name);
 		}
 		

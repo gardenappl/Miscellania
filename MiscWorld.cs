@@ -39,7 +39,7 @@ namespace GoldensMisc
 		
 		public void AddForges(GenerationProgress progress = null)
 		{
-			AddFurniture(progress, "ancient forges", mod.TileType<AncientForge>(), 800, (int)Main.worldSurface, Main.maxTilesY - 300, WallID.Planked, WallID.BorealWood);
+			AddFurniture(progress, "ancient forges", mod.TileType<AncientForge>(), 300, (int)Main.worldSurface, Main.maxTilesY - 300, WallID.Planked, WallID.BorealWood);
 		}
 		
 		static void AddFurniture(GenerationProgress progress, string name, int type, int rarity, int minY, int maxY, params int[] wallIDs)

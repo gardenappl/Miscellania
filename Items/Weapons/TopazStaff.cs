@@ -3,20 +3,26 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
 {
 	public class TopazStaff : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.AltStaffs;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			Item.staff[item.type] = true;
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Topaz Staff";
+			DisplayName.AddTranslation(Language.ActiveCulture, Lang.GetItemNameValue(ItemID.TopazStaff));
 			item.mana = 3;
 			item.UseSound = SoundID.Item43;
 			item.useStyle = 5;
@@ -31,7 +37,6 @@ namespace GoldensMisc.Items.Weapons
 			item.value = Item.sellPrice(0, 0, 8);
 			item.magic = true;
 			item.noMelee = true;
-			Item.staff[item.type] = true;
 		}
 		
 		public override void AddRecipes()

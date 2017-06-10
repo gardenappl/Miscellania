@@ -3,20 +3,26 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
 {
 	public class DiamondStaff : ModItem
 	{
-		public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+		public override bool Autoload(ref string name)
 		{
 			return Config.AltStaffs;
 		}
 		
+		public override void SetStaticDefaults()
+		{
+			Item.staff[item.type] = true;
+		}
+		
 		public override void SetDefaults()
 		{
-			item.name = "Diamond Staff";
+			DisplayName.AddTranslation(Language.ActiveCulture, Lang.GetItemNameValue(ItemID.DiamondStaff));
 			item.rare = 2;
 			item.mana = 7;
 			item.UseSound = SoundID.Item43;
@@ -33,7 +39,6 @@ namespace GoldensMisc.Items.Weapons
 			item.magic = true;
 			item.noMelee = true;
 			item.autoReuse = true;
-			Item.staff[item.type] = true;
 		}
 		
 		public override void AddRecipes()
