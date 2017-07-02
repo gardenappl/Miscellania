@@ -16,7 +16,6 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Universal Magnet");
 			Tooltip.SetDefault("Increased pickup range for items");
 			DisplayName.AddTranslation(GameCulture.Russian, "Универсальный магнит");
 			Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает дистанцию взятия предметов");

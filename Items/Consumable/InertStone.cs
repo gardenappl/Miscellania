@@ -17,7 +17,6 @@ namespace GoldensMisc.Items.Consumable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Inert Stone");
 			Tooltip.SetDefault("'Has the potential to store magical energy'");
 			DisplayName.AddTranslation(GameCulture.Russian, "Инертный камень");
 			Tooltip.AddTranslation(GameCulture.Russian, "'Имеет потенциал для хранения магической энергии'");

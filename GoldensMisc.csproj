@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <NoWin32Manifest>False</NoWin32Manifest>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -47,6 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buffs\OrbofLight.cs" />
     <Compile Include="Commands\WorldGenCommand.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Dusts\RedDust.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Items\Equipable\HeartLocket.cs" />
     <Compile Include="Items\Equipable\MagnetismRing.cs" />
     <Compile Include="Items\Equipable\NinjaGear.cs" />
+    <Compile Include="Items\Equipable\OrbofLight.cs" />
     <Compile Include="Items\Equipable\ReinforcedHorseshoe.cs" />
     <Compile Include="Items\Equipable\ReinforcedVest.cs" />
     <Compile Include="Items\Equipable\UniversalMagnet.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="Projectiles\MagicSpear.cs" />
     <Compile Include="Projectiles\MagicSpearMini.cs" />
     <Compile Include="Projectiles\Minion.cs" />
+    <Compile Include="Projectiles\OrbofLight.cs" />
     <Compile Include="Projectiles\ProjectileTweaks.cs" />
     <Compile Include="Projectiles\RedBullet.cs" />
     <Compile Include="Projectiles\RedCrystal.cs" />
@@ -103,6 +107,7 @@
     <Compile Include="Tiles\RedFireplace.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Buffs" />
     <Folder Include="Dusts" />
     <Folder Include="Items" />
     <Folder Include="Items\Equipable" />
@@ -118,4 +123,7 @@
     <None Include="description.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>E:\Yurik\Steam\SteamApps\common\Terraria\tModLoaderServer.exe -build "$(ProjectDir)\" -savedirectory "E:\Yurik\Terraria"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

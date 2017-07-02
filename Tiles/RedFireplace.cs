@@ -3,6 +3,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -27,7 +28,10 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			AddMapEntry(Color.Red, mod.GetItem(GetType().Name).DisplayName);
+			var name = CreateMapEntryName();
+			name.SetDefault("Red Fireplace");
+			name.AddTranslation(GameCulture.Russian, "Краcный камин");
+			AddMapEntry(Color.Red, name);
 			disableSmartCursor = true;
 			animationFrameHeight = 38;
 			adjTiles = new int[]{ TileID.Fireplace };

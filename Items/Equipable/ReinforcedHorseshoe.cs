@@ -17,7 +17,6 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Reinforced Horseshoe");
 			Tooltip.SetDefault("Negates fall damage\n" +
 			                   "Grants immunity to fire blocks and your own explosives");
 			DisplayName.AddTranslation(GameCulture.Russian, "Бронеподкова");

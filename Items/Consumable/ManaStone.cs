@@ -22,7 +22,6 @@ namespace GoldensMisc.Items.Consumable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mana Stone");
 			Tooltip.SetDefault("Can be used multiple times");
 			DisplayName.AddTranslation(GameCulture.Russian, "Камень маны");
 			Tooltip.AddTranslation(GameCulture.Russian, "Может быть использован несколько раз");

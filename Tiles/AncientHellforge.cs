@@ -3,6 +3,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -25,7 +26,10 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.addTile(Type);
-			AddMapEntry(Color.Red, mod.GetItem(GetType().Name).DisplayName);
+			var name = CreateMapEntryName();
+			name.SetDefault("Ancient Hellforge");
+			name.AddTranslation(GameCulture.Russian, "Древняя адская кузня");
+			AddMapEntry(Color.Red, name);
 			disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.Hellforge };
 		}

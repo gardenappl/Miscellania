@@ -27,7 +27,7 @@ namespace GoldensMisc.Projectiles
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ruby Bolt");
+			DisplayName.SetDefault("Red Bolt");
 			DisplayName.AddTranslation(GameCulture.Russian, "Красный снаряд");
 		}
 		

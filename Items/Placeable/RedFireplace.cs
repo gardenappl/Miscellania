@@ -16,7 +16,6 @@ namespace GoldensMisc.Items.Placeable
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Red Fireplace");
 			DisplayName.AddTranslation(GameCulture.Russian, "Красный камин");
 		}
 		

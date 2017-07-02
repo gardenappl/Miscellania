@@ -18,7 +18,6 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Heart Locket");
 			Tooltip.SetDefault("Increases movement speed and length of invincibility after being struck");
 			DisplayName.AddTranslation(GameCulture.Russian, "Медальон-сердце");
 			Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает продолжительность неуязвимости после получения урона\n" +

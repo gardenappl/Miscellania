@@ -18,7 +18,6 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Reinforced Vest");
 			Tooltip.SetDefault("Grants immunity to your own explosives");
 			DisplayName.AddTranslation(GameCulture.Russian, "Бронежилет");
 			Tooltip.AddTranslation(GameCulture.Russian, "Дает невосприимчивость к своей взрывчатке");

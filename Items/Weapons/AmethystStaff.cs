@@ -17,12 +17,12 @@ namespace GoldensMisc.Items.Weapons
 		
 		public override void SetStaticDefaults()
 		{
+			DisplayName.AddTranslation(GameCulture.Russian, "Аметистовый посох");
 			Item.staff[item.type] = true;
 		}
 		
 		public override void SetDefaults()
 		{
-//			DisplayName.AddTranslation(Language.ActiveCulture, Lang.GetItemNameValue(ItemID.AmethystStaff));
 			item.mana = 4;
 			item.UseSound = SoundID.Item43;
 			item.useStyle = 5;

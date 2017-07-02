@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -24,7 +25,10 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 16, 18 };
 			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity("RedChimneyTE").Hook_AfterPlacement, -1, 0, false);
 			TileObjectData.addTile(Type);
-			AddMapEntry(Color.Red, mod.GetItem(GetType().Name).DisplayName);
+			var name = CreateMapEntryName();
+			name.SetDefault("Red Chimney");
+			name.AddTranslation(GameCulture.Russian, "Красный дымоход");
+			AddMapEntry(Color.Red, name);
 			disableSmartCursor = true;
 			animationFrameHeight = 56;
 		}

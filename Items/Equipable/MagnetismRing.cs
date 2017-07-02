@@ -17,7 +17,6 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Magnetism Ring");
 			Tooltip.SetDefault("Increases pickup range for items, coins and mana stars\n" +
 			                   "'You're really attractive'"); //not necessary to translate the shitty pun
 			DisplayName.AddTranslation(GameCulture.Russian, "Кольцо магнетизма");

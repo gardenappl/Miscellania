@@ -17,12 +17,12 @@ namespace GoldensMisc.Items.Weapons
 		
 		public override void SetStaticDefaults()
 		{
+			DisplayName.AddTranslation(GameCulture.Russian, "Изумрудный посох");
 			Item.staff[item.type] = true;
 		}
 		
 		public override void SetDefaults()
 		{
-			DisplayName.AddTranslation(Language.ActiveCulture, Lang.GetItemNameValue(ItemID.EmeraldStaff));
 			item.rare = 1;
 			item.mana = 5;
 			item.UseSound = SoundID.Item43;

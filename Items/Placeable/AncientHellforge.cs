@@ -17,7 +17,6 @@ namespace GoldensMisc.Items.Placeable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Hellforge");
 			DisplayName.AddTranslation(GameCulture.Russian, "Древняя адская кузня");
 		}
 		
@@ -38,19 +37,19 @@ namespace GoldensMisc.Items.Placeable
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.SetResult(ItemID.AdamantiteForge);
-			recipe.AddIngredient(ItemID.AdamantiteOre, 30);
-			recipe.AddIngredient(this);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.AddRecipe();
-			
-			recipe = new ModRecipe(mod);
-			recipe.SetResult(ItemID.TitaniumForge);
-			recipe.AddIngredient(ItemID.TitaniumOre, 30);
-			recipe.AddIngredient(this);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.AddRecipe();
+//			var recipe = new ModRecipe(mod);
+//			recipe.SetResult(ItemID.AdamantiteForge);
+//			recipe.AddIngredient(ItemID.AdamantiteOre, 30);
+//			recipe.AddIngredient(this);
+//			recipe.AddTile(TileID.MythrilAnvil);
+//			recipe.AddRecipe();
+//			
+//			recipe = new ModRecipe(mod);
+//			recipe.SetResult(ItemID.TitaniumForge);
+//			recipe.AddIngredient(ItemID.TitaniumOre, 30);
+//			recipe.AddIngredient(this);
+//			recipe.AddTile(TileID.MythrilAnvil);
+//			recipe.AddRecipe();
 		}
 	}
 }

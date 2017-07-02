@@ -16,7 +16,6 @@ namespace GoldensMisc.Items.Placeable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Forge");
 			DisplayName.AddTranslation(GameCulture.Russian, "Древняя кузня");
 		}
 		

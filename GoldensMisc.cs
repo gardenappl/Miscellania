@@ -28,21 +28,9 @@ namespace GoldensMisc
 			if(!Main.dedServ)
 			{
 				MiscGlowMasks.Load();
-				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
+//				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
 			}
 			AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
-			LanguageManager.Instance.OnLanguageChanged += SetNames;
-			SetNames(LanguageManager.Instance);
-		}
-		
-		void SetNames(LanguageManager manager)
-		{
-			GetItem<AmethystStaff>().DisplayName.AddTranslation(manager.ActiveCulture, Lang.GetItemNameValue(ItemID.AmethystStaff));
-			GetItem<TopazStaff>().DisplayName.AddTranslation(manager.ActiveCulture, Lang.GetItemNameValue(ItemID.TopazStaff));
-			GetItem<SapphireStaff>().DisplayName.AddTranslation(manager.ActiveCulture, Lang.GetItemNameValue(ItemID.SapphireStaff));
-			GetItem<EmeraldStaff>().DisplayName.AddTranslation(manager.ActiveCulture, Lang.GetItemNameValue(ItemID.EmeraldStaff));
-			GetItem<RubyStaff>().DisplayName.AddTranslation(manager.ActiveCulture, Lang.GetItemNameValue(ItemID.RubyStaff));
-			GetItem<DiamondStaff>().DisplayName.AddTranslation(manager.ActiveCulture, Lang.GetItemNameValue(ItemID.DiamondStaff));
 		}
 		
 		public override void Unload()

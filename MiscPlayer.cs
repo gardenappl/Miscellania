@@ -13,12 +13,14 @@ namespace GoldensMisc
 		public bool ExplosionResistant;
 		public bool DemonCrown;
 		public bool Magnet;
+		public bool OrbofLight;
 		
 		public override void ResetEffects()
 		{
 			ExplosionResistant = false;
 			DemonCrown = false;
 			Magnet = false;
+			OrbofLight = false;
 		}
 		
 		bool shake;
@@ -26,7 +28,7 @@ namespace GoldensMisc
 		Vector2 targetOffset;
 		int tick;
 		int nextShake = 5;
-		float intensity = 5;
+		float intensity = 5f;
 		
 		public override void ModifyScreenPosition()
 		{

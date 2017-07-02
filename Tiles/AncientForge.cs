@@ -3,6 +3,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -22,6 +23,10 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.addTile(Type);
+//			var name = CreateMapEntryName();
+//			name.SetDefault("Ancient Forge");
+//			name.AddTranslation(GameCulture.Russian, "Древняя кузня");
+//			AddMapEntry(Color.Gray, name);
 			AddMapEntry(Color.Gray, mod.GetItem(GetType().Name).DisplayName);
 			disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.Furnaces };

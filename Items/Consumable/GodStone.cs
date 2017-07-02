@@ -17,7 +17,6 @@ namespace GoldensMisc.Items.Consumable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("God Stone");
 			Tooltip.SetDefault("Can be used infintely many times\n" +
 			                   "Does not cause potion sickness\n" +
 			                   "This is a cheater item");

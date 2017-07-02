@@ -17,12 +17,12 @@ namespace GoldensMisc.Items.Weapons
 		
 		public override void SetStaticDefaults()
 		{
+			DisplayName.AddTranslation(GameCulture.Russian, "Топазовый посох");
 			Item.staff[item.type] = true;
 		}
 		
 		public override void SetDefaults()
 		{
-			DisplayName.AddTranslation(Language.ActiveCulture, Lang.GetItemNameValue(ItemID.TopazStaff));
 			item.mana = 3;
 			item.UseSound = SoundID.Item43;
 			item.useStyle = 5;

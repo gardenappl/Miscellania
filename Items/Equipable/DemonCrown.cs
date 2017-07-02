@@ -17,7 +17,6 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Demon Crown");
 			Tooltip.SetDefault("Grants great magical powers\n" +
 			                   "Summons a Red Crystal to fight for you");
 			DisplayName.AddTranslation(GameCulture.Russian, "Демоническая корона");

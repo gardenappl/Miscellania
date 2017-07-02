@@ -17,7 +17,6 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ninja Gear");
 			Tooltip.SetDefault("Allows the ability to dash\n" +
 			                   "Gives a chance to dodge attacks");
 			DisplayName.AddTranslation(GameCulture.Russian, "Снаряжение ниндзя");
