@@ -18,7 +18,7 @@ namespace GoldensMisc.Items.Consumable
 		}
 		
 		byte uses = 0;
-		const byte maxUses = 150;
+		const byte maxUses = 60;
 		
 		public override void SetStaticDefaults()
 		{
@@ -31,7 +31,7 @@ namespace GoldensMisc.Items.Consumable
 		{
 			item.width = 26;
 			item.height = 26;
-			item.healMana = 150;
+			item.healMana = 100;
 			item.useStyle = 4;
 			item.useTime = 30;
 			item.useAnimation = 30;

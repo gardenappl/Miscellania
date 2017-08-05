@@ -57,6 +57,7 @@
     <Compile Include="Items\Consumable\InertStone.cs" />
     <Compile Include="Items\Consumable\LifeStone.cs" />
     <Compile Include="Items\Consumable\ManaStone.cs" />
+    <Compile Include="Items\Equipable\BaseballCap.cs" />
     <Compile Include="Items\Equipable\DemonCrown.cs" />
     <Compile Include="Items\Equipable\HeartLocket.cs" />
     <Compile Include="Items\Equipable\MagnetismRing.cs" />
@@ -65,14 +66,19 @@
     <Compile Include="Items\Equipable\ReinforcedHorseshoe.cs" />
     <Compile Include="Items\Equipable\ReinforcedVest.cs" />
     <Compile Include="Items\Equipable\UniversalMagnet.cs" />
-    <Compile Include="Items\IslandStaff.cs" />
     <Compile Include="Items\ItemTweaks.cs" />
+    <Compile Include="Items\CellPhoneData.cs" />
+    <Compile Include="Items\Materials\WormholeCrystal.cs" />
     <Compile Include="Items\Placeable\AncientForge.cs" />
     <Compile Include="Items\Placeable\AncientHellforge.cs" />
     <Compile Include="Items\Placeable\RedChimney.cs" />
     <Compile Include="Items\Placeable\RedFireplace.cs" />
+    <Compile Include="Items\Placeable\SandstoneSlabWall.cs" />
+    <Compile Include="Items\Tools\IslandStaff.cs" />
+    <Compile Include="Items\Tools\WormholeMirror.cs" />
     <Compile Include="Items\Weapons\AmethystStaff.cs" />
     <Compile Include="Items\Weapons\AncientMuramasa.cs" />
+    <Compile Include="Items\Weapons\BaseballBat.cs" />
     <Compile Include="Items\Weapons\DiamondStaff.cs" />
     <Compile Include="Items\Weapons\EmeraldStaff.cs" />
     <Compile Include="Items\Weapons\KarmaStaff.cs" />
@@ -85,9 +91,17 @@
     <Compile Include="MiscGlobalNPC.cs" />
     <Compile Include="MiscGlowMasks.cs" />
     <Compile Include="MiscPlayer.cs" />
+    <Compile Include="MiscRecipes.cs" />
     <Compile Include="MiscUtils.cs" />
     <Compile Include="GoldensMisc.cs" />
     <Compile Include="MiscWorld.cs" />
+    <Compile Include="NPCs\BaseballCaveBat.cs" />
+    <Compile Include="NPCs\BaseballGiantBat.cs" />
+    <Compile Include="NPCs\BaseballHellBat.cs" />
+    <Compile Include="NPCs\BaseballIceBat.cs" />
+    <Compile Include="NPCs\BaseballIlluminantBat.cs" />
+    <Compile Include="NPCs\BaseballJungleBat.cs" />
+    <Compile Include="NPCs\BaseballLavaBat.cs" />
     <Compile Include="Projectiles\GasterBlaster.cs" />
     <Compile Include="Projectiles\Laputa.cs" />
     <Compile Include="Projectiles\LaputaSky.cs" />
@@ -105,6 +119,7 @@
     <Compile Include="Tiles\RedChimney.cs" />
     <Compile Include="Tiles\RedChimneyTE.cs" />
     <Compile Include="Tiles\RedFireplace.cs" />
+    <Compile Include="Tiles\SandstoneSlabWall.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Buffs" />
@@ -112,9 +127,12 @@
     <Folder Include="Items" />
     <Folder Include="Items\Equipable" />
     <Folder Include="Items\Consumable" />
+    <Folder Include="Items\Materials" />
+    <Folder Include="Items\Tools" />
     <Folder Include="Items\Weapons" />
     <Folder Include="Items\Placeable" />
     <Folder Include="Commands" />
+    <Folder Include="NPCs" />
     <Folder Include="Projectiles" />
     <Folder Include="Tiles" />
   </ItemGroup>

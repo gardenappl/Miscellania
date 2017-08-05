@@ -21,6 +21,9 @@ namespace GoldensMisc
 		public static bool AncientMuramasa = true;
 		public static bool GasterBlaster = true;
 		public static bool SpearofJustice = true;
+		public static bool WormholeMirror = true;
+		public static bool BuildingMaterials = true;
+		public static bool BaseballBats = true;
 		
 		static string ConfigPath = Path.Combine(Main.SavePath, "Mod Configs", "Miscellania.json");
 		
@@ -52,6 +55,9 @@ namespace GoldensMisc
 				Configuration.Get("AncientMuramasa", ref AncientMuramasa);
 				Configuration.Get("GasterBlaster", ref GasterBlaster);
 				Configuration.Get("SpearofJustice", ref SpearofJustice);
+				Configuration.Get("WormholeMirror", ref WormholeMirror);
+				Configuration.Get("BuildingMaterials", ref BuildingMaterials);
+				Configuration.Get("BaseballBats", ref BaseballBats);
 				return true;
 			}
 			return false;
@@ -73,6 +79,9 @@ namespace GoldensMisc
 			Configuration.Put("AncientMuramasa", AncientMuramasa);
 			Configuration.Put("GasterBlaster", GasterBlaster);
 			Configuration.Put("SpearofJustice", SpearofJustice);
+			Configuration.Put("WormholeMirror", WormholeMirror);
+			Configuration.Put("BuildingMaterials", BuildingMaterials);
+			Configuration.Put("BaseballBats", BaseballBats);
 			Configuration.Save();
 		}
 	}

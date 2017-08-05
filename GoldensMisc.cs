@@ -1,16 +1,19 @@
 ﻿
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.Localization;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI;
 using Terraria.World.Generation;
 using GoldensMisc.Items;
 using GoldensMisc.Items.Equipable;
 using GoldensMisc.Items.Placeable;
+using GoldensMisc.Items.Tools;
 using GoldensMisc.Items.Weapons;
 using GoldensMisc.Projectiles;
 
@@ -31,6 +34,15 @@ namespace GoldensMisc
 //				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
 			}
 			AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
+			
+//			var text = CreateTranslation("OldPhone");
+//			text.SetDefault("Your version of Terrandroid is outdated. Add Wormhole Mirror to update.");
+//			text.AddTranslation(GameCulture.Russian, "Ваша версия Террандроида устарела. Добавьте Зеркало-червоточину, чтобы обновиться.");
+//			AddTranslation(text);
+//			text = CreateTranslation("NewPhone");
+//			text.SetDefault("Allows you to return home and teleport to party members at will");
+//			text.AddTranslation(GameCulture.Russian, "Позволяет возвращаться домой и телепортироваться к участникам команды");
+//			AddTranslation(text);
 		}
 		
 		public override void Unload()
@@ -40,66 +52,63 @@ namespace GoldensMisc
 		
 		public override void AddRecipeGroups()
 		{
-			if(Config.AncientMuramasa)
-			{
-				var recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Muramasa), new int[]
-				                                  {
-				                                  	ItemID.Muramasa,
-				                                  	ItemType<AncientMuramasa>()
-				                                  });
-				RecipeGroup.RegisterGroup("GoldensMisc:Muramasa", recipeGroup);
-			}
-			if(Config.AncientForges)
-			{
-				var recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Hellforge), new int[]
-				                                  {
-				                                  	ItemID.Hellforge,
-				                                  	ItemType<AncientHellforge>()
-				                                  });
-				RecipeGroup.RegisterGroup("GoldensMisc:Hellforge", recipeGroup);
-			}
+			MiscRecipes.AddRecipeGroups(this);
+		}
+		
+		public override void AddRecipes()
+		{
+			MiscRecipes.AddRecipes(this);
 		}
 		
 		public override void PostAddRecipes()
 		{
-			if(Config.AncientMuramasa)
+			MiscRecipes.PostAddRecipes(this);
+		}
+		
+		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+		{
+			int index = layers.FindIndex(x => x.Name == "Vanilla: Map / Minimap");
+			if(index != -1)
 			{
-				var finder = new RecipeFinder();
-				finder.AddIngredient(ItemID.Muramasa);
-				var foundRecipes = finder.SearchRecipes();
-				foreach(var foundRecipe in foundRecipes)
+				layers.Insert(index, new LegacyGameInterfaceLayer("GoldensMisc: Horrible Wormhole Hack 1", delegate
 				{
-					var editor = new RecipeEditor(foundRecipe);
-					editor.AcceptRecipeGroup("GoldensMisc:Muramasa");
+					PreDrawMap();
+					return true;
+				}));
+				layers.Insert(index + 2, new LegacyGameInterfaceLayer("GoldensMisc: Horrible Wormhole Hack 2", delegate
+				{
+					PostDrawMap();
+					return true;
+				}));
+			}
+		}
+		
+		int WormholeReplaceSlot = -1;
+		Item WormholeReplaceItem;
+		
+		void PreDrawMap()
+		{
+			for(int i = 0; i < 58; i++)
+			{
+				var item = Main.LocalPlayer.inventory[i];
+				if(item.type == ItemType<WormholeMirror>() /*|| (item.type == ItemID.CellPhone && item.GetGlobalItem<CellPhoneData>().CanWormhole)*/)
+				{
+					WormholeReplaceSlot = i;
+					WormholeReplaceItem = item;
+					Main.LocalPlayer.inventory[i] = new Item();
+					Main.LocalPlayer.inventory[i].SetDefaults(ItemID.WormholePotion);
+					Main.LocalPlayer.inventory[i].stack = 30;
+					break;
 				}
 			}
-			if(Config.AncientForges)
+		}
+		
+		void PostDrawMap()
+		{
+			if(WormholeReplaceSlot >= 0)
 			{
-				var finder = new RecipeFinder();
-				finder.AddIngredient(ItemID.Hellforge);
-				var foundRecipes = finder.SearchRecipes();
-				foreach(var foundRecipe in foundRecipes)
-				{
-					var editor = new RecipeEditor(foundRecipe);
-					editor.AcceptRecipeGroup("GoldensMisc:Hellforge");
-				}
-			}
-			if(Config.NinjaGear)
-			{
-				var finder = new RecipeFinder();
-				finder.AddIngredient(ItemID.TigerClimbingGear);
-				finder.AddIngredient(ItemID.Tabi);
-				finder.AddIngredient(ItemID.BlackBelt);
-				finder.SetResult(ItemID.MasterNinjaGear);
-				
-				var foundRecipes = finder.SearchRecipes();
-				foreach(var foundRecipe in foundRecipes)
-				{
-					var editor = new RecipeEditor(foundRecipe);
-					editor.DeleteIngredient(ItemID.Tabi);
-					editor.DeleteIngredient(ItemID.BlackBelt);
-					editor.AddIngredient(ItemType<NinjaGear>());
-				}
+				Main.LocalPlayer.inventory[WormholeReplaceSlot] = WormholeReplaceItem;
+				WormholeReplaceSlot = -1;
 			}
 		}
 		
