@@ -62,9 +62,7 @@ namespace GoldensMisc
 				var proj = new Projectile();
 				proj.SetDefaults(projType);
 				if(proj.aiStyle == 16 && damageSource.SourcePlayerIndex == player.whoAmI)
-				{
 					return false;
-				}
 			}
 			return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource);
 		}
@@ -72,9 +70,7 @@ namespace GoldensMisc
 		public override void PostUpdateEquips()
 		{
 			if(DemonCrown && player.ownedProjectileCounts[mod.ProjectileType<RedCrystal>()] == 0)
-			{
 				Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<RedCrystal>(), 60, 8, player.whoAmI);
-			}
 		}
 	}
 }

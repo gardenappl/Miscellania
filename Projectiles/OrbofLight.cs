@@ -36,7 +36,7 @@ namespace GoldensMisc.Projectiles
 		
 		public override Color? GetAlpha(Color lightColor)
 		{
-			return Color.White * 0.7f;
+			return Color.White * 0.5f;
 		}
 		
 		public override void AI()

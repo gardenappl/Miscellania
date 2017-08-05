@@ -24,6 +24,7 @@ namespace GoldensMisc.Tiles
 			Main.tileNoAttach[Type] = true;
 			Main.tileSolidTop[Type] = true;
 			Main.tileTable[Type] = true;
+			Main.tileLighted[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.addTile(Type);

@@ -9,7 +9,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace GoldensMisc.Items
+namespace GoldensMisc.Items.Tools
 {
 	//EXPERIMENTAL STUFF
 	//This will probably end up in the Elerium mod

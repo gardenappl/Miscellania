@@ -47,7 +47,7 @@ namespace GoldensMisc.Projectiles
 			if(!Main.dedServ)
 			{
 				Main.NewText("lel " + startPosition + " " + endPosition);
-				float intensity = (startPosition - projectile.position.Y) / (startPosition - endPosition);
+				float intensity = (projectile.position.Y - startPosition) / (endPosition - startPosition);
 				Main.NewText("lol " + intensity);
 				((LaputaSky)SkyManager.Instance["GoldensMisc:Laputa"]).Intensity = intensity + 0.2f;
 			}
@@ -60,10 +60,10 @@ namespace GoldensMisc.Projectiles
 			}
 		}
 		
-		public override void DrawBehind(int index, List<int> drawCacheProjsBehindNPCsAndTiles, List<int> drawCacheProjsBehindNPCs,
-		                                List<int> drawCacheProjsBehindProjectiles, List<int> drawCacheProjsOverWiresUI)
-		{
-			drawCacheProjsBehindNPCsAndTiles.Add(index);
-		}
+//		public override void DrawBehind(int index, List<int> drawCacheProjsBehindNPCsAndTiles, List<int> drawCacheProjsBehindNPCs,
+//		                                List<int> drawCacheProjsBehindProjectiles, List<int> drawCacheProjsOverWiresUI)
+//		{
+//			drawCacheProjsBehindNPCsAndTiles.Add(index);
+//		}
 	}
 }

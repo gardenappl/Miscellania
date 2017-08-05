@@ -64,8 +64,8 @@ namespace GoldensMisc.Projectiles
 		{
 			var player = Main.player[projectile.owner];
 			Rotation = MathHelper.WrapAngle(Rotation + 0.025f);
-			float distance = (float)Math.Sin(Main.time / 18 + (double)projectile.whoAmI / 50) * 64;
-			projectile.Center = (player.MountedCenter + new Vector2(0, distance)).RotatedBy(Rotation, player.MountedCenter);
+			float distance = (float)Math.Sin(Main.time / 18f + (double)projectile.whoAmI / 50) * 64;
+			projectile.Center = player.MountedCenter + new Vector2(0, distance).RotatedBy(Rotation);
 			
 			Lighting.AddLight(projectile.Center, Color.Red.ToVector3() * 0.5f);
 			

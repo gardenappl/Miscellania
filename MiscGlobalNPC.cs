@@ -6,6 +6,7 @@ using Terraria.ID;
 using GoldensMisc.Items;
 using GoldensMisc.Items.Consumable;
 using GoldensMisc.Items.Equipable;
+using GoldensMisc.Items.Materials;
 using GoldensMisc.Items.Weapons;
 
 namespace GoldensMisc
@@ -50,21 +51,24 @@ namespace GoldensMisc
 				case NPCID.AngryBonesBigMuscle:
 				case NPCID.DarkCaster:
 					if(Config.AncientMuramasa && Main.rand.Next(250) == 0)
-					{
 						Item.NewItem(npc.position, npc.Size, mod.ItemType<AncientMuramasa>(), prefixGiven: -1);
-					}
 					break;
 				case NPCID.Demon:
 					if(Config.DemonCrown && Main.hardMode && Main.rand.Next(100) == 0)
-					{
 						Item.NewItem(npc.position, npc.Size, mod.ItemType<DemonCrown>(), prefixGiven: -1);
-					}
 					break;
 				case NPCID.VoodooDemon:
 					if(Config.DemonCrown && Main.hardMode && Main.rand.Next(15) == 0)
-					{
 						Item.NewItem(npc.position, npc.Size, mod.ItemType<DemonCrown>(), prefixGiven: -1);
-					}
+					break;
+				case NPCID.Necromancer:
+				case NPCID.NecromancerArmored:
+				case NPCID.RaggedCaster:
+				case NPCID.RaggedCasterOpenCoat:
+				case NPCID.DiabolistRed:
+				case NPCID.DiabolistWhite:
+					if(Config.WormholeMirror && Main.rand.Next(8) == 0)
+						Item.NewItem(npc.position, npc.Size, mod.ItemType<WormholeCrystal>());
 					break;
 			}
 		}
