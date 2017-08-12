@@ -1,9 +1,9 @@
 ﻿displayName = Miscellania
 author = goldenapple
-version = 1.3
+version = 1.4
 homepage = http://forums.terraria.org/index.php?threads/miscellania.39500/
 hideResources = false
 hideCode = false
 includeSource = true
-buildIgnore = obj\*, bin\*, *.csproj, .git\*, .gitattributes, .gitignore
+buildIgnore = Unused Art\*, obj\*, bin\*, *.csproj, .git\*, .gitattributes, .gitignore
 includePDB = true

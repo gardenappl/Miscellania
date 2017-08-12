@@ -33,7 +33,11 @@ namespace GoldensMisc.NPCs
 		
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			return SpawnCondition.Underground.Chance / 80f + SpawnCondition.Cavern.Chance / 80f;
+			if(!Main.hardMode)
+				return 0f;
+			if(SpawnCondition.Cavern.Chance > 0f)
+				return SpawnCondition.Cavern.Chance / 100f;
+			return SpawnCondition.Underground.Chance / 100f;
 		}
 		
 		public override void NPCLoot()

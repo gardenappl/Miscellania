@@ -21,6 +21,8 @@ namespace GoldensMisc
 {
 	public class GoldensMisc : Mod
 	{
+		public static GoldensMisc Instance;
+		
 		public GoldensMisc()
 		{
 			Config.Load();
@@ -28,21 +30,24 @@ namespace GoldensMisc
 		
 		public override void Load()
 		{
+			Instance = this;
 			if(!Main.dedServ)
 			{
 				MiscGlowMasks.Load();
 //				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
 			}
 			AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
-			
-//			var text = CreateTranslation("OldPhone");
-//			text.SetDefault("Your version of Terrandroid is outdated. Add Wormhole Mirror to update.");
-//			text.AddTranslation(GameCulture.Russian, "Ваша версия Террандроида устарела. Добавьте Зеркало-червоточину, чтобы обновиться.");
-//			AddTranslation(text);
-//			text = CreateTranslation("NewPhone");
-//			text.SetDefault("Allows you to return home and teleport to party members at will");
-//			text.AddTranslation(GameCulture.Russian, "Позволяет возвращаться домой и телепортироваться к участникам команды");
-//			AddTranslation(text);
+		}
+		
+		public override void PostSetupContent()
+		{
+			var hotkeysMod = ModLoader.GetMod("HelpfulHotkeys");
+			if(hotkeysMod != null)
+			{
+				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeDoubleMirror>());
+				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeIceMirror>());
+				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeCellPhone>());
+			}
 		}
 		
 		public override void Unload()
@@ -53,11 +58,6 @@ namespace GoldensMisc
 		public override void AddRecipeGroups()
 		{
 			MiscRecipes.AddRecipeGroups(this);
-		}
-		
-		public override void AddRecipes()
-		{
-			MiscRecipes.AddRecipes(this);
 		}
 		
 		public override void PostAddRecipes()
@@ -91,7 +91,10 @@ namespace GoldensMisc
 			for(int i = 0; i < 58; i++)
 			{
 				var item = Main.LocalPlayer.inventory[i];
-				if(item.type == ItemType<WormholeMirror>() /*|| (item.type == ItemID.CellPhone && item.GetGlobalItem<CellPhoneData>().CanWormhole)*/)
+				if(item.type == ItemType<WormholeMirror>() ||
+				   item.type == ItemType<WormholeDoubleMirror>() ||
+				   item.type == ItemType<WormholeIceMirror>() ||
+				   item.type == ItemType<WormholeCellPhone>())
 				{
 					WormholeReplaceSlot = i;
 					WormholeReplaceItem = item;

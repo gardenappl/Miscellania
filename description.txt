@@ -1,14 +1,16 @@
 ﻿Miscellania is a small mod with a whole bunch of random ideas. There is no specific theme for the items.
 
 Current features include:
+ -Upgraded Rod of Discord
  -Reinforced Vest (protects player from their bombs and missiles)
- -Spear of Justice (upgradeable)
- -(yet another) Gaster Blaster minion
  -Item magnets!
  -Healing/Mana Stone (restores health & mana, can be used multiple times)
  -Demon Crown and Red Crystal (from Cave Story)
  -Baseball Bats
  -Wormhole Mirror
+ -(yet another) Gaster Blaster minion
  -Some building materials & decorations
  
- And some more! Go to the forum page for the full list.
+And some more! Go to the forum page for the full list.
+ 
+Thanks to Zerokk for helping with sprites.

@@ -1,9 +1,13 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
+using GoldensMisc.Items.Tools;
 using GoldensMisc.Projectiles;
 
 namespace GoldensMisc
@@ -72,5 +76,36 @@ namespace GoldensMisc
 			if(DemonCrown && player.ownedProjectileCounts[mod.ProjectileType<RedCrystal>()] == 0)
 				Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<RedCrystal>(), 60, 8, player.whoAmI);
 		}
+		
+		//stolen from Elemental Unleash
+		//tbh this is not necessary but switching the sprite to the normal Recall Mirror is a nice detail I hope
+		public override void ModifyDrawLayers(List<PlayerLayer> layers)
+		{
+//			PreHeldItem.visible = true;
+//			PostHeldItem.visible = true;
+			for(int i = 0; i < layers.Count; i++)
+			{
+				if(layers[i] == PlayerLayer.HeldItem)
+				{
+					layers.Insert(i, PreHeldItem);
+					i += 2;
+					layers.Insert(i, PostHeldItem);
+				}
+			}
+		}
+		
+		static readonly PlayerLayer PreHeldItem = new PlayerLayer("GoldensMisc", "PreHeldItem", PlayerLayer.HeldItem, delegate(PlayerDrawInfo drawInfo)
+		{
+			var mod = GoldensMisc.Instance;
+			Main.itemTexture[mod.ItemType<WormholeIceMirror>()] = Main.itemTexture[ItemID.IceMirror];
+			Main.itemTexture[mod.ItemType<WormholeDoubleMirror>()] = Main.itemTexture[ItemID.MagicMirror];
+		});
+		
+		static readonly PlayerLayer PostHeldItem = new PlayerLayer("GoldensMisc", "PostHeldItem", PlayerLayer.HeldItem, delegate(PlayerDrawInfo drawInfo)
+		{
+			var mod = GoldensMisc.Instance;
+			Main.itemTexture[mod.ItemType<WormholeIceMirror>()] = mod.GetTexture("Items/Tools/WormholeIceMirror");
+			Main.itemTexture[mod.ItemType<WormholeDoubleMirror>()] = mod.GetTexture("Items/Tools/WormholeDoubleMirror");
+		});
 	}
 }

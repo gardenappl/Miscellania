@@ -22,6 +22,9 @@ namespace GoldensMisc
 		public static bool GasterBlaster = true;
 		public static bool SpearofJustice = true;
 		public static bool WormholeMirror = true;
+		public static bool CellPhoneUpgrade = true;
+		public static bool RodofWarping = true;
+		public static bool EmblemofDeath = true;
 		public static bool BuildingMaterials = true;
 		public static bool BaseballBats = true;
 		
@@ -56,6 +59,9 @@ namespace GoldensMisc
 				Configuration.Get("GasterBlaster", ref GasterBlaster);
 				Configuration.Get("SpearofJustice", ref SpearofJustice);
 				Configuration.Get("WormholeMirror", ref WormholeMirror);
+				Configuration.Get("CellPhoneUpgrade", ref CellPhoneUpgrade);
+				Configuration.Get("RodofWarping", ref RodofWarping);
+				Configuration.Get("EmblemofDeath", ref EmblemofDeath);
 				Configuration.Get("BuildingMaterials", ref BuildingMaterials);
 				Configuration.Get("BaseballBats", ref BaseballBats);
 				return true;
@@ -80,6 +86,9 @@ namespace GoldensMisc
 			Configuration.Put("GasterBlaster", GasterBlaster);
 			Configuration.Put("SpearofJustice", SpearofJustice);
 			Configuration.Put("WormholeMirror", WormholeMirror);
+			Configuration.Put("CellPhoneUpgrade", CellPhoneUpgrade);
+			Configuration.Put("RodofWarping", RodofWarping);
+			Configuration.Put("EmblemofDeath", EmblemofDeath);
 			Configuration.Put("BuildingMaterials", BuildingMaterials);
 			Configuration.Put("BaseballBats", BaseballBats);
 			Configuration.Save();

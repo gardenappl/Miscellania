@@ -42,13 +42,6 @@ namespace GoldensMisc
 				{
 					Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length - Count);
 				}
-				else if(Main.glowMaskTexture.Length > End)
-				{
-					for(int i = End - Count; i < End; i++)
-					{
-						Main.glowMaskTexture[i] = ModLoader.GetTexture("Terraria/Item_0");
-					}
-				}
 				Loaded = false;
 				UndyingSpear = 0;
 				UndyingSpearProjectile = 0;

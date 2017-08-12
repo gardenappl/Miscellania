@@ -48,11 +48,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buffs\CursedMemory.cs" />
     <Compile Include="Buffs\OrbofLight.cs" />
     <Compile Include="Commands\WorldGenCommand.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Dusts\RedDust.cs" />
     <Compile Include="Dusts\RedDustStatic.cs" />
+    <Compile Include="Items\Consumable\DeathEmblem.cs" />
     <Compile Include="Items\Consumable\GodStone.cs" />
     <Compile Include="Items\Consumable\InertStone.cs" />
     <Compile Include="Items\Consumable\LifeStone.cs" />
@@ -67,14 +69,17 @@
     <Compile Include="Items\Equipable\ReinforcedVest.cs" />
     <Compile Include="Items\Equipable\UniversalMagnet.cs" />
     <Compile Include="Items\ItemTweaks.cs" />
-    <Compile Include="Items\CellPhoneData.cs" />
     <Compile Include="Items\Materials\WormholeCrystal.cs" />
     <Compile Include="Items\Placeable\AncientForge.cs" />
     <Compile Include="Items\Placeable\AncientHellforge.cs" />
     <Compile Include="Items\Placeable\RedChimney.cs" />
     <Compile Include="Items\Placeable\RedFireplace.cs" />
     <Compile Include="Items\Placeable\SandstoneSlabWall.cs" />
+    <Compile Include="Items\Tools\WormholeIceMirror.cs" />
     <Compile Include="Items\Tools\IslandStaff.cs" />
+    <Compile Include="Items\Tools\RodofWarping.cs" />
+    <Compile Include="Items\Tools\WormholeCellPhone.cs" />
+    <Compile Include="Items\Tools\WormholeDoubleMirror.cs" />
     <Compile Include="Items\Tools\WormholeMirror.cs" />
     <Compile Include="Items\Weapons\AmethystStaff.cs" />
     <Compile Include="Items\Weapons\AncientMuramasa.cs" />

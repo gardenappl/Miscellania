@@ -18,11 +18,9 @@ namespace GoldensMisc.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spear of Undying Justice");
-			Tooltip.SetDefault("Rapidly throws piercing spears\n" +
-			                   "'You're gonna have to try a little harder than THAT.'");
+			Tooltip.SetDefault("Rapidly throws piercing spears");
 			DisplayName.AddTranslation(GameCulture.Russian, "Копье бессмертного правосудия");
-			Tooltip.AddTranslation(GameCulture.Russian, "Быстро метает пронзающие копья\n" + 
-			                      "'Тебе придётся чуть-чуть сильнее постарться на ЭТОТ раз.'");
+			Tooltip.AddTranslation(GameCulture.Russian, "Быстро метает пронзающие копья");
 		}
 		
 		public override void SetDefaults()

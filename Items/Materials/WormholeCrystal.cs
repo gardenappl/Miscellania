@@ -18,7 +18,7 @@ namespace GoldensMisc.Items.Materials
 		{
 			Tooltip.SetDefault("'You feel like it pulls you in as you hold it...'");
 			DisplayName.AddTranslation(GameCulture.Russian, "Кристалл-червоточина");
-			Tooltip.AddTranslation(GameCulture.Russian, "'Держа его в руке, вы чувствуете, как вас засасывет...'");
+			Tooltip.AddTranslation(GameCulture.Russian, "'Держа его в руке, вы чувствуете, что вас засасывет...'");
 			ItemID.Sets.ItemNoGravity[item.type] = true;
 		}
 		
