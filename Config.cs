@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using Terraria;
 using Terraria.IO;
+using Terraria.ModLoader;
 
 namespace GoldensMisc
 {
@@ -185,13 +186,13 @@ namespace GoldensMisc
 			setting.AddComment("sold by Demolitionist in Hardmode. Armor item that protects you from your own explosives (bombs, rockets etc, just go nuts!)\n" + 
 							   "Reinforced Horseshoe = Reinforced Vest + Obsidian Horseshoe.\n" + 
 							   "Because a Reinforced Shield would be too cheaty.", commentScale);
-			setting.AddBool(ReinforcedVest, "If Vanilla Tweaks is installed, equipping a SWAT Helmet and a Reinforced Vest grants a set bonus.", true);
+			setting.AddBool(ReinforcedVestKey, "If Vanilla Tweaks is installed, equipping a SWAT Helmet and a Reinforced Vest grants a set bonus.", true);
 			setting.AddComment("adds old style forges to use and find.", commentScale);
 			setting.AddBool(AncientForgesKey, "Adds Ancient Forges***", false);
 			setting.AddComment("adds the Red Brick Fireplace and Chimney.", commentScale);
 			setting.AddBool(RedBrickFurnitureKey, "Adds more Red Brick stuff**", true);
 			setting.AddComment("A rare drop from pre-Hardmode Dungeon monsters. Gives off light just like the pre-1.2 Muramasa, but the stats are the same as the current version. Based on my old suggestion.", commentScale);
-			setting.AddBool(AncientMuramasaKey "Adds Ancient Muramasa", false);
+			setting.AddBool(AncientMuramasaKey, "Adds Ancient Muramasa", false);
 			setting.AddComment("mech-tier summoner weapon. Summons a Gaster Blaster sentry minion.", commentScale);
 			setting.AddBool(GasterBlasterKey, "Adds the Karma Staff", true);
 			setting.AddComment("mech-tier magic weapon. Rapidly throws piercing magical spears which also spawn mini-spears upon hitting an enemy.\n" + 
@@ -215,7 +216,7 @@ namespace GoldensMisc
 							   " for dropping baseball themed gear.", commentScale);
 			setting.AddBool(BaseballBatsKey, "Adds Baseball themed gear", true);
 			setting.AddComment(" a pre-nerf Orb of shadow(then light) to Hardmode", commentScale);
-			setting.AddBool(AncientOrb, "Adds the Ancient Orb of light", true);
+			setting.AddBool(AncientOrbKey, "Adds the Ancient Orb of light", true);
 		}
 		
 		public static void UpdateFKConfig(Mod mod)

@@ -7,3 +7,4 @@ hideCode = false
 includeSource = true
 buildIgnore = Unused Art\*, obj\*, bin\*, *.csproj, .git\*, .gitattributes, .gitignore
 includePDB = true
+weakReferences = FKTModSettings
