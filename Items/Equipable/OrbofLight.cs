@@ -9,6 +9,12 @@ namespace GoldensMisc.Items.Equipable
 {
 	public class OrbofLight : ModItem
 	{
+		
+		public override bool Autoload(ref string name)
+		{
+			return Config.AncientOrb;
+		}
+		
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ancient Orb of Light");

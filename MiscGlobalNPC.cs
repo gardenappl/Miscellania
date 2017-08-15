@@ -67,7 +67,7 @@ namespace GoldensMisc
 				case NPCID.RaggedCasterOpenCoat:
 				case NPCID.DiabolistRed:
 				case NPCID.DiabolistWhite:
-					if(Config.WormholeMirror && Main.rand.Next(8) == 0)
+					if((Config.WormholeMirror || Config.RodofWarping) && Main.rand.Next(8) == 0)
 						Item.NewItem(npc.position, npc.Size, mod.ItemType<WormholeCrystal>());
 					break;
 			}
