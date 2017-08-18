@@ -67,7 +67,10 @@ namespace GoldensMisc
 		const string BaseballBatsKey = "BaseballBats";
 		
 		public static bool AncientOrb = true;
-		const string AncientOrbKey = "BaseballBats";		
+		const string AncientOrbKey = "AncientOrb";	
+
+		public static bool CellPhoneResprite = true;
+		const string CellPhoneRespriteKey = "CellPhoneResprite";
 		
 		static string ConfigPath = Path.Combine(Main.SavePath, "Mod Configs", "Miscellania.json");
 		
@@ -75,7 +78,7 @@ namespace GoldensMisc
 		static string OldConfigPath = Path.Combine(OldConfigFolderPath, "config.json");
 		static string OldConfigVersionPath = Path.Combine(OldConfigFolderPath, "config.version");
 		
-		static readonly Preferences setting = new Preferences(ConfigPath);
+		static readonly Preferences Configuration = new Preferences(ConfigPath);
 		
 		public static void Load()
 		{
@@ -100,27 +103,28 @@ namespace GoldensMisc
 		
 		public static bool ReadConfig()
 		{
-			if(setting.Load())
+			if(Configuration.Load())
 			{
-				setting.Get(AltStaffsKey, ref AltStaffs);
-				setting.Get(MagicStonesKey, ref MagicStones);
-				setting.Get(GodStoneKey, ref GodStone);
-				setting.Get(DemonCrownKey, ref DemonCrown);
-				setting.Get(HeartLocketKey, ref HeartLocket);
-				setting.Get(MagnetsKey, ref Magnets);
-				setting.Get(NinjaGearKey, ref NinjaGear);
-				setting.Get(ReinforcedVestKey, ref ReinforcedVest);
-				setting.Get(AncientForgesKey, ref AncientForges);				
-				setting.Get(RedBrickFurnitureKey, ref RedBrickFurniture);
-				setting.Get(AncientMuramasaKey, ref AncientMuramasa);
-				setting.Get(GasterBlasterKey, ref GasterBlaster);
-				setting.Get(SpearofJusticeKey, ref SpearofJustice);
-				setting.Get(WormholeMirrorKey, ref WormholeMirror);
-				setting.Get(CellPhoneUpgradeKey, ref CellPhoneUpgrade);
-				setting.Get(RodofWarpingKey, ref RodofWarping);
-				setting.Get(EmblemofDeathKey, ref EmblemofDeath);
-				setting.Get(BuildingMaterialsKey, ref BuildingMaterials);
-				setting.Get(BaseballBatsKey, ref BaseballBats);
+				Configuration.Get(AltStaffsKey, ref AltStaffs);
+				Configuration.Get(MagicStonesKey, ref MagicStones);
+				Configuration.Get(GodStoneKey, ref GodStone);
+				Configuration.Get(DemonCrownKey, ref DemonCrown);
+				Configuration.Get(HeartLocketKey, ref HeartLocket);
+				Configuration.Get(MagnetsKey, ref Magnets);
+				Configuration.Get(NinjaGearKey, ref NinjaGear);
+				Configuration.Get(ReinforcedVestKey, ref ReinforcedVest);
+				Configuration.Get(AncientForgesKey, ref AncientForges);				
+				Configuration.Get(RedBrickFurnitureKey, ref RedBrickFurniture);
+				Configuration.Get(AncientMuramasaKey, ref AncientMuramasa);
+				Configuration.Get(GasterBlasterKey, ref GasterBlaster);
+				Configuration.Get(SpearofJusticeKey, ref SpearofJustice);
+				Configuration.Get(WormholeMirrorKey, ref WormholeMirror);
+				Configuration.Get(CellPhoneUpgradeKey, ref CellPhoneUpgrade);
+				Configuration.Get(CellPhoneRespriteKey, ref CellPhoneResprite);
+				Configuration.Get(RodofWarpingKey, ref RodofWarping);
+				Configuration.Get(EmblemofDeathKey, ref EmblemofDeath);
+				Configuration.Get(BuildingMaterialsKey, ref BuildingMaterials);
+				Configuration.Get(BaseballBatsKey, ref BaseballBats);
 				return true;
 			}
 			return false;
@@ -128,95 +132,85 @@ namespace GoldensMisc
 		
 		public static void SaveConfig()
 		{
-			setting.Clear();
-			setting.Put(AltStaffsKey, AltStaffs);
-			setting.Put(MagicStonesKey, MagicStones);
-			setting.Put(GodStoneKey, GodStone);
-			setting.Put(DemonCrownKey, DemonCrown);
-			setting.Put(HeartLocketKey, HeartLocket);
-			setting.Put(MagnetsKey, Magnets);
-			setting.Put(NinjaGearKey, NinjaGear);
-			setting.Put(ReinforcedVestKey, ReinforcedVest);
-			setting.Put(AncientForgesKey, AncientForges);				
-			setting.Put(RedBrickFurnitureKey, RedBrickFurniture);
-			setting.Put(AncientMuramasaKey, AncientMuramasa);
-			setting.Put(GasterBlasterKey, GasterBlaster);
-			setting.Put(SpearofJusticeKey, SpearofJustice);
-			setting.Put(WormholeMirrorKey, WormholeMirror);
-			setting.Put(CellPhoneUpgradeKey, CellPhoneUpgrade);
-			setting.Put(RodofWarpingKey, RodofWarping);
-			setting.Put(EmblemofDeathKey, EmblemofDeath);
-			setting.Put(BuildingMaterialsKey, BuildingMaterials);
-			setting.Put(BaseballBatsKey, BaseballBats);
-			setting.Put(AncientOrbKey, AncientOrb);
-			setting.Save();
+			Configuration.Clear();
+			Configuration.Put(AltStaffsKey, AltStaffs);
+			Configuration.Put(MagicStonesKey, MagicStones);
+			Configuration.Put(GodStoneKey, GodStone);
+			Configuration.Put(DemonCrownKey, DemonCrown);
+			Configuration.Put(HeartLocketKey, HeartLocket);
+			Configuration.Put(MagnetsKey, Magnets);
+			Configuration.Put(NinjaGearKey, NinjaGear);
+			Configuration.Put(ReinforcedVestKey, ReinforcedVest);
+			Configuration.Put(AncientForgesKey, AncientForges);				
+			Configuration.Put(RedBrickFurnitureKey, RedBrickFurniture);
+			Configuration.Put(AncientMuramasaKey, AncientMuramasa);
+			Configuration.Put(GasterBlasterKey, GasterBlaster);
+			Configuration.Put(SpearofJusticeKey, SpearofJustice);
+			Configuration.Put(WormholeMirrorKey, WormholeMirror);
+			Configuration.Put(CellPhoneUpgradeKey, CellPhoneUpgrade);
+			Configuration.Put(CellPhoneRespriteKey, CellPhoneResprite);
+			Configuration.Put(RodofWarpingKey, RodofWarping);
+			Configuration.Put(EmblemofDeathKey, EmblemofDeath);
+			Configuration.Put(BuildingMaterialsKey, BuildingMaterials);
+			Configuration.Put(BaseballBatsKey, BaseballBats);
+			Configuration.Put(AncientOrbKey, AncientOrb);
+			Configuration.Save();
 		}
 		
-		//TODO: Transmations
 		public static void LoadFKConfig(Mod mod)
 		{
 			var setting = FKTModSettings.ModSettingsAPI.CreateModSettingConfig(mod);
-
-			setting.AddComment("Features marked with an asterisk (*) require an item reset to update properly.\n" +
-			                   "An item can be reset by either re-entering the world or by placing it into an Item Frame, Weapon Rack or Mannequin.");
-			setting.AddComment("Features marked with two asterisks (**) require a mod reload to update properly.");
-			setting.AddComment("Features marked with three asterisks (***) require a new world or /miscworldgen command to work properly.");
-			setting.AddComment("Features marked with Ancient in the name denote different versions of items with old art style(like prexisting items in terraria) (***)");
-			setting.AddComment("Most values are only modifiable in singleplayer.");
+			
+			setting.AddComment("All these features require a mod reload to change properly.");
+			setting.AddComment("Features marked with an asterisk (*) require a new world or /miscWorldGen chat command.");
+			setting.AddComment("For more information, visit the forum page.");
 			
 			const float commentScale = 0.8f;
 			
-			setting.AddComment("Stat changes and new early game staffs", commentScale);
-			setting.AddBool(AltStaffsKey, "Alternate Staffs", false);
-			setting.AddComment("Magic stones that replinish health and mana for a number of uses.", commentScale);
-			setting.AddBool(MagicStonesKey, "Adds Magic Stones**", false);
-			setting.AddComment("the God stone is unobtainable normally(use cheat sheet or another mod.)", commentScale);
-			setting.AddBool(GodStoneKey, "Adds the God Stone", false);
+			setting.AddComment("Stat changes and new early game gem staves", commentScale);
+			setting.AddBool(AltStaffsKey, "Alternate Staves", false);
+			setting.AddComment("Magic stones that replуnish health and mana for a number of uses.", commentScale);
+			setting.AddBool(MagicStonesKey, "Magic Stones", false);
+			setting.AddComment("Unobtainable God Mode item(use Cheat Sheet or another mod.)", commentScale);
+			setting.AddBool(GodStoneKey, "God Stone", false);
 			setting.AddComment("A rare drop from Demons in Hardmode. Boosts your magical abilities and summons a Red Crystal to protect you.", commentScale);
-			setting.AddBool(DemonCrownKey, "Adds the Demon Crown", false);
+			setting.AddBool(DemonCrownKey, "Demon Crown", false);
 			setting.AddComment("Heart Locket = Panic Necklace + Cross Necklace.", commentScale);
-			setting.AddBool(HeartLocketKey, "Adds the Heart Locket**", false);
-			setting.AddComment("sold by Goblin Tinkerer in Hardmode at night. Increases item pickup range by 20 tiles.\n" + 
-							   "Magnetism Ring = Universal Magnet + Celestial Magnet + Gold Ring. \n" + 
-							   "Increases item, mana and coin pickup range.", commentScale);
-			setting.AddBool(MagnetsKey, "Adds Magnetic stuff**", false);
-			setting.AddComment("Ninja Gear = Tabi + Black Belt. Based on my old suggestion.\n" +
-			                   "If you want to, you can add Tiger Climbing Gear to this accessory to get Master Ninja Gear.", commentScale);
-			setting.AddBool(NinjaGearKey, "Adds Ninja Gear**", true);
-			setting.AddComment("sold by Demolitionist in Hardmode. Armor item that protects you from your own explosives (bombs, rockets etc, just go nuts!)\n" + 
-							   "Reinforced Horseshoe = Reinforced Vest + Obsidian Horseshoe.\n" + 
-							   "Because a Reinforced Shield would be too cheaty.", commentScale);
-			setting.AddBool(ReinforcedVestKey, "If Vanilla Tweaks is installed, equipping a SWAT Helmet and a Reinforced Vest grants a set bonus.", true);
-			setting.AddComment("adds old style forges to use and find.", commentScale);
-			setting.AddBool(AncientForgesKey, "Adds Ancient Forges***", false);
-			setting.AddComment("adds the Red Brick Fireplace and Chimney.", commentScale);
-			setting.AddBool(RedBrickFurnitureKey, "Adds more Red Brick stuff**", true);
-			setting.AddComment("A rare drop from pre-Hardmode Dungeon monsters. Gives off light just like the pre-1.2 Muramasa, but the stats are the same as the current version. Based on my old suggestion.", commentScale);
-			setting.AddBool(AncientMuramasaKey, "Adds Ancient Muramasa", false);
-			setting.AddComment("mech-tier summoner weapon. Summons a Gaster Blaster sentry minion.", commentScale);
-			setting.AddBool(GasterBlasterKey, "Adds the Karma Staff", true);
-			setting.AddComment("mech-tier magic weapon. Rapidly throws piercing magical spears which also spawn mini-spears upon hitting an enemy.\n" + 
-							   "Spear of Undying Justice = Spear of Justice + Spectre Bars. Direct upgrade.", commentScale);
-			setting.AddBool(SpearofJusticeKey, "Adds the Spear of Justice", true);
-			setting.AddComment("Wormhole Crystal is a drop from mages in the Hardmode Dungeon. Crafting material", commentScale);
-			setting.AddBool(WormholeMirrorKey, "Adds a Wormhole mirror made of Wormhole Crystal", false);
-			setting.AddComment("Upgraded Cell Phone with Wormhole functionality. " + 
-							   "Has two recipes: " +
-							   "Normal Cell Phone + Wormhole Mirror\n" +
-							   "PDA + Wormhole Recall/Ice Mirror\n" +
-							   "Note that its screen is one pixel taller than the old Cell Phone and it has a tiny front-facing camera. It lets you take magical selfies that teleport you to your friends", commentScale);
-			setting.AddBool(CellPhoneUpgradeKey, "Makes the Cell Phone Upgradable with Wormhole power", false);
-			setting.AddComment("a post-Lunar upgrade for the Rod of Discord, requires Luminite and Wormhole Crystals.\n" +
-							   "Chaos State lasts for just 1 second and takes 1/10th of your HP instead of 1/7th.", commentScale);
-			setting.AddBool(RodofWarpingKey, "Adds the Rod of Warping", true);
-			setting.AddComment("a consumable item that teleports you to your last death position at a cost", commentScale);
-			setting.AddBool(EmblemofDeathKey, "Adds the Emblem of Death", false);
-			setting.AddBool(BuildingMaterialsKey, "Adds extra building materials", true);
-			setting.AddComment("adds a chance for bats to be wearing a baseball cap which has a chance\n" +
-							   " for dropping baseball themed gear.", commentScale);
-			setting.AddBool(BaseballBatsKey, "Adds Baseball themed gear", true);
-			setting.AddComment(" a pre-nerf Orb of shadow(then light) to Hardmode", commentScale);
-			setting.AddBool(AncientOrbKey, "Adds the Ancient Orb of light", true);
+			setting.AddBool(HeartLocketKey, "Heart Locket", false);
+			setting.AddComment("Item magnet and accessory combos", commentScale);
+			setting.AddBool(MagnetsKey, "Magnets", false);
+			setting.AddComment("Ninja Gear = Tabi + Black Belt.\n" +
+			                   "Master Ninja Gear = Ninja Gear + Climbing Gear", commentScale);
+			setting.AddBool(NinjaGearKey, "Change Ninja Gear", false);
+			setting.AddComment("Armor item that protects you from your own explosives\n" +
+			                   "If Vanilla Tweaks is installed, equipping a SWAT Helmet and a Reinforced Vest grants a set bonus.", commentScale);
+			setting.AddBool(ReinforcedVestKey, "Reinforced Vest", false);
+			setting.AddComment("Adds old style Forges (Furnace) and Hellforges.", commentScale);
+			setting.AddBool(AncientForgesKey, "Ancient Forges*", false);
+			setting.AddComment("Adds the Red Brick Fireplace and Chimney.", commentScale);
+			setting.AddBool(RedBrickFurnitureKey, "Red Brick Furniture", false);
+			setting.AddComment("A rare drop from pre-Hardmode Dungeon monsters. Gives off light just like the pre-1.2 Muramasa, but the stats are the same as the current version.", commentScale);
+			setting.AddBool(AncientMuramasaKey, "Ancient Muramasa", false);
+			setting.AddComment("Mech-tier summoner weapon. Summons a Gaster Blaster sentry minion.", commentScale);
+			setting.AddBool(GasterBlasterKey, "Adds the Karma Staff", false);
+			setting.AddComment("Rapidly throws piercing magical spears which also spawn mini-spears upon hitting an enemy.", commentScale);
+			setting.AddBool(SpearofJusticeKey, "Spear of Justice", false);
+			setting.AddComment("Endless Wormhole Potion", commentScale);
+			setting.AddBool(WormholeMirrorKey, "Wormhole Mirror", false);
+			setting.AddComment("Upgraded Cell Phone with Wormhole functionality.", commentScale);
+			setting.AddBool(CellPhoneUpgradeKey, "Cell Phone Upgrade", false);
+			setting.AddComment("Resprite the vanilla Cell Phone to match the Magic Mirror palette.", commentScale);
+			setting.AddBool(CellPhoneRespriteKey, "Cell Phone Resprite", true);
+			setting.AddComment("Post-Lunar upgrade for the Rod of Discord", commentScale);
+			setting.AddBool(RodofWarpingKey, "Rod of Warping", false);
+			setting.AddComment("Consumable item that teleports you to your last death position at a cost", commentScale);
+			setting.AddBool(EmblemofDeathKey, "Emblem of Death", false);
+			setting.AddComment("Sandstone Slab Wall", commentScale);
+			setting.AddBool(BuildingMaterialsKey, "Building Materials", false);
+			setting.AddComment("Baseball Bats can spawn in caves", commentScale);
+			setting.AddBool(BaseballBatsKey, "Baseball Bats", false);
+			setting.AddComment("Pre-1.2 style Shadow Orb for Hardmode", commentScale);
+			setting.AddBool(AncientOrbKey, "Ancient Orb of light", false);
 		}
 		
 		public static void UpdateFKConfig(Mod mod)
@@ -239,6 +233,7 @@ namespace GoldensMisc
 				setting.Get(SpearofJusticeKey, ref SpearofJustice);
 				setting.Get(WormholeMirrorKey, ref WormholeMirror);
 				setting.Get(CellPhoneUpgradeKey, ref CellPhoneUpgrade);
+				setting.Get(CellPhoneRespriteKey, ref CellPhoneResprite);
 				setting.Get(RodofWarpingKey, ref RodofWarping);
 				setting.Get(EmblemofDeathKey, ref EmblemofDeath);
 				setting.Get(BuildingMaterialsKey, ref BuildingMaterials);
@@ -247,73 +242,72 @@ namespace GoldensMisc
 			}
 		}
 		
-		class MultiplayerSyncWorld : ModWorld
-		{
-			public override void NetSend(BinaryWriter writer)
-			{
-				var data = new BitsByte();
-				data[0] = AltStaffs;
-				data[1] = MagicStones;
-				data[2] = GodStone;
-				data[3] = DemonCrown;
-				data[4] = HeartLocket;
-				data[5] = Magnets;
-				data[6] = NinjaGear;
-				data[7] = ReinforcedVest;
-				writer.Write((byte)data);
-				data.ClearAll();
-				data[0] = AncientForges;
-				data[1] = RedBrickFurniture;
-				data[2] = AncientMuramasa;
-				data[3] = GasterBlaster;
-				data[4] = SpearofJustice;
-				data[5] = WormholeMirror;
-				data[6] = CellPhoneUpgrade;
-				data[7] = RodofWarping;
-				writer.Write((byte)data);
-				data.ClearAll();
-				data[0] = EmblemofDeath;
-				data[1] = BuildingMaterials;
-				data[2] = BaseballBats;
-				data[3] = AncientOrb;
-			}
-			
-			public override void NetReceive(BinaryReader reader)
-			{
-				SaveConfig();
-				var data = (BitsByte)reader.ReadByte();
-				AltStaffs = data[0];
-				MagicStones = data[1];
-				GodStone = data[2];
-				DemonCrown = data[3];
-				HeartLocket = data[4];
-				Magnets = data[5];
-				NinjaGear = data[6];
-				ReinforcedVest = data[7];
-				data = (BitsByte)reader.ReadByte();
-				AncientForges = data[0];
-				RedBrickFurniture = data[1];
-				AncientMuramasa = data[2];
-				GasterBlaster = data[3];
-				SpearofJustice = data[4];
-				WormholeMirror = data[5];
-				CellPhoneUpgrade = data[6];
-				RodofWarping = data[7];
-				data = (BitsByte)reader.ReadByte();
-				EmblemofDeath = data[0];
-				BuildingMaterials = data[1];
-				BaseballBats = data[2];
-				AncientOrb = data[3];
-			}
-		}
-		
-		class MultiplayerSyncPlayer : ModPlayer
-		{
-			public override void PlayerDisconnect(Player player)
-			{
-				ReadConfig();
-			}
-		}
-		
+//		class MultiplayerSyncWorld : ModWorld
+//		{
+//			public override void NetSend(BinaryWriter writer)
+//			{
+//				var data = new BitsByte();
+//				data[0] = AltStaffs;
+//				data[1] = MagicStones;
+//				data[2] = GodStone;
+//				data[3] = DemonCrown;
+//				data[4] = HeartLocket;
+//				data[5] = Magnets;
+//				data[6] = NinjaGear;
+//				data[7] = ReinforcedVest;
+//				writer.Write((byte)data);
+//				data.ClearAll();
+//				data[0] = AncientForges;
+//				data[1] = RedBrickFurniture;
+//				data[2] = AncientMuramasa;
+//				data[3] = GasterBlaster;
+//				data[4] = SpearofJustice;
+//				data[5] = WormholeMirror;
+//				data[6] = CellPhoneUpgrade;
+//				data[7] = RodofWarping;
+//				writer.Write((byte)data);
+//				data.ClearAll();
+//				data[0] = EmblemofDeath;
+//				data[1] = BuildingMaterials;
+//				data[2] = BaseballBats;
+//				data[3] = AncientOrb;
+//			}
+//			
+//			public override void NetReceive(BinaryReader reader)
+//			{
+//				SaveConfig();
+//				var data = (BitsByte)reader.ReadByte();
+//				AltStaffs = data[0];
+//				MagicStones = data[1];
+//				GodStone = data[2];
+//				DemonCrown = data[3];
+//				HeartLocket = data[4];
+//				Magnets = data[5];
+//				NinjaGear = data[6];
+//				ReinforcedVest = data[7];
+//				data = (BitsByte)reader.ReadByte();
+//				AncientForges = data[0];
+//				RedBrickFurniture = data[1];
+//				AncientMuramasa = data[2];
+//				GasterBlaster = data[3];
+//				SpearofJustice = data[4];
+//				WormholeMirror = data[5];
+//				CellPhoneUpgrade = data[6];
+//				RodofWarping = data[7];
+//				data = (BitsByte)reader.ReadByte();
+//				EmblemofDeath = data[0];
+//				BuildingMaterials = data[1];
+//				BaseballBats = data[2];
+//				AncientOrb = data[3];
+//			}
+//		}
+//		
+//		class MultiplayerSyncPlayer : ModPlayer
+//		{	
+//			public override void PlayerDisconnect(Player player)
+//			{
+//				ReadConfig();
+//			}
+//		}
 	}
 }
