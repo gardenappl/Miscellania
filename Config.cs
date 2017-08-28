@@ -67,7 +67,7 @@ namespace GoldensMisc
 		const string BaseballBatsKey = "BaseballBats";
 		
 		public static bool AncientOrb = true;
-		const string AncientOrbKey = "BaseballBats";		
+		const string AncientOrbKey = "AncientOrb";			
 		
 		static string ConfigPath = Path.Combine(Main.SavePath, "Mod Configs", "Miscellania.json");
 		
@@ -121,6 +121,7 @@ namespace GoldensMisc
 				setting.Get(EmblemofDeathKey, ref EmblemofDeath);
 				setting.Get(BuildingMaterialsKey, ref BuildingMaterials);
 				setting.Get(BaseballBatsKey, ref BaseballBats);
+				setting.Get(AncientOrbKey, ref AncientOrb);
 				return true;
 			}
 			return false;
