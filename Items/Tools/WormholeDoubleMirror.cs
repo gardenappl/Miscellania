@@ -67,10 +67,12 @@ namespace GoldensMisc.Items.Tools
 			spriteBatch.Draw(Main.itemTexture[ItemID.MagicMirror], position, frame, Color.White * alpha, 0f, origin, scale, 0, 0f);
 		}
 		
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
+			spriteBatch.Draw(Main.itemTexture[item.type], item.Center - Main.screenPosition, null, lightColor, rotation, item.Size / 2, scale, 0, 0f);
 			float alpha = (float)Math.Sin((float)DateTime.Now.TimeOfDay.TotalMilliseconds / 500f) / 2f + 0.5f;
-			spriteBatch.Draw(Main.itemTexture[ItemID.MagicMirror], item.position - Main.screenPosition, null, lightColor * alpha, rotation, Main.itemTexture[ItemID.MagicMirror].Size() / 2, scale, 0, 0f);
+			spriteBatch.Draw(Main.itemTexture[ItemID.MagicMirror], item.Center - Main.screenPosition, null, lightColor * alpha, rotation, item.Size / 2, scale, 0, 0f);
+			return false;
 		}
 		
 		public override void AddRecipes()

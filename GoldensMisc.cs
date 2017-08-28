@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.Localization;
@@ -22,6 +23,8 @@ namespace GoldensMisc
 	public class GoldensMisc : Mod
 	{
 		public static GoldensMisc Instance;
+		public static bool FKtModSettingsLoaded;
+		Texture2D CellPhoneTexture;
 		
 		public GoldensMisc()
 		{
@@ -30,10 +33,16 @@ namespace GoldensMisc
 		
 		public override void Load()
 		{
-			Instance = this;
+			Instance = this; //apparently you get some problems with Mod Reloading if you put this in the constructor
+			FKtModSettingsLoaded = ModLoader.GetMod("FKTModSettings") != null;
+			
+			if(FKtModSettingsLoaded)
+				Config.LoadFKConfig(this);
 			if(!Main.dedServ)
 			{
 				MiscGlowMasks.Load();
+				CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
+				Main.itemTexture[ItemID.CellPhone] = GetTexture("Items/Tools/CellPhone_Resprite");
 //				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
 			}
 			AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
@@ -53,6 +62,7 @@ namespace GoldensMisc
 		public override void Unload()
 		{
 			MiscGlowMasks.Unload();
+			Main.itemTexture[ItemID.CellPhone] = CellPhoneTexture;
 		}
 		
 		public override void AddRecipeGroups()
@@ -63,6 +73,18 @@ namespace GoldensMisc
 		public override void PostAddRecipes()
 		{
 			MiscRecipes.PostAddRecipes(this);
+		}
+		
+		public override void PostUpdateInput()
+		{
+			if(FKtModSettingsLoaded && !Main.gameMenu)
+				Config.UpdateFKConfig(this);
+		}
+		
+		public override void PreSaveAndQuit()
+		{
+			if(FKtModSettingsLoaded)
+				Config.SaveConfig();
 		}
 		
 		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
@@ -91,6 +113,8 @@ namespace GoldensMisc
 			for(int i = 0; i < 58; i++)
 			{
 				var item = Main.LocalPlayer.inventory[i];
+				if(item.stack <= 0)
+					continue;
 				if(item.type == ItemType<WormholeMirror>() ||
 				   item.type == ItemType<WormholeDoubleMirror>() ||
 				   item.type == ItemType<WormholeIceMirror>() ||
@@ -104,6 +128,7 @@ namespace GoldensMisc
 					break;
 				}
 			}
+//			Main.NewText(Main.LocalPlayer.HasUnityPotion().ToString());
 		}
 		
 		void PostDrawMap()
