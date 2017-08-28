@@ -41,8 +41,11 @@ namespace GoldensMisc
 			if(!Main.dedServ)
 			{
 				MiscGlowMasks.Load();
-				CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
-				Main.itemTexture[ItemID.CellPhone] = GetTexture("Items/Tools/CellPhone_Resprite");
+				if(Config.CellPhoneResprite)
+				{
+					CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
+					Main.itemTexture[ItemID.CellPhone] = GetTexture("Items/Tools/CellPhone_Resprite");
+				}
 //				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
 			}
 			AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
@@ -62,7 +65,10 @@ namespace GoldensMisc
 		public override void Unload()
 		{
 			MiscGlowMasks.Unload();
-			Main.itemTexture[ItemID.CellPhone] = CellPhoneTexture;
+			if(Config.CellPhoneResprite)
+			{
+				Main.itemTexture[ItemID.CellPhone] = CellPhoneTexture;
+			}
 		}
 		
 		public override void AddRecipeGroups()
