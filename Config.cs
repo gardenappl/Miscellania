@@ -125,6 +125,7 @@ namespace GoldensMisc
 				Configuration.Get(EmblemofDeathKey, ref EmblemofDeath);
 				Configuration.Get(BuildingMaterialsKey, ref BuildingMaterials);
 				Configuration.Get(BaseballBatsKey, ref BaseballBats);
+				Configuration.Get(AncientOrbKey, ref AncientOrb);
 				return true;
 			}
 			return false;
