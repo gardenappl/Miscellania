@@ -78,7 +78,7 @@ namespace GoldensMisc
 		static string OldConfigPath = Path.Combine(OldConfigFolderPath, "config.json");
 		static string OldConfigVersionPath = Path.Combine(OldConfigFolderPath, "config.version");
 		
-		static readonly Preferences Configuration = new Preferences(ConfigPath);
+		static readonly Preferences Settings = new Preferences(ConfigPath);
 		
 		public static void Load()
 		{
@@ -103,29 +103,29 @@ namespace GoldensMisc
 		
 		public static bool ReadConfig()
 		{
-			if(Configuration.Load())
+			if(Settings.Load())
 			{
-				Configuration.Get(AltStaffsKey, ref AltStaffs);
-				Configuration.Get(MagicStonesKey, ref MagicStones);
-				Configuration.Get(GodStoneKey, ref GodStone);
-				Configuration.Get(DemonCrownKey, ref DemonCrown);
-				Configuration.Get(HeartLocketKey, ref HeartLocket);
-				Configuration.Get(MagnetsKey, ref Magnets);
-				Configuration.Get(NinjaGearKey, ref NinjaGear);
-				Configuration.Get(ReinforcedVestKey, ref ReinforcedVest);
-				Configuration.Get(AncientForgesKey, ref AncientForges);				
-				Configuration.Get(RedBrickFurnitureKey, ref RedBrickFurniture);
-				Configuration.Get(AncientMuramasaKey, ref AncientMuramasa);
-				Configuration.Get(GasterBlasterKey, ref GasterBlaster);
-				Configuration.Get(SpearofJusticeKey, ref SpearofJustice);
-				Configuration.Get(WormholeMirrorKey, ref WormholeMirror);
-				Configuration.Get(CellPhoneUpgradeKey, ref CellPhoneUpgrade);
-				Configuration.Get(CellPhoneRespriteKey, ref CellPhoneResprite);
-				Configuration.Get(RodofWarpingKey, ref RodofWarping);
-				Configuration.Get(EmblemofDeathKey, ref EmblemofDeath);
-				Configuration.Get(BuildingMaterialsKey, ref BuildingMaterials);
-				Configuration.Get(BaseballBatsKey, ref BaseballBats);
-				Configuration.Get(AncientOrbKey, ref AncientOrb);
+				Settings.Get(AltStaffsKey, ref AltStaffs);
+				Settings.Get(MagicStonesKey, ref MagicStones);
+				Settings.Get(GodStoneKey, ref GodStone);
+				Settings.Get(DemonCrownKey, ref DemonCrown);
+				Settings.Get(HeartLocketKey, ref HeartLocket);
+				Settings.Get(MagnetsKey, ref Magnets);
+				Settings.Get(NinjaGearKey, ref NinjaGear);
+				Settings.Get(ReinforcedVestKey, ref ReinforcedVest);
+				Settings.Get(AncientForgesKey, ref AncientForges);				
+				Settings.Get(RedBrickFurnitureKey, ref RedBrickFurniture);
+				Settings.Get(AncientMuramasaKey, ref AncientMuramasa);
+				Settings.Get(GasterBlasterKey, ref GasterBlaster);
+				Settings.Get(SpearofJusticeKey, ref SpearofJustice);
+				Settings.Get(WormholeMirrorKey, ref WormholeMirror);
+				Settings.Get(CellPhoneUpgradeKey, ref CellPhoneUpgrade);
+				Settings.Get(CellPhoneRespriteKey, ref CellPhoneResprite);
+				Settings.Get(RodofWarpingKey, ref RodofWarping);
+				Settings.Get(EmblemofDeathKey, ref EmblemofDeath);
+				Settings.Get(BuildingMaterialsKey, ref BuildingMaterials);
+				Settings.Get(BaseballBatsKey, ref BaseballBats);
+				Settings.Get(AncientOrbKey, ref AncientOrb);
 				return true;
 			}
 			return false;
@@ -133,29 +133,29 @@ namespace GoldensMisc
 		
 		public static void SaveConfig()
 		{
-			Configuration.Clear();
-			Configuration.Put(AltStaffsKey, AltStaffs);
-			Configuration.Put(MagicStonesKey, MagicStones);
-			Configuration.Put(GodStoneKey, GodStone);
-			Configuration.Put(DemonCrownKey, DemonCrown);
-			Configuration.Put(HeartLocketKey, HeartLocket);
-			Configuration.Put(MagnetsKey, Magnets);
-			Configuration.Put(NinjaGearKey, NinjaGear);
-			Configuration.Put(ReinforcedVestKey, ReinforcedVest);
-			Configuration.Put(AncientForgesKey, AncientForges);				
-			Configuration.Put(RedBrickFurnitureKey, RedBrickFurniture);
-			Configuration.Put(AncientMuramasaKey, AncientMuramasa);
-			Configuration.Put(GasterBlasterKey, GasterBlaster);
-			Configuration.Put(SpearofJusticeKey, SpearofJustice);
-			Configuration.Put(WormholeMirrorKey, WormholeMirror);
-			Configuration.Put(CellPhoneUpgradeKey, CellPhoneUpgrade);
-			Configuration.Put(CellPhoneRespriteKey, CellPhoneResprite);
-			Configuration.Put(RodofWarpingKey, RodofWarping);
-			Configuration.Put(EmblemofDeathKey, EmblemofDeath);
-			Configuration.Put(BuildingMaterialsKey, BuildingMaterials);
-			Configuration.Put(BaseballBatsKey, BaseballBats);
-			Configuration.Put(AncientOrbKey, AncientOrb);
-			Configuration.Save();
+			Settings.Clear();
+			Settings.Put(AltStaffsKey, AltStaffs);
+			Settings.Put(MagicStonesKey, MagicStones);
+			Settings.Put(GodStoneKey, GodStone);
+			Settings.Put(DemonCrownKey, DemonCrown);
+			Settings.Put(HeartLocketKey, HeartLocket);
+			Settings.Put(MagnetsKey, Magnets);
+			Settings.Put(NinjaGearKey, NinjaGear);
+			Settings.Put(ReinforcedVestKey, ReinforcedVest);
+			Settings.Put(AncientForgesKey, AncientForges);				
+			Settings.Put(RedBrickFurnitureKey, RedBrickFurniture);
+			Settings.Put(AncientMuramasaKey, AncientMuramasa);
+			Settings.Put(GasterBlasterKey, GasterBlaster);
+			Settings.Put(SpearofJusticeKey, SpearofJustice);
+			Settings.Put(WormholeMirrorKey, WormholeMirror);
+			Settings.Put(CellPhoneUpgradeKey, CellPhoneUpgrade);
+			Settings.Put(CellPhoneRespriteKey, CellPhoneResprite);
+			Settings.Put(RodofWarpingKey, RodofWarping);
+			Settings.Put(EmblemofDeathKey, EmblemofDeath);
+			Settings.Put(BuildingMaterialsKey, BuildingMaterials);
+			Settings.Put(BaseballBatsKey, BaseballBats);
+			Settings.Put(AncientOrbKey, AncientOrb);
+			Settings.Save();
 		}
 		
 		public static void LoadFKConfig(Mod mod)
