@@ -24,7 +24,7 @@ namespace GoldensMisc.Tiles
 			Main.tileNoAttach[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 16, 18 };
-			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(RedChimneyTE.Hook_AfterPlacement, -1, 0, false);
+			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity<RedChimneyTE>().Hook_AfterPlacement, -1, 0, false);
 			TileObjectData.addTile(Type);
 			var name = CreateMapEntryName();
 			name.SetDefault("Red Chimney");
