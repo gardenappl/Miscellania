@@ -157,9 +157,9 @@ namespace GoldensMisc
 			Configuration.Save();
 		}
 		
-		public static void LoadFKConfig(Mod mod)
+		public static void LoadFKConfig()
 		{
-			var setting = FKTModSettings.ModSettingsAPI.CreateModSettingConfig(mod);
+			var setting = FKTModSettings.ModSettingsAPI.CreateModSettingConfig(GoldensMisc.Instance);
 			
 			setting.AddComment("All these features require a mod reload to change properly.");
 			setting.AddComment("Features marked with an asterisk (*) require a new world or /miscWorldGen chat command.");
@@ -213,10 +213,10 @@ namespace GoldensMisc
 			setting.AddBool(AncientOrbKey, "Ancient Orb of light", false);
 		}
 		
-		public static void UpdateFKConfig(Mod mod)
+		public static void UpdateFKConfig()
 		{
 			FKTModSettings.ModSetting setting;
-			if(FKTModSettings.ModSettingsAPI.TryGetModSetting(mod, out setting))
+			if(FKTModSettings.ModSettingsAPI.TryGetModSetting(GoldensMisc.Instance, out setting))
 			{
 				setting.Get(AltStaffsKey, ref AltStaffs);
 				setting.Get(MagicStonesKey, ref MagicStones);

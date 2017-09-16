@@ -67,7 +67,7 @@ namespace GoldensMisc.Tiles
 		
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
-			if (Main.tile[i, j].frameX <= animationFrameWidth)
+			if (Main.tile[i, j].frameX < animationFrameWidth)
 			{
 				float rand = (float)Main.rand.Next(28, 42) * 0.005f;
 				rand += (float)(270 - (int)Main.mouseTextColor) / 700f;
@@ -112,6 +112,7 @@ namespace GoldensMisc.Tiles
 					}
 				}
 			}
+			NetMessage.SendTileSquare(-1, x + 1, y + 1, 3);
 		}
 	}
 }

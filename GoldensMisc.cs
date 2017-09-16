@@ -36,13 +36,17 @@ namespace GoldensMisc
 			Instance = this; //apparently you get some problems with Mod Reloading if you put this in the constructor
 			FKtModSettingsLoaded = ModLoader.GetMod("FKTModSettings") != null;
 			
-			if(FKtModSettingsLoaded)
-				Config.LoadFKConfig(this);
 			if(!Main.dedServ)
 			{
+				if(FKtModSettingsLoaded)
+					Config.LoadFKConfig();
+				
 				MiscGlowMasks.Load();
-				CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
-				Main.itemTexture[ItemID.CellPhone] = GetTexture("Items/Tools/CellPhone_Resprite");
+				if(Config.CellPhoneResprite)
+				{
+					CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
+					Main.itemTexture[ItemID.CellPhone] = GetTexture("Items/Tools/CellPhone_Resprite");
+				}
 //				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
 			}
 			AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
@@ -62,28 +66,29 @@ namespace GoldensMisc
 		public override void Unload()
 		{
 			MiscGlowMasks.Unload();
-			Main.itemTexture[ItemID.CellPhone] = CellPhoneTexture;
+			if(CellPhoneTexture != null)
+				Main.itemTexture[ItemID.CellPhone] = CellPhoneTexture;
 		}
 		
 		public override void AddRecipeGroups()
 		{
-			MiscRecipes.AddRecipeGroups(this);
+			MiscRecipes.AddRecipeGroups();
 		}
 		
 		public override void PostAddRecipes()
 		{
-			MiscRecipes.PostAddRecipes(this);
+			MiscRecipes.PostAddRecipes();
 		}
 		
 		public override void PostUpdateInput()
 		{
-			if(FKtModSettingsLoaded && !Main.gameMenu)
-				Config.UpdateFKConfig(this);
+			if(FKtModSettingsLoaded && !Main.dedServ && !Main.gameMenu)
+				Config.UpdateFKConfig();
 		}
 		
 		public override void PreSaveAndQuit()
 		{
-			if(FKtModSettingsLoaded)
+			if(FKtModSettingsLoaded && !Main.dedServ)
 				Config.SaveConfig();
 		}
 		

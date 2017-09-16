@@ -13,7 +13,7 @@ namespace GoldensMisc
 {
 	public class MiscRecipes
 	{
-		public static void AddRecipeGroups(GoldensMisc mod)
+		public static void AddRecipeGroups()
 		{
 			var recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.SilverBar), new int[] {
 				ItemID.SilverBar,
@@ -24,7 +24,7 @@ namespace GoldensMisc
 			{
 				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Muramasa), new int[] {
 					ItemID.Muramasa,
-					mod.ItemType<AncientMuramasa>()
+					GoldensMisc.Instance.ItemType<AncientMuramasa>()
 				});
 				RecipeGroup.RegisterGroup("GoldensMisc:Muramasa", recipeGroup);
 			}
@@ -32,13 +32,13 @@ namespace GoldensMisc
 			{
 				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Hellforge), new int[] {
 					ItemID.Hellforge,
-					mod.ItemType<AncientHellforge>()
+					GoldensMisc.Instance.ItemType<AncientHellforge>()
 				});
 				RecipeGroup.RegisterGroup("GoldensMisc:Hellforge", recipeGroup);
 			}
 		}
 		
-		public static void PostAddRecipes(GoldensMisc mod)
+		public static void PostAddRecipes()
 		{
 			if(Config.AncientMuramasa)
 			{
@@ -76,7 +76,7 @@ namespace GoldensMisc
 					var editor = new RecipeEditor(foundRecipe);
 					editor.DeleteIngredient(ItemID.Tabi);
 					editor.DeleteIngredient(ItemID.BlackBelt);
-					editor.AddIngredient(mod.ItemType<NinjaGear>());
+					editor.AddIngredient(GoldensMisc.Instance.ItemType<NinjaGear>());
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -23,7 +24,7 @@ namespace GoldensMisc.Tiles
 			Main.tileNoAttach[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 16, 18 };
-			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity("RedChimneyTE").Hook_AfterPlacement, -1, 0, false);
+			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(RedChimneyTE.Hook_AfterPlacement, -1, 0, false);
 			TileObjectData.addTile(Type);
 			var name = CreateMapEntryName();
 			name.SetDefault("Red Chimney");
@@ -36,7 +37,7 @@ namespace GoldensMisc.Tiles
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(i * 16, j * 16, 48, 48, mod.ItemType(GetType().Name));
-			mod.GetTileEntity("RedChimneyTE").Kill(i, j);
+			mod.GetTileEntity<RedChimneyTE>().Kill(i, j);
 		}
 		
 		//Don't animate if deactivated
@@ -45,11 +46,15 @@ namespace GoldensMisc.Tiles
 			//Top left tile
 			int x = i - Main.tile[i, j].frameX / 18;
 			int y = j - Main.tile[i, j].frameY % animationFrameHeight / 18;
-			var tileEntity = (RedChimneyTE)TileEntity.ByPosition[new Point16(x, y)];
-			if(tileEntity.CurrentState == RedChimneyTE.State.Deactivated)
+			try
 			{
-				frameYOffset = animationFrameHeight * 6;
+				var tileEntity = (RedChimneyTE)TileEntity.ByPosition[new Point16(x, y)];
+				if(tileEntity.CurrentState == RedChimneyTE.State.Deactivated)
+				{
+					frameYOffset = animationFrameHeight * 6;
+				}
 			}
+			catch(KeyNotFoundException e) {}
 		}
 		
 		public override void AnimateTile(ref int frame, ref int frameCounter)
@@ -73,8 +78,16 @@ namespace GoldensMisc.Tiles
 			Wiring.SkipWire(x + 2, y + 1);
 			Wiring.SkipWire(x + 2, y + 2);
 			
-			var tileEntity = (RedChimneyTE)TileEntity.ByPosition[new Point16(x, y)];
-			tileEntity.CurrentState = tileEntity.CurrentState.NextEnum();
+			try
+			{
+				var tileEntity = (RedChimneyTE)TileEntity.ByPosition[new Point16(x, y)];
+				tileEntity.CurrentState = tileEntity.CurrentState.NextEnum();
+				NetMessage.SendData(MessageID.TileEntitySharing, -1, -1, null, tileEntity.ID, x, y);
+			}
+			catch(Exception e)
+			{
+				ErrorLogger.Log("Chimney TileEntity not found! Error! " + e);
+			}
 		}
 	}
 }

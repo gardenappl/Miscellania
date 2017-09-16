@@ -61,8 +61,8 @@ namespace GoldensMisc.Tiles
 		{
 			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
-				NetMessage.SendTileRange(Main.myPlayer, i, j, 3, 2);
-				NetMessage.SendData(MessageID.TileEntityPlacement, number: i - 1, number2: j - 2);
+				NetMessage.SendTileSquare(Main.myPlayer, i, j - 1, 3);
+				NetMessage.SendData(MessageID.TileEntityPlacement, -1, -1, null, i - 1, j - 2, Type);
 				return -1;
 			}
 			return Place(i - 1, j - 2);
