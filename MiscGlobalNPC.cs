@@ -61,15 +61,15 @@ namespace GoldensMisc
 					if(Config.DemonCrown && Main.hardMode && Main.rand.Next(15) == 0)
 						Item.NewItem(npc.position, npc.Size, mod.ItemType<DemonCrown>(), prefixGiven: -1);
 					break;
-				case NPCID.Necromancer:
-				case NPCID.NecromancerArmored:
-				case NPCID.RaggedCaster:
-				case NPCID.RaggedCasterOpenCoat:
-				case NPCID.DiabolistRed:
-				case NPCID.DiabolistWhite:
-					if((Config.WormholeMirror || Config.RodofWarping) && Main.rand.Next(8) == 0)
-						Item.NewItem(npc.position, npc.Size, mod.ItemType<WormholeCrystal>());
-					break;
+				//case NPCID.Necromancer:
+				//case NPCID.NecromancerArmored:
+				//case NPCID.RaggedCaster:
+				//case NPCID.RaggedCasterOpenCoat:
+				//case NPCID.DiabolistRed:
+				//case NPCID.DiabolistWhite:
+				//	if((Config.WormholeMirror || Config.RodofWarping) && Main.rand.Next(8) == 0)
+				//		Item.NewItem(npc.position, npc.Size, mod.ItemType<WormholeCrystal>());
+				//	break;
 			}
 		}
 	}

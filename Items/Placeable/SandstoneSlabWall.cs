@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -46,5 +47,23 @@ namespace GoldensMisc.Items.Placeable
 			recipe.SetResult(ItemID.SandstoneSlab, 1);
 			recipe.AddRecipe();
 		}
+		
+//		public override void ModifyTooltips(List<TooltipLine> tooltips)
+//		{
+//			if(GoldensMisc.VanillaTweaksLoaded)
+//			{
+//				var modVanillaTweaks = ModLoader.GetMod("VanillaTweaks");
+//				object rename = modVanillaTweaks.Call("GetConfigValue", "SandstoneRename");
+//				if(rename is bool && (bool)rename)
+//				{
+//					int index = tooltips.FindIndex(line => line.mod == "Terraria" && line.Name == "ItemName");
+//					if(index != -1)
+//					{
+//						if(Language.ActiveCulture == GameCulture.English)
+//							tooltips[index].text = "Sand Slab Wall";
+//					}
+//				}
+//			}
+//		}
 	}
 }

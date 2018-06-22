@@ -5,6 +5,8 @@ using Terraria;
 using Terraria.IO;
 using Terraria.ModLoader;
 
+using FKTModSettings;
+
 namespace GoldensMisc
 {
 	public static class Config
@@ -56,6 +58,9 @@ namespace GoldensMisc
 		
 		public static bool RodofWarping = true;
 		const string RodofWarpingKey = "RodofWarping";
+
+		public static float RodofWarpingChaosState = 1f;
+		const string RodofWarpingChaosStateKey = "RodofWarpingChaosState";
 		
 		public static bool EmblemofDeath = true;
 		const string EmblemofDeathKey = "EmblemofDeath";
@@ -71,6 +76,9 @@ namespace GoldensMisc
 
 		public static bool CellPhoneResprite = true;
 		const string CellPhoneRespriteKey = "CellPhoneResprite";
+
+		public static bool ExtraDyes = true;
+		const string ExtraDyesKey = "ExtraDyes";
 		
 		static string ConfigPath = Path.Combine(Main.SavePath, "Mod Configs", "Miscellania.json");
 		
@@ -122,9 +130,11 @@ namespace GoldensMisc
 				Configuration.Get(CellPhoneUpgradeKey, ref CellPhoneUpgrade);
 				Configuration.Get(CellPhoneRespriteKey, ref CellPhoneResprite);
 				Configuration.Get(RodofWarpingKey, ref RodofWarping);
+				Configuration.Get(RodofWarpingChaosStateKey, ref RodofWarpingChaosState);
 				Configuration.Get(EmblemofDeathKey, ref EmblemofDeath);
 				Configuration.Get(BuildingMaterialsKey, ref BuildingMaterials);
 				Configuration.Get(BaseballBatsKey, ref BaseballBats);
+				Configuration.Get(ExtraDyesKey, ref ExtraDyes);
 				return true;
 			}
 			return false;
@@ -150,16 +160,18 @@ namespace GoldensMisc
 			Configuration.Put(CellPhoneUpgradeKey, CellPhoneUpgrade);
 			Configuration.Put(CellPhoneRespriteKey, CellPhoneResprite);
 			Configuration.Put(RodofWarpingKey, RodofWarping);
+			Configuration.Put(RodofWarpingChaosStateKey, RodofWarpingChaosState);
 			Configuration.Put(EmblemofDeathKey, EmblemofDeath);
 			Configuration.Put(BuildingMaterialsKey, BuildingMaterials);
 			Configuration.Put(BaseballBatsKey, BaseballBats);
 			Configuration.Put(AncientOrbKey, AncientOrb);
+			Configuration.Put(ExtraDyesKey, ExtraDyes);
 			Configuration.Save();
 		}
 		
 		public static void LoadFKConfig()
 		{
-			var setting = FKTModSettings.ModSettingsAPI.CreateModSettingConfig(GoldensMisc.Instance);
+			var setting = ModSettingsAPI.CreateModSettingConfig(GoldensMisc.Instance);
 			
 			setting.AddComment("All these features require a mod reload to change properly.");
 			setting.AddComment("Features marked with an asterisk (*) require a new world or /miscWorldGen chat command.");
@@ -203,6 +215,8 @@ namespace GoldensMisc
 			setting.AddBool(CellPhoneRespriteKey, "Cell Phone Resprite", true);
 			setting.AddComment("Post-Lunar upgrade for the Rod of Discord", commentScale);
 			setting.AddBool(RodofWarpingKey, "Rod of Warping", false);
+			setting.AddComment("Duration of Chaos State when using Rod of Warping (in seconds). Can be set to 0.", commentScale);
+			setting.AddFloat(RodofWarpingChaosStateKey, "Rod of Warping Chaos State", 0f, 6f, false);
 			setting.AddComment("Consumable item that teleports you to your last death position at a cost", commentScale);
 			setting.AddBool(EmblemofDeathKey, "Emblem of Death", false);
 			setting.AddComment("Sandstone Slab Wall", commentScale);
@@ -211,12 +225,14 @@ namespace GoldensMisc
 			setting.AddBool(BaseballBatsKey, "Baseball Bats", false);
 			setting.AddComment("Pre-1.2 style Shadow Orb for Hardmode", commentScale);
 			setting.AddBool(AncientOrbKey, "Ancient Orb of light", false);
+			setting.AddComment("Extra dyes (reflective Hardmode ore dyes and others)");
+			setting.AddBool(ExtraDyesKey, "Extra Dyes", false);
 		}
 		
 		public static void UpdateFKConfig()
 		{
-			FKTModSettings.ModSetting setting;
-			if(FKTModSettings.ModSettingsAPI.TryGetModSetting(GoldensMisc.Instance, out setting))
+			ModSetting setting;
+			if(ModSettingsAPI.TryGetModSetting(GoldensMisc.Instance, out setting))
 			{
 				setting.Get(AltStaffsKey, ref AltStaffs);
 				setting.Get(MagicStonesKey, ref MagicStones);
@@ -235,10 +251,12 @@ namespace GoldensMisc
 				setting.Get(CellPhoneUpgradeKey, ref CellPhoneUpgrade);
 				setting.Get(CellPhoneRespriteKey, ref CellPhoneResprite);
 				setting.Get(RodofWarpingKey, ref RodofWarping);
+				setting.Get(RodofWarpingChaosStateKey, ref RodofWarpingChaosState);
 				setting.Get(EmblemofDeathKey, ref EmblemofDeath);
 				setting.Get(BuildingMaterialsKey, ref BuildingMaterials);
 				setting.Get(BaseballBatsKey, ref BaseballBats);
 				setting.Get(AncientOrbKey, ref AncientOrb);
+				setting.Get(ExtraDyesKey, ref ExtraDyes);
 			}
 		}
 		

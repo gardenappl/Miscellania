@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using GoldensMisc.Items.Equipable;
+using GoldensMisc.Items.Equipable.Vanity;
 using GoldensMisc.Items.Weapons;
 
 namespace GoldensMisc.NPCs

@@ -17,6 +17,12 @@ using GoldensMisc.Items.Placeable;
 using GoldensMisc.Items.Tools;
 using GoldensMisc.Items.Weapons;
 using GoldensMisc.Projectiles;
+using GoldensMisc.UI;
+using Microsoft.Xna.Framework;
+using Terraria.GameContent.UI.Elements;
+using Terraria.Graphics.Shaders;
+using Terraria.GameContent.Dyes;
+using GoldensMisc.Items.Equipable.Vanity;
 
 namespace GoldensMisc
 {
@@ -24,7 +30,10 @@ namespace GoldensMisc
 	{
 		public static GoldensMisc Instance;
 		public static bool FKtModSettingsLoaded;
-		Texture2D CellPhoneTexture;
+		public static bool VanillaTweaksLoaded;
+		public static Texture2D CellPhoneTexture;
+		internal UIWormhole WormholeUI;
+		private UserInterface MiscUserInterface;
 		
 		public GoldensMisc()
 		{
@@ -35,9 +44,12 @@ namespace GoldensMisc
 		{
 			Instance = this; //apparently you get some problems with Mod Reloading if you put this in the constructor
 			FKtModSettingsLoaded = ModLoader.GetMod("FKTModSettings") != null;
+			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
 			
 			if(!Main.dedServ)
 			{
+				MiscLang.AddText();
+
 				if(FKtModSettingsLoaded)
 					Config.LoadFKConfig();
 				
@@ -47,7 +59,22 @@ namespace GoldensMisc
 					CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
 					Main.itemTexture[ItemID.CellPhone] = GetTexture("Items/Tools/CellPhone_Resprite");
 				}
-//				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
+				//				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
+
+				GameShaders.Armor.BindShader<ArmorShaderData>(ItemType<MatrixDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(0f, 1.0f, 0.2f);
+				GameShaders.Armor.BindShader<ArmorShaderData>(ItemType<VirtualDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(1f, 0.1f, 0.1f);
+				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<CobaltDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.4f, 0.7f, 1.2f);
+				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<PalladiumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.2f, 0.5f, 0.3f);
+				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<MythrilDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.3f, 0.8f, 0.8f);
+				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<OrichalcumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.3f, 1.1f);
+				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<AdamantiteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.4f, 0.6f);
+				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<TitaniumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 0.7f, 0.7f);
+				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<ChlorophyteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 1.1f, 0.1f);
+
+				WormholeUI = new UIWormhole();
+				WormholeUI.Activate();
+				MiscUserInterface = new UserInterface();
+				MiscUserInterface.SetState(WormholeUI);
 			}
 			AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
 		}
@@ -65,6 +92,8 @@ namespace GoldensMisc
 		
 		public override void Unload()
 		{
+			Instance = null;
+
 			MiscGlowMasks.Unload();
 			if(CellPhoneTexture != null)
 				Main.itemTexture[ItemID.CellPhone] = CellPhoneTexture;
@@ -90,61 +119,81 @@ namespace GoldensMisc
 		{
 			if(FKtModSettingsLoaded && !Main.dedServ)
 				Config.SaveConfig();
+
+			UIWormhole.Close();
 		}
-		
+
+		public override void UpdateUI(GameTime gameTime)
+		{
+			if(MiscUserInterface != null && UIWormhole.Visible)
+				MiscUserInterface.Update(gameTime);
+		}
+
 		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
 		{
-			int index = layers.FindIndex(x => x.Name == "Vanilla: Map / Minimap");
+			int index = layers.FindIndex(x => x.Name == "Vanilla: Mouse Text");
 			if(index != -1)
 			{
-				layers.Insert(index, new LegacyGameInterfaceLayer("GoldensMisc: Horrible Wormhole Hack 1", delegate
+				layers.Insert(index, new LegacyGameInterfaceLayer("GoldensMisc: UI", delegate
 				{
-					PreDrawMap();
+					if(UIWormhole.Visible)
+					{
+						WormholeUI.Draw(Main.spriteBatch);
+					}
 					return true;
-				}));
-				layers.Insert(index + 2, new LegacyGameInterfaceLayer("GoldensMisc: Horrible Wormhole Hack 2", delegate
-				{
-					PostDrawMap();
-					return true;
-				}));
+				}, InterfaceScaleType.UI));
 			}
+			//int index = layers.FindIndex(x => x.Name == "Vanilla: Map / Minimap");
+			//if(index != -1)
+			//{
+			//	layers.Insert(index, new LegacyGameInterfaceLayer("GoldensMisc: Horrible Wormhole Hack 1", delegate
+			//	{
+			//		PreDrawMap();
+			//		return true;
+			//	}));
+			//	layers.Insert(index + 2, new LegacyGameInterfaceLayer("GoldensMisc: Horrible Wormhole Hack 2", delegate
+			//	{
+			//		PostDrawMap();
+			//		return true;
+			//	}));
+			//}
 		}
-		
-		int WormholeReplaceSlot = -1;
-		Item WormholeReplaceItem;
-		
-		void PreDrawMap()
-		{
-			for(int i = 0; i < 58; i++)
-			{
-				var item = Main.LocalPlayer.inventory[i];
-				if(item.stack <= 0)
-					continue;
-				if(item.type == ItemType<WormholeMirror>() ||
-				   item.type == ItemType<WormholeDoubleMirror>() ||
-				   item.type == ItemType<WormholeIceMirror>() ||
-				   item.type == ItemType<WormholeCellPhone>())
-				{
-					WormholeReplaceSlot = i;
-					WormholeReplaceItem = item;
-					Main.LocalPlayer.inventory[i] = new Item();
-					Main.LocalPlayer.inventory[i].SetDefaults(ItemID.WormholePotion);
-					Main.LocalPlayer.inventory[i].stack = 30;
-					break;
-				}
-			}
-//			Main.NewText(Main.LocalPlayer.HasUnityPotion().ToString());
-		}
-		
-		void PostDrawMap()
-		{
-			if(WormholeReplaceSlot >= 0)
-			{
-				Main.LocalPlayer.inventory[WormholeReplaceSlot] = WormholeReplaceItem;
-				WormholeReplaceSlot = -1;
-			}
-		}
-		
+
+		//		int WormholeReplaceSlot = -1;
+		//		Item WormholeReplaceItem;
+
+		//		void PreDrawMap()
+		//		{
+		//			for(int i = 0; i < 58; i++)
+		//			{
+		//				var item = Main.LocalPlayer.inventory[i];
+		//				if(item.stack <= 0)
+		//					continue;
+		//				if(item.type == ItemType<WormholeMirror>() ||
+		//				   item.type == ItemType<WormholeDoubleMirror>() ||
+		//				   item.type == ItemType<WormholeIceMirror>() ||
+		//				   item.type == ItemType<WormholeCellPhone>())
+		//				{
+		//					WormholeReplaceSlot = i;
+		//					WormholeReplaceItem = item;
+		//					Main.LocalPlayer.inventory[i] = new Item();
+		//					Main.LocalPlayer.inventory[i].SetDefaults(ItemID.WormholePotion);
+		//					Main.LocalPlayer.inventory[i].stack = 30;
+		//					break;
+		//				}
+		//			}
+		////			Main.NewText(Main.LocalPlayer.HasUnityPotion().ToString());
+		//		}
+
+		//		void PostDrawMap()
+		//		{
+		//			if(WormholeReplaceSlot >= 0)
+		//			{
+		//				Main.LocalPlayer.inventory[WormholeReplaceSlot] = WormholeReplaceItem;
+		//				WormholeReplaceSlot = -1;
+		//			}
+		//		}
+
 		public static void Log(object message)
 		{
 			ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), message));

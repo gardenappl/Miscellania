@@ -12,6 +12,21 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <NoWin32Manifest>False</NoWin32Manifest>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -59,7 +74,7 @@
     <Compile Include="Items\Consumable\InertStone.cs" />
     <Compile Include="Items\Consumable\LifeStone.cs" />
     <Compile Include="Items\Consumable\ManaStone.cs" />
-    <Compile Include="Items\Equipable\BaseballCap.cs" />
+    <Compile Include="Items\Equipable\Vanity\BaseballCap.cs" />
     <Compile Include="Items\Equipable\DemonCrown.cs" />
     <Compile Include="Items\Equipable\HeartLocket.cs" />
     <Compile Include="Items\Equipable\MagnetismRing.cs" />
@@ -68,6 +83,15 @@
     <Compile Include="Items\Equipable\ReinforcedHorseshoe.cs" />
     <Compile Include="Items\Equipable\ReinforcedVest.cs" />
     <Compile Include="Items\Equipable\UniversalMagnet.cs" />
+    <Compile Include="Items\Equipable\Vanity\AdamantiteDye.cs" />
+    <Compile Include="Items\Equipable\Vanity\ChlorophyteDye.cs" />
+    <Compile Include="Items\Equipable\Vanity\CobaltDye.cs" />
+    <Compile Include="Items\Equipable\Vanity\MatrixDye.cs" />
+    <Compile Include="Items\Equipable\Vanity\MythrilDye.cs" />
+    <Compile Include="Items\Equipable\Vanity\OrichalcumDye.cs" />
+    <Compile Include="Items\Equipable\Vanity\PalladiumDye.cs" />
+    <Compile Include="Items\Equipable\Vanity\TitaniumDye.cs" />
+    <Compile Include="Items\Equipable\Vanity\VirtualDye.cs" />
     <Compile Include="Items\ItemTweaks.cs" />
     <Compile Include="Items\Materials\WormholeCrystal.cs" />
     <Compile Include="Items\Placeable\AncientForge.cs" />
@@ -95,6 +119,7 @@
     <Compile Include="MiscGlobalItem.cs" />
     <Compile Include="MiscGlobalNPC.cs" />
     <Compile Include="MiscGlowMasks.cs" />
+    <Compile Include="MiscLang.cs" />
     <Compile Include="MiscPlayer.cs" />
     <Compile Include="MiscRecipes.cs" />
     <Compile Include="MiscUtils.cs" />
@@ -125,21 +150,29 @@
     <Compile Include="Tiles\RedChimneyTE.cs" />
     <Compile Include="Tiles\RedFireplace.cs" />
     <Compile Include="Tiles\SandstoneSlabWall.cs" />
+    <Compile Include="UI\UIWormhole.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Buffs" />
-    <Folder Include="Dusts" />
-    <Folder Include="Items" />
-    <Folder Include="Items\Equipable" />
-    <Folder Include="Items\Consumable" />
-    <Folder Include="Items\Materials" />
-    <Folder Include="Items\Tools" />
-    <Folder Include="Items\Weapons" />
-    <Folder Include="Items\Placeable" />
-    <Folder Include="Commands" />
-    <Folder Include="NPCs" />
-    <Folder Include="Projectiles" />
-    <Folder Include="Tiles" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <None Include="build.txt" />

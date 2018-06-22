@@ -1,7 +1,10 @@
 ﻿
 using System;
+using GoldensMisc.UI;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -17,12 +20,12 @@ namespace GoldensMisc.Items.Tools
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cell Phone");
-			Tooltip.SetDefault("Displays everything\nAllows you to return home and teleport to party members at will");
+			DisplayName.SetDefault("Network Cell Phone");
+			Tooltip.SetDefault("Displays everything\nAllows you to return home and teleport to party members at will\nRight-click to select a player");
 			DisplayName.AddTranslation(GameCulture.Russian, "Мобильный телефон");
-			Tooltip.AddTranslation(GameCulture.Russian, "Показывает всё\nПозволяет в любой момент вернуться домой\nили телепортироваться к участнику команды");
+			Tooltip.AddTranslation(GameCulture.Russian, "Показывает всё\nПозволяет в любой момент вернуться домой\nили телепортироваться к участнику команды\nНажмите ПКМ и выберите игрока");
 		}
-		
+
 		public override void SetDefaults()
 		{
 			item.width = 34;
@@ -32,13 +35,42 @@ namespace GoldensMisc.Items.Tools
 			item.useTime = 90;
 			item.UseSound = SoundID.Item6;
 			item.useAnimation = 90;
-			item.rare = 8;
+			item.rare = 7;
 			item.value = Item.sellPrice(0, 10);
 		}
-		
+
+		public override bool AltFunctionUse(Player player)
+		{
+			return true;
+		}
+
+		public override bool CanUseItem(Player player)
+		{
+			if(player.altFunctionUse != 2)
+			{
+				item.UseSound = SoundID.Item6;
+				if(UIWormhole.Visible)
+					return false;
+			}
+			else
+			{
+				item.UseSound = new LegacySoundStyle(SoundID.MenuOpen, 0);
+			}
+			return true;
+		}
+
 		public override bool UseItem(Player player)
 		{
-			if (Main.rand.Next(2) == 0)
+			if(player.altFunctionUse == 2)
+			{
+				if(UIWormhole.Visible)
+					UIWormhole.Close();
+				else
+					UIWormhole.Open(item);
+				return true;
+			}
+
+			if(Main.rand.Next(2) == 0)
 				Dust.NewDust(player.position, player.width, player.height, 15, 0.0f, 0.0f, 150, Color.White, 1.1f);
 			if (player.itemAnimation == item.useAnimation / 2)
 			{
@@ -57,7 +89,37 @@ namespace GoldensMisc.Items.Tools
 			}
 			return false;
 		}
-		
+
+		public override bool CanRightClick()
+		{
+			//return Main.netMode != NetmodeID.SinglePlayer && Main.LocalPlayer.team != 0;
+			return true;
+		}
+
+		public override void RightClick(Player player)
+		{
+			Main.PlaySound(SoundID.MenuOpen);
+			if(UIWormhole.Visible)
+				UIWormhole.Close();
+			else
+				UIWormhole.Open(item);
+			item.stack++;
+		}
+
+		public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+		{
+			float alpha = (float)Math.Sin((float)DateTime.Now.TimeOfDay.TotalMilliseconds / 500f) / 2f + 0.5f;
+			spriteBatch.Draw(mod.GetTexture("Items/Tools/CellPhone_Resprite"), position, frame, Color.White * alpha, 0f, origin, scale, 0, 0f);
+		}
+
+		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+		{
+			spriteBatch.Draw(Main.itemTexture[item.type], item.Center - Main.screenPosition, null, lightColor, rotation, item.Size / 2, scale, 0, 0f);
+			float alpha = (float)Math.Sin((float)DateTime.Now.TimeOfDay.TotalMilliseconds / 500f) / 2f + 0.5f;
+			spriteBatch.Draw(mod.GetTexture("Items/Tools/CellPhone_Resprite"), item.Center - Main.screenPosition, null, lightColor * alpha, rotation, item.Size / 2, scale, 0, 0f);
+			return false;
+		}
+
 		public override void UpdateInventory(Player player)
 		{
 			player.accWatch = 3;

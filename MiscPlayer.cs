@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using GoldensMisc.Items.Tools;
 using GoldensMisc.Projectiles;
+using GoldensMisc.Items.Equipable.Vanity;
 
 namespace GoldensMisc
 {
@@ -77,35 +78,60 @@ namespace GoldensMisc
 				Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<RedCrystal>(), 60, 8, player.whoAmI);
 		}
 		
-		//stolen from Elemental Unleash
-		//tbh this is not necessary but switching the sprite to the normal Recall Mirror is a nice detail I hope
-		public override void ModifyDrawLayers(List<PlayerLayer> layers)
+//		//stolen from Elemental Unleash
+//		//tbh this is not necessary but switching the sprite to the normal Recall Mirror is a nice detail I hope
+//		public override void ModifyDrawLayers(List<PlayerLayer> layers)
+//		{
+////			PreHeldItem.visible = true;
+////			PostHeldItem.visible = true;
+//			for(int i = 0; i < layers.Count; i++)
+//			{
+//				if(layers[i] == PlayerLayer.HeldItem)
+//				{
+//					layers.Insert(i, PreHeldItem);
+//					i += 2;
+//					layers.Insert(i, PostHeldItem);
+//				}
+//			}
+//		}
+		
+//		static readonly PlayerLayer PreHeldItem = new PlayerLayer("GoldensMisc", "PreHeldItem", PlayerLayer.HeldItem, delegate(PlayerDrawInfo drawInfo)
+//		{
+//			var mod = GoldensMisc.Instance;
+//			Main.itemTexture[mod.ItemType<WormholeIceMirror>()] = Main.itemTexture[ItemID.IceMirror];
+//			Main.itemTexture[mod.ItemType<WormholeDoubleMirror>()] = Main.itemTexture[ItemID.MagicMirror];
+//			Main.itemTexture[mod.ItemType<WormholeCellPhone>()] = Main.itemTexture[ItemID.CellPhone];
+//		});
+		
+//		static readonly PlayerLayer PostHeldItem = new PlayerLayer("GoldensMisc", "PostHeldItem", PlayerLayer.HeldItem, delegate(PlayerDrawInfo drawInfo)
+//		{
+//			var mod = GoldensMisc.Instance;
+//			Main.itemTexture[mod.ItemType<WormholeIceMirror>()] = mod.GetTexture("Items/Tools/WormholeIceMirror");
+//			Main.itemTexture[mod.ItemType<WormholeDoubleMirror>()] = mod.GetTexture("Items/Tools/WormholeDoubleMirror");
+//			Main.itemTexture[mod.ItemType<WormholeCellPhone>()] = mod.GetTexture("Items/Tools/WormholeCellPhone");
+//		});
+
+
+		public override void GetDyeTraderReward(List<int> rewardPool)
 		{
-//			PreHeldItem.visible = true;
-//			PostHeldItem.visible = true;
-			for(int i = 0; i < layers.Count; i++)
+			if(!Config.ExtraDyes)
+				return;
+
+			if(Main.hardMode)
 			{
-				if(layers[i] == PlayerLayer.HeldItem)
+				rewardPool.Add(mod.ItemType<MatrixDye>());
+				rewardPool.Add(mod.ItemType<VirtualDye>());
+				rewardPool.Add(mod.ItemType<CobaltDye>());
+				rewardPool.Add(mod.ItemType<PalladiumDye>());
+				rewardPool.Add(mod.ItemType<MythrilDye>());
+				rewardPool.Add(mod.ItemType<OrichalcumDye>());
+				rewardPool.Add(mod.ItemType<AdamantiteDye>());
+				rewardPool.Add(mod.ItemType<TitaniumDye>());
+				if(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
 				{
-					layers.Insert(i, PreHeldItem);
-					i += 2;
-					layers.Insert(i, PostHeldItem);
+					rewardPool.Add(mod.ItemType<ChlorophyteDye>());
 				}
 			}
 		}
-		
-		static readonly PlayerLayer PreHeldItem = new PlayerLayer("GoldensMisc", "PreHeldItem", PlayerLayer.HeldItem, delegate(PlayerDrawInfo drawInfo)
-		{
-			var mod = GoldensMisc.Instance;
-			Main.itemTexture[mod.ItemType<WormholeIceMirror>()] = Main.itemTexture[ItemID.IceMirror];
-			Main.itemTexture[mod.ItemType<WormholeDoubleMirror>()] = Main.itemTexture[ItemID.MagicMirror];
-		});
-		
-		static readonly PlayerLayer PostHeldItem = new PlayerLayer("GoldensMisc", "PostHeldItem", PlayerLayer.HeldItem, delegate(PlayerDrawInfo drawInfo)
-		{
-			var mod = GoldensMisc.Instance;
-			Main.itemTexture[mod.ItemType<WormholeIceMirror>()] = mod.GetTexture("Items/Tools/WormholeIceMirror");
-			Main.itemTexture[mod.ItemType<WormholeDoubleMirror>()] = mod.GetTexture("Items/Tools/WormholeDoubleMirror");
-		});
 	}
 }

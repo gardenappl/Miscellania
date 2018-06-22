@@ -4,11 +4,16 @@ using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace GoldensMisc.Items.Equipable
+namespace GoldensMisc.Items.Equipable.Vanity
 {
 	[AutoloadEquip(EquipType.Head)]
 	public class BaseballCap : ModItem
 	{
+		public override bool Autoload(ref string name)
+		{
+			return Config.BaseballBats;
+		}
+
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("'How do you do, fellow kids?'");

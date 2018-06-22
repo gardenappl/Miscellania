@@ -13,4 +13,4 @@ Current features include:
  
 And some more! Go to the forum page for the full list.
  
-Thanks to Zerokk for helping with sprites.
+Thanks to Zerokk for his help with sprites.

@@ -11,7 +11,7 @@ using GoldensMisc.Items.Weapons;
 
 namespace GoldensMisc
 {
-	public class MiscRecipes
+	public static class MiscRecipes
 	{
 		public static void AddRecipeGroups()
 		{

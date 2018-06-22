@@ -36,5 +36,10 @@ namespace GoldensMisc.Tiles
 		{
 			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType(GetType().Name));
 		}
+		
+		public override void RandomUpdate(int i, int j)
+		{
+			base.RandomUpdate(i, j);
+		}
 	}
 }

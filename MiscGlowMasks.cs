@@ -11,7 +11,8 @@ namespace GoldensMisc
 	{
 		public static short UndyingSpear;
 		public static short UndyingSpearProjectile;
-		const short Count = 2;
+		public static short RodofWarping;
+		const short Count = 3;
 		static short End;
 		public static bool Loaded;
 		
@@ -22,11 +23,12 @@ namespace GoldensMisc
 			short i = (short)(Main.glowMaskTexture.Length - Count);
 			Main.glowMaskTexture[i] = ModLoader.GetTexture("GoldensMisc/Items/Weapons/UndyingSpear_Glow");
 			UndyingSpear = i;
-			
 			i++;
 			Main.glowMaskTexture[i] = ModLoader.GetTexture("GoldensMisc/Projectiles/UndyingSpear_Glow");
 			UndyingSpearProjectile = i;
-			
+			i++;
+			Main.glowMaskTexture[i] = ModLoader.GetTexture("GoldensMisc/Items/Tools/RodofWarping_Glow");
+			RodofWarping = i;
 			i++;
 			End = i;
 			
@@ -37,14 +39,21 @@ namespace GoldensMisc
 		{
 			if(Loaded)
 			{
-				//Remove our glow masks
+				//Remove our glow masks so the mod can unload properly(?)
+				Main.glowMaskTexture[UndyingSpear] = null;
+				Main.glowMaskTexture[UndyingSpearProjectile] = null;
+				Main.glowMaskTexture[RodofWarping] = null;
+
+				//Shrink array back to original if possible
 				if(Main.glowMaskTexture.Length == End)
 				{
 					Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length - Count);
 				}
+
 				Loaded = false;
 				UndyingSpear = 0;
 				UndyingSpearProjectile = 0;
+				RodofWarping = 0;
 				End = 0;
 			}
 		}
