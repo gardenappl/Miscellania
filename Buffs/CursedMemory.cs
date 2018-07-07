@@ -17,7 +17,7 @@ namespace GoldensMisc.Buffs
 			Description.AddTranslation(GameCulture.Russian, "Уменьшают максиальное здоровье наполовину");
 
 			DisplayName.AddTranslation(GameCulture.Chinese, "被诅咒的记忆");
-			Tooltip.AddTranslation(GameCulture.Chinese, "最大生命值减半");
+			Description.AddTranslation(GameCulture.Chinese, "最大生命值减半");
 
 			canBeCleared = false;
 			longerExpertDebuff = true;
