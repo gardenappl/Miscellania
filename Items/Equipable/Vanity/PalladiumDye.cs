@@ -17,7 +17,9 @@ namespace GoldensMisc.Items.Equipable.Vanity
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Reflective Palladium Dye");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Светоотражающий палладиевый краситель");
+			DisplayName.AddTranslation(GameCulture.Chinese, "反光钯金染料");
 		}
 
 		public override void SetDefaults()

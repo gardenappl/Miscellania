@@ -17,7 +17,9 @@ namespace GoldensMisc.Items.Equipable.Vanity
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Matrix Dye");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Краситель матрицы");
+			DisplayName.AddTranslation(GameCulture.Chinese, "矩阵染料");
 		}
 
 		public override void SetDefaults()

@@ -17,7 +17,9 @@ namespace GoldensMisc.Items.Equipable.Vanity
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Reflective Cobalt Dye");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Светоотражающий кобальтовый краситель");
+			DisplayName.AddTranslation(GameCulture.Chinese, "反光钴蓝染料");
 		}
 
 		public override void SetDefaults()
