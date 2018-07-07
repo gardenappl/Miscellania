@@ -18,8 +18,12 @@ namespace GoldensMisc.Items.Consumable
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("'Has the potential to store magical energy'");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Инертный камень");
 			Tooltip.AddTranslation(GameCulture.Russian, "'Имеет потенциал для хранения магической энергии'");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "无效的石头");
+			Tooltip.AddTranslation(GameCulture.Chinese, "'它似乎可以储存魔法能量'");
 		}
 		
 		public override void SetDefaults()

@@ -24,8 +24,12 @@ namespace GoldensMisc.Items.Consumable
 		{
 			DisplayName.SetDefault("Healing Stone");
 			Tooltip.SetDefault("Can be used multiple times");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Лечебный камень");
 			Tooltip.AddTranslation(GameCulture.Russian, "Может быть использован несколько раз");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "治愈之石");
+			Tooltip.AddTranslation(GameCulture.Chinese, "可多次使用");
 		}
 		
 		public override void SetDefaults()
