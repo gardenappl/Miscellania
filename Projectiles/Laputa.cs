@@ -28,7 +28,9 @@ namespace GoldensMisc.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Laputa Light");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Свет Лапуты");
+			DisplayName.AddTranslation(GameCulture.Chinese, "空岛之光");
 		}
 		
 		public override void SetDefaults()

@@ -13,7 +13,9 @@ namespace GoldensMisc.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spear of Justice");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Копье правосулия");
+			DisplayName.AddTranslation(GameCulture.Chinese, "正义之矛");
 		}
 		
 		public override void SetDefaults()
