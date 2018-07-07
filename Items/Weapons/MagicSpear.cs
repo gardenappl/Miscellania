@@ -21,9 +21,14 @@ namespace GoldensMisc.Items.Weapons
 			DisplayName.SetDefault("Spear of Justice");
 			Tooltip.SetDefault("Rapidly throws piecring spears\n" +
 			                   "'Ngahhh!!'");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Копье правосудия");
 			Tooltip.AddTranslation(GameCulture.Russian, "Быстро метает пронзающие копья\n" +
 			                       "'Аргххх!!'"); //перевод 10/10
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "正义之矛");
+			Tooltip.AddTranslation(GameCulture.Chinese, "迅速投掷穿刺之矛\n" +
+								  "哇啊呀呀呀!!");
 		}
 		
 		public override void SetDefaults()
