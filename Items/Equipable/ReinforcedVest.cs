@@ -23,7 +23,7 @@ namespace GoldensMisc.Items.Equipable
 			DisplayName.AddTranslation(GameCulture.Russian, "Бронежилет");
 			Tooltip.AddTranslation(GameCulture.Russian, "Дает невосприимчивость к своей взрывчатке");
 
-			DisplayName.AddTranslation(GameCulture.Chinese, "钢筋马甲");
+			DisplayName.AddTranslation(GameCulture.Chinese, "装甲之躯");
 			Tooltip.AddTranslation(GameCulture.Chinese, "使你免疫己方爆炸伤害");
 		}
 		
