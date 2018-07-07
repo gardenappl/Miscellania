@@ -19,7 +19,10 @@ namespace GoldensMisc.NPCs
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Baseball Hellbat");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Бейсбольная адская летучая мышь");
+			DisplayName.AddTranslation(GameCulture.Chinese, "棒球地狱蝙蝠");
+
 			Main.npcFrameCount[npc.type] = 5;
 		}
 		
