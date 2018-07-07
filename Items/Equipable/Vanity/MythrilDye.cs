@@ -17,7 +17,9 @@ namespace GoldensMisc.Items.Equipable.Vanity
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Reflective Mythril Dye");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Светоотражающий мифриловый краситель");
+			DisplayName.AddTranslation(GameCulture.Chinese, "反光秘银染料");
 		}
 
 		public override void SetDefaults()

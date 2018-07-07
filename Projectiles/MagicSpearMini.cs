@@ -25,7 +25,9 @@ namespace GoldensMisc.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mini Spear of Justice");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Мини-копье правосудия");
+			DisplayName.AddTranslation(GameCulture.Chinese, "迷你正义之矛");
 		}
 		
 		public override void SetDefaults()

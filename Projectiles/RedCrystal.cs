@@ -33,7 +33,10 @@ namespace GoldensMisc.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Red Crystal");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Красный кристалл");
+			DisplayName.AddTranslation(GameCulture.Chinese, "红水晶");
+
 			Main.projFrames[projectile.type] = 2;
 		}
 		

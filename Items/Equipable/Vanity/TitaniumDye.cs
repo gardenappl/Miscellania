@@ -17,7 +17,9 @@ namespace GoldensMisc.Items.Equipable.Vanity
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Reflective Titanium Dye");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Светоотражающий титановый краситель");
+			DisplayName.AddTranslation(GameCulture.Chinese, "反光钛金染料");
 		}
 
 		public override void SetDefaults()

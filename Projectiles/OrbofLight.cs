@@ -13,7 +13,10 @@ namespace GoldensMisc.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ancient Orb of Light");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Древняя сфера света");
+			DisplayName.AddTranslation(GameCulture.Chinese, "远古光明珍珠");
+
 			Main.projFrames[projectile.type] = 1;
 			Main.projPet[projectile.type] = true;
 			ProjectileID.Sets.TrailingMode[projectile.type] = 2;

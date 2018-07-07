@@ -17,6 +17,7 @@ namespace GoldensMisc.Items.Placeable
 		public override void SetStaticDefaults()
 		{
 			DisplayName.AddTranslation(GameCulture.Russian, "Стена из песчаной пластины");
+			DisplayName.AddTranslation(GameCulture.Chinese, "砂石板墙");
 		}
 		
 		public override void SetDefaults()

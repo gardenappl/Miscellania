@@ -21,8 +21,13 @@ namespace GoldensMisc.Items.Tools
 		{
 			DisplayName.SetDefault("Rod of Warping");
 			Tooltip.SetDefault("Teleports to the position of the mouse\nSignificantly reduced duration and damage of Chaos State");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Жезл искажения");
 			Tooltip.AddTranslation(GameCulture.Russian, "Телепортирует на позицию мыши\nЗначительно уменьшены длительность и урон Состояния хаоса");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "折跃法杖");
+			Tooltip.AddTranslation(GameCulture.Chinese, "传送到鼠标位置\n大大降低混沌状态的持续时间及伤害");
+
 			Item.staff[item.type] = true;
 		}
 		

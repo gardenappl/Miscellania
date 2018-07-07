@@ -17,6 +17,7 @@ namespace GoldensMisc.Items.Placeable
 		public override void SetStaticDefaults()
 		{
 			DisplayName.AddTranslation(GameCulture.Russian, "Древняя кузня");
+			DisplayName.AddTranslation(GameCulture.Chinese, "远古熔炉");
 		}
 		
 		public override void SetDefaults()

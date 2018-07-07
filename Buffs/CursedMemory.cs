@@ -12,8 +12,13 @@ namespace GoldensMisc.Buffs
 		{
 			DisplayName.SetDefault("Cursed Memory");
 			Description.SetDefault("Cuts maximum HP in half");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Проклятые воспоминания");
 			Description.AddTranslation(GameCulture.Russian, "Уменьшают максиальное здоровье наполовину");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "被诅咒的记忆");
+			Description.AddTranslation(GameCulture.Chinese, "最大生命值减半");
+
 			canBeCleared = false;
 			longerExpertDebuff = true;
 			Main.debuff[Type] = true;

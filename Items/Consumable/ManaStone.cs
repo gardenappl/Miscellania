@@ -23,8 +23,12 @@ namespace GoldensMisc.Items.Consumable
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Can be used multiple times");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Камень маны");
 			Tooltip.AddTranslation(GameCulture.Russian, "Может быть использован несколько раз");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "法力之石");
+			Tooltip.AddTranslation(GameCulture.Chinese, "可多次使用");
 		}
 		
 		public override void SetDefaults()

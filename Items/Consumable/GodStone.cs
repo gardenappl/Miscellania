@@ -20,10 +20,16 @@ namespace GoldensMisc.Items.Consumable
 			Tooltip.SetDefault("Can be used infintely many times\n" +
 			                   "Does not cause potion sickness\n" +
 			                   "This is a cheater item");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Божественный камень");
 			Tooltip.AddTranslation(GameCulture.Russian, "Не тратится при использовании\n" +
 			                       "Не призводит к послезельевой болезни\n" +
 			                       "Предмет для читеров");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "神石");
+			Tooltip.AddTranslation(GameCulture.Chinese, "可无限使用\n" +
+			                       "不会获得药水病\n" +
+			                       "这是一个作弊项目");
 		}
 		
 		public override void SetDefaults()

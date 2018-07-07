@@ -19,9 +19,14 @@ namespace GoldensMisc.Items.Equipable
 		{
 			Tooltip.SetDefault("Allows the ability to dash\n" +
 			                   "Gives a chance to dodge attacks");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Снаряжение ниндзя");
 			Tooltip.AddTranslation(GameCulture.Russian, "Позволяет уклоняться от противников\n" +
 			                       "Дает шанс уклониться от атак");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "忍者装备");
+			Tooltip.AddTranslation(GameCulture.Chinese, "允许冲撞敌人\n" +
+								  "有几率躲避攻击");
 		}
 		
 		public override void SetDefaults()

@@ -31,7 +31,10 @@ namespace GoldensMisc.Tiles
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 			var name = CreateMapEntryName();
 			name.SetDefault("Red Fireplace");
+
 			name.AddTranslation(GameCulture.Russian, "Краcный камин");
+			name.AddTranslation(GameCulture.Chinese, "红色壁炉");
+
 			AddMapEntry(Color.Red, name);
 			disableSmartCursor = true;
 			animationFrameHeight = 38;

@@ -14,7 +14,9 @@ namespace GoldensMisc.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spear of Undying Justice");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Копьё бессмертного правосудия");
+			DisplayName.AddTranslation(GameCulture.Chinese, "永恒·正义之矛");
 		}
 		
 		public override void SetDefaults()

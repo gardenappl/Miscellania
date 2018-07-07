@@ -19,8 +19,12 @@ namespace GoldensMisc.Items.Equipable
 		{
 			DisplayName.SetDefault("Ancient Orb of Light");
 			Tooltip.SetDefault("Creates a magical glowing orb");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Древняя сфера света");
 			Tooltip.AddTranslation(GameCulture.Russian, "Создаёт волшебную светящуюся сферу");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "远古光明珍珠");
+			Tooltip.AddTranslation(GameCulture.Chinese, "召唤一个散发微弱光芒的光明魔法球");
 		}
 		
 		public override void SetDefaults()
