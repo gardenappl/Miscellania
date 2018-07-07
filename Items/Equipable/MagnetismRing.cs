@@ -25,7 +25,7 @@ namespace GoldensMisc.Items.Equipable
 			                       "'Вы очень притягательны'");
 
 			DisplayName.AddTranslation(GameCulture.Chinese, "磁力戒指");
-			Tooltip.AddTranslation(GameCulture.Chinese, "增加物品,硬币及魔力星的拾取范围\n" +
+			Tooltip.AddTranslation(GameCulture.Chinese, "增加物品,钱币及魔力星的拾取范围\n" +
 								  "你真的很有吸引力");
 		}
 		
