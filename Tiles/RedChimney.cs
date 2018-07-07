@@ -28,7 +28,10 @@ namespace GoldensMisc.Tiles
 			TileObjectData.addTile(Type);
 			var name = CreateMapEntryName();
 			name.SetDefault("Red Chimney");
+
 			name.AddTranslation(GameCulture.Russian, "Красный дымоход");
+			name.AddTranslation(GameCulture.Chinese, "红色烟囱");
+
 			AddMapEntry(Color.Red, name);
 			disableSmartCursor = true;
 			animationFrameHeight = 56;
