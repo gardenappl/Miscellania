@@ -19,8 +19,12 @@ namespace GoldensMisc.Items.Tools
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Teleports you to a party member\nRight-click and select a player");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Зеркало-червоточина");
 			Tooltip.AddTranslation(GameCulture.Russian, "Телепортирует вас к участнику команды\nНажмите ПКМ и выберите игрока");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "虫洞之镜");
+			Tooltip.AddTranslation(GameCulture.Chinese, "可传送队友\n右键选择玩家");
 		}
 		
 		public override void SetDefaults()
