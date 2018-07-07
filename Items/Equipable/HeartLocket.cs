@@ -19,9 +19,13 @@ namespace GoldensMisc.Items.Equipable
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Increases movement speed and length of invincibility after being struck");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Медальон-сердце");
 			Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает продолжительность неуязвимости после получения урона\n" +
 			                       "После удара увеличивает скорость движения");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "心之吊坠");
+			Tooltip.AddTranslation(GameCulture.Chinese, "受到伤害后提高移动速度及无敌时间");
 		}
 		
 		public override void SetDefaults()

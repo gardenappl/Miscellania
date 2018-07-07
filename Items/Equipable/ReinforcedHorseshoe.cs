@@ -19,9 +19,14 @@ namespace GoldensMisc.Items.Equipable
 		{
 			Tooltip.SetDefault("Negates fall damage\n" +
 			                   "Grants immunity to fire blocks and your own explosives");
+
 			DisplayName.AddTranslation(GameCulture.Russian, "Бронеподкова");
 			Tooltip.AddTranslation(GameCulture.Russian, "Нейтрализует урон от падения\n" +
 			                       "Дает невосприимчивость к огненным блокам и своей взрывчатке");
+
+			DisplayName.AddTranslation(GameCulture.Chinese, "钢筋马蹄");
+			Tooltip.AddTranslation(GameCulture.Chinese, "免疫摔落伤害\n" +
+								  "使你免疫火块及己方爆炸伤害");
 		}
 		
 		public override void SetDefaults()
