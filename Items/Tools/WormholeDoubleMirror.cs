@@ -27,7 +27,7 @@ namespace GoldensMisc.Items.Tools
 			DisplayName.AddTranslation(GameCulture.Russian, "Волшебное зеркало-червоточина");
 			Tooltip.AddTranslation(GameCulture.Russian, "Посмотри в зеркало, чтобы вернуться домой\nили телепортироваться к участнику команды\nНажмите ПКМ и выберите игрока");
 
-			DisplayName.AddTranslation(GameCulture.Chinese, "虫洞之镜");
+			DisplayName.AddTranslation(GameCulture.Chinese, "忆·虫洞之镜");
 			Tooltip.AddTranslation(GameCulture.Chinese, "盯着镜子便可回家\n或传送队友\n右键选择玩家");
 
 //			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 8));
