@@ -13,47 +13,47 @@ BuffDescription.OrbofLight=A magical orb that provides light
 
 
 ItemName.DeathEmblem=Emblem of Death
-ItemToolTip.DeathEmblem=Stare into the eyes to return to the place of your last death\nWill decrease maximum HP for a short period of time
+ItemTooltip.DeathEmblem=Stare into the eyes to return to the place of your last death\nWill decrease maximum HP for a short period of time
 
 ItemName.GodStone=God Stone
-ItemToolTip.GodStone=Can be used infintely many times\nDoes not cause potion sickness\nThis is a cheater item
+ItemTooltip.GodStone=Can be used infintely many times\nDoes not cause potion sickness\nThis is a cheater item
 
 ItemName.InertStone=Inert Stone
-ItemToolTip.InertStone='Has the potential to store magical energy'
+ItemTooltip.InertStone='Has the potential to store magical energy'
 
 ItemName.LifeStone=Healing Stone
-ItemToolTip.LifeStone=Can be used multiple times
+ItemTooltip.LifeStone=Can be used multiple times
 
 ItemName.ManaStone=Mana Stone
-ItemToolTip.ManaStone=Can be used multiple times
+ItemTooltip.ManaStone=Can be used multiple times
 
 
 // GoldensMisc.Items.Equipable
 
 
 ItemName.DemonCrown=Demon Crown
-ItemToolTip.DemonCrown=Grants great magical powers\nSummons a Red Crystal to fight for you
+ItemTooltip.DemonCrown=Grants great magical powers\nSummons a Red Crystal to fight for you
 
 ItemName.HeartLocket=Heart Locket
-ItemToolTip.HeartLocket=Increases movement speed and length of invincibility after being struck
+ItemTooltip.HeartLocket=Increases movement speed and length of invincibility after being struck
 
 ItemName.MagnetismRing=Magnetism Ring
-ItemToolTip.MagnetismRing=Increases pickup range for items, coins and mana stars\n'You're really attractive'
+ItemTooltip.MagnetismRing=Increases pickup range for items, coins and mana stars\n'You're really attractive'
 
 ItemName.NinjaGear=Ninja Gear
-ItemToolTip.NinjaGear=Allows the ability to dash\nGives a chance to dodge attacks
+ItemTooltip.NinjaGear=Allows the ability to dash\nGives a chance to dodge attacks
 
 ItemName.OrbofLight=Ancient Orb of Light
-ItemToolTip.OrbofLight=Creates a magical glowing orb
+ItemTooltip.OrbofLight=Creates a magical glowing orb
 
 ItemName.ReinforcedHorseshoe=Reinforced Horseshoe
-ItemToolTip.ReinforcedHorseshoe=Negates fall damage\nGrants immunity to fire blocks and your own explosives
+ItemTooltip.ReinforcedHorseshoe=Negates fall damage\nGrants immunity to fire blocks and your own explosives
 
 ItemName.ReinforcedVest=Reinforced Vest
-ItemToolTip.ReinforcedVest=Grants immunity to your own explosives
+ItemTooltip.ReinforcedVest=Grants immunity to your own explosives
 
 ItemName.UniversalMagnet=Universal Magnet
-ItemToolTip.UniversalMagnet=Increased pickup range for items
+ItemTooltip.UniversalMagnet=Increased pickup range for items
 
 
 // GoldensMisc.Items.Equipable.Vanity
@@ -62,7 +62,7 @@ ItemToolTip.UniversalMagnet=Increased pickup range for items
 ItemName.AdamantiteDye=Reflective Adamantite Dye
 
 ItemName.BaseballCap=Baseball Cap
-ItemToolTip.BaseballCap='How do you do, fellow kids?'
+ItemTooltip.BaseballCap='How do you do, fellow kids?'
 
 ItemName.ChlorophyteDye=Reflective Chlorophyte Dye
 
@@ -85,7 +85,7 @@ ItemName.VirtualDye=Virtual Dye
 
 
 ItemName.WormholeCrystal=Wormhole Crystal
-ItemToolTip.WormholeCrystal='You feel like it pulls you in as you hold it...'\nThis material currently has no use within Miscellania.\nYou can sell it or keep it in case of future mod updates.
+ItemTooltip.WormholeCrystal='You feel like it pulls you in as you hold it...'\nThis material currently has no use within Miscellania.\nYou can sell it or keep it in case of future mod updates.
 
 
 // GoldensMisc.Items.Placeable
@@ -106,22 +106,22 @@ ItemName.SandstoneSlabWall=Sandstone Slab Wall
 
 
 ItemName.IslandStaff=Staff of Laputa
-ItemToolTip.IslandStaff=Creates a floating island\nShatters after one use
+ItemTooltip.IslandStaff=Creates a floating island\nShatters after one use
 
 ItemName.RodofWarping=Rod of Warping
-ItemToolTip.RodofWarping=Teleports to the position of the mouse\nSignificantly reduced duration and damage of Chaos State
+ItemTooltip.RodofWarping=Teleports to the position of the mouse\nSignificantly reduced duration and damage of Chaos State
 
 ItemName.WormholeCellPhone=Network Cell Phone
-ItemToolTip.WormholeCellPhone=Displays everything\nAllows you to return home and teleport to party members at will\nRight-click to select a player
+ItemTooltip.WormholeCellPhone=Displays everything\nAllows you to return home and teleport to party members at will\nRight-click to select a player
 
 ItemName.WormholeDoubleMirror=Wormhole Recall Mirror
-ItemToolTip.WormholeDoubleMirror=Gaze in the mirror to return home\nor teleport to a party member\nRight-click and select a player
+ItemTooltip.WormholeDoubleMirror=Gaze in the mirror to return home\nor teleport to a party member\nRight-click and select a player
 
 ItemName.WormholeIceMirror=Ice Wormhole Mirror
-ItemToolTip.WormholeIceMirror=Gaze in the mirror to return home\nor teleport to a party member\nRight-click and select a player
+ItemTooltip.WormholeIceMirror=Gaze in the mirror to return home\nor teleport to a party member\nRight-click and select a player
 
 ItemName.WormholeMirror=Wormhole Mirror
-ItemToolTip.WormholeMirror=Teleports you to a party member\nRight-click and select a player
+ItemTooltip.WormholeMirror=Teleports you to a party member\nRight-click and select a player
 
 
 // GoldensMisc.Items.Weapons
@@ -138,10 +138,10 @@ ItemName.DiamondStaff=Diamond Staff
 ItemName.EmeraldStaff=Emerald Staff
 
 ItemName.KarmaStaff=Karma Staff
-ItemToolTip.KarmaStaff=Summons a blaster sentry to shoot lasers at your enemies.
+ItemTooltip.KarmaStaff=Summons a blaster sentry to shoot lasers at your enemies.
 
 ItemName.MagicSpear=Spear of Justice
-ItemToolTip.MagicSpear=Rapidly throws piercing spears\n'Ngahhh!!'
+ItemTooltip.MagicSpear=Rapidly throws piercing spears\n'Ngahhh!!'
 
 ItemName.RubyStaff=Ruby Staff
 
@@ -150,7 +150,7 @@ ItemName.SapphireStaff=Sapphire Staff
 ItemName.TopazStaff=Topaz Staff
 
 ItemName.UndyingSpear=Spear of Undying Justice
-ItemToolTip.UndyingSpear=Rapidly throws piercing spears
+ItemTooltip.UndyingSpear=Rapidly throws piercing spears
 
 
 // GoldensMisc.NPCs
