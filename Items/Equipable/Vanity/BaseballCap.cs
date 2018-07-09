@@ -13,17 +13,6 @@ namespace GoldensMisc.Items.Equipable.Vanity
 		{
 			return Config.BaseballBats;
 		}
-
-		public override void SetStaticDefaults()
-		{
-			Tooltip.SetDefault("'How do you do, fellow kids?'");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Бейсбольная кепка");
-			Tooltip.AddTranslation(GameCulture.Russian, null);
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "棒球帽");
-			Tooltip.AddTranslation(GameCulture.Chinese, "'你们好吗,孩子们?'");
-		}
 		
 		public override void SetDefaults()
 		{

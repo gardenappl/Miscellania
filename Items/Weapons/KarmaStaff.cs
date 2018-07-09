@@ -19,15 +19,6 @@ namespace GoldensMisc.Items.Weapons
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Karma Staff");
-			Tooltip.SetDefault("Summons a blaster sentry to shoot lasers at your enemies.");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Посох кармы");
-			Tooltip.AddTranslation(GameCulture.Russian, "Призывает стационарный бластер, который стреляет лазером во врагов");
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "命魂法杖");
-			Tooltip.AddTranslation(GameCulture.Chinese, "召唤一个命魂向敌人射击激光");
-
 			ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true;
 			ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
 		}

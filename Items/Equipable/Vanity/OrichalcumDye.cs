@@ -14,14 +14,6 @@ namespace GoldensMisc.Items.Equipable.Vanity
 			return Config.ExtraDyes;
 		}
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Reflective Orichalcum Dye");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Светоотражающий орихалковый краситель");
-			DisplayName.AddTranslation(GameCulture.Chinese, "反光山铜染料");
-		}
-
 		public override void SetDefaults()
 		{
 			item.width = 20;

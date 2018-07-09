@@ -14,12 +14,6 @@ namespace GoldensMisc.Items.Weapons
 			return Config.BaseballBats;
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			DisplayName.AddTranslation(GameCulture.Russian, "Бейсбольная бита"); //the pun doesn't translate well to Russian :sadface:
-			DisplayName.AddTranslation(GameCulture.Chinese, "棒球棒");
-		}
-		
 		public override void SetDefaults()
 		{
 			item.damage = 16;

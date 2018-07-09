@@ -10,15 +10,6 @@ namespace GoldensMisc.Buffs
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("Ancient Orb of Light");
-			Description.SetDefault("A magical orb that provides light");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Древняя сфера света");
-			Description.AddTranslation(GameCulture.Russian, "Магическая сфера, излучающая свет");
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "远古光明珍珠");
-			Description.AddTranslation(GameCulture.Chinese, "一个发出微光的魔法小球");
-
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

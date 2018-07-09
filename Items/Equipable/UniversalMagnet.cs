@@ -14,17 +14,6 @@ namespace GoldensMisc.Items.Equipable
 			return Config.Magnets;
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			Tooltip.SetDefault("Increased pickup range for items");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Универсальный магнит");
-			Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает дистанцию взятия предметов");
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "普通的磁铁");
-			Tooltip.AddTranslation(GameCulture.Chinese, "增加物品拾取范围");
-		}
-		
 		public override void SetDefaults()
 		{
 			item.width = 30;

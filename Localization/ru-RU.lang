@@ -1,0 +1,203 @@
+
+---------------- Баффы
+
+
+BuffName.CursedMemory=Проклятые воспоминания
+BuffDescription.CursedMemory=Уменьшают максиальное здоровье наполовину
+
+BuffName.OrbofLight=Древняя сфера света
+BuffDescription.OrbofLight=Магическая сфера, излучающая свет
+
+
+---------------- Команды
+
+
+CommandUsage=Использование:
+
+Command.WorldGen.Description=Генерирует структуры Miscellania в уже существующем мире\nВНИМАНИЕ: Может вызвать лаги, а также повредить существующие постройки и/или ландшафт!
+Command.WorldGen.HellforgeDisabled=Древние адские кузни отключены в настройках мода!
+Command.WorldGen.ForgeDisabled=Древние кузни отключены в настройках мода!
+
+
+---------------- Предметы
+
+
+ItemName.DeathEmblem=Эмблема смерти
+ItemTooltip.DeathEmblem=Посмотри в глаза, чтобы вернуться в место своей последней смерти\nСнизит максимальное количество здоровья на некоторое время
+
+ItemName.GodStone=Божественный камень
+ItemTooltip.GodStone=Не тратится при использовании\nНе призводит к послезельевой болезни\nПредмет для читеров
+
+ItemName.InertStone=Инертный камень
+ItemTooltip.InertStone='Имеет потенциал как храненитель магической энергии'
+
+ItemName.LifeStone=Лечебный камень
+ItemTooltip.LifeStone=Может быть использован несколько раз
+
+ItemName.ManaStone=Камень маны
+ItemTooltip.ManaStone=Может быть использован несколько раз
+
+ItemName.DemonCrown=Демоническая корона
+ItemTooltip.DemonCrown=Даёт великую магическую силу\nПризывает Красный кристалл, который сражается за вас
+
+ItemName.HeartLocket=Медальон-сердце
+ItemTooltip.HeartLocket=Увеличивает продолжительность неуязвимости после получения урона\nПосле удара увеличивает скорость движения
+
+ItemName.MagnetismRing=Кольцо магнетизма
+ItemTooltip.MagnetismRing=Увеличивает дистанцию взятия предметов, монет и звёзд маны\n'Вы очень притягательны'
+
+ItemName.NinjaGear=Снаряжение ниндзя
+ItemTooltip.NinjaGear=Позволяет совершать рывки\nДает шанс уклониться от атак
+
+ItemName.OrbofLight=Древняя сфера света
+ItemTooltip.OrbofLight=Создаёт волшебную светящуюся сферу
+
+ItemName.ReinforcedHorseshoe=Бронеподкова
+ItemTooltip.ReinforcedHorseshoe=Нейтрализует урон от падения\nДает невосприимчивость к огненным блокам и своей взрывчатке
+
+ItemName.ReinforcedVest=Бронежилет
+ItemTooltip.ReinforcedVest=Дает невосприимчивость к своей взрывчатке
+
+ItemName.UniversalMagnet=Универсальный магнит
+ItemTooltip.UniversalMagnet=Увеличивает дистанцию взятия предметов
+
+ItemName.AdamantiteDye=Светоотражающий адамантитовый краситель
+
+ItemName.BaseballCap=Бейсбольная кепка
+ItemTooltip.BaseballCap=Нажмите ПКМ, чтобы повернуть набок
+
+ItemName.ChlorophyteDye=Светоотражающий хлорофитовый краситель
+
+ItemName.CobaltDye=Светоотражающий кобальтовый краситель
+
+ItemName.MatrixDye=Краситель матрицы
+
+ItemName.MythrilDye=Светоотражающий мифриловый краситель
+
+ItemName.OrichalcumDye=Светоотражающий орихалковый краситель
+
+ItemName.PalladiumDye=Светоотражающий палладиевый краситель
+
+ItemName.TitaniumDye=Светоотражающий титановый краситель
+
+ItemName.VirtualDye=Виртуальный краситель
+
+ItemName.WormholeCrystal=Кристалл-червоточина
+ItemTooltip.WormholeCrystal='Держа его в руке, вы чувствуете, что вас засасывет...'\nНа данный момент этот материал не имеет использований\nМожете или продать, или оставить себе на случай будущих апдейтов
+
+ItemName.AncientForge=Древняя кузня
+
+ItemName.AncientHellforge=Древняя адская кузня
+
+ItemName.RedChimney=Красный дымоход
+
+ItemName.RedFireplace=Красный камин
+
+ItemName.SandstoneSlabWall=Стена из песчаной пластины
+
+ItemName.IslandStaff=Посох Лапуты
+ItemTooltip.IslandStaff=Создаёт парящий остров\nРазрушается после одного использования
+LaputaCannotUse=Возможно, не стоит это делать здесь.
+LaputaTooHigh=Вы находитесь слишком высоко над землёй.
+LaputaBlocked=Что-то закрывает над вами небо.
+
+ItemName.RodofWarping=Жезл искажения
+ItemTooltip.RodofWarping=Телепортирует на позицию мыши\nЗначительно уменьшены длительность и урон Состояния хаоса
+
+ItemName.WormholeCellPhone=Сотовый телефон
+ItemTooltip.WormholeCellPhone=Показывает всё\nПозволяет в любой момент вернуться домой\nили телепортироваться к участнику команды\nНажмите ПКМ и выберите игрока
+
+ItemName.WormholeDoubleMirror=Волшебное зеркало-червоточина
+ItemTooltip.WormholeDoubleMirror=Посмотри в зеркало, чтобы вернуться домой\nили телепортироваться к участнику команды\nНажмите ПКМ и выберите игрока
+
+ItemName.WormholeIceMirror=Ледяное зеркало-червоточина
+ItemTooltip.WormholeIceMirror=Посмотри в зеркало, чтобы вернуться домой\nили телепортироваться к участнику команды\nНажмите ПКМ и выберите игрока
+
+ItemName.WormholeMirror=Зеркало-червоточина
+ItemTooltip.WormholeMirror=Телепортирует вас к участнику команды\nНажмите ПКМ и выберите игрока
+
+ItemName.AmethystStaff=Аметистовый посох
+
+ItemName.AncientMuramasa=Древняя Мурамаса
+
+ItemName.BaseballBat=Бейсбольная бита
+
+ItemName.DiamondStaff=Алмазный посох
+
+ItemName.EmeraldStaff=Изумрудный посох
+
+ItemName.KarmaStaff=Посох кармы
+ItemTooltip.KarmaStaff=Призывает стационарный авто-бластер, стреляющий лазером во врагов
+
+ItemName.MagicSpear=Посох правосудия
+ItemTooltip.MagicSpear=Быстро метает пронзающие копья
+
+ItemName.RubyStaff=Рубиновый посох
+
+ItemName.SapphireStaff=Сапфировый посох
+
+ItemName.TopazStaff=Топаховый посох
+
+ItemName.UndyingSpear=Копье бессмертного правосудия
+ItemTooltip.UndyingSpear=Быстро метает пронзающие копья
+
+
+---------------- NPC
+
+
+NPCName.BaseballCaveBat=Бейсбольная пещерная летучая мышь
+
+NPCName.BaseballGiantBat=Бейсбольная гигантская летучая мышь
+
+NPCName.BaseballHellBat=Бейсбольная адская летучая мышь
+
+NPCName.BaseballIceBat=Бейсбольная ледяная летучая мышь
+
+NPCName.BaseballIlluminantBat=Бейсбольная светящаяся летучая мышь
+
+NPCName.BaseballJungleBat=Бейсбольная тропическая летучая мышь
+
+NPCName.BaseballLavaBat=Бейсбольная лавовая летучая мышь
+
+
+---------------- Снаряды
+
+
+ProjectileName.GasterBlaster=Авто-бластер
+
+ProjectileName.GasterLaser=Лазер бластера
+
+ProjectileName.Laputa=Свет Лапутыы
+
+ProjectileName.MagicSpear=Копье правосудия
+
+ProjectileName.MagicSpearMini=Мини-копье правосудия
+
+ProjectileName.OrbofLight=Древняя сфера света
+
+ProjectileName.RedBullet=Красный снаряд
+
+ProjectileName.RedCrystal=Красный кристалл
+
+ProjectileName.UndyingSpear=Копье бессмертного правосудия
+
+
+---------------- Блоки
+
+
+MapObject.AncientForge=Древняя кузня
+
+MapObject.AncientHellforge=Древняя адская кузня
+
+MapObject.RedChimney=Красный дымоход
+
+MapObject.RedFireplace=Красный камин
+
+
+---------------- Интерфейс
+
+
+CloseButton=Закрыть
+
+HomeButton=Домой
+

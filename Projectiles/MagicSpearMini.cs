@@ -22,14 +22,6 @@ namespace GoldensMisc.Projectiles
 			set { projectile.ai[0] = value ? 1 : 0; }
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Mini Spear of Justice");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Мини-копье правосудия");
-			DisplayName.AddTranslation(GameCulture.Chinese, "迷你正义之矛");
-		}
-		
 		public override void SetDefaults()
 		{
 			projectile.width = 14;

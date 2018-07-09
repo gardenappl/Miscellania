@@ -15,18 +15,6 @@ namespace GoldensMisc.Items.Weapons
 			return Config.SpearofJustice;
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Spear of Undying Justice");
-			Tooltip.SetDefault("Rapidly throws piercing spears");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Копье бессмертного правосудия");
-			Tooltip.AddTranslation(GameCulture.Russian, "Быстро метает пронзающие копья");
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "永恒·正义之矛");
-			Tooltip.AddTranslation(GameCulture.Chinese, "迅速投掷穿刺之矛");
-		}
-		
 		public override void SetDefaults()
 		{
 			item.value = Item.sellPrice(0, 7);

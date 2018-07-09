@@ -14,14 +14,6 @@ namespace GoldensMisc.Items.Equipable.Vanity
 			return Config.ExtraDyes;
 		}
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Virtual Dye");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Виртуальный краситель");
-			DisplayName.AddTranslation(GameCulture.Chinese, "虚拟染料");
-		}
-
 		public override void SetDefaults()
 		{
 			item.width = 20;

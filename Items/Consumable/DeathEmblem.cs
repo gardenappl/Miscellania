@@ -12,22 +12,6 @@ namespace GoldensMisc.Items.Consumable
 {
 	public class DeathEmblem : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Emblem of Death");
-			Tooltip.SetDefault("Stare into the eyes to return to the place of your last death\n" +
-			                   "Will decrease maximum HP for a short period of time");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Эмблема смерти");
-			Tooltip.AddTranslation(GameCulture.Russian, "Посмотри в глаза, чтобы вернуться в место своей последней смерти\n" +
-			                       "Снизит максимальное количество здоровья на некоторое время");
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "死亡纹章");
-			Tooltip.AddTranslation(GameCulture.Chinese, "凝视它的眼睛,回到你最后的死亡之地\n" +
-								   "将在短时间内减少最大生命值");
-//			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 8));
-		}
-		
 		public override void SetDefaults()
 		{
 			item.useTurn = true;

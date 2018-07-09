@@ -25,14 +25,6 @@ namespace GoldensMisc.Projectiles
 			set { projectile.ai[1] = value; }
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Laputa Light");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Свет Лапуты");
-			DisplayName.AddTranslation(GameCulture.Chinese, "空岛之光");
-		}
-		
 		public override void SetDefaults()
 		{
 			projectile.width = 52;

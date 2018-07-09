@@ -21,14 +21,6 @@ namespace GoldensMisc.Projectiles
 		}
 		Vector2 endPoint;
 		
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Blaster Laser");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Лазер бластера");
-			DisplayName.AddTranslation(GameCulture.Chinese, "冲击波激光");
-		}
-		
 		public override void SetDefaults()
 		{
 			projectile.netImportant = true;

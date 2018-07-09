@@ -17,18 +17,6 @@ namespace GoldensMisc.Items.Tools
 		{
 			return Config.WormholeMirror && Config.CellPhoneUpgrade;
 		}
-		
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Network Cell Phone");
-			Tooltip.SetDefault("Displays everything\nAllows you to return home and teleport to party members at will\nRight-click to select a player");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Мобильный телефон");
-			Tooltip.AddTranslation(GameCulture.Russian, "Показывает всё\nПозволяет в любой момент вернуться домой\nили телепортироваться к участнику команды\nНажмите ПКМ и выберите игрока");
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "网络手机");
-			Tooltip.AddTranslation(GameCulture.Chinese, "显示所有信息\n允许你随意回家及传送队友\n右键选择玩家");
-		}
 
 		public override void SetDefaults()
 		{

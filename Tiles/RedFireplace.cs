@@ -29,13 +29,7 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			var name = CreateMapEntryName();
-			name.SetDefault("Red Fireplace");
-
-			name.AddTranslation(GameCulture.Russian, "Краcный камин");
-			name.AddTranslation(GameCulture.Chinese, "红色壁炉");
-
-			AddMapEntry(Color.Red, name);
+			AddMapEntry(Color.Red, CreateMapEntryName());
 			disableSmartCursor = true;
 			animationFrameHeight = 38;
 			adjTiles = new int[]{ TileID.Fireplace };

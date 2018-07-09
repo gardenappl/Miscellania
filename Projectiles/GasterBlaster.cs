@@ -42,8 +42,6 @@ namespace GoldensMisc.Projectiles
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Autoblaster");
-			DisplayName.AddTranslation(GameCulture.Russian, "Авто-бластер");
 			Main.projFrames[projectile.type] = 2;
 			Main.projPet[projectile.type] = true;
 			ProjectileID.Sets.Homing[projectile.type] = true;

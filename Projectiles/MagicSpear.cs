@@ -9,15 +9,7 @@ using Terraria.ModLoader;
 namespace GoldensMisc.Projectiles
 {
 	public class MagicSpear : ModProjectile
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Spear of Justice");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Копье правосулия");
-			DisplayName.AddTranslation(GameCulture.Chinese, "正义之矛");
-		}
-		
+	{	
 		public override void SetDefaults()
 		{
 			projectile.scale = 1.3f;

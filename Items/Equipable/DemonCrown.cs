@@ -15,20 +15,6 @@ namespace GoldensMisc.Items.Equipable
 			return Config.DemonCrown;
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			Tooltip.SetDefault("Grants great magical powers\n" +
-			                   "Summons a Red Crystal to fight for you");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Демоническая корона");
-			Tooltip.AddTranslation(GameCulture.Russian, "Даёт великую магическую силу\n" +
-			                       "Призывает Красный кристалл, который сражается за вас");
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "恶魔皇冠");
-			Tooltip.AddTranslation(GameCulture.Chinese, "赋予巨大的魔法力量\n" +
-								  "召唤一个红水晶为你而战");
-		}
-		
 		public override void SetDefaults()
 		{
 			item.width = 22;

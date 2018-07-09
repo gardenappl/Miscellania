@@ -26,13 +26,7 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.addTile(Type);
-			var name = CreateMapEntryName();
-			name.SetDefault("Ancient Hellforge");
-
-			name.AddTranslation(GameCulture.Russian, "Древняя адская кузня");
-			name.AddTranslation(GameCulture.Chinese, "远古地狱熔炉");
-
-			AddMapEntry(Color.Red, name);
+			AddMapEntry(Color.Red, CreateMapEntryName());
 			disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.Hellforge };
 		}

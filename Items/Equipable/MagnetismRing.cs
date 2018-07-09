@@ -15,20 +15,6 @@ namespace GoldensMisc.Items.Equipable
 			return Config.Magnets;
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			Tooltip.SetDefault("Increases pickup range for items, coins and mana stars\n" +
-			                   "'You're really attractive'"); //not necessary to translate the shitty pun
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Кольцо магнетизма");
-			Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает дистанцию взятия предметов, монет и звёзд маны\n" +
-			                       "'Вы очень притягательны'");
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "磁力戒指");
-			Tooltip.AddTranslation(GameCulture.Chinese, "增加物品,钱币及魔力星的拾取范围\n" +
-								  "你真的很有吸引力");
-		}
-		
 		public override void SetDefaults()
 		{
 			item.width = 28;

@@ -14,14 +14,6 @@ namespace GoldensMisc.Items.Equipable.Vanity
 			return Config.ExtraDyes;
 		}
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Reflective Adamantite Dye");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Светоотражающий адамантитовый краситель");
-			DisplayName.AddTranslation(GameCulture.Chinese, "反光金刚石染料");
-		}
-
 		public override void SetDefaults()
 		{
 			item.width = 20;

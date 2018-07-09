@@ -21,38 +21,6 @@ namespace GoldensMisc.Items.Tools
             return false;
         }
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Staff of Laputa");
-            Tooltip.SetDefault("Creates a floating island\n" +
-                               "Shatters after one use");
-
-            DisplayName.AddTranslation(GameCulture.Russian, "Посох Лапуты");
-            Tooltip.AddTranslation(GameCulture.Russian, "Создаёт парящий остров\n" +
-                                   "Разрушается после одного использования");
-
-            DisplayName.AddTranslation(GameCulture.Chinese, "空岛法杖");
-            Tooltip.AddTranslation(GameCulture.Chinese, "创造一个浮动岛\n" +
-                                   "使用一次后将损坏");
-
-            var text = mod.CreateTranslation("LaputaCannotUse");
-            text.SetDefault("Perhaps it's not a good idea to do this here.");
-            text.AddTranslation(GameCulture.Russian, "Возможно, не стоит это делать здесь.");
-            text.AddTranslation(GameCulture.Chinese, "也许在这里这么做并不是个好主意.");
-
-            mod.AddTranslation(text);
-            text = mod.CreateTranslation("LaputaTooHigh");
-            text.SetDefault("You're too high above the ground.");
-            text.AddTranslation(GameCulture.Russian, "Вы находитесь слишком высоко над землёй.");
-            text.AddTranslation(GameCulture.Chinese, "你距离地面太高了.");
-
-            mod.AddTranslation(text);
-            text = mod.CreateTranslation("LaputaBlocked");
-            text.SetDefault("Something is in the way.");
-            text.AddTranslation(GameCulture.Russian, "Что-то закрывает над вами небо.");
-            text.AddTranslation(GameCulture.Chinese, "似乎被什么东西挡住了");
-        }
-
         public override void SetDefaults()
         {
             item.consumable = true;

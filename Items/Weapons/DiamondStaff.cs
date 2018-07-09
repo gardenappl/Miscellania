@@ -17,9 +17,6 @@ namespace GoldensMisc.Items.Weapons
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.AddTranslation(GameCulture.Russian, "Алмазный посох");
-			DisplayName.AddTranslation(GameCulture.Chinese, "钻石法杖");
-
 			Item.staff[item.type] = true;
 		}
 		

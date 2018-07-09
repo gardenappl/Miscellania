@@ -18,9 +18,6 @@ namespace GoldensMisc.NPCs
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.AddTranslation(GameCulture.Russian, "Бейсбольная гигантская летучая мышь");
-			DisplayName.AddTranslation(GameCulture.Chinese, "棒球巨型蝙蝠");
-
 			Main.npcFrameCount[npc.type] = 4;
 		}
 		

@@ -16,12 +16,6 @@ namespace GoldensMisc.Items.Weapons
 			return Config.AncientMuramasa;
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			DisplayName.AddTranslation(GameCulture.Russian, "Древняя Мурамаса");
-			DisplayName.AddTranslation(GameCulture.Chinese, "远古村正");
-		}
-		
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Muramasa);

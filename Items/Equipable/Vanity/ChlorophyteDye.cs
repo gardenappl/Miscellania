@@ -14,14 +14,6 @@ namespace GoldensMisc.Items.Equipable.Vanity
 			return Config.ExtraDyes;
 		}
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Reflective Chlorophyte Dye");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Светоотражающий хлорофитовый краситель");
-			DisplayName.AddTranslation(GameCulture.Chinese, "反光叶绿染料");
-		}
-
 		public override void SetDefaults()
 		{
 			item.width = 20;

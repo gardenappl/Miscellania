@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.World.Generation;
 
@@ -26,37 +27,36 @@ namespace GoldensMisc.Commands
 		
 		public override string Description
 		{
-			get { return "Generates Miscellania world features in pre-existing worlds" + Environment.NewLine +
-					"WARNING: May cause lag, as well as damage previously built/generated structures!"; }
+			get { return Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.Description"); }
 		}
 		
 		public override void Action(CommandCaller caller, string input, string[] args)
 		{
 			if(args.Length != 1)
 			{
-				throw new UsageException("Usage: " + Usage);
+				throw new UsageException(Language.GetTextValue("Mods.GoldensMisc.CommandUsage") + " " + Usage);
 			}
 			if(args[0].Equals("hellforge", StringComparison.OrdinalIgnoreCase))
 			{
 				if(!Config.AncientForges)
 				{
-					Main.NewText("Ancient Hellforges are disabled!");
+					Main.NewText(Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.HellforgeDisabled"));
 					return;
 				}
-				Task.Run(() => mod.GetModWorld<MiscWorld>().AddHellforges());
+				new Task(() => mod.GetModWorld<MiscWorld>().AddHellforges()).Start();
 			}
 			if(args[0].Equals("forge", StringComparison.OrdinalIgnoreCase))
 			{
 				if(!Config.AncientForges)
 				{
-					Main.NewText("Ancient Forges are disabled!");
+					Main.NewText(Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.ForgeDisabled"));
 					return;
 				}
-				Task.Run(() => mod.GetModWorld<MiscWorld>().AddForges());
+				new Task(() => mod.GetModWorld<MiscWorld>().AddForges()).Start();
 			}
 			else
 			{
-				throw new UsageException("Usage: " + Usage);
+				throw new UsageException(Language.GetTextValue("Mods.GoldensMisc.CommandUsage") + " " + Usage);
 			}
 			return;
 		}

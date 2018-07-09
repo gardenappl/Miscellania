@@ -14,12 +14,6 @@ namespace GoldensMisc.Items.Placeable
 			return Config.RedBrickFurniture;
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			DisplayName.AddTranslation(GameCulture.Russian, "Красный дымоход");
-			DisplayName.AddTranslation(GameCulture.Chinese, "红色烟囱");
-		}
-		
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Chimney);

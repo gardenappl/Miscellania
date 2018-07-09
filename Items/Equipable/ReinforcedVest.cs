@@ -16,17 +16,6 @@ namespace GoldensMisc.Items.Equipable
 			return Config.ReinforcedVest;
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			Tooltip.SetDefault("Grants immunity to your own explosives");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Бронежилет");
-			Tooltip.AddTranslation(GameCulture.Russian, "Дает невосприимчивость к своей взрывчатке");
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "装甲之躯");
-			Tooltip.AddTranslation(GameCulture.Chinese, "使你免疫己方爆炸伤害");
-		}
-		
 		public override void SetDefaults()
 		{
 			item.width = 20;

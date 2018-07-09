@@ -1,5 +1,5 @@
 
-// GoldensMisc.Buffs
+---------------- Buffs
 
 
 BuffName.CursedMemory=Cursed Memory
@@ -9,7 +9,17 @@ BuffName.OrbofLight=Ancient Orb of Light
 BuffDescription.OrbofLight=A magical orb that provides light
 
 
-// GoldensMisc.Items.Consumable
+---------------- Commands
+
+
+CommandUsage=Usage:
+
+Command.WorldGen.Description=Generates Miscellania world features in pre-existing worlds\nWARNING: May cause lag, as well as damage previously built/generated structures!
+Command.WorldGen.HellforgeDisabled=Ancient Hellforges are disabled in the config!
+Command.WorldGen.ForgeDisabled=Ancient Forges are disabled in the config!
+
+
+---------------- Items
 
 
 ItemName.DeathEmblem=Emblem of Death
@@ -27,10 +37,6 @@ ItemTooltip.LifeStone=Can be used multiple times
 ItemName.ManaStone=Mana Stone
 ItemTooltip.ManaStone=Can be used multiple times
 
-
-// GoldensMisc.Items.Equipable
-
-
 ItemName.DemonCrown=Demon Crown
 ItemTooltip.DemonCrown=Grants great magical powers\nSummons a Red Crystal to fight for you
 
@@ -38,6 +44,7 @@ ItemName.HeartLocket=Heart Locket
 ItemTooltip.HeartLocket=Increases movement speed and length of invincibility after being struck
 
 ItemName.MagnetismRing=Magnetism Ring
+(remove the stupid pun if you don't want to translate it)
 ItemTooltip.MagnetismRing=Increases pickup range for items, coins and mana stars\n'You're really attractive'
 
 ItemName.NinjaGear=Ninja Gear
@@ -55,14 +62,10 @@ ItemTooltip.ReinforcedVest=Grants immunity to your own explosives
 ItemName.UniversalMagnet=Universal Magnet
 ItemTooltip.UniversalMagnet=Increased pickup range for items
 
-
-// GoldensMisc.Items.Equipable.Vanity
-
-
 ItemName.AdamantiteDye=Reflective Adamantite Dye
 
 ItemName.BaseballCap=Baseball Cap
-ItemTooltip.BaseballCap='How do you do, fellow kids?'
+ItemTooltip.BaseballCap='How do you do, fellow kids?'\nRight-click to wear backwards
 
 ItemName.ChlorophyteDye=Reflective Chlorophyte Dye
 
@@ -80,16 +83,8 @@ ItemName.TitaniumDye=Reflective Titanium Dye
 
 ItemName.VirtualDye=Virtual Dye
 
-
-// GoldensMisc.Items.Materials
-
-
 ItemName.WormholeCrystal=Wormhole Crystal
-ItemTooltip.WormholeCrystal='You feel like it pulls you in as you hold it...'\nThis material currently has no use within Miscellania.\nYou can sell it or keep it in case of future mod updates.
-
-
-// GoldensMisc.Items.Placeable
-
+ItemTooltip.WormholeCrystal='You feel like it pulls you in as you hold it...'\nThis material currently has no use within Miscellania\nYou can sell it or keep it in case of future mod updates
 
 ItemName.AncientForge=Ancient Forge
 
@@ -101,12 +96,11 @@ ItemName.RedFireplace=Red Fireplace
 
 ItemName.SandstoneSlabWall=Sandstone Slab Wall
 
-
-// GoldensMisc.Items.Tools
-
-
 ItemName.IslandStaff=Staff of Laputa
 ItemTooltip.IslandStaff=Creates a floating island\nShatters after one use
+LaputaCannotUse=Perhaps it's not a good idea to use this here.
+LaputaTooHigh=You're too high above the ground.
+LaputaBlocked=Something is blocking the sky.
 
 ItemName.RodofWarping=Rod of Warping
 ItemTooltip.RodofWarping=Teleports to the position of the mouse\nSignificantly reduced duration and damage of Chaos State
@@ -122,10 +116,6 @@ ItemTooltip.WormholeIceMirror=Gaze in the mirror to return home\nor teleport to 
 
 ItemName.WormholeMirror=Wormhole Mirror
 ItemTooltip.WormholeMirror=Teleports you to a party member\nRight-click and select a player
-
-
-// GoldensMisc.Items.Weapons
-
 
 ItemName.AmethystStaff=Amethyst Staff
 
@@ -153,7 +143,29 @@ ItemName.UndyingSpear=Spear of Undying Justice
 ItemTooltip.UndyingSpear=Rapidly throws piercing spears
 
 
-// GoldensMisc.NPCs
+---------------- Projectiles
+
+
+ProjectileName.GasterBlaster=Autoblaster
+
+ProjectileName.GasterLaser=Blaster Laser
+
+ProjectileName.Laputa=Laputa Light
+
+ProjectileName.MagicSpear=Spear of Justice
+
+ProjectileName.MagicSpearMini=Mini Spear of Justice
+
+ProjectileName.OrbofLight=Ancient Orb of Light
+
+ProjectileName.RedBullet=Red Bolt
+
+ProjectileName.RedCrystal=Red Crystal
+
+ProjectileName.UndyingSpear=Spear of Undying Justice
+
+
+---------------- NPCs
 
 
 NPCName.BaseballCaveBat=Baseball Cave Bat
@@ -171,12 +183,22 @@ NPCName.BaseballJungleBat=Baseball Jungle Bat
 NPCName.BaseballLavaBat=Baseball Lava Bat
 
 
-// GoldensMisc.Tiles
+---------------- Tiles
 
+
+MapObject.AncientForge=Ancient Forge
 
 MapObject.AncientHellforge=Ancient Hellforge
 
 MapObject.RedChimney=Red Chimney
 
 MapObject.RedFireplace=Red Fireplace
+
+
+---------------- UI
+
+
+CloseButton=Close
+
+HomeButton=Home
 

@@ -19,20 +19,6 @@ namespace GoldensMisc.Items.Tools
 			return Config.WormholeMirror;
 		}
 		
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Wormhole Recall Mirror");
-			Tooltip.SetDefault("Gaze in the mirror to return home\nor teleport to a party member\nRight-click and select a player");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Волшебное зеркало-червоточина");
-			Tooltip.AddTranslation(GameCulture.Russian, "Посмотри в зеркало, чтобы вернуться домой\nили телепортироваться к участнику команды\nНажмите ПКМ и выберите игрока");
-
-			DisplayName.AddTranslation(GameCulture.Chinese, "忆·虫洞之镜");
-			Tooltip.AddTranslation(GameCulture.Chinese, "盯着镜子便可回家\n或传送队友\n右键选择玩家");
-
-//			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 8));
-		}
-		
 		public override void SetDefaults()
 		{
 			item.useTurn = true;

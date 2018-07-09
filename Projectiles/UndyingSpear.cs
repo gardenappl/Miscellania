@@ -10,15 +10,7 @@ using Terraria.ModLoader;
 namespace GoldensMisc.Projectiles
 {
 	public class UndyingSpear : ModProjectile
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Spear of Undying Justice");
-
-			DisplayName.AddTranslation(GameCulture.Russian, "Копьё бессмертного правосудия");
-			DisplayName.AddTranslation(GameCulture.Chinese, "永恒·正义之矛");
-		}
-		
+	{	
 		public override void SetDefaults()
 		{
 			projectile.scale = 1.3f;

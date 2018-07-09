@@ -13,12 +13,6 @@ namespace GoldensMisc.Items.Placeable
 		{
 			return Config.RedBrickFurniture;
 		}
-
-		public override void SetStaticDefaults()
-		{
-			DisplayName.AddTranslation(GameCulture.Russian, "Красный камин");
-			DisplayName.AddTranslation(GameCulture.Chinese, "红色壁炉");
-		}
 		
 		public override void SetDefaults()
 		{
