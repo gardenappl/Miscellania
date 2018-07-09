@@ -143,56 +143,7 @@ namespace GoldensMisc
 					return true;
 				}, InterfaceScaleType.UI));
 			}
-			//int index = layers.FindIndex(x => x.Name == "Vanilla: Map / Minimap");
-			//if(index != -1)
-			//{
-			//	layers.Insert(index, new LegacyGameInterfaceLayer("GoldensMisc: Horrible Wormhole Hack 1", delegate
-			//	{
-			//		PreDrawMap();
-			//		return true;
-			//	}));
-			//	layers.Insert(index + 2, new LegacyGameInterfaceLayer("GoldensMisc: Horrible Wormhole Hack 2", delegate
-			//	{
-			//		PostDrawMap();
-			//		return true;
-			//	}));
-			//}
 		}
-
-		//		int WormholeReplaceSlot = -1;
-		//		Item WormholeReplaceItem;
-
-		//		void PreDrawMap()
-		//		{
-		//			for(int i = 0; i < 58; i++)
-		//			{
-		//				var item = Main.LocalPlayer.inventory[i];
-		//				if(item.stack <= 0)
-		//					continue;
-		//				if(item.type == ItemType<WormholeMirror>() ||
-		//				   item.type == ItemType<WormholeDoubleMirror>() ||
-		//				   item.type == ItemType<WormholeIceMirror>() ||
-		//				   item.type == ItemType<WormholeCellPhone>())
-		//				{
-		//					WormholeReplaceSlot = i;
-		//					WormholeReplaceItem = item;
-		//					Main.LocalPlayer.inventory[i] = new Item();
-		//					Main.LocalPlayer.inventory[i].SetDefaults(ItemID.WormholePotion);
-		//					Main.LocalPlayer.inventory[i].stack = 30;
-		//					break;
-		//				}
-		//			}
-		////			Main.NewText(Main.LocalPlayer.HasUnityPotion().ToString());
-		//		}
-
-		//		void PostDrawMap()
-		//		{
-		//			if(WormholeReplaceSlot >= 0)
-		//			{
-		//				Main.LocalPlayer.inventory[WormholeReplaceSlot] = WormholeReplaceItem;
-		//				WormholeReplaceSlot = -1;
-		//			}
-		//		}
 
 		public static void Log(object message)
 		{
@@ -203,5 +154,26 @@ namespace GoldensMisc
 		{
 			ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), String.Format(message, formatData)));
 		}
+
+
+		#region Hamstar's Mod Helpers integration
+
+		public static string GithubUserName { get { return "goldenapple3"; } }
+		public static string GithubProjectName { get { return "Miscellania"; } }
+
+		public static string ConfigFileRelativePath { get { return "Mod Configs/Miscellania.json"; } }
+
+		public static void ReloadConfigFromFile()
+		{
+			Config.ReadConfig();
+		}
+
+		public static void ResetConfigFromDefaults()
+		{
+			Config.SetDefaults();
+			Config.SaveConfig();
+		}
+
+		#endregion
 	}
 }

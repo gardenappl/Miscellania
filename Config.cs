@@ -105,10 +105,41 @@ namespace GoldensMisc
 					GoldensMisc.Log("Old config folder still cotains some files/directories. They will not get deleted.");
 			}
 			if(!ReadConfig())
-				GoldensMisc.Log("Failed to read config file! Recreating config...");
-			SaveConfig();
+			{
+				SetDefaults();
+				GoldensMisc.Log("Failed to read config file! Creating config...");
+				SaveConfig();
+			}
 		}
 		
+		public static void SetDefaults()
+		{
+			AltStaffs = true;
+			MagicStones = true;
+			GodStone = true;
+			DemonCrown = true;
+			HeartLocket = true;
+			Magnets = true;
+			NinjaGear = true;
+			ReinforcedVest = true;
+			AncientForges = true;
+			RedBrickFurniture = true;
+			AncientMuramasa = true;
+			GasterBlaster = true;
+			SpearofJustice = true;
+			WormholeMirror = true;
+			CellPhoneUpgrade = true;
+			CellPhoneResprite = true;
+			RodofWarping = true;
+			RodofWarpingChaosState = 1f;
+			EmblemofDeath = true;
+			BuildingMaterials = true;
+			BaseballBats = true;
+			AncientOrb = true;
+			CellPhoneResprite = true;
+			ExtraDyes = true;
+		}
+
 		public static bool ReadConfig()
 		{
 			if(Configuration.Load())
