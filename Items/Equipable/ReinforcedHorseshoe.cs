@@ -24,7 +24,7 @@ namespace GoldensMisc.Items.Equipable
 			Tooltip.AddTranslation(GameCulture.Russian, "Нейтрализует урон от падения\n" +
 			                       "Дает невосприимчивость к огненным блокам и своей взрывчатке");
 
-			DisplayName.AddTranslation(GameCulture.Chinese, "钢筋马蹄");
+			DisplayName.AddTranslation(GameCulture.Chinese, "装甲马蹄");
 			Tooltip.AddTranslation(GameCulture.Chinese, "免疫摔落伤害\n" +
 								  "使你免疫火块及己方爆炸伤害");
 		}
