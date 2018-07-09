@@ -4,13 +4,13 @@ Current features include:
  -Upgraded Rod of Discord
  -Reinforced Vest (protects player from their bombs and missiles)
  -Item magnets!
- -Healing/Mana Stone (restores health & mana, can be used multiple times)
- -Demon Crown and Red Crystal (from Cave Story)
- -Baseball Bats
  -Wormhole Mirror
- -(yet another) Gaster Blaster minion
- -Some building materials & decorations
+ -Baseball Bats
+ -Healing/Mana Stone (restores health & mana, can be used multiple times)
+ -Baseball Bats
+ -A few weapons and accessories
+ -Building materials & decorations
  
-And some more! Go to the forum page for the full list.
+And a lot more! Go to the forum page for the full list.
  
-Thanks to Zerokk for his help with sprites.
+Thanks to Zerokk for his help with sprites and maintaining the mod.
