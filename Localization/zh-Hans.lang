@@ -12,11 +12,11 @@ BuffDescription.OrbofLight=一个发出微光的魔法小球
 ---------------- Commands
 
 
-CommandUsage=Usage:
+CommandUsage=用法:
 
-Command.WorldGen.Description=Generates Miscellania world features in pre-existing worlds\nWARNING: May cause lag, as well as damage previously built/generated structures!
-Command.WorldGen.HellforgeDisabled=Ancient Hellforges are disabled in the config!
-Command.WorldGen.ForgeDisabled=Ancient Forges are disabled in the config!
+Command.WorldGen.Description=生成Miscellania世界特性\n警告: 可能导致卡顿,并建造/生成结构建筑!
+Command.WorldGen.HellforgeDisabled=在配置中已禁用远古地狱熔炉!
+Command.WorldGen.ForgeDisabled=在配置中已禁用地狱熔炉!
 
 
 ---------------- Items
@@ -64,8 +64,8 @@ ItemTooltip.UniversalMagnet=增加物品拾取范围
 ItemName.AdamantiteDye=反光金刚石染料
 
 ItemName.BaseballCap=棒球帽
-(remove the 'fellow kids' meme from your translation, please...)
-ItemTooltip.BaseballCap='How do you do, fellow kids?'\nRight-click to wear backwards
+(很遗憾中文无法表达英文的双关语...)
+ItemTooltip.BaseballCap=右键可旋转
 
 ItemName.ChlorophyteDye=反光叶绿染料
 
@@ -164,9 +164,9 @@ NPCName.BaseballLavaBat=棒球熔岩蝙蝠
 ---------------- Projectiles
 
 
-ProjectileName.GasterBlaster=Autoblaster
+ProjectileName.GasterBlaster=自动激光
 
-ProjectileName.GasterLaser=冲击波激光
+ProjectileName.GasterLaser=命魂激光
 
 ProjectileName.Laputa=空岛之光
 
@@ -198,7 +198,7 @@ MapObject.RedFireplace=红色壁炉
 ---------------- UI
 
 
-CloseButton=Close
+CloseButton=取消
 
-HomeButton=Home
+HomeButton=回家
 
