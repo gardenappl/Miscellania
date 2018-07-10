@@ -25,7 +25,7 @@ namespace GoldensMisc.Items.Weapons
 		
 		public override void SetDefaults()
 		{
-			item.damage = 75;
+			item.damage = 70;
 			item.summon = true;
 			item.mana = 10;
 			item.sentry = true;

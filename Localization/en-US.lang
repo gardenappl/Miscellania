@@ -194,10 +194,8 @@ HomeButton=Home
 ----------------- Untranslatable (this section should be removed from all translation files other than en-US.lang)
 
 
-MapObject.AncientForge={@Mods.GoldensMisc.ItemName.AncientForge}
-MapObject.AncientHellforge={@Mods.GoldensMisc.ItemName.AncientHellforge}
-MapObject.RedChimney={@Mods.GoldensMisc.ItemName.RedChimney}
-MapObject.RedFireplace={@Mods.GoldensMisc.ItemName.RedFireplace}
+MapObject.AncientForge={$Mods.GoldensMisc.ItemName.AncientForge}
+MapObject.AncientHellforge={$Mods.GoldensMisc.ItemName.AncientHellforge}
 
-ItemName.BaseballCapBackwards={@Mods.GoldensMisc.ItemName.BaseballCap}
-ItemTooltip.BaseballCapBackwards={@Mods.GoldensMisc.ItemTooltip.BaseballCap}
+ItemName.BaseballCapBackwards={$Mods.GoldensMisc.ItemName.BaseballCap}
+ItemTooltip.BaseballCapBackwards={$Mods.GoldensMisc.ItemTooltip.BaseballCap}

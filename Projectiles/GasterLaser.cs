@@ -44,10 +44,10 @@ namespace GoldensMisc.Projectiles
 		{
 			BeamLength = MiscUtils.GetBeamLength(projectile.Center, projectile.rotation);
 			endPoint = projectile.Center + projectile.rotation.ToRotationVector2() * BeamLength;
-			int dustAmount = Main.rand.Next(1, 4);
+			int dustAmount = Main.rand.Next(3, 5);
 			for(int i = 0; i < dustAmount; i++)
 			{
-				int dust = Dust.NewDust(endPoint - new Vector2(10, 10), 20, 20, DustID.Smoke, Main.rand.NextFloat(), Main.rand.NextFloat());
+				int dust = Dust.NewDust(endPoint - new Vector2(20, 20), 40, 40, DustID.Smoke, Main.rand.NextFloat(), Main.rand.NextFloat());
 				Main.dust[dust].noGravity = true;
 			}
 			DelegateMethods.v3_1 = new Vector3(0.8f, 0.8f, 1f);

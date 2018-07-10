@@ -31,6 +31,7 @@ namespace GoldensMisc.Items.Equipable.Vanity
 		public override void RightClick(Player player)
 		{
 			item.SetDefaults(mod.ItemType<BaseballCapBackwards>());
+			item.stack = 2;
 		}
 	}
 
@@ -58,7 +59,8 @@ namespace GoldensMisc.Items.Equipable.Vanity
 
 		public override void RightClick(Player player)
 		{
-			item.SetDefaults();
+			item.SetDefaults(mod.ItemType<BaseballCap>());
+			item.stack = 2;
 		}
 	}
 }

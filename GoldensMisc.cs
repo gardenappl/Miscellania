@@ -48,8 +48,6 @@ namespace GoldensMisc
 			
 			if(!Main.dedServ)
 			{
-				MiscLang.AddText();
-
 				if(FKtModSettingsLoaded)
 					Config.LoadFKConfig();
 				

@@ -15,9 +15,9 @@ namespace GoldensMisc.Projectiles
 		const float Scale = 1.4f;
 		const float TargetDist = 500f;
 		
-		const int ShootDelay = 50;
-		const int ShootTired = 150;
-		const int ShootStop = 180;
+		const int ShootDelay = 30;
+		const int ShootTired = 90;
+		const int ShootStop = 130;
 		
 		const float BeamLength = 1000f;
 		const float BeamWidth = 18f;

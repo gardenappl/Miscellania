@@ -26,7 +26,7 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 16, 18 };
 			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity<RedChimneyTE>().Hook_AfterPlacement, -1, 0, false);
 			TileObjectData.addTile(Type);
-			AddMapEntry(Color.Red, CreateMapEntryName());
+			AddMapEntry(Color.Red);
 			disableSmartCursor = true;
 			animationFrameHeight = 56;
 		}

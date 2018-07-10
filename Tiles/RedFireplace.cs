@@ -29,7 +29,7 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-			AddMapEntry(Color.Red, CreateMapEntryName());
+			AddMapEntry(Color.Red);
 			disableSmartCursor = true;
 			animationFrameHeight = 38;
 			adjTiles = new int[]{ TileID.Fireplace };
