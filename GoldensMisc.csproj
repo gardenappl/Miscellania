@@ -177,6 +177,9 @@
   <ItemGroup>
     <None Include="build.txt" />
     <None Include="description.txt" />
+    <None Include="Localization\zh-Hans.lang" />
+    <None Include="Localization\ru-RU.lang" />
+    <None Include="Localization\en-US.lang" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

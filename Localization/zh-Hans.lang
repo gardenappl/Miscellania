@@ -183,18 +183,6 @@ ProjectileName.RedCrystal=红水晶
 ProjectileName.UndyingSpear=永恒·正义之矛
 
 
----------------- Tiles
-
-
-MapObject.AncientForge=远古熔炉
-
-MapObject.AncientHellforge=远古地狱熔炉
-
-MapObject.RedChimney=红色烟囱
-
-MapObject.RedFireplace=红色壁炉
-
-
 ---------------- UI
 
 

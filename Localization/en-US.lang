@@ -183,18 +183,6 @@ NPCName.BaseballJungleBat=Baseball Jungle Bat
 NPCName.BaseballLavaBat=Baseball Lava Bat
 
 
----------------- Tiles
-
-
-MapObject.AncientForge=Ancient Forge
-
-MapObject.AncientHellforge=Ancient Hellforge
-
-MapObject.RedChimney=Red Chimney
-
-MapObject.RedFireplace=Red Fireplace
-
-
 ---------------- UI
 
 
@@ -202,3 +190,14 @@ CloseButton=Close
 
 HomeButton=Home
 
+
+----------------- Untranslatable (this section should be removed from all translation files other than en-US.lang)
+
+
+MapObject.AncientForge={@Mods.GoldensMisc.ItemName.AncientForge}
+MapObject.AncientHellforge={@Mods.GoldensMisc.ItemName.AncientHellforge}
+MapObject.RedChimney={@Mods.GoldensMisc.ItemName.RedChimney}
+MapObject.RedFireplace={@Mods.GoldensMisc.ItemName.RedFireplace}
+
+ItemName.BaseballCapBackwards={@Mods.GoldensMisc.ItemName.BaseballCap}
+ItemTooltip.BaseballCapBackwards={@Mods.GoldensMisc.ItemTooltip.BaseballCap}
