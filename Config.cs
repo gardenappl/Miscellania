@@ -9,8 +9,10 @@ using FKTModSettings;
 
 namespace GoldensMisc
 {
+	//most of this will be removed once tML implements ModConfig
 	public static class Config
 	{
+		//disabling/enabling items will be gone, too
 		public static bool AltStaffs = true;
 		const string AltStaffsKey = "AltStaffs";
 		
@@ -79,6 +81,15 @@ namespace GoldensMisc
 
 		public static bool ExtraDyes = true;
 		const string ExtraDyesKey = "ExtraDyes";
+
+		public static bool Autofisher = true;
+		const string AutofisherKey = "Autofisher";
+
+		public static bool MechanicsRodOften = true;
+		const string MechanicsRodOftenKey = "MechanicsRodOften";
+
+		public static bool ChestVacuum = true;
+		const string ChestVacuumKey = "ChestVacuum";
 		
 		static string ConfigPath = Path.Combine(Main.SavePath, "Mod Configs", "Miscellania.json");
 		
@@ -138,6 +149,9 @@ namespace GoldensMisc
 			AncientOrb = true;
 			CellPhoneResprite = true;
 			ExtraDyes = true;
+			Autofisher = true;
+			MechanicsRodOften = true;
+			ChestVacuum = true;
 		}
 
 		public static bool ReadConfig()
@@ -166,6 +180,9 @@ namespace GoldensMisc
 				Configuration.Get(BuildingMaterialsKey, ref BuildingMaterials);
 				Configuration.Get(BaseballBatsKey, ref BaseballBats);
 				Configuration.Get(ExtraDyesKey, ref ExtraDyes);
+				Configuration.Get(AutofisherKey, ref Autofisher);
+				Configuration.Get(MechanicsRodOftenKey, ref MechanicsRodOften);
+				Configuration.Get(ChestVacuumKey, ref ChestVacuum);
 				return true;
 			}
 			return false;
@@ -197,6 +214,9 @@ namespace GoldensMisc
 			Configuration.Put(BaseballBatsKey, BaseballBats);
 			Configuration.Put(AncientOrbKey, AncientOrb);
 			Configuration.Put(ExtraDyesKey, ExtraDyes);
+			Configuration.Put(AutofisherKey, Autofisher);
+			Configuration.Put(MechanicsRodOftenKey, MechanicsRodOften);
+			Configuration.Put(ChestVacuumKey, ChestVacuum);
 			Configuration.Save();
 		}
 		
@@ -256,8 +276,14 @@ namespace GoldensMisc
 			setting.AddBool(BaseballBatsKey, "Baseball Bats", false);
 			setting.AddComment("Pre-1.2 style Shadow Orb for Hardmode", commentScale);
 			setting.AddBool(AncientOrbKey, "Ancient Orb of light", false);
-			setting.AddComment("Extra dyes (reflective Hardmode ore dyes and others)");
+			setting.AddComment("Extra dyes (reflective Hardmode ore dyes and others)", commentScale);
 			setting.AddBool(ExtraDyesKey, "Extra Dyes", false);
+			setting.AddComment("Automatic fisher crafted using Mechanic's Rod", commentScale);
+			setting.AddBool(ExtraDyesKey, "Autofisher", false);
+			setting.AddComment("Mechanics sells her fishing rod more often", commentScale);
+			setting.AddBool(MechanicsRodOftenKey, "Mechanic's Rod More Often", false);
+			setting.AddComment("Sucks up items into chest below", commentScale);
+			setting.AddBool(ChestVacuumKey, "Chest Vacuum", false);
 		}
 		
 		public static void UpdateFKConfig()
@@ -288,6 +314,9 @@ namespace GoldensMisc
 				setting.Get(BaseballBatsKey, ref BaseballBats);
 				setting.Get(AncientOrbKey, ref AncientOrb);
 				setting.Get(ExtraDyesKey, ref ExtraDyes);
+				setting.Get(AutofisherKey, ref Autofisher);
+				setting.Get(MechanicsRodOftenKey, ref MechanicsRodOften);
+				setting.Get(ChestVacuumKey, ref ChestVacuum);
 			}
 		}
 		

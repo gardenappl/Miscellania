@@ -1,10 +1,9 @@
 ﻿displayName = Miscellania
 author = goldenapple
-version = 1.5.1
+version = 1.6
 homepage = http://forums.terraria.org/index.php?threads/miscellania.39500/
 hideResources = false
 hideCode = false
-includeSource = true
 buildIgnore = Unused Art\*, obj\*, bin\*, *.csproj, .git\*, .gitattributes, .gitignore
 includePDB = true
 weakReferences = FKTModSettings

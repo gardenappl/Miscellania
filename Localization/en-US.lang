@@ -44,7 +44,7 @@ ItemName.HeartLocket=Heart Locket
 ItemTooltip.HeartLocket=Increases movement speed and length of invincibility after being struck
 
 ItemName.MagnetismRing=Magnetism Ring
-(remove the stupid pun if you don't want to translate it)
+ -- (remove the stupid pun if you don't want to translate it)
 ItemTooltip.MagnetismRing=Increases pickup range for items, coins and mana stars\n'You're really attractive'
 
 ItemName.NinjaGear=Ninja Gear
@@ -65,7 +65,8 @@ ItemTooltip.UniversalMagnet=Increased pickup range for items
 ItemName.AdamantiteDye=Reflective Adamantite Dye
 
 ItemName.BaseballCap=Baseball Cap
-ItemTooltip.BaseballCap='How do you do, fellow kids?'\nRight-click to wear backwards
+ -- (please remove the 'fellow kids' meme)
+ItemTooltip.BaseballCap='How do you do, fellow kids?'\nCan be worn backwards via recipe
 
 ItemName.ChlorophyteDye=Reflective Chlorophyte Dye
 
@@ -142,6 +143,17 @@ ItemName.TopazStaff=Topaz Staff
 ItemName.UndyingSpear=Spear of Undying Justice
 ItemTooltip.UndyingSpear=Rapidly throws piercing spears
 
+ItemName.Autofisher=Autofisher
+ItemTooltip.Autofisher=30% fishing power\nAutomatically catches fish and other items when placed near water\nRequires bait to be placed in adjacent chest\nUse an Item Vacuum to pick up caught items
+
+ItemName.ChestVacuum=Item Vacuum
+ItemTooltip.ChestVacuum=Sucks up nearby items and puts them in a chest below\nRight-click to enable Smart Stack mode
+
+ -- this item is not implemented, the tooltip might get changed or removed, be careful
+
+ItemName.FishNet=Fishing Net
+ItemTooltip.FishNet=Slowly catches fish and other items when placed in water\nMust be emptied manually by right-clicking
+
 
 ---------------- Projectiles
 
@@ -183,19 +195,27 @@ NPCName.BaseballJungleBat=Baseball Jungle Bat
 NPCName.BaseballLavaBat=Baseball Lava Bat
 
 
----------------- UI
+---------------- UI & Other
 
 
 CloseButton=Close
 
 HomeButton=Home
 
+ChestVacuum.SmartStackOn=Smart Stack: On
+ChestVacuum.SmartStackOn2=The Vacuum will only pick up items that are already present in the chest
+ChestVacuum.SmartStackOff=Smart Stack: Off
+ChestVacuum.SmartStackOff2=The Vacuum will pick up everything
+
+ItemTooltip.MechanicsRod=Can be turned into an Autofisher
+
 
 ----------------- Untranslatable (this section should be removed from all translation files other than en-US.lang)
 
-
+MapObject.Autofisher={$Mods.GoldensMisc.ItemName.Autofisher}
 MapObject.AncientForge={$Mods.GoldensMisc.ItemName.AncientForge}
 MapObject.AncientHellforge={$Mods.GoldensMisc.ItemName.AncientHellforge}
+MapObject.ChestVacuum={$Mods.GoldensMisc.ItemName.ChestVacuum}
 
 ItemName.BaseballCapBackwards={$Mods.GoldensMisc.ItemName.BaseballCap}
 ItemTooltip.BaseballCapBackwards={$Mods.GoldensMisc.ItemTooltip.BaseballCap}

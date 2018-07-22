@@ -141,6 +141,15 @@ ItemName.TopazStaff=Топаховый посох
 ItemName.UndyingSpear=Копье бессмертного правосудия
 ItemTooltip.UndyingSpear=Быстро метает пронзающие копья
 
+ItemName.Autofisher=Авто-рыбак
+ItemTooltip.Autofisher=Мастерство рыбакли 30%\nАвтоматически ловит рыбу и другие предметы, находясь рядом с водой\nТребует приманку в сундуке рядом с ним\nИспользуйте Предметосос, чтобы подобрать выпавшие предметы
+
+ItemName.ChestVacuum=Предметосос
+ItemTooltip.ChestVacuum=Поставьте на сундук\nВсасывает ближайшие предметы и кладёт их в сундук
+
+ItemName.FishNet=Рыболовная сеть
+ItemTooltip.FishNet=Поместите под воду\nРедко ловит рыбу и другие предметы\nПредметы должны быть собраны вручную нажатием ПКМ
+
 
 ---------------- NPC
 
@@ -189,3 +198,9 @@ CloseButton=Закрыть
 
 HomeButton=Домой
 
+ChestVacuum.SmartStackOn=Режим сортировки: Вкл
+ChestVacuum.SmartStackOn2=Предметосос подбирает только те предметы, которые уже находятся в сундуке
+ChestVacuum.SmartStackOff=Режим сортировки: Выкл
+ChestVacuum.SmartStackOff2=Предметосос подбирает все предметы
+
+ItemTooltip.MechanicsRod=Можно соорудить Авто-рыбака

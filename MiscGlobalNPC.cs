@@ -8,6 +8,7 @@ using GoldensMisc.Items.Consumable;
 using GoldensMisc.Items.Equipable;
 using GoldensMisc.Items.Materials;
 using GoldensMisc.Items.Weapons;
+using GoldensMisc.Items.Placeable;
 
 namespace GoldensMisc
 {
@@ -35,6 +36,23 @@ namespace GoldensMisc
 					if(Config.MagicStones && NPC.downedMechBossAny)
 					{
 						shop.item[nextSlot].SetDefaults(mod.ItemType<InertStone>());
+						nextSlot++;
+					}
+					break;
+				case NPCID.Mechanic:
+					if(Config.MechanicsRodOften && Main.hardMode && Main.moonPhase <= 4 && NPC.AnyNPCs(NPCID.Angler))
+					{
+						if(!ChestExtensions.HasItem(shop, ItemID.MechanicsRod))
+						{
+							shop.item[nextSlot].SetDefaults(ItemID.MechanicsRod);
+							nextSlot++;
+						}
+					}
+					break;
+				case NPCID.Steampunker:
+					if(Config.ChestVacuum)
+					{
+						shop.item[nextSlot].SetDefaults(mod.ItemType<ChestVacuum>());
 						nextSlot++;
 					}
 					break;

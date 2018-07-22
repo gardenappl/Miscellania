@@ -23,6 +23,9 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.Graphics.Shaders;
 using Terraria.GameContent.Dyes;
 using GoldensMisc.Items.Equipable.Vanity;
+using System.IO;
+using GoldensMisc.Tiles;
+using Terraria.DataStructures;
 
 namespace GoldensMisc
 {
@@ -86,6 +89,7 @@ namespace GoldensMisc
 				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeIceMirror>());
 				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeCellPhone>());
 			}
+			GetTile<Tiles.ChestVacuum>().SetDefaultsPostContent();
 		}
 		
 		public override void Unload()
@@ -94,7 +98,10 @@ namespace GoldensMisc
 
 			MiscGlowMasks.Unload();
 			if(CellPhoneTexture != null)
+			{
 				Main.itemTexture[ItemID.CellPhone] = CellPhoneTexture;
+				CellPhoneTexture = null;
+			}
 		}
 		
 		public override void AddRecipeGroups()
@@ -143,6 +150,28 @@ namespace GoldensMisc
 			}
 		}
 
+		public override void HandlePacket(BinaryReader reader, int whoAmI)
+		{
+			try
+			{
+				var messageType = (MiscMessageType)reader.ReadByte();
+				switch(messageType)
+				{
+					case MiscMessageType.PrintAutofisherInfo:
+						int id = reader.ReadInt32();
+						var te = (AutofisherTE)TileEntity.ByID[id];
+						NetMessage.SendChatMessageToClient(NetworkText.FromLiteral(te.DisplayedFishingInfo), Color.White, whoAmI);
+						break;
+				}
+
+			}
+			catch(Exception e)
+			{
+				Main.NewText("Network error!");
+				ErrorLogger.Log(e);
+			}
+		}
+
 		public static void Log(object message)
 		{
 			ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), message));
@@ -173,5 +202,10 @@ namespace GoldensMisc
 		}
 
 		#endregion
+	}
+
+	public enum MiscMessageType : byte
+	{
+		PrintAutofisherInfo = 0
 	}
 }

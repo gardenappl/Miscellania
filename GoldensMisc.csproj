@@ -58,8 +58,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="tModLoader">
-      <HintPath>..\..\..\..\Steam\SteamApps\common\Terraria\tModLoader.exe</HintPath>
+    <Reference Include="Terraria">
+      <HintPath>..\..\..\..\Steam\SteamApps\common\Terraria\Terraria.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +96,8 @@
     <Compile Include="Items\Materials\WormholeCrystal.cs" />
     <Compile Include="Items\Placeable\AncientForge.cs" />
     <Compile Include="Items\Placeable\AncientHellforge.cs" />
+    <Compile Include="Items\Placeable\Autofisher.cs" />
+    <Compile Include="Items\Placeable\ChestVacuum.cs" />
     <Compile Include="Items\Placeable\RedChimney.cs" />
     <Compile Include="Items\Placeable\RedFireplace.cs" />
     <Compile Include="Items\Placeable\SandstoneSlabWall.cs" />
@@ -119,7 +121,6 @@
     <Compile Include="MiscGlobalItem.cs" />
     <Compile Include="MiscGlobalNPC.cs" />
     <Compile Include="MiscGlowMasks.cs" />
-    <Compile Include="MiscLang.cs" />
     <Compile Include="MiscPlayer.cs" />
     <Compile Include="MiscRecipes.cs" />
     <Compile Include="MiscUtils.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="NPCs\BaseballIlluminantBat.cs" />
     <Compile Include="NPCs\BaseballJungleBat.cs" />
     <Compile Include="NPCs\BaseballLavaBat.cs" />
+    <Compile Include="Projectiles\AutofisherBobber.cs" />
     <Compile Include="Projectiles\GasterBlaster.cs" />
     <Compile Include="Projectiles\Laputa.cs" />
     <Compile Include="Projectiles\LaputaSky.cs" />
@@ -146,6 +148,10 @@
     <Compile Include="Projectiles\UndyingSpear.cs" />
     <Compile Include="Tiles\AncientForge.cs" />
     <Compile Include="Tiles\AncientHellforge.cs" />
+    <Compile Include="Tiles\Autofisher.cs" />
+    <Compile Include="Tiles\AutofisherTE.cs" />
+    <Compile Include="Tiles\ChestVacuum.cs" />
+    <Compile Include="Tiles\ChestVacuumTE.cs" />
     <Compile Include="Tiles\RedChimney.cs" />
     <Compile Include="Tiles\RedChimneyTE.cs" />
     <Compile Include="Tiles\RedFireplace.cs" />
@@ -183,6 +189,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>E:\Yurik\Steam\SteamApps\common\Terraria\tModLoaderServer.exe -build "$(ProjectDir)\" -savedirectory "E:\Yurik\Terraria"</PreBuildEvent>
+    <PreBuildEvent>E:\Yurik\Steam\SteamApps\common\Terraria\Terraria.exe -build "$(ProjectDir)\" -savedirectory "E:\Yurik\Terraria"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

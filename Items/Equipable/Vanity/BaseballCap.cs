@@ -23,15 +23,12 @@ namespace GoldensMisc.Items.Equipable.Vanity
 			item.value = Item.sellPrice(0, 0, 50);
 		}
 
-		public override bool CanRightClick()
+		public override void AddRecipes()
 		{
-			return true;
-		}
-
-		public override void RightClick(Player player)
-		{
-			item.SetDefaults(mod.ItemType<BaseballCapBackwards>());
-			item.stack = 2;
+			var recipe = new ModRecipe(mod);
+			recipe.AddIngredient(this);
+			recipe.SetResult(mod.ItemType<BaseballCapBackwards>());
+			recipe.AddRecipe();
 		}
 	}
 
@@ -52,15 +49,12 @@ namespace GoldensMisc.Items.Equipable.Vanity
 			item.value = Item.sellPrice(0, 0, 50);
 		}
 
-		public override bool CanRightClick()
+		public override void AddRecipes()
 		{
-			return true;
-		}
-
-		public override void RightClick(Player player)
-		{
-			item.SetDefaults(mod.ItemType<BaseballCap>());
-			item.stack = 2;
+			var recipe = new ModRecipe(mod);
+			recipe.AddIngredient(this);
+			recipe.SetResult(mod.ItemType<BaseballCap>());
+			recipe.AddRecipe();
 		}
 	}
 }
