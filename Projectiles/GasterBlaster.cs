@@ -39,7 +39,12 @@ namespace GoldensMisc.Projectiles
 			set { projectile.localAI[0] = value; }
 		}
 		bool FirstSpawn = true;
-		
+
+		public override bool Autoload(ref string name)
+		{
+			return Config.GasterBlaster;
+		}
+
 		public override void SetStaticDefaults()
 		{
 			Main.projFrames[projectile.type] = 2;

@@ -18,6 +18,11 @@ namespace GoldensMisc.Tiles
 		public bool SmartStack = false;
 		const float PickupRadiusSq = 160f * 160f;
 
+		public override bool Autoload(ref string name)
+		{
+			return Config.ChestVacuum;
+		}
+
 		public override bool ValidTile(int i, int j)
 		{
 			var tile = Main.tile[i, j];

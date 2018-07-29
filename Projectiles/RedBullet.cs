@@ -16,7 +16,12 @@ namespace GoldensMisc.Projectiles
 			get { return (int)projectile.localAI[0]; }
 			set { projectile.localAI[0] = value; }
 		}
-		
+
+		public override bool Autoload(ref string name)
+		{
+			return Config.DemonCrown;
+		}
+
 		public override string Texture
 		{
 			get

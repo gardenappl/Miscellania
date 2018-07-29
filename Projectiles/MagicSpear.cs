@@ -9,7 +9,12 @@ using Terraria.ModLoader;
 namespace GoldensMisc.Projectiles
 {
 	public class MagicSpear : ModProjectile
-	{	
+	{
+		public override bool Autoload(ref string name)
+		{
+			return Config.SpearofJustice;
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.scale = 1.3f;

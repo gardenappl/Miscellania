@@ -20,7 +20,12 @@ namespace GoldensMisc.Projectiles
 			set { projectile.ai[0] = value; }
 		}
 		Vector2 endPoint;
-		
+
+		public override bool Autoload(ref string name)
+		{
+			return Config.GasterBlaster;
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.netImportant = true;

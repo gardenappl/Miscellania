@@ -21,6 +21,11 @@ namespace GoldensMisc.Projectiles
 			get { return "Terraria/Projectile_" + ProjectileID.BobberMechanics; }
 		}
 
+		public override bool Autoload(ref string name)
+		{
+			return Config.Autofisher;
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.width = 14;

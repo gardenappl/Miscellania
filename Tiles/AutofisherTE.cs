@@ -16,6 +16,11 @@ namespace GoldensMisc.Tiles
 		int bobberProj = -1;
 		int FishingCooldown = 300;
 
+		public override bool Autoload(ref string name)
+		{
+			return Config.Autofisher;
+		}
+
 		public override bool ValidTile(int i, int j)
 		{
 			var tile = Main.tile[i, j];

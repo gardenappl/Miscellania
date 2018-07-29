@@ -29,7 +29,12 @@ namespace GoldensMisc.Projectiles
 		}
 		
 		const float TargetDist = 450f;
-		
+
+		public override bool Autoload(ref string name)
+		{
+			return Config.DemonCrown;
+		}
+
 		public override void SetStaticDefaults()
 		{
 			Main.projFrames[projectile.type] = 2;

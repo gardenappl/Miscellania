@@ -21,7 +21,12 @@ namespace GoldensMisc.Projectiles
 			get { return projectile.ai[0] > 0; }
 			set { projectile.ai[0] = value ? 1 : 0; }
 		}
-		
+
+		public override bool Autoload(ref string name)
+		{
+			return Config.SpearofJustice;
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.width = 14;

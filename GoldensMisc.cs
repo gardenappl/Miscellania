@@ -48,12 +48,12 @@ namespace GoldensMisc
 			Instance = this; //apparently you get some problems with Mod Reloading if you put this in the constructor
 			FKtModSettingsLoaded = ModLoader.GetMod("FKTModSettings") != null;
 			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
-			
+
 			if(!Main.dedServ)
 			{
 				if(FKtModSettingsLoaded)
 					Config.LoadFKConfig();
-				
+
 				MiscGlowMasks.Load();
 				if(Config.CellPhoneResprite)
 				{
@@ -62,34 +62,40 @@ namespace GoldensMisc
 				}
 				//				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
 
-				GameShaders.Armor.BindShader<ArmorShaderData>(ItemType<MatrixDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(0f, 1.0f, 0.2f);
-				GameShaders.Armor.BindShader<ArmorShaderData>(ItemType<VirtualDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(1f, 0.1f, 0.1f);
-				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<CobaltDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.4f, 0.7f, 1.2f);
-				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<PalladiumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.2f, 0.5f, 0.3f);
-				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<MythrilDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.3f, 0.8f, 0.8f);
-				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<OrichalcumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.3f, 1.1f);
-				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<AdamantiteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.4f, 0.6f);
-				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<TitaniumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 0.7f, 0.7f);
-				GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<ChlorophyteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 1.1f, 0.1f);
-
+				if(Config.ExtraDyes)
+				{
+					GameShaders.Armor.BindShader<ArmorShaderData>(ItemType<MatrixDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(0f, 1.0f, 0.2f);
+					GameShaders.Armor.BindShader<ArmorShaderData>(ItemType<VirtualDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(1f, 0.1f, 0.1f);
+					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<CobaltDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.4f, 0.7f, 1.2f);
+					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<PalladiumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.2f, 0.5f, 0.3f);
+					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<MythrilDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.3f, 0.8f, 0.8f);
+					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<OrichalcumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.3f, 1.1f);
+					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<AdamantiteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.4f, 0.6f);
+					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<TitaniumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 0.7f, 0.7f);
+					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<ChlorophyteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 1.1f, 0.1f);
+				}
 				WormholeUI = new UIWormhole();
 				WormholeUI.Activate();
 				MiscUserInterface = new UserInterface();
 				MiscUserInterface.SetState(WormholeUI);
 			}
-			AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
+			if(Config.SpearofJustice)
+			{
+				AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
+			}
 		}
 		
 		public override void PostSetupContent()
 		{
 			var hotkeysMod = ModLoader.GetMod("HelpfulHotkeys");
-			if(hotkeysMod != null)
+			if(hotkeysMod != null && Config.WormholeMirror)
 			{
 				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeDoubleMirror>());
 				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeIceMirror>());
 				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeCellPhone>());
 			}
-			GetTile<Tiles.ChestVacuum>().SetDefaultsPostContent();
+			if(Config.ChestVacuum)
+				GetTile<Tiles.ChestVacuum>().SetDefaultsPostContent();
 		}
 		
 		public override void Unload()
@@ -124,7 +130,7 @@ namespace GoldensMisc
 		{
 			if(FKtModSettingsLoaded && !Main.dedServ)
 				Config.SaveConfig();
-
+			
 			UIWormhole.Close();
 		}
 

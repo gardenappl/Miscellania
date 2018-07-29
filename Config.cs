@@ -115,12 +115,12 @@ namespace GoldensMisc
 				else
 					GoldensMisc.Log("Old config folder still cotains some files/directories. They will not get deleted.");
 			}
+			SetDefaults();
 			if(!ReadConfig())
 			{
-				SetDefaults();
-				GoldensMisc.Log("Failed to read config file! Creating config...");
-				SaveConfig();
+				GoldensMisc.Log("Failed to read config file!");
 			}
+			SaveConfig();
 		}
 		
 		public static void SetDefaults()
@@ -153,7 +153,7 @@ namespace GoldensMisc
 			MechanicsRodOften = true;
 			ChestVacuum = true;
 		}
-
+		
 		public static bool ReadConfig()
 		{
 			if(Configuration.Load())

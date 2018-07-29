@@ -10,6 +10,11 @@ namespace GoldensMisc.Projectiles
 {
 	public class OrbofLight : ModProjectile
 	{
+		public override bool Autoload(ref string name)
+		{
+			return Config.AncientOrb;
+		}
+
 		public override void SetStaticDefaults()
 		{
 			Main.projFrames[projectile.type] = 1;
