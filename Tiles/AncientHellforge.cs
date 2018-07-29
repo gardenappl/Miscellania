@@ -21,7 +21,7 @@ namespace GoldensMisc.Tiles
 			Main.tileObsidianKill[Type] = true;
 			Main.tileLighted[Type] = true;
 			Main.tileFrameImportant[Type] = true;
-//			Main.tileNoAttach[Type] = true;
+			Main.tileNoAttach[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.newTile.LavaDeath = false;
@@ -34,6 +34,23 @@ namespace GoldensMisc.Tiles
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType(GetType().Name));
+		}
+
+		public override void RandomUpdate(int i, int j)
+		{
+			int amount = Main.rand.Next(1, 4);
+			for(int a = 0; a < amount; a++)
+				Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, DustID.Fire);
+		}
+
+		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+		{
+			float rand = 0f;
+			//float rand = (float)Main.rand.Next(28, 42) * 0.005f;
+			//rand += (float)(270 - (int)Main.mouseTextColor) / 700f;
+			r = 0.5f + rand;
+			g = 0.8f + rand;
+			b = 0.35f + rand;
 		}
 	}
 }
