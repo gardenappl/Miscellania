@@ -5,4 +5,4 @@ For more info visit the **TCF thread**: http://forums.terraria.org/index.php?thr
 
 Download either from *[Releases](https://github.com/goldenapple3/Miscellania/releases)* or in-game through the Mod Browser.
 
-Test
+
