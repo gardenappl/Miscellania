@@ -1,31 +1,25 @@
 ﻿
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.Graphics.Effects;
-using Terraria.Localization;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.UI;
-using Terraria.World.Generation;
-using GoldensMisc.Items;
-using GoldensMisc.Items.Equipable;
-using GoldensMisc.Items.Placeable;
+using GoldensMisc.Items.Equipable.Vanity;
 using GoldensMisc.Items.Tools;
-using GoldensMisc.Items.Weapons;
 using GoldensMisc.Projectiles;
+using GoldensMisc.Tiles;
 using GoldensMisc.UI;
 using Microsoft.Xna.Framework;
-using Terraria.GameContent.UI.Elements;
-using Terraria.Graphics.Shaders;
-using Terraria.GameContent.Dyes;
-using GoldensMisc.Items.Equipable.Vanity;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Reflection;
+using System.Linq.Expressions;
+using System.Collections.Generic;
 using System.IO;
-using GoldensMisc.Tiles;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent.Dyes;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.UI;
 
 namespace GoldensMisc
 {
@@ -95,9 +89,13 @@ namespace GoldensMisc
 				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeCellPhone>());
 			}
 			if(Config.ChestVacuum)
+			{
 				GetTile<Tiles.ChestVacuum>().SetDefaultsPostContent();
+			}
+			//Call("RegisterHookGetFishingLevel", typeof(AutofisherHooks), "TestHookGetFishingLevel");
+			//Call("RegisterHookCatchFish", typeof(AutofisherHooks), "TestHookCatchFish");
 		}
-		
+
 		public override void Unload()
 		{
 			Instance = null;
@@ -108,6 +106,7 @@ namespace GoldensMisc
 				Main.itemTexture[ItemID.CellPhone] = CellPhoneTexture;
 				CellPhoneTexture = null;
 			}
+			AutofisherHooks.Unload();
 		}
 		
 		public override void AddRecipeGroups()
@@ -154,6 +153,30 @@ namespace GoldensMisc
 					return true;
 				}, InterfaceScaleType.UI));
 			}
+		}
+
+		public override object Call(params object[] args)
+		{
+			//don't catch exceptions, just blatantly show an error
+			//it's probably the other modder's fault
+
+			if((string)args[0] == "RegisterHookGetFishingLevel")
+			{
+				var type = (Type)args[1];
+				var aDelegate = (GetFishingLevelHook)Delegate.CreateDelegate(typeof(GetFishingLevelHook), type.GetMethod((string)args[2]));
+				AutofisherHooks.RegisterHook(aDelegate);
+				Log("Added GetFishingLevel hook");
+				return true;
+			}
+			else if((string)args[0] == "RegisterHookCatchFish")
+			{
+				var type = (Type)args[1];
+				var aDelegate = (CatchFishHook)Delegate.CreateDelegate(typeof(CatchFishHook), type.GetMethod((string)args[2]));
+				AutofisherHooks.RegisterHook(aDelegate);
+				Log("Added CatchFish hook");
+				return true;
+			}
+			throw new Exception("Invalid mod.Call() message. Could be caused by an outdated version of Miscellania, or by a typo in someone else's mod.");
 		}
 
 		public override void HandlePacket(BinaryReader reader, int whoAmI)

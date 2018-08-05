@@ -73,8 +73,12 @@ namespace GoldensMisc.Tiles
 								return;
 							var bobber = (AutofisherBobber)Main.projectile[bobberProj].modProjectile;
 							itemType = bobber.FishingCheck();
+
+
 							if(itemType > 0)
+							{
 								TryConsumeBait();
+							}
 						}
 						catch(Exception e)
 						{
@@ -87,44 +91,44 @@ namespace GoldensMisc.Tiles
 		}
 
 
-		public int GetFishingLevel()
+		public int GetFishingLevel(Item baitItem)
 		{
-			//var item = new Item();
-			//item.SetDefaults(ItemID.MechanicsRod, true);
+			var item = new Item();
+			item.SetDefaults(ItemID.MechanicsRod, true);
 
-			int num1 = 0;
-			int fishingPole = 30;
-			//Main.NewText(item.fishingPole);
+			int baitPower = 0;
+			//int fishingPole = 30;
+			int fishingPole = item.fishingPole;
 
 			//num1 = 15;
-			var baitItem = GetCurrentBait();
 			if(baitItem.type == ItemID.TruffleWorm)
 				return -1;
-			num1 = baitItem.bait;
+			baitPower = baitItem.bait;
 
-			if(num1 == 0 || fishingPole == 0)
+			if(baitPower == 0 || fishingPole == 0)
 				return 0;
-			int num2 = num1 + fishingPole;
+			int power = baitPower + fishingPole;
 			if(Main.raining)
-				num2 = (int)((double)num2 * 1.20000004768372);
+				power = (int)((double)power * 1.20000004768372);
 			if((double)Main.cloudBGAlpha > 0.0)
-				num2 = (int)((double)num2 * 1.10000002384186);
+				power = (int)((double)power * 1.10000002384186);
 			if(Main.dayTime && (Main.time < 5400.0 || Main.time > 48600.0))
-				num2 = (int)((double)num2 * 1.29999995231628);
+				power = (int)((double)power * 1.29999995231628);
 			if(Main.dayTime && Main.time > 16200.0 && Main.time < 37800.0)
-				num2 = (int)((double)num2 * 0.800000011920929);
+				power = (int)((double)power * 0.800000011920929);
 			if(!Main.dayTime && Main.time > 6480.0 && Main.time < 25920.0)
-				num2 = (int)((double)num2 * 0.800000011920929);
+				power = (int)((double)power * 0.800000011920929);
 			if(Main.moonPhase == 0)
-				num2 = (int)((double)num2 * 1.10000002384186);
+				power = (int)((double)power * 1.10000002384186);
 			if(Main.moonPhase == 1 || Main.moonPhase == 7)
-				num2 = (int)((double)num2 * 1.04999995231628);
+				power = (int)((double)power * 1.04999995231628);
 			if(Main.moonPhase == 3 || Main.moonPhase == 5)
-				num2 = (int)((double)num2 * 0.949999988079071);
+				power = (int)((double)power * 0.949999988079071);
 			if(Main.moonPhase == 4)
-				num2 = (int)((double)num2 * 0.899999976158142);
+				power = (int)((double)power * 0.899999976158142);
 			//Main.NewText("raw fish power: " + num2);
-			return num2;
+			AutofisherHooks.GetFishingLevel(this, baitItem, ref power);
+			return power;
 		}
 
 		public Item GetCurrentBait()
@@ -155,10 +159,12 @@ namespace GoldensMisc.Tiles
 			var item = GetCurrentBait();
 			if(item == null)
 				return;
-			//formula from Terraria wiki
-			int consumeChance = item.bait / 5; 
-			if(Main.rand.Next(consumeChance - 1) == 0)
+			//Vanilla chance: item.bait / 5 + 1
+			int consumeChance = item.bait / 10 + 1;
+			if(Main.rand.Next(consumeChance) == 0)
 				item.stack--;
+			if(item.stack <= 0)
+				item.SetDefaults(0);
 		}
 	}
 }

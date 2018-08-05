@@ -49,120 +49,6 @@ namespace GoldensMisc
 			return (beamStart - beamEnd).Length();
 		}
 
-		public static Zone GetZoneInLocation(int x, int y)
-		{
-			int[] countedTiles = CountBiomeTiles(x, y);
-
-			var currentZone = (Zone)0;
-			if(countedTiles[0] >= 100)
-				currentZone |= Zone.Holy;
-			if(countedTiles[1] >= 200)
-				currentZone |= Zone.Corrupt;
-			if(countedTiles[2] >= 200)
-				currentZone |= Zone.Crimson;
-			if(countedTiles[3] >= 300)
-				currentZone |= Zone.Snow;
-			if(countedTiles[4] >= 80)
-				currentZone |= Zone.Jungle;
-			if(countedTiles[5] >= 200)
-				currentZone |= Zone.Shroom;
-			if(countedTiles[6] >= 250 && y > Main.worldSurface && Main.wallDungeon[Main.tile[x, y].wall])
-				currentZone |= Zone.Dungeon;
-
-			return currentZone;
-		}
-
-		//don't do this too often kids
-		//that's one laggy boi
-		//0=holy, 1=corrupt, 2=crimson, 3=snow, 4=jungle, 5=shroom, 6=dungeon
-		static int[] CountBiomeTiles(int x, int y)
-		{
-			int[] results = new int[7];
-
-			int startX = Math.Max(0, x - Main.zoneX / 2);
-			int startY = Math.Max(0, y - Main.zoneY / 2);
-			int endX = Math.Min(Main.maxTilesX, x + Main.zoneX / 2);
-			int endY = Math.Min(Main.maxTilesY, y + Main.zoneY / 2);
-			for(int i = startX; i < endX; i++)
-			{
-				for(int j = startY; j < endY; j++)
-				{
-					var tile = Main.tile[i, j];
-					if(tile == null || !tile.active())
-						continue;
-					switch(tile.type)
-					{
-						case 109:
-						case 110:
-						case 113:
-						case 117:
-						case 116:
-						case 403:
-						case 402:
-							results[0]++;
-							break;
-						case 23:
-						case 24:
-						case 25:
-						case 32:
-						case 112:
-						case 400:
-						case 398:
-							results[1]++;
-							break;
-						case 27:
-							results[1] -= 5;
-							results[2] -= 5;
-							break;
-						case 199:
-						case 203:
-						case 401:
-						case 399:
-						case 234:
-						case 352:
-							results[2]++;
-							break;
-						case 147:
-						case 148:
-						case 161:
-						case 162:
-							results[3]++;
-							break;
-						case 164:
-							results[3]++;
-							results[0]++;
-							break;
-						case 163:
-							results[1]++;
-							results[3]++;
-							break;
-						case 200:
-							results[2]++;
-							results[3]++;
-							break;
-						case 60:
-						case 61:
-						case 62:
-						case 74:
-						case 226:
-							results[4]++;
-							break;
-						case 70:
-						case 71:
-						case 72:
-							results[5]++;
-							break;
-						case 41:
-						case 43:
-						case 44:
-							results[6]++;
-							break;
-					}
-				}
-			}
-			return results;
-		}
-
 		public static bool IsActuallyAnItem(Item item)
 		{
 			return item.stack != 0 && item.type != 0 && !vanillaPowerups.Contains(item.type);
@@ -195,9 +81,152 @@ namespace GoldensMisc
 				((UIPanel)evt.Target).BackgroundColor = customColor;
 			}
 		}
-	}
 
-	//only zones that are relevant to fishing are here
+		public static Zone GetZoneInLocation(int x, int y)
+		{
+			int[] countedTiles = CountBiomeTiles(x, y);
+
+			var currentZone = (Zone)0;
+			if(countedTiles[0] >= 100)
+				currentZone |= Zone.Holy;
+			if(countedTiles[1] >= 200)
+				currentZone |= Zone.Corrupt;
+			if(countedTiles[2] >= 200)
+				currentZone |= Zone.Crimson;
+			if(countedTiles[3] >= 300)
+				currentZone |= Zone.Snow;
+			if(countedTiles[4] >= 80)
+				currentZone |= Zone.Jungle;
+			if(countedTiles[5] >= 200)
+				currentZone |= Zone.Shroom;
+			if(countedTiles[6] >= 250 && y > Main.worldSurface && Main.wallDungeon[Main.tile[x, y].wall])
+				currentZone |= Zone.Dungeon;
+			if(countedTiles[7] >= 1000)
+				currentZone |= Zone.Desert;
+
+			return currentZone;
+		}
+
+		//don't do this too often kids
+		//that's a bit of a laggy boi
+		//0=holy, 1=corrupt, 2=crimson, 3=snow, 4=jungle, 5=shroom, 6=dungeon, 7=desert
+		static int[] CountBiomeTiles(int x, int y)
+		{
+			int[] results = new int[8];
+
+			int startX = Math.Max(0, x - Main.zoneX / 2);
+			int startY = Math.Max(0, y - Main.zoneY / 2);
+			int endX = Math.Min(Main.maxTilesX, x + Main.zoneX / 2);
+			int endY = Math.Min(Main.maxTilesY, y + Main.zoneY / 2);
+			for(int i = startX; i < endX; i++)
+			{
+				for(int j = startY; j < endY; j++)
+				{
+					var tile = Main.tile[i, j];
+					if(tile == null || !tile.active())
+						continue;
+
+					switch(tile.type)
+					{
+						case 109:
+						case 110:
+						case 113:
+						case 117:
+						case 403:
+						case 402:
+						case 164:
+						case 116:
+							//holy
+							results[0]++;
+							break;
+						case 23:
+						case 24:
+						case 25:
+						case 32:
+						case 400:
+						case 398:
+						case 112:
+						case 163:
+							//corrupt
+							results[1]++;
+							break;
+						case 199:
+						case 203:
+						case 401:
+						case 399:
+						case 234:
+						case 352:
+						case 200:
+							//crimson
+							results[2]++;
+							break;
+						case 27: //sunflowers do that? TIL
+							results[1] -= 5;
+							results[2] -= 5;
+							break;
+					}
+					switch(tile.type)
+					{
+						case 147:
+						case 148:
+						case 161:
+						case 162:
+						case 164:
+						case 163:
+						case 200:
+							//snow
+							results[3]++;
+							break;
+						case 60:
+						case 61:
+						case 62:
+						case 74:
+						case 226:
+							//jungle
+							results[4]++;
+							break;
+						case 70:
+						case 71:
+						case 72:
+							//shroom
+							results[5]++;
+							break;
+						case 41:
+						case 43:
+						case 44:
+							//dungeon
+							results[6]++;
+							break;
+						case 53:
+						case 234:
+						case 397:
+						case 398:
+						case 402:
+						case 399:
+						case 396:
+						case 400:
+						case 403:
+						case 401:
+						case 116:
+						case 112:
+							//desert
+							results[7]++;
+							break;
+					}
+				}
+			}
+
+			//holy tiles and evil tiles cancel each other out
+			int holyTiles = results[0];
+			results[0] -= results[1];
+			results[0] -= results[2];
+			results[1] -= holyTiles;
+			results[2] -= holyTiles;
+
+			return results;
+		}
+	}
+	
 	[Flags]
 	public enum Zone
 	{
@@ -208,10 +237,11 @@ namespace GoldensMisc
 		Snow = 8,
 		Jungle = 16,
 		Shroom = 32,
-		Dungeon = 64
+		Dungeon = 64,
+		Desert = 128
 	}
 
-	//this was supposed to use Extension methods but tML had trouble compiling it
+	//this was supposed to use Extension methods but tML had trouble compiling it?
 	public static class ChestExtensions
 	{
 		public static bool RemoveItem(Chest shop, int type)

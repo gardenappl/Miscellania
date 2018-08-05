@@ -69,6 +69,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="Dusts\RedDust.cs" />
     <Compile Include="Dusts\RedDustStatic.cs" />
+    <Compile Include="AutofisherHooks.cs" />
     <Compile Include="Items\Consumable\DeathEmblem.cs" />
     <Compile Include="Items\Consumable\GodStone.cs" />
     <Compile Include="Items\Consumable\InertStone.cs" />

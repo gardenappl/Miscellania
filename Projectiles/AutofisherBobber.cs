@@ -147,7 +147,7 @@ namespace GoldensMisc.Projectiles
 							newItem.SetDefaults(Type, true);
 							if(Type == 3196)
 							{
-								int num1 = te.GetFishingLevel();
+								int num1 = te.GetFishingLevel(te.GetCurrentBait());
 								int minValue = (num1 / 20 + 3) / 2;
 								int num2 = (num1 / 10 + 6) / 2;
 								if(Main.rand.Next(50) < num1)
@@ -163,7 +163,7 @@ namespace GoldensMisc.Projectiles
 							}
 							if(Type == 3197)
 							{
-								int num1 = te.GetFishingLevel();
+								int num1 = te.GetFishingLevel(te.GetCurrentBait());
 								int minValue = (num1 / 4 + 15) / 2;
 								int num2 = (num1 / 2 + 30) / 2;
 								if(Main.rand.Next(50) < num1)
@@ -177,6 +177,7 @@ namespace GoldensMisc.Projectiles
 								int num12 = Main.rand.Next(minValue, num2 + 1);
 								newItem.stack = num12;
 							}
+							ItemLoader.CaughtFishStack(newItem);
 							Item.NewItem(te.Position.ToWorldCoordinates(0f, 0f), 48, 32, newItem.type, newItem.stack);
 						}
 						projectile.Kill();
@@ -251,11 +252,11 @@ namespace GoldensMisc.Projectiles
 					if(projectile.velocity.Y > 15.9f)
 						projectile.velocity.Y = 15.9f;
 				}
-				//if(Main.netMode != NetmodeID.Server)
+				//if(Main.netMode != NetmodeID.MultiplayerClient)
 				//{
-				//	int num3 = Main.player[projectile.owner].FishingLevel();
+				//	int num3 = te.GetFishingLevel(te.GetCurrentBait());
 				//	if(num3 < 0 && num3 == -1)
-				//		Main.player[projectile.owner].displayedFishingInfo = Language.GetTextValue("GameUI.FishingWarning");
+				//		te.displayedFishingInfo = Language.GetTextValue("GameUI.FishingWarning");
 				//}
 
 				//if((double)projectile.ai[0] != 0.0)
@@ -314,35 +315,37 @@ namespace GoldensMisc.Projectiles
 		{
 			var te = (AutofisherTE)TileEntity.ByID[(int)projectile.ai[1]];
 
-			int index = (int)(projectile.Center.X / 16.0);
-			int j1 = (int)(projectile.Center.Y / 16.0);
-			if((int)Main.tile[index, j1].liquid < 0)
-				++j1;
-			bool flag1 = false;
-			bool flag2 = false;
-			int i1 = index;
-			int i2 = index;
-			while(i1 > 10 && (int)Main.tile[i1, j1].liquid > 0 && !WorldGen.SolidTile(i1, j1))
+			var baitItem = te.GetCurrentBait();
+
+			int bobberTileX = (int)(projectile.Center.X / 16.0);
+			int bobberTileY = (int)(projectile.Center.Y / 16.0);
+			if((int)Main.tile[bobberTileX, bobberTileY].liquid < 0)
+				++bobberTileY;
+			bool lava = false;
+			bool honey = false;
+			int i1 = bobberTileX;
+			int i2 = bobberTileX;
+			while(i1 > 10 && (int)Main.tile[i1, bobberTileY].liquid > 0 && !WorldGen.SolidTile(i1, bobberTileY))
 				--i1;
-			while(i2 < Main.maxTilesX - 10 && (int)Main.tile[i2, j1].liquid > 0 && !WorldGen.SolidTile(i2, j1))
+			while(i2 < Main.maxTilesX - 10 && (int)Main.tile[i2, bobberTileY].liquid > 0 && !WorldGen.SolidTile(i2, bobberTileY))
 				++i2;
-			int num1 = 0;
+			int poolSize = 0;
 			for(int i3 = i1; i3 <= i2; ++i3)
 			{
-				int j2 = j1;
+				int j2 = bobberTileY;
 				while((int)Main.tile[i3, j2].liquid > 0 && !WorldGen.SolidTile(i3, j2) && j2 < Main.maxTilesY - 10)
 				{
-					++num1;
+					++poolSize;
 					++j2;
 					if(Main.tile[i3, j2].lava())
-						flag1 = true;
+						lava = true;
 					else if(Main.tile[i3, j2].honey())
-						flag2 = true;
+						honey = true;
 				}
 			}
-			if(flag2)
-				num1 = (int)((double)num1 * 1.5);
-			if(num1 < 75)
+			if(honey)
+				poolSize = (int)((double)poolSize * 1.5);
+			if(poolSize < 75)
 			{
 				//if(Main.netMode != NetmodeID.SinglePlayer)
 				//	Main.NewText(Language.GetTextValue("GameUI.NotEnoughWater"));
@@ -350,8 +353,8 @@ namespace GoldensMisc.Projectiles
 			}
 			else
 			{
-				int num2 = te.GetFishingLevel();
-				if(num2 == 0)
+				int fishingPower = te.GetFishingLevel(baitItem);
+				if(fishingPower == 0)
 					return -1;
 				//Main.NewText(Language.GetTextValue("GameUI.FishingPower", (object)num2));
 				//te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FishingPower", (object)num2);
@@ -380,29 +383,29 @@ namespace GoldensMisc.Projectiles
 					if((double)num5 > 1.0)
 						num5 = 1f;
 					int num6 = (int)((double)num3 * (double)num5);
-					float num7 = (float)num1 / (float)num6;
+					float num7 = (float)poolSize / (float)num6;
 					if((double)num7 < 1.0)
-						num2 = (int)((double)num2 * (double)num7);
+						fishingPower = (int)((double)fishingPower * (double)num7);
 					float num8 = 1f - num7;
 					//if(num1 < num6)
 					//	Main.NewText(Language.GetTextValue("GameUI.FullFishingPower", (object)num2, (object)-Math.Round((double)num8 * 100.0)));
 						//te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FullFishingPower", (object)num2, (object)-Math.Round((double)num8 * 100.0));
-					int num9 = (num2 + 75) / 2;
+					int num9 = (fishingPower + 75) / 2;
 					if(/*Main.player[projectile.owner].wet || */Main.rand.Next(100) > num9)
 						return -1;
-					int num10 = 0;
-					int num11 = (double)j1 >= Main.worldSurface * 0.5 ? ((double)j1 >= Main.worldSurface ? ((double)j1 >= Main.rockLayer ? (j1 >= Main.maxTilesY - 300 ? 4 : 3) : 2) : 1) : 0;
+					int caughtType = 0;
+					int worldLayer = (double)bobberTileY >= Main.worldSurface * 0.5 ? ((double)bobberTileY >= Main.worldSurface ? ((double)bobberTileY >= Main.rockLayer ? (bobberTileY >= Main.maxTilesY - 300 ? 4 : 3) : 2) : 1) : 0;
 					int num12 = 150;
-					int num13 = num2;
+					int num13 = fishingPower;
 					int maxValue1 = num12 / num13;
 					int num14 = 2;
-					int maxValue2 = num12 * num14 / num2;
+					int maxValue2 = num12 * num14 / fishingPower;
 					int num15 = 7;
-					int maxValue3 = num12 * num15 / num2;
+					int maxValue3 = num12 * num15 / fishingPower;
 					int num16 = 15;
-					int maxValue4 = num12 * num16 / num2;
+					int maxValue4 = num12 * num16 / fishingPower;
 					int num17 = 30;
-					int maxValue5 = num12 * num17 / num2;
+					int maxValue5 = num12 * num17 / fishingPower;
 					if(maxValue1 < 2)
 
 						maxValue1 = 2;
@@ -439,38 +442,45 @@ namespace GoldensMisc.Projectiles
 					int type = -1;
 					var zone = MiscUtils.GetZoneInLocation(te.Position.X, te.Position.Y);
 					//Main.NewText(zone);
-					if(flag1)
+
+					bool junk = false;
+
+					#region Vanilla Fishing Algorithm
+
+					if(lava)
 					{
 						//if (!ItemID.Sets.CanFishInLava[Main.player[projectile.owner].HeldItem.type])
 						//  return;
 						if(flag7)
-							num10 = 2331;
+							caughtType = 2331;
 						else if(flag6)
-							num10 = 2312;
+							caughtType = 2312;
 						else if(flag5)
-							num10 = 2315;
+							caughtType = 2315;
 					}
-					else if(flag2)
+					else if(honey)
 					{
 						if(flag5 || flag4 && Main.rand.Next(2) == 0)
-							num10 = 2314;
+							caughtType = 2314;
 						else if(flag4 && type == 2451)
-							num10 = 2451;
+							caughtType = 2451;
 					}
-					else if(Main.rand.Next(50) > num2 && Main.rand.Next(50) > num2 && num1 < num6)
-
-						num10 = Main.rand.Next(2337, 2340);
+					else if(Main.rand.Next(50) > fishingPower && Main.rand.Next(50) > fishingPower && poolSize < num6)
+					{
+						junk = true;
+						caughtType = Main.rand.Next(2337, 2340);
+					}
 					else if(Main.rand.Next(100) < num18)
-						num10 = !(flag6 | flag7) ? (!flag5 || !zone.HasFlag(Zone.Corrupt) ? (!flag5 || !zone.HasFlag(Zone.Crimson) ? (!flag5 || !zone.HasFlag(Zone.Holy) ? (!flag5 || !zone.HasFlag(Zone.Dungeon) ? (!flag5 || !zone.HasFlag(Zone.Jungle) ? (!flag5 || num11 != 0 ? (!flag4 ? 2334 : 2335) : 3206) : 3208) : 3205) : 3207) : 3204) : 3203) : 2336;
+						caughtType = !(flag6 | flag7) ? (!flag5 || !zone.HasFlag(Zone.Corrupt) ? (!flag5 || !zone.HasFlag(Zone.Crimson) ? (!flag5 || !zone.HasFlag(Zone.Holy) ? (!flag5 || !zone.HasFlag(Zone.Dungeon) ? (!flag5 || !zone.HasFlag(Zone.Jungle) ? (!flag5 || worldLayer != 0 ? (!flag4 ? 2334 : 2335) : 3206) : 3208) : 3205) : 3207) : 3204) : 3203) : 2336;
 					else if(flag7 && Main.rand.Next(5) == 0)
-						num10 = 2423;
+						caughtType = 2423;
 					else if(flag7 && Main.rand.Next(5) == 0)
-						num10 = 3225;
+						caughtType = 3225;
 					else if(flag7 && Main.rand.Next(10) == 0)
-						num10 = 2420;
+						caughtType = 2420;
 					else if(((flag7 ? 0 : (!flag6 ? 1 : 0)) & (flag4 ? 1 : 0)) != 0 && Main.rand.Next(5) == 0)
 					{
-						num10 = 3196;
+						caughtType = 3196;
 					}
 					else
 					{
@@ -485,111 +495,117 @@ namespace GoldensMisc.Projectiles
 						}
 						if(flag8)
 						{
-							if(flag7 && Main.hardMode && (zone.HasFlag(Zone.Snow) && num11 == 3) && Main.rand.Next(3) != 0)
-								num10 = 2429;
+							if(flag7 && Main.hardMode && (zone.HasFlag(Zone.Snow) && worldLayer == 3) && Main.rand.Next(3) != 0)
+								caughtType = 2429;
 							else if(flag7 && Main.hardMode && Main.rand.Next(2) == 0)
-								num10 = 3210;
+								caughtType = 3210;
 							else if(flag5)
-								num10 = 2330;
+								caughtType = 2330;
 							else if(flag4 && type == 2454)
-								num10 = 2454;
+								caughtType = 2454;
 							else if(flag4 && type == 2485)
-								num10 = 2485;
+								caughtType = 2485;
 							else if(flag4 && type == 2457)
-								num10 = 2457;
+								caughtType = 2457;
 							else if(flag4)
-								num10 = 2318;
+								caughtType = 2318;
 						}
 						else if(flag9)
 						{
-							if(flag7 && Main.hardMode && (zone.HasFlag(Zone.Snow) && num11 == 3) && Main.rand.Next(3) != 0)
-								num10 = 2429;
+							if(flag7 && Main.hardMode && (zone.HasFlag(Zone.Snow) && worldLayer == 3) && Main.rand.Next(3) != 0)
+								caughtType = 2429;
 							else if(flag7 && Main.hardMode && Main.rand.Next(2) == 0)
-								num10 = 3211;
+								caughtType = 3211;
 							else if(flag4 && type == 2477)
-								num10 = 2477;
+								caughtType = 2477;
 							else if(flag4 && type == 2463)
-								num10 = 2463;
+								caughtType = 2463;
 							else if(flag4)
-								num10 = 2319;
+								caughtType = 2319;
 							else if(flag3)
-								num10 = 2305;
+								caughtType = 2305;
 						}
 						else if(zone.HasFlag(Zone.Holy))
 						{
-							if(flag7 && Main.hardMode && (zone.HasFlag(Zone.Snow) && num11 == 3) && Main.rand.Next(3) != 0)
-								num10 = 2429;
+							if(flag7 && Main.hardMode && (zone.HasFlag(Zone.Snow) && worldLayer == 3) && Main.rand.Next(3) != 0)
+								caughtType = 2429;
 							else if(flag7 && Main.hardMode && Main.rand.Next(2) == 0)
-								num10 = 3209;
-							else if(num11 > 1 & flag6)
-								num10 = 2317;
-							else if(num11 > 1 & flag5 && type == 2465)
-								num10 = 2465;
-							else if(num11 < 2 & flag5 && type == 2468)
+								caughtType = 3209;
+							else if(worldLayer > 1 & flag6)
+								caughtType = 2317;
+							else if(worldLayer > 1 & flag5 && type == 2465)
+								caughtType = 2465;
+							else if(worldLayer < 2 & flag5 && type == 2468)
 
-								num10 = 2468;
+								caughtType = 2468;
 							else if(flag5)
-								num10 = 2310;
+								caughtType = 2310;
 							else if(flag4 && type == 2471)
-								num10 = 2471;
+								caughtType = 2471;
 							else if(flag4)
-								num10 = 2307;
+								caughtType = 2307;
 						}
-						if(num10 == 0 && zone.HasFlag(Zone.Snow))
+						if(caughtType == 0 && zone.HasFlag(Zone.Snow))
 						{
-							if(num11 < 2 & flag4 && type == 2467)
+							if(worldLayer < 2 & flag4 && type == 2467)
 
-								num10 = 2467;
-							else if(num11 == 1 & flag4 && type == 2470)
-								num10 = 2470;
-							else if(num11 >= 2 & flag4 && type == 2484)
-								num10 = 2484;
-							else if(num11 > 1 & flag4 && type == 2466)
-								num10 = 2466;
+								caughtType = 2467;
+							else if(worldLayer == 1 & flag4 && type == 2470)
+								caughtType = 2470;
+							else if(worldLayer >= 2 & flag4 && type == 2484)
+								caughtType = 2484;
+							else if(worldLayer > 1 & flag4 && type == 2466)
+								caughtType = 2466;
 							else if(flag3 && Main.rand.Next(12) == 0 || flag4 && Main.rand.Next(6) == 0)
-								num10 = 3197;
+								caughtType = 3197;
 							else if(flag4)
-								num10 = 2306;
+								caughtType = 2306;
 							else if(flag3)
-								num10 = 2299;
-							else if(num11 > 1 && Main.rand.Next(3) == 0)
-								num10 = 2309;
+								caughtType = 2299;
+							else if(worldLayer > 1 && Main.rand.Next(3) == 0)
+								caughtType = 2309;
 						}
-						if(num10 == 0 && zone.HasFlag(Zone.Jungle))
+						if(caughtType == 0 && zone.HasFlag(Zone.Jungle))
 						{
-							if(num11 == 1 & flag4 && type == 2452)
-								num10 = 2452;
-							else if(num11 == 1 & flag4 && type == 2483)
-								num10 = 2483;
-							else if(num11 == 1 & flag4 && type == 2488)
-								num10 = 2488;
-							else if(num11 >= 1 & flag4 && type == 2486)
-								num10 = 2486;
-							else if(num11 > 1 & flag4)
-								num10 = 2311;
+							if(worldLayer == 1 & flag4 && type == 2452)
+								caughtType = 2452;
+							else if(worldLayer == 1 & flag4 && type == 2483)
+								caughtType = 2483;
+							else if(worldLayer == 1 & flag4 && type == 2488)
+								caughtType = 2488;
+							else if(worldLayer >= 1 & flag4 && type == 2486)
+								caughtType = 2486;
+							else if(worldLayer > 1 & flag4)
+								caughtType = 2311;
 							else if(flag4)
-								num10 = 2313;
+								caughtType = 2313;
 							else if(flag3)
-								num10 = 2302;
+								caughtType = 2302;
 						}
-						if(num10 == 0 && zone.HasFlag(Zone.Shroom) && (flag4 && type == 2475))
-							num10 = 2475;
-						if(num10 == 0)
+						if(caughtType == 0 && zone.HasFlag(Zone.Shroom) && (flag4 && type == 2475))
+							caughtType = 2475;
+						if(caughtType == 0)
 						{
-							if(num11 <= 1 && (index < 380 || index > Main.maxTilesX - 380) && num1 > 1000)
+							if(worldLayer <= 1 && (bobberTileX < 380 || bobberTileX > Main.maxTilesX - 380) && poolSize > 1000)
 							{
-								num10 = !flag6 || Main.rand.Next(2) != 0 ? (!flag6 ? (!flag5 || Main.rand.Next(5) != 0 ? (!flag5 || Main.rand.Next(2) != 0 ? (!flag4 || type != 2480 ? (!flag4 || type != 2481 ? (!flag4 ? (!flag3 || Main.rand.Next(2) != 0 ? (!flag3 ? 2297 : 2300) : 2301) : 2316) : 2481) : 2480) : 2332) : 2438) : 2342) : 2341;
+								caughtType = !flag6 || Main.rand.Next(2) != 0 ? (!flag6 ? (!flag5 || Main.rand.Next(5) != 0 ? (!flag5 || Main.rand.Next(2) != 0 ? (!flag4 || type != 2480 ? (!flag4 || type != 2481 ? (!flag4 ? (!flag3 || Main.rand.Next(2) != 0 ? (!flag3 ? 2297 : 2300) : 2301) : 2316) : 2481) : 2480) : 2332) : 2438) : 2342) : 2341;
 							}
 							else
 							{
 								//int sandTiles = Main.sandTiles; //doesn't seem to do anything?
 							}
 						}
-						if(num10 == 0)
-							num10 = !(num11 < 2 & flag4) || type != 2461 ? (!(num11 == 0 & flag4) || type != 2453 ? (!(num11 == 0 & flag4) || type != 2473 ? (!(num11 == 0 & flag4) || type != 2476 ? (!(num11 < 2 & flag4) || type != 2458 ? (!(num11 < 2 & flag4) || type != 2459 ? (!(num11 == 0 & flag4) ? (((num11 <= 0 ? 0 : (num11 < 3 ? 1 : 0)) & (flag4 ? 1 : 0)) == 0 || type != 2455 ? (!(num11 == 1 & flag4) || type != 2479 ? (!(num11 == 1 & flag4) || type != 2456 ? (!(num11 == 1 & flag4) || type != 2474 ? (!(num11 > 1 & flag5) || Main.rand.Next(5) != 0 ? (!(num11 > 1 & flag7) ? (!(num11 > 1 & flag6) || Main.rand.Next(2) != 0 ? (!(num11 > 1 & flag5) ? (!(num11 > 1 & flag4) || type != 2478 ? (!(num11 > 1 & flag4) || type != 2450 ? (!(num11 > 1 & flag4) || type != 2464 ? (!(num11 > 1 & flag4) || type != 2469 ? (!(num11 > 2 & flag4) || type != 2462 ? (!(num11 > 2 & flag4) || type != 2482 ? (!(num11 > 2 & flag4) || type != 2472 ? (!(num11 > 2 & flag4) || type != 2460 ? (!(num11 > 1 & flag4) || Main.rand.Next(4) == 0 ? (num11 <= 1 || !(flag4 | flag3) && Main.rand.Next(4) != 0 ? (!flag4 || type != 2487 ? (!(num1 > 1000 & flag3) ? 2290 : 2298) : 2487) : (Main.rand.Next(4) != 0 ? 2309 : 2303)) : 2303) : 2460) : 2472) : 2482) : 2462) : 2469) : 2464) : 2450) : 2478) : 2321) : 2320) : 2308) : (!Main.hardMode || Main.rand.Next(2) != 0 ? 2436 : 2437)) : 2474) : 2456) : 2479) : 2455) : 2304) : 2459) : 2458) : 2476) : 2473) : 2453) : 2461;
+						if(caughtType == 0)
+							caughtType = !(worldLayer < 2 & flag4) || type != 2461 ? (!(worldLayer == 0 & flag4) || type != 2453 ? (!(worldLayer == 0 & flag4) || type != 2473 ? (!(worldLayer == 0 & flag4) || type != 2476 ? (!(worldLayer < 2 & flag4) || type != 2458 ? (!(worldLayer < 2 & flag4) || type != 2459 ? (!(worldLayer == 0 & flag4) ? (((worldLayer <= 0 ? 0 : (worldLayer < 3 ? 1 : 0)) & (flag4 ? 1 : 0)) == 0 || type != 2455 ? (!(worldLayer == 1 & flag4) || type != 2479 ? (!(worldLayer == 1 & flag4) || type != 2456 ? (!(worldLayer == 1 & flag4) || type != 2474 ? (!(worldLayer > 1 & flag5) || Main.rand.Next(5) != 0 ? (!(worldLayer > 1 & flag7) ? (!(worldLayer > 1 & flag6) || Main.rand.Next(2) != 0 ? (!(worldLayer > 1 & flag5) ? (!(worldLayer > 1 & flag4) || type != 2478 ? (!(worldLayer > 1 & flag4) || type != 2450 ? (!(worldLayer > 1 & flag4) || type != 2464 ? (!(worldLayer > 1 & flag4) || type != 2469 ? (!(worldLayer > 2 & flag4) || type != 2462 ? (!(worldLayer > 2 & flag4) || type != 2482 ? (!(worldLayer > 2 & flag4) || type != 2472 ? (!(worldLayer > 2 & flag4) || type != 2460 ? (!(worldLayer > 1 & flag4) || Main.rand.Next(4) == 0 ? (worldLayer <= 1 || !(flag4 | flag3) && Main.rand.Next(4) != 0 ? (!flag4 || type != 2487 ? (!(poolSize > 1000 & flag3) ? 2290 : 2298) : 2487) : (Main.rand.Next(4) != 0 ? 2309 : 2303)) : 2303) : 2460) : 2472) : 2482) : 2462) : 2469) : 2464) : 2450) : 2478) : 2321) : 2320) : 2308) : (!Main.hardMode || Main.rand.Next(2) != 0 ? 2436 : 2437)) : 2474) : 2456) : 2479) : 2455) : 2304) : 2459) : 2458) : 2476) : 2473) : 2453) : 2461;
 					}
-					if(num10 <= 0 /*|| Crates.Contains(num10) */)
+
+					#endregion
+
+					AutofisherHooks.CatchFish(te, zone, baitItem, fishingPower, lava ? 1 : (honey ? 2 : 0), poolSize, worldLayer, ref caughtType, ref junk);
+
+					if(caughtType <= 0 /*|| Crates.Contains(num10) */)
 						return -1;
+
 					//          if (Main.player[projectile.owner].sonarPotion)
 					//          {
 					//            Item newItem = new Item();
@@ -611,9 +627,9 @@ namespace GoldensMisc.Projectiles
 					//projectile.localAI[1] = (float)num10;
 
 					//projectile.netUpdate = true;
-					projectile.ai[0] = num10;
+					projectile.ai[0] = caughtType;
 					projectile.netUpdate = true;
-					return num10;
+					return junk? -2 : caughtType;
 				}
 			}
 			return -1;

@@ -1,6 +1,7 @@
 ﻿Miscellania is a small mod with a whole bunch of random ideas. There is no specific theme for the items.
 
 Current features include:
+ -Autofisher and Item Vacuum
  -Upgraded Rod of Discord
  -Reinforced Vest (protects player from their bombs and missiles)
  -Item magnets!
