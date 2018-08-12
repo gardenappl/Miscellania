@@ -11,60 +11,74 @@ using Terraria.ModLoader;
 
 namespace GoldensMisc
 {
-	internal delegate void GetFishingLevelHook(Vector2 position, Item fishingRod, Item bait, ref int fishingLevel);
-	internal delegate void CatchFishHook(Vector2 position, int zoneInfo, Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, ref int caughtType, ref bool junk);
+	//internal delegate void GetFishingLevelHook(Vector2 position, Item fishingRod, Item bait, ref int fishingLevel);
+	//internal delegate void CatchFishHook(Vector2 position, int zoneInfo, Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, ref int caughtType, ref bool junk);
 
-	internal static class AutofisherHooks
+	static class AutofisherHooks
 	{
-		static GetFishingLevelHook fishingLevelHook;
-		static CatchFishHook catchFishHook;
+		static Dictionary<HookType, List<MethodInfo>> hooks = new Dictionary<HookType, List<MethodInfo>>();
 
+		public static void Initialize()
+		{
+			hooks[HookType.CatchFish] = new List<MethodInfo>();
+			hooks[HookType.GetFishingLevel] = new List<MethodInfo>();
+		}
 
 		public static void GetFishingLevel(AutofisherTE te, Item bait, ref int fishingLevel)
 		{
 			var fishingRod = new Item();
 			fishingRod.SetDefaults(ItemID.MechanicsRod, true);
-			fishingLevelHook(te.Position.ToWorldCoordinates(), fishingRod, bait, ref fishingLevel);
+
+			object[] args = new object[] { te.Position.ToWorldCoordinates(), fishingRod, bait, fishingLevel };
+			var hookList = hooks[HookType.GetFishingLevel];
+			foreach(var hook in hookList)
+				hook.Invoke(null, args);
+			fishingLevel = (int)args[3];
 		}
 
 		public static void CatchFish(AutofisherTE te, Zone zone, Item bait, int power, int liquidType, int poolSize, int worldLayer, ref int caughtType, ref bool junk)
 		{
 			var fishingRod = new Item();
 			fishingRod.SetDefaults(ItemID.MechanicsRod, true);
-			catchFishHook(te.Position.ToWorldCoordinates(), (int)zone, fishingRod, bait, power, liquidType, poolSize, worldLayer, ref caughtType, ref junk);
+
+			object[] args = new object[] { te.Position.ToWorldCoordinates(), (int)zone, fishingRod, bait, power, liquidType, poolSize, worldLayer, caughtType, junk};
+			var hookList = hooks[HookType.CatchFish];
+			foreach(var hook in hookList)
+				hook.Invoke(null, args);
+			caughtType = (int)args[8];
+			junk = (bool)args[9];
 		}
 
-
-		//probably a bad system for doing this but that's ok?
-		public static void RegisterHook(GetFishingLevelHook hook)
+		
+		public static void RegisterHook(HookType type, MethodInfo hook)
 		{
-			fishingLevelHook += hook;
-		}
-
-		public static void RegisterHook(CatchFishHook hook)
-		{
-			catchFishHook += hook;
+			hooks[type].Add(hook);
 		}
 
 		public static void Unload()
 		{
-			fishingLevelHook = null;
-			catchFishHook = null;
+			hooks.Clear();
 		}
 
 
-		public static void TestHookGetFishingLevel(Vector2 position, Item fishingRod, Item bait, ref int fishingLevel)
-		{
-			fishingLevel = 9000;
-		}
+		//public static void TestHookGetFishingLevel(Vector2 position, Item fishingRod, Item bait, ref int fishingLevel)
+		//{
+		//	fishingLevel = 9000;
+		//}
 
-		public static void TestHookCatchFish(Vector2 position, int zoneInfo, Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, ref int caughtType, ref bool junk)
+		//public static void TestHookCatchFish(Vector2 position, int zoneInfo, Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, ref int caughtType, ref bool junk)
+		//{
+		//	if(power == 9000)
+		//	{
+		//		Main.NewText((Zone)zoneInfo);
+		//		caughtType = ItemID.Acorn;
+		//	}
+		//}
+
+		public enum HookType
 		{
-			if(power == 9000)
-			{
-				Main.NewText((Zone)zoneInfo);
-				caughtType = ItemID.Acorn;
-			}
+			GetFishingLevel,
+			CatchFish
 		}
 	}
 }

@@ -16,6 +16,8 @@ namespace GoldensMisc.Projectiles
 {
 	public class AutofisherBobber : ModProjectile
 	{
+		static readonly Color FishingLineColor = new Color(250, 90, 70, 100);
+
 		public override string Texture
 		{
 			get { return "Terraria/Projectile_" + ProjectileID.BobberMechanics; }
@@ -762,8 +764,7 @@ namespace GoldensMisc.Projectiles
 							}
 						}
 						rotation2 = (float)Math.Atan2((double)projPosY, (double)projPosX) - 1.57f;
-						//Color color2 = Lighting.GetColor((int)value.X / 16, (int)(value.Y / 16f), new Color(207, 205, 192));    //fishing line color
-						var color2 = new Color(200, 80, 80);
+						Color color2 = Lighting.GetColor((int)value.X / 16, (int)(value.Y / 16f), FishingLineColor);
 						Main.spriteBatch.Draw(Main.fishingLineTexture, new Vector2(value.X - Main.screenPosition.X + (float)Main.fishingLineTexture.Width * 0.5f, value.Y - Main.screenPosition.Y + (float)Main.fishingLineTexture.Height * 0.5f), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, Main.fishingLineTexture.Width, (int)num)), color2, rotation2, new Vector2((float)Main.fishingLineTexture.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
 					}
 				}

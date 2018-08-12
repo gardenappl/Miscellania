@@ -43,6 +43,8 @@ namespace GoldensMisc
 			FKtModSettingsLoaded = ModLoader.GetMod("FKTModSettings") != null;
 			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
 
+			AutofisherHooks.Initialize();
+
 			if(!Main.dedServ)
 			{
 				if(FKtModSettingsLoaded)
@@ -58,15 +60,15 @@ namespace GoldensMisc
 
 				if(Config.ExtraDyes)
 				{
-					GameShaders.Armor.BindShader<ArmorShaderData>(ItemType<MatrixDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(0f, 1.0f, 0.2f);
-					GameShaders.Armor.BindShader<ArmorShaderData>(ItemType<VirtualDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(1f, 0.1f, 0.1f);
-					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<CobaltDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.4f, 0.7f, 1.2f);
-					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<PalladiumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.2f, 0.5f, 0.3f);
-					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<MythrilDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.3f, 0.8f, 0.8f);
-					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<OrichalcumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.3f, 1.1f);
-					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<AdamantiteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.4f, 0.6f);
-					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<TitaniumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 0.7f, 0.7f);
-					GameShaders.Armor.BindShader<ReflectiveArmorShaderData>(ItemType<ChlorophyteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 1.1f, 0.1f);
+					GameShaders.Armor.BindShader(ItemType<MatrixDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(0f, 1.0f, 0.2f);
+					GameShaders.Armor.BindShader(ItemType<VirtualDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(1f, 0.1f, 0.1f);
+					GameShaders.Armor.BindShader(ItemType<CobaltDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.4f, 0.7f, 1.2f);
+					GameShaders.Armor.BindShader(ItemType<PalladiumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.2f, 0.5f, 0.3f);
+					GameShaders.Armor.BindShader(ItemType<MythrilDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.3f, 0.8f, 0.8f);
+					GameShaders.Armor.BindShader(ItemType<OrichalcumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.3f, 1.1f);
+					GameShaders.Armor.BindShader(ItemType<AdamantiteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.4f, 0.6f);
+					GameShaders.Armor.BindShader(ItemType<TitaniumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 0.7f, 0.7f);
+					GameShaders.Armor.BindShader(ItemType<ChlorophyteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 1.1f, 0.1f);
 				}
 				WormholeUI = new UIWormhole();
 				WormholeUI.Activate();
@@ -162,17 +164,19 @@ namespace GoldensMisc
 
 			if((string)args[0] == "RegisterHookGetFishingLevel")
 			{
-				var type = (Type)args[1];
-				var aDelegate = (GetFishingLevelHook)Delegate.CreateDelegate(typeof(GetFishingLevelHook), type.GetMethod((string)args[2]));
-				AutofisherHooks.RegisterHook(aDelegate);
+				var methodInfo = ((Type)args[1]).GetMethod((string)args[2], BindingFlags.Static | BindingFlags.Public);
+				if(methodInfo == null)
+					throw new Exception("Method " + (string)args[2] + " not found. Make sure it's a public static method.");
+				AutofisherHooks.RegisterHook(AutofisherHooks.HookType.GetFishingLevel, methodInfo);
 				Log("Added GetFishingLevel hook");
 				return true;
 			}
 			else if((string)args[0] == "RegisterHookCatchFish")
 			{
-				var type = (Type)args[1];
-				var aDelegate = (CatchFishHook)Delegate.CreateDelegate(typeof(CatchFishHook), type.GetMethod((string)args[2]));
-				AutofisherHooks.RegisterHook(aDelegate);
+				var methodInfo = ((Type)args[1]).GetMethod((string)args[2], BindingFlags.Static | BindingFlags.Public);
+				if(methodInfo == null)
+					throw new Exception("Method " + (string)args[2] + " not found. Make sure it's a public static method.");
+				AutofisherHooks.RegisterHook(AutofisherHooks.HookType.CatchFish, methodInfo);
 				Log("Added CatchFish hook");
 				return true;
 			}

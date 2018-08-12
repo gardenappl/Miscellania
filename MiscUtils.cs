@@ -222,7 +222,6 @@ namespace GoldensMisc
 			results[0] -= results[2];
 			results[1] -= holyTiles;
 			results[2] -= holyTiles;
-
 			return results;
 		}
 	}
@@ -301,6 +300,7 @@ namespace GoldensMisc
 							chest.item[index].stack += num;
 							if(item.stack <= 0)
 							{
+								DoCoins(index, chest.item);
 								item.SetDefaults(0, true);
 								return item;
 							}
@@ -310,6 +310,7 @@ namespace GoldensMisc
 				}
 				else
 					hasEmptySpace = true;
+				DoCoins(index, chest.item);
 			}
 			if((!smartStack || hasSameItem) && hasEmptySpace && item.stack > 0)
 			{
@@ -324,6 +325,24 @@ namespace GoldensMisc
 				}
 			}
 			return item;
+		}
+
+		static void DoCoins(int i, Item[] inventory)
+		{
+			if(inventory[i].stack != 100 || inventory[i].type != 71 && inventory[i].type != 72 && inventory[i].type != 73)
+				return;
+			inventory[i].SetDefaults(inventory[i].type + 1, false);
+			for(int i1 = 0; i1 < inventory.Length; ++i1)
+			{
+				if(inventory[i1].IsTheSameAs(inventory[i]) && i1 != i && (inventory[i1].type == inventory[i].type && inventory[i1].stack < inventory[i1].maxStack))
+				{
+					++inventory[i1].stack;
+					inventory[i].SetDefaults(0, false);
+					inventory[i].active = false;
+					inventory[i].TurnToAir();
+					DoCoins(i1, inventory);
+				}
+			}
 		}
 	}
 }
