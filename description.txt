@@ -6,10 +6,9 @@ Current features include:
  -Reinforced Vest (protects player from their bombs and missiles)
  -Item magnets!
  -Wormhole Mirror
- -Baseball Bats
  -Healing/Mana Stone (restores health & mana, can be used multiple times)
  -Baseball Bats
- -A few weapons and accessories
+ -A few weapons and accessories, including Baseball Bats
  -Building materials & decorations
  
 And a lot more! Go to the forum page for the full list.
