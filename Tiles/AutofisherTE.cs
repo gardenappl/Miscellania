@@ -49,13 +49,11 @@ namespace GoldensMisc.Tiles
 				if(baitItem != null && (bobberProj == -1 || !Main.projectile[bobberProj].active ||
 					Main.projectile[bobberProj].type != mod.ProjectileType<AutofisherBobber>()))
 				{
-					//Main.NewText("new proj!");
 					var bobberPos = new Point(Position.X + (facingRight ? 2 : 0), Position.Y).ToWorldCoordinates();
 					bobberProj = Projectile.NewProjectile(bobberPos, new Vector2(facingRight ? 3f : -3f, 0f), mod.ProjectileType<AutofisherBobber>(), 0, 0, ai1: this.ID);
 					Main.projectile[bobberProj].ai[1] = this.ID;
 					Main.projectile[bobberProj].netUpdate = true;
 				}
-				//Main.NewText(FishingCooldown);
 				if(FishingCooldown > 0)
 				{
 					FishingCooldown--;
@@ -64,7 +62,6 @@ namespace GoldensMisc.Tiles
 				{
 					if(Main.rand.Next(150) == 1)
 					{
-						//Main.NewText("hello!");
 						FishingCooldown = 500;
 						int itemType = 0;
 						try
@@ -126,7 +123,6 @@ namespace GoldensMisc.Tiles
 				power = (int)((double)power * 0.949999988079071);
 			if(Main.moonPhase == 4)
 				power = (int)((double)power * 0.899999976158142);
-			//Main.NewText("raw fish power: " + num2);
 			AutofisherHooks.GetFishingLevel(this, baitItem, ref power);
 			return power;
 		}

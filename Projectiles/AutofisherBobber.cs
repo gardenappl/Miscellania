@@ -54,11 +54,9 @@ namespace GoldensMisc.Projectiles
 		//ai[1] - tile entity ID
 		public override void AI()
 		{
-			//Main.NewText(projectile.ai[1]);
 			if(!TileEntity.ByID.ContainsKey((int)projectile.ai[1]) || !(TileEntity.ByID[(int)projectile.ai[1]] is AutofisherTE))
 			{
 				projectile.Kill();
-				//Main.NewText("kill me");
 				return;
 			}
 			var te = (AutofisherTE)TileEntity.ByID[(int)projectile.ai[1]];
@@ -142,7 +140,7 @@ namespace GoldensMisc.Projectiles
 					Rectangle rectangle2 = new Rectangle(te.Position.X * 16, te.Position.Y * 16, 48, 32);
 					if(((Rectangle)rectangle1).Intersects(rectangle2))
 					{
-						if((double)projectile.ai[0] > 0.0 && (double)projectile.ai[0] < 3930.0)
+						if((double)projectile.ai[0] > 0.0)
 						{
 							int Type = (int)projectile.ai[0];
 							Item newItem = new Item();
@@ -189,7 +187,6 @@ namespace GoldensMisc.Projectiles
 			}
 			else
 			{
-				//Main.NewText("just fishin");
 				//bool flag = false;
 				//Vector2 vector2 = new Vector2((float)(projectile.position.X + (double)projectile.width * 0.5), (float)(projectile.position.Y + (double)projectile.height * 0.5));
 				//float num1 = (float)(Main.player[projectile.owner].position.X + (double)(Main.player[projectile.owner].width / 2) - vector2.X);
@@ -199,7 +196,6 @@ namespace GoldensMisc.Projectiles
 				//	projectile.ai[0] = 1f;
 				if(projectile.wet)
 				{
-					//Main.NewText("wet");
 					projectile.rotation = 0.0f;
 					projectile.velocity.X *= 0.9f;
 					int index1 = (int)(projectile.Center.X + (double)((projectile.width / 2 + 8) * projectile.direction)) / 16;
@@ -443,7 +439,6 @@ namespace GoldensMisc.Projectiles
 					//	num18 += 10;
 					int type = -1;
 					var zone = MiscUtils.GetZoneInLocation(te.Position.X, te.Position.Y);
-					//Main.NewText(zone);
 
 					bool junk = false;
 

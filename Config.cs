@@ -232,7 +232,7 @@ namespace GoldensMisc
 			
 			setting.AddComment("Stat changes and new early game gem staves", commentScale);
 			setting.AddBool(AltStaffsKey, "Alternate Staves", false);
-			setting.AddComment("Magic stones that replуnish health and mana for a number of uses.", commentScale);
+			setting.AddComment("Magic stones that replenish health and mana for a number of uses.", commentScale);
 			setting.AddBool(MagicStonesKey, "Magic Stones", false);
 			setting.AddComment("Unobtainable God Mode item(use Cheat Sheet or another mod.)", commentScale);
 			setting.AddBool(GodStoneKey, "God Stone", false);

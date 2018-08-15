@@ -20,6 +20,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
+using System.Linq;
 
 namespace GoldensMisc
 {
@@ -40,10 +41,9 @@ namespace GoldensMisc
 		public override void Load()
 		{
 			Instance = this; //apparently you get some problems with Mod Reloading if you put this in the constructor
+			FixCSharp6CompilerIssueThing();
 			FKtModSettingsLoaded = ModLoader.GetMod("FKTModSettings") != null;
 			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
-
-			AutofisherHooks.Initialize();
 
 			if(!Main.dedServ)
 			{
@@ -78,6 +78,15 @@ namespace GoldensMisc
 			if(Config.SpearofJustice)
 			{
 				AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
+			}
+		}
+
+		static void FixCSharp6CompilerIssueThing()
+		{
+			var thing = Enumerable.Range(5, 10);
+			foreach(int i in thing)
+			{
+				//nothing
 			}
 		}
 		

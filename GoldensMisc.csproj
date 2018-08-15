@@ -190,7 +190,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>E:\Yurik\Steam\SteamApps\common\Terraria\Terraria.exe -build "$(ProjectDir)\" -savedirectory "E:\Yurik\Terraria"</PreBuildEvent>
+    <PreBuildEvent>E:\Yurik\Steam\SteamApps\common\Terraria\tModLoaderServer.exe -build "$(ProjectDir)\" -savedirectory "E:\Yurik\Terraria"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>
