@@ -6,13 +6,30 @@ using System.Linq;
 using System.Text;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Tiles
 {
 	public class AutofisherTE : ModTileEntity
 	{
-		public string DisplayedFishingInfo = String.Empty;
+		public string DisplayedFishingInfo
+		{
+			get
+			{
+				if(_fishingInfo != null)
+					return _fishingInfo;
+				GetDefaultFishingInfo();
+				string horribleHack = _fishingInfo;
+				_fishingInfo = null;
+				return horribleHack ?? "Error";
+			}
+			set
+			{
+				_fishingInfo = value;
+			}
+		}
+		string _fishingInfo = null;
 		int bobberProj = -1;
 		int FishingCooldown = 300;
 
@@ -46,13 +63,18 @@ namespace GoldensMisc.Tiles
 			{
 				bool facingRight = Main.tile[Position.X, Position.Y].frameX == 0;
 				var baitItem = GetCurrentBait();
-				if(baitItem != null && (bobberProj == -1 || !Main.projectile[bobberProj].active ||
-					Main.projectile[bobberProj].type != mod.ProjectileType<AutofisherBobber>()))
+				if(baitItem == null)
+				{
+					DisplayedFishingInfo = Language.GetTextValue("Mods.GoldensMisc.Autofisher.NoBait");
+				}
+				else if(bobberProj == -1 || !Main.projectile[bobberProj].active ||
+					Main.projectile[bobberProj].type != mod.ProjectileType<AutofisherBobber>())
 				{
 					var bobberPos = new Point(Position.X + (facingRight ? 2 : 0), Position.Y).ToWorldCoordinates();
 					bobberProj = Projectile.NewProjectile(bobberPos, new Vector2(facingRight ? 3f : -3f, 0f), mod.ProjectileType<AutofisherBobber>(), 0, 0, ai1: this.ID);
 					Main.projectile[bobberProj].ai[1] = this.ID;
 					Main.projectile[bobberProj].netUpdate = true;
+					_fishingInfo = null;
 				}
 				if(FishingCooldown > 0)
 				{
@@ -66,11 +88,10 @@ namespace GoldensMisc.Tiles
 						int itemType = 0;
 						try
 						{
-							if(GetCurrentBait() == null)
+							if(baitItem == null)
 								return;
-							var bobber = (AutofisherBobber)Main.projectile[bobberProj].modProjectile;
-							itemType = bobber.FishingCheck();
-
+							var projectile = Main.projectile[bobberProj];
+							itemType = ((AutofisherBobber)projectile.modProjectile).FishingCheck(true);
 
 							if(itemType > 0)
 							{
@@ -161,6 +182,16 @@ namespace GoldensMisc.Tiles
 				item.stack--;
 			if(item.stack <= 0)
 				item.SetDefaults(0);
+		}
+
+		void GetDefaultFishingInfo()
+		{
+			if(bobberProj != -1 && Main.projectile[bobberProj].active &&
+					Main.projectile[bobberProj].type == mod.ProjectileType<AutofisherBobber>())
+			{
+				var projectile = Main.projectile[bobberProj];
+				((AutofisherBobber)projectile.modProjectile).FishingCheck(false);
+			}
 		}
 	}
 }

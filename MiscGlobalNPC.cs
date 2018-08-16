@@ -42,7 +42,7 @@ namespace GoldensMisc
 				case NPCID.Mechanic:
 					if(Config.MechanicsRodOften && Main.hardMode && Main.moonPhase <= 4 && NPC.AnyNPCs(NPCID.Angler))
 					{
-						if(!ChestExtensions.HasItem(shop, ItemID.MechanicsRod))
+						if(!MiscUtils.ChestHasItem(shop, ItemID.MechanicsRod))
 						{
 							shop.item[nextSlot].SetDefaults(ItemID.MechanicsRod);
 							nextSlot++;

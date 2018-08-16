@@ -46,32 +46,40 @@ namespace GoldensMisc.Tiles
 			mod.GetTileEntity<AutofisherTE>().Kill(i, j);
 		}
 
-		//public override void RightClick(int i, int j)
-		//{
-		//	//Top left tile
-		//	int x = i - Main.tile[i, j].frameX % 54 / 18;
-		//	int y = j - Main.tile[i, j].frameY % 38 / 18;
+		public override void MouseOver(int i, int j)
+		{
+			Main.LocalPlayer.noThrow = 2;
+			Main.LocalPlayer.showItemIcon = true;
+			Main.LocalPlayer.showItemIcon2 = mod.ItemType(GetType().Name);
+		}
 
-		//	try
-		//	{
-		//		var te = (AutofisherTE)TileEntity.ByPosition[new Point16(x, y)];
-		//		if(Main.netMode == NetmodeID.MultiplayerClient)
-		//		{
-		//			var message = mod.GetPacket();
-		//			message.Write((byte)MiscMessageType.PrintAutofisherInfo);
-		//			message.Write(te.ID);
-		//			message.Send();
-		//		}
-		//		else
-		//		{
-		//			Main.NewText(te.DisplayedFishingInfo);
-		//		}
-		//	}
-		//	catch(Exception e)
-		//	{
-		//		ErrorLogger.Log(e);
-		//		Main.NewText("Error! Report this error and send the Terraria/Logs/Logs.txt file!");
-		//	}
-		//}
+		public override void RightClick(int i, int j)
+		{
+			//Top left tile
+			int x = i - Main.tile[i, j].frameX % 54 / 18;
+			int y = j - Main.tile[i, j].frameY % 38 / 18;
+
+			try
+			{
+				var te = (AutofisherTE)TileEntity.ByPosition[new Point16(x, y)];
+				if(Main.netMode == NetmodeID.MultiplayerClient)
+				{
+					var message = mod.GetPacket();
+					message.Write((byte)MiscMessageType.PrintAutofisherInfo);
+					message.Write(te.ID);
+					message.Send();
+				}
+				else
+				{
+					if(te.DisplayedFishingInfo != null)
+						Main.NewText(te.DisplayedFishingInfo);
+				}
+			}
+			catch(Exception e)
+			{
+				ErrorLogger.Log(e);
+				Main.NewText("Error! Report this error and send the Terraria/Logs/Logs.txt file!");
+			}
+		}
 	}
 }

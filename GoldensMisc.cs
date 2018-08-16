@@ -41,7 +41,7 @@ namespace GoldensMisc
 		public override void Load()
 		{
 			Instance = this; //apparently you get some problems with Mod Reloading if you put this in the constructor
-			FixCSharp6CompilerIssueThing();
+			AutofisherHooks.Initialize();
 			FKtModSettingsLoaded = ModLoader.GetMod("FKTModSettings") != null;
 			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
 
@@ -78,15 +78,6 @@ namespace GoldensMisc
 			if(Config.SpearofJustice)
 			{
 				AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
-			}
-		}
-
-		static void FixCSharp6CompilerIssueThing()
-		{
-			var thing = Enumerable.Range(5, 10);
-			foreach(int i in thing)
-			{
-				//nothing
 			}
 		}
 		
@@ -227,10 +218,10 @@ namespace GoldensMisc
 
 		#region Hamstar's Mod Helpers integration
 
-		public static string GithubUserName { get { return "goldenapple3"; } }
-		public static string GithubProjectName { get { return "Miscellania"; } }
+		public static string GithubUserName => "goldenapple3";
+		public static string GithubProjectName => "Miscellania";
 
-		public static string ConfigFileRelativePath { get { return "Mod Configs/Miscellania.json"; } }
+		public static string ConfigFileRelativePath => "Mod Configs/Miscellania.json";
 
 		public static void ReloadConfigFromFile()
 		{

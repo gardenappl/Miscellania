@@ -10,25 +10,13 @@ namespace GoldensMisc.Commands
 {
 	public class WorldGenCommand : ModCommand
 	{
-		public override CommandType Type
-		{
-			get { return CommandType.World; }
-		}
+		public override CommandType Type => CommandType.World;
 		
-		public override string Command
-		{
-			get { return "miscWorldGen"; }
-		}
+		public override string Command => "miscWorldGen";
 		
-		public override string Usage
-		{
-			get { return "/miscWorldGen <forge|hellforge>"; }
-		}
+		public override string Usage => "/miscWorldGen <forge|hellforge>";
 		
-		public override string Description
-		{
-			get { return Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.Description"); }
-		}
+		public override string Description => Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.Description");
 		
 		public override void Action(CommandCaller caller, string input, string[] args)
 		{

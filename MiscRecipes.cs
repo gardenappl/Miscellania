@@ -15,25 +15,25 @@ namespace GoldensMisc
 	{
 		public static void AddRecipeGroups()
 		{
-			var recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.SilverBar), new int[] {
+			var recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.SilverBar), 
 				ItemID.SilverBar,
 				ItemID.TungstenBar
-			});
+			);
 			RecipeGroup.RegisterGroup("GoldensMisc:Silver", recipeGroup);
 			if(Config.AncientMuramasa)
 			{
-				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Muramasa), new int[] {
+				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Muramasa), 
 					ItemID.Muramasa,
 					GoldensMisc.Instance.ItemType<AncientMuramasa>()
-				});
+				);
 				RecipeGroup.RegisterGroup("GoldensMisc:Muramasa", recipeGroup);
 			}
 			if(Config.AncientForges)
 			{
-				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Hellforge), new int[] {
+				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Hellforge),
 					ItemID.Hellforge,
 					GoldensMisc.Instance.ItemType<AncientHellforge>()
-				});
+				);
 				RecipeGroup.RegisterGroup("GoldensMisc:Hellforge", recipeGroup);
 			}
 		}

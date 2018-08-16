@@ -14,7 +14,6 @@ namespace GoldensMisc.Tiles
 {
 	public class ChestVacuumTE : ModTileEntity
 	{
-		int PickupCooldown = -1;
 		public bool SmartStack = false;
 		const float PickupRadiusSq = 160f * 160f;
 
@@ -37,7 +36,6 @@ namespace GoldensMisc.Tiles
 				NetMessage.SendData(MessageID.TileEntityPlacement, -1, -1, null, i, j, Type);
 				return -1;
 			}
-			//SetStartingCooldown();
 			return Place(i, j);
 		}
 
@@ -46,43 +44,23 @@ namespace GoldensMisc.Tiles
 			try
 			{
 				base.Update();
-				//Main.NewText("pickup cooldown: " + PickupCooldown);
-				if(PickupCooldown == -1)
-				{
-					SetStartingCooldown();
-					return;
-				}
 
-				if(PickupCooldown > 0)
+				if((int)(Main.GlobalTime * 60f) % 100 == GetPickupTime())
 				{
-					PickupCooldown--;
-				}
-				else
-				{
-					PickupCooldown = 100;
-					//Main.NewText("Pickup");
-
 					var chest = Main.chest[Chest.FindChest(Position.X, Position.Y + 1)];
 					var myPos = Position.ToWorldCoordinates(16f, 8f);
-					//Main.NewText(chest.item.Count(i => i.type > 0 && i.stack > 0) + " items");
-
-					//Main.NewText("my pos: " + myPos);
-
 					for(int i = 0; i < Main.maxItems; i++)
 					{
 						var item = Main.item[i];
 						if(item.active && item.stack > 0 && item.DistanceSQ(myPos) < PickupRadiusSq)
 						{
-							//Main.NewText("their pos: " + item.position);
-							//Main.NewText(item.Name + " " + item.DistanceSQ(myPos));
-
 							var itemPos = item.position;
 							int itemWidth = item.width;
 							int itemHeight = item.height;
 							//string itemName = item.Name;
 							int oldStack = item.stack;
 
-							ChestExtensions.PutItem(chest, item, SmartStack);
+							MiscUtils.PutItem(chest, item, SmartStack);
 
 							if(item.type == 0 || oldStack - item.stack > 0)
 							{
@@ -121,9 +99,9 @@ namespace GoldensMisc.Tiles
 			}
 		}
 
-		void SetStartingCooldown()
+		int GetPickupTime()
 		{
-			PickupCooldown = (Position.X * 10 + Position.Y * 5) % 100;
+			return (Position.X * 10 + Position.Y * 5) % 100;
 		}
 	}
 }

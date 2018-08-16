@@ -22,13 +22,7 @@ namespace GoldensMisc.Projectiles
 			return Config.DemonCrown;
 		}
 
-		public override string Texture
-		{
-			get
-			{
-				return "Terraria/Projectile_" + ProjectileID.RubyBolt;
-			}
-		}
+		public override string Texture => "Terraria/Projectile_" + ProjectileID.RubyBolt;
 		
 		public override void SetDefaults()
 		{

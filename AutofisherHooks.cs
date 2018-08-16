@@ -18,7 +18,7 @@ namespace GoldensMisc
 	{
 		static Dictionary<HookType, List<MethodInfo>> hooks = new Dictionary<HookType, List<MethodInfo>>();
 
-		static AutofisherHooks()
+		public static void Initialize()
 		{
 			hooks[HookType.CatchFish] = new List<MethodInfo>();
 			hooks[HookType.GetFishingLevel] = new List<MethodInfo>();

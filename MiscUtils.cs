@@ -11,9 +11,9 @@ using Terraria.UI;
 
 namespace GoldensMisc
 {
-	public class MiscUtils
+	public static class MiscUtils
 	{
-		static readonly int[] vanillaPowerups = new int[]
+		static readonly int[] vanillaPowerups =
 		{
 				ItemID.Heart,
 				ItemID.CandyApple,
@@ -224,25 +224,8 @@ namespace GoldensMisc
 			results[2] -= holyTiles;
 			return results;
 		}
-	}
-	
-	[Flags]
-	public enum Zone
-	{
-		None = 0,
-		Corrupt = 1,
-		Crimson = 2,
-		Holy = 4,
-		Snow = 8,
-		Jungle = 16,
-		Shroom = 32,
-		Dungeon = 64,
-		Desert = 128
-	}
 
-	//this was supposed to use Extension methods but tML had trouble compiling it?
-	public static class ChestExtensions
-	{
+
 		public static bool RemoveItem(Chest shop, int type)
 		{
 			bool found = false;
@@ -267,7 +250,7 @@ namespace GoldensMisc
 			return found;
 		}
 
-		public static bool HasItem(Chest shop, int type)
+		public static bool ChestHasItem(Chest shop, int type)
 		{
 			for(int i = 0; i < shop.item.Length; i++)
 			{
@@ -281,7 +264,7 @@ namespace GoldensMisc
 
 		public static Item PutItem(Chest chest, Item item, bool smartStack = false)
 		{
-			if(!MiscUtils.IsActuallyAnItem(item))
+			if(!IsActuallyAnItem(item))
 				return item;
 			bool hasEmptySpace = false;
 			bool hasSameItem = false;
@@ -344,5 +327,41 @@ namespace GoldensMisc
 				}
 			}
 		}
+
+		public static Zone GetZoneInfo(Player player)
+		{
+			var zone = Zone.None;
+			if(player.ZoneCorrupt)
+				zone |= Zone.Corrupt;
+			if(player.ZoneCrimson)
+				zone |= Zone.Crimson;
+			if(player.ZoneHoly)
+				zone |= Zone.Holy;
+			if(player.ZoneSnow)
+				zone |= Zone.Snow;
+			if(player.ZoneJungle)
+				zone |= Zone.Jungle;
+			if(player.ZoneGlowshroom)
+				zone |= Zone.Shroom;
+			if(player.ZoneDungeon)
+				zone |= Zone.Dungeon;
+			if(player.ZoneDesert)
+				zone |= Zone.Desert;
+			return zone;
+		}
+	}
+	
+	[Flags]
+	public enum Zone
+	{
+		None = 0,
+		Corrupt = 1,
+		Crimson = 2,
+		Holy = 4,
+		Snow = 8,
+		Jungle = 16,
+		Shroom = 32,
+		Dungeon = 64,
+		Desert = 128
 	}
 }

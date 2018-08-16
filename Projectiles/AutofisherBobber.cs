@@ -18,10 +18,7 @@ namespace GoldensMisc.Projectiles
 	{
 		static readonly Color FishingLineColor = new Color(250, 90, 70, 100);
 
-		public override string Texture
-		{
-			get { return "Terraria/Projectile_" + ProjectileID.BobberMechanics; }
-		}
+		public override string Texture => "Terraria/Projectile_" + ProjectileID.BobberMechanics;
 
 		public override bool Autoload(ref string name)
 		{
@@ -240,7 +237,6 @@ namespace GoldensMisc.Projectiles
 				}
 				else
 				{
-					//Main.NewText("not wet");
 					if(projectile.velocity.Y == 0.0)
 					{
 						projectile.velocity.X *= 0.95f;
@@ -309,7 +305,7 @@ namespace GoldensMisc.Projectiles
 			}
 		}
 
-		public int FishingCheck()
+		public int FishingCheck(bool catchRealFish)
 		{
 			var te = (AutofisherTE)TileEntity.ByID[(int)projectile.ai[1]];
 
@@ -345,17 +341,16 @@ namespace GoldensMisc.Projectiles
 				poolSize = (int)((double)poolSize * 1.5);
 			if(poolSize < 75)
 			{
-				//if(Main.netMode != NetmodeID.SinglePlayer)
-				//	Main.NewText(Language.GetTextValue("GameUI.NotEnoughWater"));
-					//te.DisplayedFishingInfo = Language.GetTextValue("GameUI.NotEnoughWater");
+				if(Main.netMode != NetmodeID.MultiplayerClient)
+					te.DisplayedFishingInfo = Language.GetTextValue("GameUI.NotEnoughWater");
 			}
 			else
 			{
 				int fishingPower = te.GetFishingLevel(baitItem);
 				if(fishingPower == 0)
 					return -1;
-				//Main.NewText(Language.GetTextValue("GameUI.FishingPower", (object)num2));
-				//te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FishingPower", (object)num2);
+				if(Main.netMode != NetmodeID.MultiplayerClient)
+					te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FishingPower", (object)fishingPower);
 				//if(num2 < 0)
 				//{
 				//	if(num2 != -1)
@@ -385,10 +380,13 @@ namespace GoldensMisc.Projectiles
 					if((double)num7 < 1.0)
 						fishingPower = (int)((double)fishingPower * (double)num7);
 					float num8 = 1f - num7;
-					//if(num1 < num6)
-					//	Main.NewText(Language.GetTextValue("GameUI.FullFishingPower", (object)num2, (object)-Math.Round((double)num8 * 100.0)));
-						//te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FullFishingPower", (object)num2, (object)-Math.Round((double)num8 * 100.0));
+					if(poolSize < num6 && Main.netMode != NetmodeID.MultiplayerClient)
+						te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FullFishingPower", (object)fishingPower, (object)-Math.Round((double)num8 * 100.0));
 					int num9 = (fishingPower + 75) / 2;
+
+					if(!catchRealFish)
+						return -1;
+
 					if(/*Main.player[projectile.owner].wet || */Main.rand.Next(100) > num9)
 						return -1;
 					int caughtType = 0;
