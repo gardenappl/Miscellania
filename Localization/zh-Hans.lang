@@ -66,7 +66,7 @@ ItemName.AdamantiteDye=反光金刚石染料
 
 ItemName.BaseballCap=棒球帽
 (原文"How do you do, fellow kids?",暂译;此为梗,详情: https://knowyourmeme.com/memes/how-do-you-do-fellow-kids)
-ItemTooltip.BaseballCap='你们过得如何,孩子们?'/n右键可旋转
+ItemTooltip.BaseballCap='你们过得如何,孩子们?'\n右键可旋转
 
 ItemName.ChlorophyteDye=反光叶绿染料
 
