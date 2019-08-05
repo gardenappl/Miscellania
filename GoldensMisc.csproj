@@ -1,199 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\references\tModLoader.targets" />
   <PropertyGroup>
-    <ProjectGuid>{937EE1B2-594E-4724-AA21-44CE6C9D107B}</ProjectGuid>
-    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>GoldensMisc</RootNamespace>
     <AssemblyName>GoldensMisc</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <NoWin32Manifest>False</NoWin32Manifest>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <TargetFramework>net45</TargetFramework>
     <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputPath>bin\Debug\</OutputPath>
-    <DebugSymbols>True</DebugSymbols>
-    <DebugType>Full</DebugType>
-    <Optimize>False</Optimize>
-    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <OutputPath>bin\Release\</OutputPath>
-    <DebugSymbols>False</DebugSymbols>
-    <DebugType>None</DebugType>
-    <Optimize>True</Optimize>
-    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
-    <DefineConstants>TRACE</DefineConstants>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    <Reference Include="tModLoader.XNA">
+      <HintPath>..\..\..\..\..\..\files\Yurik\Games\Linux\Steam\steamapps\common\Terraria\ModCompile\tModLoader.XNA.exe</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Xna.Framework" />
-    <Reference Include="Microsoft.Xna.Framework.Game" />
-    <Reference Include="Microsoft.Xna.Framework.Graphics" />
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="Terraria">
-      <HintPath>..\..\..\..\Steam\SteamApps\common\Terraria\Terraria.exe</HintPath>
+    <Reference Include="tModLoader">
+      <HintPath>..\..\..\..\..\..\files\Yurik\Games\Linux\Steam\steamapps\common\Terraria\tModLoader.exe</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Buffs\CursedMemory.cs" />
-    <Compile Include="Buffs\OrbofLight.cs" />
-    <Compile Include="Commands\WorldGenCommand.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="Dusts\RedDust.cs" />
-    <Compile Include="Dusts\RedDustStatic.cs" />
-    <Compile Include="AutofisherHooks.cs" />
-    <Compile Include="Items\Consumable\DeathEmblem.cs" />
-    <Compile Include="Items\Consumable\GodStone.cs" />
-    <Compile Include="Items\Consumable\InertStone.cs" />
-    <Compile Include="Items\Consumable\LifeStone.cs" />
-    <Compile Include="Items\Consumable\ManaStone.cs" />
-    <Compile Include="Items\Equipable\Vanity\BaseballCap.cs" />
-    <Compile Include="Items\Equipable\DemonCrown.cs" />
-    <Compile Include="Items\Equipable\HeartLocket.cs" />
-    <Compile Include="Items\Equipable\MagnetismRing.cs" />
-    <Compile Include="Items\Equipable\NinjaGear.cs" />
-    <Compile Include="Items\Equipable\OrbofLight.cs" />
-    <Compile Include="Items\Equipable\ReinforcedHorseshoe.cs" />
-    <Compile Include="Items\Equipable\ReinforcedVest.cs" />
-    <Compile Include="Items\Equipable\UniversalMagnet.cs" />
-    <Compile Include="Items\Equipable\Vanity\AdamantiteDye.cs" />
-    <Compile Include="Items\Equipable\Vanity\ChlorophyteDye.cs" />
-    <Compile Include="Items\Equipable\Vanity\CobaltDye.cs" />
-    <Compile Include="Items\Equipable\Vanity\MatrixDye.cs" />
-    <Compile Include="Items\Equipable\Vanity\MythrilDye.cs" />
-    <Compile Include="Items\Equipable\Vanity\OrichalcumDye.cs" />
-    <Compile Include="Items\Equipable\Vanity\PalladiumDye.cs" />
-    <Compile Include="Items\Equipable\Vanity\TitaniumDye.cs" />
-    <Compile Include="Items\Equipable\Vanity\VirtualDye.cs" />
-    <Compile Include="Items\ItemTweaks.cs" />
-    <Compile Include="Items\Materials\WormholeCrystal.cs" />
-    <Compile Include="Items\Placeable\AncientForge.cs" />
-    <Compile Include="Items\Placeable\AncientHellforge.cs" />
-    <Compile Include="Items\Placeable\Autofisher.cs" />
-    <Compile Include="Items\Placeable\ChestVacuum.cs" />
-    <Compile Include="Items\Placeable\RedChimney.cs" />
-    <Compile Include="Items\Placeable\RedFireplace.cs" />
-    <Compile Include="Items\Placeable\SandstoneSlabWall.cs" />
-    <Compile Include="Items\Tools\WormholeIceMirror.cs" />
-    <Compile Include="Items\Tools\IslandStaff.cs" />
-    <Compile Include="Items\Tools\RodofWarping.cs" />
-    <Compile Include="Items\Tools\WormholeCellPhone.cs" />
-    <Compile Include="Items\Tools\WormholeDoubleMirror.cs" />
-    <Compile Include="Items\Tools\WormholeMirror.cs" />
-    <Compile Include="Items\Weapons\AmethystStaff.cs" />
-    <Compile Include="Items\Weapons\AncientMuramasa.cs" />
-    <Compile Include="Items\Weapons\BaseballBat.cs" />
-    <Compile Include="Items\Weapons\DiamondStaff.cs" />
-    <Compile Include="Items\Weapons\EmeraldStaff.cs" />
-    <Compile Include="Items\Weapons\KarmaStaff.cs" />
-    <Compile Include="Items\Weapons\MagicSpear.cs" />
-    <Compile Include="Items\Weapons\RubyStaff.cs" />
-    <Compile Include="Items\Weapons\SapphireStaff.cs" />
-    <Compile Include="Items\Weapons\TopazStaff.cs" />
-    <Compile Include="Items\Weapons\UndyingSpear.cs" />
-    <Compile Include="MiscGlobalItem.cs" />
-    <Compile Include="MiscGlobalNPC.cs" />
-    <Compile Include="MiscGlowMasks.cs" />
-    <Compile Include="MiscPlayer.cs" />
-    <Compile Include="MiscRecipes.cs" />
-    <Compile Include="MiscUtils.cs" />
-    <Compile Include="GoldensMisc.cs" />
-    <Compile Include="MiscWorld.cs" />
-    <Compile Include="NPCs\BaseballCaveBat.cs" />
-    <Compile Include="NPCs\BaseballGiantBat.cs" />
-    <Compile Include="NPCs\BaseballHellBat.cs" />
-    <Compile Include="NPCs\BaseballIceBat.cs" />
-    <Compile Include="NPCs\BaseballIlluminantBat.cs" />
-    <Compile Include="NPCs\BaseballJungleBat.cs" />
-    <Compile Include="NPCs\BaseballLavaBat.cs" />
-    <Compile Include="Projectiles\AutofisherBobber.cs" />
-    <Compile Include="Projectiles\GasterBlaster.cs" />
-    <Compile Include="Projectiles\Laputa.cs" />
-    <Compile Include="Projectiles\LaputaSky.cs" />
-    <Compile Include="Projectiles\GasterLaser.cs" />
-    <Compile Include="Projectiles\MagicSpear.cs" />
-    <Compile Include="Projectiles\MagicSpearMini.cs" />
-    <Compile Include="Projectiles\Minion.cs" />
-    <Compile Include="Projectiles\OrbofLight.cs" />
-    <Compile Include="Projectiles\ProjectileTweaks.cs" />
-    <Compile Include="Projectiles\RedBullet.cs" />
-    <Compile Include="Projectiles\RedCrystal.cs" />
-    <Compile Include="Projectiles\UndyingSpear.cs" />
-    <Compile Include="Tiles\AncientForge.cs" />
-    <Compile Include="Tiles\AncientHellforge.cs" />
-    <Compile Include="Tiles\Autofisher.cs" />
-    <Compile Include="Tiles\AutofisherTE.cs" />
-    <Compile Include="Tiles\ChestVacuum.cs" />
-    <Compile Include="Tiles\ChestVacuumTE.cs" />
-    <Compile Include="Tiles\RedChimney.cs" />
-    <Compile Include="Tiles\RedChimneyTE.cs" />
-    <Compile Include="Tiles\RedFireplace.cs" />
-    <Compile Include="Tiles\SandstoneSlabWall.cs" />
-    <Compile Include="UI\UIWormhole.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 4.5</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="build.txt" />
-    <None Include="description.txt" />
-    <None Include="Localization\zh-Hans.lang" />
-    <None Include="Localization\ru-RU.lang" />
-    <None Include="Localization\en-US.lang" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>E:\Yurik\Steam\SteamApps\common\Terraria\tModLoaderServer.exe -build "$(ProjectDir)\" -savedirectory "E:\Yurik\Terraria"</PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
+  <Target Name="BuildMod" AfterTargets="Build">
+    <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
+  </Target>
 </Project>
