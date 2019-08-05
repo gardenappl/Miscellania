@@ -5,8 +5,6 @@ using Terraria;
 using Terraria.IO;
 using Terraria.ModLoader;
 
-using FKTModSettings;
-
 namespace GoldensMisc
 {
 	//most of this will be removed once tML implements ModConfig
@@ -220,105 +218,105 @@ namespace GoldensMisc
 			Configuration.Save();
 		}
 		
-		public static void LoadFKConfig()
-		{
-			var setting = ModSettingsAPI.CreateModSettingConfig(GoldensMisc.Instance);
+		//public static void LoadFKConfig()
+		//{
+		//	var setting = ModSettingsAPI.CreateModSettingConfig(GoldensMisc.Instance);
 			
-			setting.AddComment("All these features require a mod reload to change properly.");
-			setting.AddComment("Features marked with an asterisk (*) require a new world or /miscWorldGen chat command.");
-			setting.AddComment("For more information, visit the forum page.");
+		//	setting.AddComment("All these features require a mod reload to change properly.");
+		//	setting.AddComment("Features marked with an asterisk (*) require a new world or /miscWorldGen chat command.");
+		//	setting.AddComment("For more information, visit the forum page.");
 			
-			const float commentScale = 0.8f;
+		//	const float commentScale = 0.8f;
 			
-			setting.AddComment("Stat changes and new early game gem staves", commentScale);
-			setting.AddBool(AltStaffsKey, "Alternate Staves", false);
-			setting.AddComment("Magic stones that replenish health and mana for a number of uses.", commentScale);
-			setting.AddBool(MagicStonesKey, "Magic Stones", false);
-			setting.AddComment("Unobtainable God Mode item(use Cheat Sheet or another mod.)", commentScale);
-			setting.AddBool(GodStoneKey, "God Stone", false);
-			setting.AddComment("A rare drop from Demons in Hardmode. Boosts your magical abilities and summons a Red Crystal to protect you.", commentScale);
-			setting.AddBool(DemonCrownKey, "Demon Crown", false);
-			setting.AddComment("Heart Locket = Panic Necklace + Cross Necklace.", commentScale);
-			setting.AddBool(HeartLocketKey, "Heart Locket", false);
-			setting.AddComment("Item magnet and accessory combos", commentScale);
-			setting.AddBool(MagnetsKey, "Magnets", false);
-			setting.AddComment("Ninja Gear = Tabi + Black Belt.\n" +
-			                   "Master Ninja Gear = Ninja Gear + Climbing Gear", commentScale);
-			setting.AddBool(NinjaGearKey, "Change Ninja Gear", false);
-			setting.AddComment("Armor item that protects you from your own explosives\n" +
-			                   "If Vanilla Tweaks is installed, equipping a SWAT Helmet and a Reinforced Vest grants a set bonus.", commentScale);
-			setting.AddBool(ReinforcedVestKey, "Reinforced Vest", false);
-			setting.AddComment("Adds old style Forges (Furnace) and Hellforges.", commentScale);
-			setting.AddBool(AncientForgesKey, "Ancient Forges*", false);
-			setting.AddComment("Adds the Red Brick Fireplace and Chimney.", commentScale);
-			setting.AddBool(RedBrickFurnitureKey, "Red Brick Furniture", false);
-			setting.AddComment("A rare drop from pre-Hardmode Dungeon monsters. Gives off light just like the pre-1.2 Muramasa, but the stats are the same as the current version.", commentScale);
-			setting.AddBool(AncientMuramasaKey, "Ancient Muramasa", false);
-			setting.AddComment("Mech-tier summoner weapon. Summons a Gaster Blaster sentry minion.", commentScale);
-			setting.AddBool(GasterBlasterKey, "Adds the Karma Staff", false);
-			setting.AddComment("Rapidly throws piercing magical spears which also spawn mini-spears upon hitting an enemy.", commentScale);
-			setting.AddBool(SpearofJusticeKey, "Spear of Justice", false);
-			setting.AddComment("Endless Wormhole Potion", commentScale);
-			setting.AddBool(WormholeMirrorKey, "Wormhole Mirror", false);
-			setting.AddComment("Upgraded Cell Phone with Wormhole functionality.", commentScale);
-			setting.AddBool(CellPhoneUpgradeKey, "Cell Phone Upgrade", false);
-			setting.AddComment("Resprite the vanilla Cell Phone to match the Magic Mirror palette.", commentScale);
-			setting.AddBool(CellPhoneRespriteKey, "Cell Phone Resprite", true);
-			setting.AddComment("Post-Lunar upgrade for the Rod of Discord", commentScale);
-			setting.AddBool(RodofWarpingKey, "Rod of Warping", false);
-			setting.AddComment("Duration of Chaos State when using Rod of Warping (in seconds). Can be set to 0.", commentScale);
-			setting.AddFloat(RodofWarpingChaosStateKey, "Rod of Warping Chaos State", 0f, 6f, false);
-			setting.AddComment("Consumable item that teleports you to your last death position at a cost", commentScale);
-			setting.AddBool(EmblemofDeathKey, "Emblem of Death", false);
-			setting.AddComment("Sandstone Slab Wall", commentScale);
-			setting.AddBool(BuildingMaterialsKey, "Building Materials", false);
-			setting.AddComment("Baseball Bats can spawn in caves", commentScale);
-			setting.AddBool(BaseballBatsKey, "Baseball Bats", false);
-			setting.AddComment("Pre-1.2 style Shadow Orb for Hardmode", commentScale);
-			setting.AddBool(AncientOrbKey, "Ancient Orb of light", false);
-			setting.AddComment("Extra dyes (reflective Hardmode ore dyes and others)", commentScale);
-			setting.AddBool(ExtraDyesKey, "Extra Dyes", false);
-			setting.AddComment("Automatic fisher crafted using Mechanic's Rod", commentScale);
-			setting.AddBool(ExtraDyesKey, "Autofisher", false);
-			setting.AddComment("Mechanics sells her fishing rod more often", commentScale);
-			setting.AddBool(MechanicsRodOftenKey, "Mechanic's Rod More Often", false);
-			setting.AddComment("Sucks up items into chest below", commentScale);
-			setting.AddBool(ChestVacuumKey, "Chest Vacuum", false);
-		}
+		//	setting.AddComment("Stat changes and new early game gem staves", commentScale);
+		//	setting.AddBool(AltStaffsKey, "Alternate Staves", false);
+		//	setting.AddComment("Magic stones that replenish health and mana for a number of uses.", commentScale);
+		//	setting.AddBool(MagicStonesKey, "Magic Stones", false);
+		//	setting.AddComment("Unobtainable God Mode item(use Cheat Sheet or another mod.)", commentScale);
+		//	setting.AddBool(GodStoneKey, "God Stone", false);
+		//	setting.AddComment("A rare drop from Demons in Hardmode. Boosts your magical abilities and summons a Red Crystal to protect you.", commentScale);
+		//	setting.AddBool(DemonCrownKey, "Demon Crown", false);
+		//	setting.AddComment("Heart Locket = Panic Necklace + Cross Necklace.", commentScale);
+		//	setting.AddBool(HeartLocketKey, "Heart Locket", false);
+		//	setting.AddComment("Item magnet and accessory combos", commentScale);
+		//	setting.AddBool(MagnetsKey, "Magnets", false);
+		//	setting.AddComment("Ninja Gear = Tabi + Black Belt.\n" +
+		//	                   "Master Ninja Gear = Ninja Gear + Climbing Gear", commentScale);
+		//	setting.AddBool(NinjaGearKey, "Change Ninja Gear", false);
+		//	setting.AddComment("Armor item that protects you from your own explosives\n" +
+		//	                   "If Vanilla Tweaks is installed, equipping a SWAT Helmet and a Reinforced Vest grants a set bonus.", commentScale);
+		//	setting.AddBool(ReinforcedVestKey, "Reinforced Vest", false);
+		//	setting.AddComment("Adds old style Forges (Furnace) and Hellforges.", commentScale);
+		//	setting.AddBool(AncientForgesKey, "Ancient Forges*", false);
+		//	setting.AddComment("Adds the Red Brick Fireplace and Chimney.", commentScale);
+		//	setting.AddBool(RedBrickFurnitureKey, "Red Brick Furniture", false);
+		//	setting.AddComment("A rare drop from pre-Hardmode Dungeon monsters. Gives off light just like the pre-1.2 Muramasa, but the stats are the same as the current version.", commentScale);
+		//	setting.AddBool(AncientMuramasaKey, "Ancient Muramasa", false);
+		//	setting.AddComment("Mech-tier summoner weapon. Summons a Gaster Blaster sentry minion.", commentScale);
+		//	setting.AddBool(GasterBlasterKey, "Adds the Karma Staff", false);
+		//	setting.AddComment("Rapidly throws piercing magical spears which also spawn mini-spears upon hitting an enemy.", commentScale);
+		//	setting.AddBool(SpearofJusticeKey, "Spear of Justice", false);
+		//	setting.AddComment("Endless Wormhole Potion", commentScale);
+		//	setting.AddBool(WormholeMirrorKey, "Wormhole Mirror", false);
+		//	setting.AddComment("Upgraded Cell Phone with Wormhole functionality.", commentScale);
+		//	setting.AddBool(CellPhoneUpgradeKey, "Cell Phone Upgrade", false);
+		//	setting.AddComment("Resprite the vanilla Cell Phone to match the Magic Mirror palette.", commentScale);
+		//	setting.AddBool(CellPhoneRespriteKey, "Cell Phone Resprite", true);
+		//	setting.AddComment("Post-Lunar upgrade for the Rod of Discord", commentScale);
+		//	setting.AddBool(RodofWarpingKey, "Rod of Warping", false);
+		//	setting.AddComment("Duration of Chaos State when using Rod of Warping (in seconds). Can be set to 0.", commentScale);
+		//	setting.AddFloat(RodofWarpingChaosStateKey, "Rod of Warping Chaos State", 0f, 6f, false);
+		//	setting.AddComment("Consumable item that teleports you to your last death position at a cost", commentScale);
+		//	setting.AddBool(EmblemofDeathKey, "Emblem of Death", false);
+		//	setting.AddComment("Sandstone Slab Wall", commentScale);
+		//	setting.AddBool(BuildingMaterialsKey, "Building Materials", false);
+		//	setting.AddComment("Baseball Bats can spawn in caves", commentScale);
+		//	setting.AddBool(BaseballBatsKey, "Baseball Bats", false);
+		//	setting.AddComment("Pre-1.2 style Shadow Orb for Hardmode", commentScale);
+		//	setting.AddBool(AncientOrbKey, "Ancient Orb of light", false);
+		//	setting.AddComment("Extra dyes (reflective Hardmode ore dyes and others)", commentScale);
+		//	setting.AddBool(ExtraDyesKey, "Extra Dyes", false);
+		//	setting.AddComment("Automatic fisher crafted using Mechanic's Rod", commentScale);
+		//	setting.AddBool(ExtraDyesKey, "Autofisher", false);
+		//	setting.AddComment("Mechanics sells her fishing rod more often", commentScale);
+		//	setting.AddBool(MechanicsRodOftenKey, "Mechanic's Rod More Often", false);
+		//	setting.AddComment("Sucks up items into chest below", commentScale);
+		//	setting.AddBool(ChestVacuumKey, "Chest Vacuum", false);
+		//}
 		
-		public static void UpdateFKConfig()
-		{
-			ModSetting setting;
-			if(ModSettingsAPI.TryGetModSetting(GoldensMisc.Instance, out setting))
-			{
-				setting.Get(AltStaffsKey, ref AltStaffs);
-				setting.Get(MagicStonesKey, ref MagicStones);
-				setting.Get(GodStoneKey, ref GodStone);
-				setting.Get(DemonCrownKey, ref DemonCrown);
-				setting.Get(HeartLocketKey, ref HeartLocket);
-				setting.Get(MagnetsKey, ref Magnets);
-				setting.Get(NinjaGearKey, ref NinjaGear);
-				setting.Get(ReinforcedVestKey, ref ReinforcedVest);
-				setting.Get(AncientForgesKey, ref AncientForges);				
-				setting.Get(RedBrickFurnitureKey, ref RedBrickFurniture);
-				setting.Get(AncientMuramasaKey, ref AncientMuramasa);
-				setting.Get(GasterBlasterKey, ref GasterBlaster);
-				setting.Get(SpearofJusticeKey, ref SpearofJustice);
-				setting.Get(WormholeMirrorKey, ref WormholeMirror);
-				setting.Get(CellPhoneUpgradeKey, ref CellPhoneUpgrade);
-				setting.Get(CellPhoneRespriteKey, ref CellPhoneResprite);
-				setting.Get(RodofWarpingKey, ref RodofWarping);
-				setting.Get(RodofWarpingChaosStateKey, ref RodofWarpingChaosState);
-				setting.Get(EmblemofDeathKey, ref EmblemofDeath);
-				setting.Get(BuildingMaterialsKey, ref BuildingMaterials);
-				setting.Get(BaseballBatsKey, ref BaseballBats);
-				setting.Get(AncientOrbKey, ref AncientOrb);
-				setting.Get(ExtraDyesKey, ref ExtraDyes);
-				setting.Get(AutofisherKey, ref Autofisher);
-				setting.Get(MechanicsRodOftenKey, ref MechanicsRodOften);
-				setting.Get(ChestVacuumKey, ref ChestVacuum);
-			}
-		}
+		//public static void UpdateFKConfig()
+		//{
+		//	ModSetting setting;
+		//	if(ModSettingsAPI.TryGetModSetting(GoldensMisc.Instance, out setting))
+		//	{
+		//		setting.Get(AltStaffsKey, ref AltStaffs);
+		//		setting.Get(MagicStonesKey, ref MagicStones);
+		//		setting.Get(GodStoneKey, ref GodStone);
+		//		setting.Get(DemonCrownKey, ref DemonCrown);
+		//		setting.Get(HeartLocketKey, ref HeartLocket);
+		//		setting.Get(MagnetsKey, ref Magnets);
+		//		setting.Get(NinjaGearKey, ref NinjaGear);
+		//		setting.Get(ReinforcedVestKey, ref ReinforcedVest);
+		//		setting.Get(AncientForgesKey, ref AncientForges);				
+		//		setting.Get(RedBrickFurnitureKey, ref RedBrickFurniture);
+		//		setting.Get(AncientMuramasaKey, ref AncientMuramasa);
+		//		setting.Get(GasterBlasterKey, ref GasterBlaster);
+		//		setting.Get(SpearofJusticeKey, ref SpearofJustice);
+		//		setting.Get(WormholeMirrorKey, ref WormholeMirror);
+		//		setting.Get(CellPhoneUpgradeKey, ref CellPhoneUpgrade);
+		//		setting.Get(CellPhoneRespriteKey, ref CellPhoneResprite);
+		//		setting.Get(RodofWarpingKey, ref RodofWarping);
+		//		setting.Get(RodofWarpingChaosStateKey, ref RodofWarpingChaosState);
+		//		setting.Get(EmblemofDeathKey, ref EmblemofDeath);
+		//		setting.Get(BuildingMaterialsKey, ref BuildingMaterials);
+		//		setting.Get(BaseballBatsKey, ref BaseballBats);
+		//		setting.Get(AncientOrbKey, ref AncientOrb);
+		//		setting.Get(ExtraDyesKey, ref ExtraDyes);
+		//		setting.Get(AutofisherKey, ref Autofisher);
+		//		setting.Get(MechanicsRodOftenKey, ref MechanicsRodOften);
+		//		setting.Get(ChestVacuumKey, ref ChestVacuum);
+		//	}
+		//}
 		
 //		class MultiplayerSyncWorld : ModWorld
 //		{

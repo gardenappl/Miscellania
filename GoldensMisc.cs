@@ -1,5 +1,9 @@
 ﻿
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using GoldensMisc.Items.Equipable.Vanity;
 using GoldensMisc.Items.Tools;
 using GoldensMisc.Projectiles;
@@ -7,11 +11,6 @@ using GoldensMisc.Tiles;
 using GoldensMisc.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Reflection;
-using System.Linq.Expressions;
-using System.Collections.Generic;
-using System.IO;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Dyes;
@@ -20,14 +19,12 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
-using System.Linq;
 
 namespace GoldensMisc
 {
-	public class GoldensMisc : Mod
+    public class GoldensMisc : Mod
 	{
 		public static GoldensMisc Instance;
-		public static bool FKtModSettingsLoaded;
 		public static bool VanillaTweaksLoaded;
 		public static Texture2D CellPhoneTexture;
 		internal UIWormhole WormholeUI;
@@ -42,15 +39,11 @@ namespace GoldensMisc
 		{
 			Instance = this; //apparently you get some problems with Mod Reloading if you put this in the constructor
 			AutofisherHooks.Initialize();
-			FKtModSettingsLoaded = ModLoader.GetMod("FKTModSettings") != null;
 			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
 
 			if(!Main.dedServ)
-			{
-				if(FKtModSettingsLoaded)
-					Config.LoadFKConfig();
-
-				MiscGlowMasks.Load();
+            {
+                MiscGlowMasks.Load();
 				if(Config.CellPhoneResprite)
 				{
 					CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
@@ -121,17 +114,8 @@ namespace GoldensMisc
 			MiscRecipes.PostAddRecipes();
 		}
 		
-		public override void PostUpdateInput()
-		{
-			if(FKtModSettingsLoaded && !Main.dedServ && !Main.gameMenu)
-				Config.UpdateFKConfig();
-		}
-		
 		public override void PreSaveAndQuit()
 		{
-			if(FKtModSettingsLoaded && !Main.dedServ)
-				Config.SaveConfig();
-			
 			UIWormhole.Close();
 		}
 

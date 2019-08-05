@@ -6,5 +6,4 @@ hideResources = false
 hideCode = false
 buildIgnore = Unused Art\*, obj\*, bin\*, *.csproj, .git\*, .gitattributes, .gitignore
 includePDB = true
-weakReferences = FKTModSettings
 languageVersion = 6
