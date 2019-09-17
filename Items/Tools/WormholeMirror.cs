@@ -5,7 +5,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using GoldensMisc.Items.Materials;
-using GoldensMisc.UI;
 
 namespace GoldensMisc.Items.Tools
 {
@@ -27,40 +26,20 @@ namespace GoldensMisc.Items.Tools
 			item.value = Item.sellPrice(0, 10);
 		}
 
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
+        public override bool CanUseItem(Player player)
+        {
+            //if (player.altFunctionUse == 2)
+            //{
+            //    if (UIWormhole.Visible)
+            //        UIWormhole.Close();
+            //    else
+            //        UIWormhole.Open(item, false);
+            //    return true;
+            //}
+            return false;
+        }
 
-		public override bool CanUseItem(Player player)
-		{
-			if(player.altFunctionUse == 2)
-			{
-				if(UIWormhole.Visible)
-					UIWormhole.Close();
-				else
-					UIWormhole.Open(item, false);
-				return true;
-			}
-			return false;
-		}
-
-		public override bool CanRightClick()
-		{
-			//return Main.netMode != NetmodeID.SinglePlayer && Main.LocalPlayer.team != 0;
-			return true;
-		}
-
-		public override void RightClick(Player player)
-		{
-			if(UIWormhole.Visible)
-				UIWormhole.Close();
-			else
-				UIWormhole.Open(item, false);
-			item.stack++;
-		}
-
-		public override void AddRecipes()
+        public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);
 			recipe.AddRecipeGroup("GoldensMisc:Silver", 10);

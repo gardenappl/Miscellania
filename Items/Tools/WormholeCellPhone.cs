@@ -1,6 +1,5 @@
 ﻿
 using System;
-using GoldensMisc.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -31,37 +30,8 @@ namespace GoldensMisc.Items.Tools
 			item.value = Item.sellPrice(0, 10);
 		}
 
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
-
-		public override bool CanUseItem(Player player)
-		{
-			if(player.altFunctionUse != 2)
-			{
-				item.UseSound = SoundID.Item6;
-				if(UIWormhole.Visible)
-					return false;
-			}
-			else
-			{
-				item.UseSound = new LegacySoundStyle(SoundID.MenuOpen, 0);
-			}
-			return true;
-		}
-
 		public override bool UseItem(Player player)
 		{
-			if(player.altFunctionUse == 2)
-			{
-				if(UIWormhole.Visible)
-					UIWormhole.Close();
-				else
-					UIWormhole.Open(item);
-				return true;
-			}
-
 			if(Main.rand.Next(2) == 0)
 				Dust.NewDust(player.position, player.width, player.height, 15, 0.0f, 0.0f, 150, Color.White, 1.1f);
 			if (player.itemAnimation == item.useAnimation / 2)
@@ -80,22 +50,6 @@ namespace GoldensMisc.Items.Tools
 					Dust.NewDust(player.position, player.width, player.height, 15, 0.0f, 0.0f, 150, Color.White, 1.5f);
 			}
 			return false;
-		}
-
-		public override bool CanRightClick()
-		{
-			//return Main.netMode != NetmodeID.SinglePlayer && Main.LocalPlayer.team != 0;
-			return true;
-		}
-
-		public override void RightClick(Player player)
-		{
-			Main.PlaySound(SoundID.MenuOpen);
-			if(UIWormhole.Visible)
-				UIWormhole.Close();
-			else
-				UIWormhole.Open(item);
-			item.stack++;
 		}
 
 		public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

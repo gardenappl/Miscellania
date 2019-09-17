@@ -107,16 +107,16 @@ ItemName.RodofWarping=Rod of Warping
 ItemTooltip.RodofWarping=Teleports to the position of the mouse\nSignificantly reduced duration and damage of Chaos State
 
 ItemName.WormholeCellPhone=Network Cell Phone
-ItemTooltip.WormholeCellPhone=Displays everything\nAllows you to return home and teleport to party members at will\nRight-click to select a player
+ItemTooltip.WormholeCellPhone=Displays everything\nAllows you to return home and teleport to party members at will\nClick their head on the fullscreen map
 
 ItemName.WormholeDoubleMirror=Wormhole Recall Mirror
-ItemTooltip.WormholeDoubleMirror=Gaze in the mirror to return home\nor teleport to a party member\nRight-click and select a player
+ItemTooltip.WormholeDoubleMirror=Gaze in the mirror to return home\nor teleport to a party member\nClick their head on the fullscreen map
 
 ItemName.WormholeIceMirror=Ice Wormhole Mirror
-ItemTooltip.WormholeIceMirror=Gaze in the mirror to return home\nor teleport to a party member\nRight-click and select a player
+ItemTooltip.WormholeIceMirror=Gaze in the mirror to return home\nor teleport to a party member\nClick their head on the fullscreen map
 
 ItemName.WormholeMirror=Wormhole Mirror
-ItemTooltip.WormholeMirror=Teleports you to a party member\nRight-click and select a player
+ItemTooltip.WormholeMirror=Teleports you to a party member\nClick their head on the fullscreen map
 
 ItemName.AmethystStaff=Amethyst Staff
 

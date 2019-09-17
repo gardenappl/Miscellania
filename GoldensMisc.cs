@@ -8,8 +8,6 @@ using GoldensMisc.Items.Equipable.Vanity;
 using GoldensMisc.Items.Tools;
 using GoldensMisc.Projectiles;
 using GoldensMisc.Tiles;
-using GoldensMisc.UI;
-using log4net.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -19,7 +17,6 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
 using Terraria.UI;
 
 namespace GoldensMisc
@@ -29,8 +26,6 @@ namespace GoldensMisc
 		public static GoldensMisc Instance;
 		public static bool VanillaTweaksLoaded;
 		public static Texture2D CellPhoneTexture;
-		internal UIWormhole WormholeUI;
-		private UserInterface MiscUserInterface;
 		
 		public GoldensMisc()
 		{
@@ -42,6 +37,10 @@ namespace GoldensMisc
 			Instance = this; //apparently you get some problems with Mod Reloading if you put this in the constructor
 			AutofisherHooks.Initialize();
 			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
+
+            if (ServerConfig.Instance.WormholeMirror)
+                WormholeHacks.Load();
+
 			if(!Main.dedServ)
             {
                 MiscGlowMasks.Load();
@@ -64,10 +63,6 @@ namespace GoldensMisc
 					GameShaders.Armor.BindShader(ItemType<TitaniumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 0.7f, 0.7f);
 					GameShaders.Armor.BindShader(ItemType<ChlorophyteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 1.1f, 0.1f);
 				}
-				WormholeUI = new UIWormhole();
-				WormholeUI.Activate();
-				MiscUserInterface = new UserInterface();
-				MiscUserInterface.SetState(WormholeUI);
 			}
 			if(ServerConfig.Instance.SpearofJustice)
 			{
@@ -114,33 +109,6 @@ namespace GoldensMisc
 		{
 			MiscRecipes.PostAddRecipes();
 		}
-		
-		public override void PreSaveAndQuit()
-		{
-			UIWormhole.Close();
-		}
-
-		public override void UpdateUI(GameTime gameTime)
-		{
-			if(MiscUserInterface != null && UIWormhole.Visible)
-				MiscUserInterface.Update(gameTime);
-		}
-
-		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-		{
-			int index = layers.FindIndex(x => x.Name == "Vanilla: Mouse Text");
-			if(index != -1)
-			{
-				layers.Insert(index, new LegacyGameInterfaceLayer("GoldensMisc: UI", delegate
-				{
-					if(UIWormhole.Visible)
-					{
-						WormholeUI.Draw(Main.spriteBatch);
-					}
-					return true;
-				}, InterfaceScaleType.UI));
-			}
-		}
 
 		public override object Call(params object[] args)
 		{
@@ -186,7 +154,7 @@ namespace GoldensMisc
 			catch(Exception e)
 			{
 				Main.NewText("Network error!");
-				ErrorLogger.Log(e);
+				Logger.Error("Network error", e);
 			}
 		}
 
