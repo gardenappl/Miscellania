@@ -1,5 +1,5 @@
-obj
-bin
+obj/
+bin/
+Properties/
+.vs/
 *.sln
-.vs
-*.user

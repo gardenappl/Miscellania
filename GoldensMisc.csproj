@@ -7,15 +7,6 @@
     <PlatformTarget>x86</PlatformTarget>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="tModLoader.XNA">
-      <HintPath>..\..\..\..\..\..\files\Yurik\Games\Linux\Steam\steamapps\common\Terraria\ModCompile\tModLoader.XNA.exe</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="tModLoader">
-      <HintPath>..\..\..\..\..\..\files\Yurik\Games\Linux\Steam\steamapps\common\Terraria\tModLoader.exe</HintPath>
-    </Reference>
-  </ItemGroup>
   <Target Name="BuildMod" AfterTargets="Build">
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>

@@ -21,13 +21,13 @@ namespace GoldensMisc
 			Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length + Count);
 			
 			short i = (short)(Main.glowMaskTexture.Length - Count);
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("GoldensMisc/Items/Weapons/UndyingSpear_Glow");
+			Main.glowMaskTexture[i] = ModContent.GetTexture("GoldensMisc/Items/Weapons/UndyingSpear_Glow");
 			UndyingSpear = i;
 			i++;
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("GoldensMisc/Projectiles/UndyingSpear_Glow");
+			Main.glowMaskTexture[i] = ModContent.GetTexture("GoldensMisc/Projectiles/UndyingSpear_Glow");
 			UndyingSpearProjectile = i;
 			i++;
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("GoldensMisc/Items/Tools/RodofWarping_Glow");
+			Main.glowMaskTexture[i] = ModContent.GetTexture("GoldensMisc/Items/Tools/RodofWarping_Glow");
 			RodofWarping = i;
 			i++;
 			End = i;
