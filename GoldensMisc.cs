@@ -169,27 +169,6 @@ namespace GoldensMisc
             Instance.Logger.Info(string.Format(message, formatData));
             //ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), String.Format(message, formatData)));
 		}
-
-
-		#region Hamstar's Mod Helpers integration
-
-		public static string GithubUserName => "goldenapple3";
-		public static string GithubProjectName => "Miscellania";
-
-		//public static string ConfigFileRelativePath => "Mod Configs/Miscellania.json";
-
-		//public static void ReloadConfigFromFile()
-		//{
-		//	Config.ReadConfig();
-		//}
-
-		//public static void ResetConfigFromDefaults()
-		//{
-		//	Config.SetDefaults();
-		//	Config.SaveConfig();
-		//}
-
-		#endregion
 	}
 
 	public enum MiscMessageType : byte

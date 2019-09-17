@@ -33,7 +33,7 @@ namespace GoldensMisc.Commands
 				}
 				new Task(() => mod.GetModWorld<MiscWorld>().AddHellforges()).Start();
 			}
-			if(args[0].Equals("forge", StringComparison.OrdinalIgnoreCase))
+			else if(args[0].Equals("forge", StringComparison.OrdinalIgnoreCase))
 			{
 				if(!ServerConfig.Instance.AncientForges)
 				{

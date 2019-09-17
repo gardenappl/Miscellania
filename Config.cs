@@ -29,12 +29,8 @@ namespace GoldensMisc
 
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
         {
-            if (whoAmI != Main.myPlayer)
-            {
-                message = Language.GetTextValue("Mods.GoldensMisc.Config.ServerBlocked");
-                return false;
-            }
-            return true;
+            message = Language.GetTextValue("Mods.GoldensMisc.Config.ServerBlocked");
+            return false;
         }
 
         [Label("$Mods.GoldensMisc.Config.Autofisher")]
@@ -45,7 +41,6 @@ namespace GoldensMisc
 
         [Label("$Mods.GoldensMisc.Config.MechanicsRodOften")]
         [Tooltip("$Mods.GoldensMisc.Config.MechanicsRodOften.Desc")]
-        [ReloadRequired]
         [DefaultValue(true)]
         public bool MechanicsRodOften;
 
