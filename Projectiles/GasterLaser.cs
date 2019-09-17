@@ -13,7 +13,7 @@ namespace GoldensMisc.Projectiles
 {
 	public class GasterLaser : ModProjectile
 	{
-		const float BeamWidth = 26f;
+		const float BeamWidth = 18f;
 		float BeamLength
 		{
 			get { return projectile.ai[0]; }
@@ -49,10 +49,13 @@ namespace GoldensMisc.Projectiles
 		{
 			BeamLength = MiscUtils.GetBeamLength(projectile.Center, projectile.rotation);
 			endPoint = projectile.Center + projectile.rotation.ToRotationVector2() * BeamLength;
-			int dustAmount = Main.rand.Next(3, 5);
+            var unit = endPoint - projectile.Center;
+            unit.Normalize();
+
+            int dustAmount = Main.rand.Next(5, 10);
 			for(int i = 0; i < dustAmount; i++)
-			{
-				int dust = Dust.NewDust(endPoint - new Vector2(20, 20), 40, 40, DustID.Smoke, Main.rand.NextFloat(), Main.rand.NextFloat());
+            {
+                int dust = Dust.NewDust(endPoint - unit * 10f - new Vector2(25, 25), 50, 50, DustID.Smoke, Main.rand.NextFloat(), Main.rand.NextFloat());
 				Main.dust[dust].noGravity = true;
 			}
 			DelegateMethods.v3_1 = new Vector3(0.8f, 0.8f, 1f);
@@ -82,10 +85,10 @@ namespace GoldensMisc.Projectiles
 			var position = projectile.Center;
 			float r = unit.ToRotation() - MathHelper.PiOver2;
 			const int transDist = 50;
-			const int step = 7;
+			const int step = 14;
 
 			#region Draw laser body
-			for (float i = transDist; i <= BeamLength; i += step)
+			for (float i = transDist; i < BeamLength - 20; i += step)
 			{
 				position = projectile.Center + i * unit;
 				spriteBatch.Draw(Main.projectileTexture[projectile.type], position - Main.screenPosition,
@@ -100,8 +103,8 @@ namespace GoldensMisc.Projectiles
 			#endregion
 
 			#region Draw laser head
-			spriteBatch.Draw(Main.projectileTexture[projectile.type], projectile.Center + unit * (BeamLength + step) - Main.screenPosition,
-			                 new Rectangle(0, 56, 38, 22), Color.White, r, new Vector2(38 / 2, 22 / 2), projectile.scale, SpriteEffects.None, 0);
+			spriteBatch.Draw(Main.projectileTexture[projectile.type], projectile.Center + unit * BeamLength - Main.screenPosition,
+			                 new Rectangle(0, 56, 38, 22), Color.White, r, new Vector2(38 / 2, 22), projectile.scale, SpriteEffects.None, 0);
 			#endregion
 			return false;
 		}

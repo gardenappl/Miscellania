@@ -20,12 +20,12 @@ namespace GoldensMisc.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true;
-			ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
+			//ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.damage = 70;
+			item.damage = 50;
 			item.summon = true;
 			item.mana = 10;
 			item.sentry = true;
@@ -57,7 +57,7 @@ namespace GoldensMisc.Items.Weapons
 			}
 			else
 			{
-				item.UseSound = SoundID.Item44;
+                item.UseSound = SoundID.Item78;
 			}
 			return base.CanUseItem(player);
 		}

@@ -1,23 +1,23 @@
 ﻿
 using System;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
 {
 	public class GasterBlaster : ModProjectile
 	{
-		const float Scale = 1.4f;
-		const float TargetDist = 500f;
+		const float Scale = 1.25f;
+		const float TargetDist = 700f;
 		
 		const int ShootDelay = 30;
 		const int ShootTired = 90;
-		const int ShootStop = 130;
+		const int ShootStop = 150;
 		
 		const float BeamLength = 1000f;
 		const float BeamWidth = 18f;
@@ -46,11 +46,11 @@ namespace GoldensMisc.Projectiles
 		}
 
 		public override void SetStaticDefaults()
-		{
-			Main.projFrames[projectile.type] = 2;
-			Main.projPet[projectile.type] = true;
-			ProjectileID.Sets.Homing[projectile.type] = true;
-//			ProjectileID.Sets.TurretFeature[projectile.type] = true;
+        {
+            Main.projFrames[projectile.type] = 2;
+            //Main.projPet[projectile.type] = true;
+			//ProjectileID.Sets.Homing[projectile.type] = true;
+			//ProjectileID.Sets.TurretFeature[projectile.type] = true;
 			ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
 		}
 		
@@ -61,7 +61,7 @@ namespace GoldensMisc.Projectiles
 			projectile.height = 48;
 			projectile.friendly = true;
 //			projectile.scale = 1.5f;
-			projectile.minion = true;
+			//projectile.minion = true;
 			projectile.sentry = true;
 			projectile.penetrate = -1;
 			projectile.timeLeft = Projectile.SentryLifeTime;
@@ -70,12 +70,12 @@ namespace GoldensMisc.Projectiles
 		
 		public override void AI()
 		{
-			if(FirstSpawn)
-			{
-				Main.player[projectile.owner].UpdateMaxTurrets();
-				FirstSpawn = false;
-			}
-			projectile.velocity *= 0.9f;
+            if (FirstSpawn)
+            {
+                Main.player[projectile.owner].UpdateMaxTurrets();
+                FirstSpawn = false;
+            }
+            projectile.velocity *= 0.9f;
 			var player = Main.player[projectile.owner];
 			var targetNPCHitbox = new Rectangle();
 			float targetDist = TargetDist;
@@ -130,6 +130,7 @@ namespace GoldensMisc.Projectiles
 					var angle = (projectile.rotation + MathHelper.PiOver2).ToRotationVector2();
 					angle *= -3f;
 					projectile.velocity = angle;
+                    SoundCounter = 50;
 				}
 				else if(ShootCounter < ShootTired)
 				{
