@@ -12,7 +12,7 @@ namespace GoldensMisc.Projectiles
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.SpearofJustice;
+			return ServerConfig.Instance.SpearofJustice;
 		}
 
 		public override void SetDefaults()

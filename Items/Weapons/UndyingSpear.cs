@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Weapons
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.SpearofJustice;
+			return ServerConfig.Instance.SpearofJustice;
 		}
 		
 		public override void SetDefaults()
@@ -26,8 +26,8 @@ namespace GoldensMisc.Items.Weapons
 			item.width = 48;
 			item.height = 48;
 			item.UseSound = SoundID.Item8;
-			item.damage = 55;
-			item.knockBack = 5;
+			item.damage = 58;
+			item.knockBack = 8;
 			item.mana = 12;
 			item.shoot = mod.ProjectileType(GetType().Name);
 			item.shootSpeed = 16f;

@@ -13,7 +13,7 @@ namespace GoldensMisc.Items.Weapons
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.SpearofJustice;
+			return ServerConfig.Instance.SpearofJustice;
 		}
 		
 		public override void SetDefaults()
@@ -28,8 +28,8 @@ namespace GoldensMisc.Items.Weapons
 			item.height = 42;
 			item.UseSound = SoundID.Item8;
 			item.damage = 46;
-			item.knockBack = 4;
-			item.mana = 15;
+			item.knockBack = 6;
+			item.mana = 13;
 			item.shoot = mod.ProjectileType(GetType().Name);
 			item.shootSpeed = 14f;
 			item.noMelee = true; //So that the swing itself doesn't do damage; this weapon is projectile-only

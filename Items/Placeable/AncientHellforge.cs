@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Placeable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.AncientForges;
+			return ServerConfig.Instance.AncientForges;
 		}
 		
 		public override void SetDefaults()

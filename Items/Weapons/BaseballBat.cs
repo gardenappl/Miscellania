@@ -11,7 +11,7 @@ namespace GoldensMisc.Items.Weapons
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.BaseballBats;
+			return ServerConfig.Instance.BaseballBats;
 		}
 		
 		public override void SetDefaults()

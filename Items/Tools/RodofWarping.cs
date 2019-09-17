@@ -14,7 +14,7 @@ namespace GoldensMisc.Items.Tools
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.RodofWarping;
+			return ServerConfig.Instance.RodofWarping;
 		}
 		
 		public override void SetStaticDefaults()
@@ -52,7 +52,7 @@ namespace GoldensMisc.Items.Tools
 				{
 					player.Teleport(teleportPos, 1);
 					NetMessage.SendData(65, -1, -1, null, 0, (float) player.whoAmI, teleportPos.X, teleportPos.Y, 1);
-					if(Config.RodofWarpingChaosState > 0f)
+					if(ServerConfig.Instance.RodofWarpingChaosState > 0f)
 					{
 						if(player.chaosState)
 						{
@@ -67,7 +67,7 @@ namespace GoldensMisc.Items.Tools
 							player.lifeRegenCount = 0;
 							player.lifeRegenTime = 0;
 						}
-						player.AddBuff(BuffID.ChaosState, (int)Math.Floor(Config.RodofWarpingChaosState * 60));
+						player.AddBuff(BuffID.ChaosState, (int)Math.Floor(ServerConfig.Instance.RodofWarpingChaosState * 60));
 					}
 				}
 			}

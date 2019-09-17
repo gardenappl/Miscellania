@@ -9,6 +9,7 @@ using GoldensMisc.Items.Tools;
 using GoldensMisc.Projectiles;
 using GoldensMisc.Tiles;
 using GoldensMisc.UI;
+using log4net.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -18,6 +19,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 using Terraria.UI;
 
 namespace GoldensMisc
@@ -32,7 +34,7 @@ namespace GoldensMisc
 		
 		public GoldensMisc()
 		{
-			Config.Load();
+			LegacyConfig.Load();
 		}
 		
 		public override void Load()
@@ -40,18 +42,17 @@ namespace GoldensMisc
 			Instance = this; //apparently you get some problems with Mod Reloading if you put this in the constructor
 			AutofisherHooks.Initialize();
 			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
-
 			if(!Main.dedServ)
             {
                 MiscGlowMasks.Load();
-				if(Config.CellPhoneResprite)
+				if(ClientConfig.Instance.CellPhoneResprite)
 				{
 					CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
 					Main.itemTexture[ItemID.CellPhone] = GetTexture("Items/Tools/CellPhone_Resprite");
 				}
 				//				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
 
-				if(Config.ExtraDyes)
+				if(ServerConfig.Instance.ExtraDyes)
 				{
 					GameShaders.Armor.BindShader(ItemType<MatrixDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(0f, 1.0f, 0.2f);
 					GameShaders.Armor.BindShader(ItemType<VirtualDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(1f, 0.1f, 0.1f);
@@ -68,7 +69,7 @@ namespace GoldensMisc
 				MiscUserInterface = new UserInterface();
 				MiscUserInterface.SetState(WormholeUI);
 			}
-			if(Config.SpearofJustice)
+			if(ServerConfig.Instance.SpearofJustice)
 			{
 				AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
 			}
@@ -77,13 +78,13 @@ namespace GoldensMisc
 		public override void PostSetupContent()
 		{
 			var hotkeysMod = ModLoader.GetMod("HelpfulHotkeys");
-			if(hotkeysMod != null && Config.WormholeMirror)
+			if(hotkeysMod != null && ServerConfig.Instance.WormholeMirror)
 			{
 				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeDoubleMirror>());
 				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeIceMirror>());
 				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeCellPhone>());
 			}
-			if(Config.ChestVacuum)
+			if(ServerConfig.Instance.ChestVacuum)
 			{
 				GetTile<Tiles.ChestVacuum>().SetDefaultsPostContent();
 			}
@@ -191,12 +192,14 @@ namespace GoldensMisc
 
 		public static void Log(object message)
 		{
-			ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), message));
+            Instance.Logger.Info(message);
+			//ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), message));
 		}
 		
 		public static void Log(string message, params object[] formatData)
-		{
-			ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), String.Format(message, formatData)));
+        {
+            Instance.Logger.Info(string.Format(message, formatData));
+            //ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), String.Format(message, formatData)));
 		}
 
 
@@ -205,18 +208,18 @@ namespace GoldensMisc
 		public static string GithubUserName => "goldenapple3";
 		public static string GithubProjectName => "Miscellania";
 
-		public static string ConfigFileRelativePath => "Mod Configs/Miscellania.json";
+		//public static string ConfigFileRelativePath => "Mod Configs/Miscellania.json";
 
-		public static void ReloadConfigFromFile()
-		{
-			Config.ReadConfig();
-		}
+		//public static void ReloadConfigFromFile()
+		//{
+		//	Config.ReadConfig();
+		//}
 
-		public static void ResetConfigFromDefaults()
-		{
-			Config.SetDefaults();
-			Config.SaveConfig();
-		}
+		//public static void ResetConfigFromDefaults()
+		//{
+		//	Config.SetDefaults();
+		//	Config.SaveConfig();
+		//}
 
 		#endregion
 	}

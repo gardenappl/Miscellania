@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Equipable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.DemonCrown;
+			return ServerConfig.Instance.DemonCrown;
 		}
 		
 		public override void SetDefaults()

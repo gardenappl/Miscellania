@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Consumable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.MagicStones;
+			return ServerConfig.Instance.MagicStones;
 		}
 
 		public override void SetDefaults()

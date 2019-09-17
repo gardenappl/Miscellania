@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Placeable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.Autofisher;
+			return ServerConfig.Instance.Autofisher;
 		}
 
 		public override void SetDefaults()

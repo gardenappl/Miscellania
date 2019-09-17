@@ -15,7 +15,7 @@ namespace GoldensMisc.NPCs
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.BaseballBats;
+			return ServerConfig.Instance.BaseballBats;
 		}
 		
 		public override void SetStaticDefaults()

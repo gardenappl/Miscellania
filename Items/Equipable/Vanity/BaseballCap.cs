@@ -11,7 +11,7 @@ namespace GoldensMisc.Items.Equipable.Vanity
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.BaseballBats;
+			return ServerConfig.Instance.BaseballBats;
 		}
 		
 		public override void SetDefaults()
@@ -37,7 +37,7 @@ namespace GoldensMisc.Items.Equipable.Vanity
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.BaseballBats;
+			return ServerConfig.Instance.BaseballBats;
 		}
 
 		public override void SetDefaults()

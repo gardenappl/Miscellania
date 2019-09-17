@@ -14,7 +14,7 @@ namespace GoldensMisc.Items.Consumable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.MagicStones;
+			return ServerConfig.Instance.MagicStones;
 		}
 		
 		byte uses = 0;

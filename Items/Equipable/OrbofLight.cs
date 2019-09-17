@@ -11,7 +11,7 @@ namespace GoldensMisc.Items.Equipable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.AncientOrb;
+			return ServerConfig.Instance.AncientOrb;
 		}
 		
 		public override void SetDefaults()

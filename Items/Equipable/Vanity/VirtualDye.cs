@@ -11,7 +11,7 @@ namespace GoldensMisc.Items.Equipable.Vanity
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.ExtraDyes;
+			return ServerConfig.Instance.ExtraDyes;
 		}
 
 		public override void SetDefaults()

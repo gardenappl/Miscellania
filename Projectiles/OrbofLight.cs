@@ -12,7 +12,7 @@ namespace GoldensMisc.Projectiles
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.AncientOrb;
+			return ServerConfig.Instance.AncientOrb;
 		}
 
 		public override void SetStaticDefaults()

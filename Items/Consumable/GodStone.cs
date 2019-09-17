@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Consumable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.GodStone;
+			return ServerConfig.Instance.GodStone;
 		}
 
 		public override void SetDefaults()

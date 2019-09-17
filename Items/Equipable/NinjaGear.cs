@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Equipable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.NinjaGear;
+			return ServerConfig.Instance.NinjaGear;
 		}
 		
 		public override void SetDefaults()

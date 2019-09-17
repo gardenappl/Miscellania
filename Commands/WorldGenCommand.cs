@@ -26,7 +26,7 @@ namespace GoldensMisc.Commands
 			}
 			if(args[0].Equals("hellforge", StringComparison.OrdinalIgnoreCase))
 			{
-				if(!Config.AncientForges)
+				if(!ServerConfig.Instance.AncientForges)
 				{
 					Main.NewText(Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.HellforgeDisabled"));
 					return;
@@ -35,7 +35,7 @@ namespace GoldensMisc.Commands
 			}
 			if(args[0].Equals("forge", StringComparison.OrdinalIgnoreCase))
 			{
-				if(!Config.AncientForges)
+				if(!ServerConfig.Instance.AncientForges)
 				{
 					Main.NewText(Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.ForgeDisabled"));
 					return;

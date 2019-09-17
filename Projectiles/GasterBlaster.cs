@@ -42,7 +42,7 @@ namespace GoldensMisc.Projectiles
 
 		public override bool Autoload(ref string name)
 		{
-			return Config.GasterBlaster;
+			return ServerConfig.Instance.GasterBlaster;
 		}
 
 		public override void SetStaticDefaults()

@@ -14,7 +14,7 @@ namespace GoldensMisc.Items.Weapons
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.GasterBlaster;
+			return ServerConfig.Instance.GasterBlaster;
 		}
 		
 		public override void SetStaticDefaults()

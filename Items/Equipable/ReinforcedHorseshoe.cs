@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Equipable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.ReinforcedVest;
+			return ServerConfig.Instance.ReinforcedVest;
 		}
 		
 		public override void SetDefaults()

@@ -212,6 +212,67 @@ ItemTooltip.MechanicsRod=Can be turned into an Autofisher
 Autofisher.NoBait=Missing bait (place bait in adjacent chest)
 
 
+---------------- Config
+
+
+Config.Server=General settings
+Config.Client=Client-side only settings
+Config.ServerBlocked=Only the server owner can change the config settings.
+
+Config.AltStaffs=Alternative Staves
+Config.AltStaffs.Desc=Stat changes and new early game gem staves.
+Config.MagicStones=Magic Stones
+Config.MagicStones.Desc=Magic stones that replenish health and mana for a number of uses.
+Config.GodStone=God Stone
+Config.GodStone.Desc=Unobtainable God Mode item(use Cheat Sheet or another mod.)
+Config.DemonCrown=Demon Crown
+Config.DemonCrown.Desc=A rare drop from Demons in Hardmode. Boosts your magical abilities and summons a Red Crystal to protect you.
+Config.HeartLocket=Heart Locket
+Config.HeartLocket.Desc=Heart Locket = Panic Necklace + Cross Necklace.
+Config.Magnet=Magnets
+Config.Magnet.Desc=Item magnet and accessory combos.
+Config.NinjaGear=(Normal) Ninja Gear
+Config.NinjaGear.Desc=Ninja Gear = Tabi + Black Belt\nMaster Ninja Gear = Ninja Gear + Climbing Gear
+
+Config.ReinforcedVest=Reinforced Vest
+Config.AncientForges=Ancient Forges
+Config.RedBrickFurniture=Red Brick Furniture
+Config.AncientMuramasa=Ancient Muramasa
+Config.GasterBlaster=Skeletal Staff
+Config.SpearofJustice=Spear of Justice
+Config.WormholeMirror=Wormhole Mirror
+Config.WormholePhone=Wormhole Cell Phone
+Config.RodofWarping=Rod of Warping
+Config.RodofWarpingChaosState=Rod of Warping Chaos State duration
+Config.EmblemofDeath=Emblem of Death
+Config.BuildingMaterials=Building Materials
+Config.BaseballBats=Baseball Bats
+Config.AncientOrb=Ancient Orb of Light
+Config.CellPhoneResprite=Cell Phone resprite
+Config.ExtraDyes=More strange dyes
+Config.Autofisher=Autofisher
+Config.MechanicsRodOften=Mechanic's Rod increased chance
+Config.ChestVacuum=Chest Vacuum
+
+Config.ReinforcedVest.Desc=Armor item that protects you from explosions.
+Config.AncientForges.Desc=Ancient Forges and Hellforges (pre-1.2-style furnaces) spawn in the world.
+Config.RedBrickFurniture.Desc=Red Brick Chimney and Fireplace.
+Config.AncientMuramasa.Desc=Pre-1.2-style Muramasa, rare drop from the Dungeon.
+Config.GasterBlaster.Desc=A stupid Undertale reference, also a powerful sentry summon.
+Config.SpearofJustice.Desc=A neat Hardmode magic weapon.
+Config.WormholeMirror.Desc=Endless Wormhole Potion.
+Config.WormholePhone.Desc=Wormhole Mirror + Cell Phone
+Config.RodofWarping.Desc=Post-lunar Rod of Discord
+Config.RodofWarpingChaosState.Desc=(measured in seconds)
+Config.EmblemofDeath.Desc=Item that teleports to your last place of death, but is dangerous to use.
+Config.BuildingMaterials.Desc=Sandstone Slab Wall
+Config.BaseballBats.Desc=Self-explanatory.
+Config.AncientOrb.Desc=Pre-1.2-style Orb of Light, acts as a Hardmode upgrade to Shadow Orb.
+Config.CellPhoneResprite.Desc=Changes the vanilla Cell Phone sprite to differentiate it from the Wormhole Cell Phone.
+Config.Autofisher.Desc=Automatic fisher! Requires bait.
+Config.MechanicsRodOften.Desc=Useful for crafting the Autofisher.
+Config.ChestVacuum.Desc=Automatically puts items in chests!
+
 ----------------- Untranslatable (this section should be removed from all translation files other than en-US.lang)
 
 MapObject.Autofisher={$Mods.GoldensMisc.ItemName.Autofisher}

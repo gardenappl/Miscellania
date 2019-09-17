@@ -11,7 +11,7 @@ namespace GoldensMisc.Items.Placeable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.ChestVacuum;
+			return ServerConfig.Instance.ChestVacuum;
 		}
 
 		public override void SetDefaults()

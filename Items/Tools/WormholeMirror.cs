@@ -13,7 +13,7 @@ namespace GoldensMisc.Items.Tools
 	{
 		public override bool Autoload(ref string name)
 		{
-			return Config.WormholeMirror;
+			return ServerConfig.Instance.WormholeMirror;
 		}
 		
 		public override void SetDefaults()
