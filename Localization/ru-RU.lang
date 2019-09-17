@@ -85,9 +85,9 @@ ItemName.VirtualDye=Виртуальный краситель
 ItemName.WormholeCrystal=Кристалл-червоточина
 ItemTooltip.WormholeCrystal='Держа его в руке, вы чувствуете, что вас засасывет...'\nНа данный момент этот материал не имеет использований\nМожете или продать, или оставить себе на случай будущих апдейтов
 
-ItemName.AncientForge=Древняя кузня
+ItemName.AncientForge=Древняя кузница
 
-ItemName.AncientHellforge=Древняя адская кузня
+ItemName.AncientHellforge=Древняя адская кузница
 
 ItemName.RedChimney=Красный дымоход
 
@@ -104,7 +104,7 @@ LaputaBlocked=Что-то закрывает над вами небо.
 ItemName.RodofWarping=Жезл искажения
 ItemTooltip.RodofWarping=Телепортирует на позицию мыши\nЗначительно уменьшены длительность и урон Состояния хаоса
 
-ItemName.WormholeCellPhone=Сотовый телефон
+ItemName.WormholeCellPhone=Телефон-червоточина
 ItemTooltip.WormholeCellPhone=Показывает всё\nПозволяет в любой момент вернуться домой\nили телепортироваться к участнику команды\nНажмите ПКМ и выберите игрока
 
 ItemName.WormholeDoubleMirror=Волшебное зеркало-червоточина
@@ -126,7 +126,7 @@ ItemName.DiamondStaff=Алмазный посох
 
 ItemName.EmeraldStaff=Изумрудный посох
 
-ItemName.KarmaStaff=Посох кармы
+ItemName.KarmaStaff=Скелетный посох
 ItemTooltip.KarmaStaff=Призывает стационарный авто-бластер, стреляющий лазером во врагов
 
 ItemName.MagicSpear=Посох правосудия
@@ -206,3 +206,69 @@ ChestVacuum.SmartStackOff2=Предметосос подбирает все предметы
 ItemTooltip.MechanicsRod=Можно соорудить Авто-рыбака
 
 Autofisher.NoBait=Нет приманки (положите приманку в сундук рядом с Авто-рыбаком)
+
+WorldGen.FurnitureGeneratorResults=Сгенерировали {0} из {1}.
+WorldGen.AncientForge=Добавляем древние кузницы...
+WorldGen.AncientForge=Добавляем древние адские кузницы...
+
+
+---------------- Настройки
+
+
+Config.Server=Общие настройки
+Config.Client=Настройки клиента
+Config.ServerBlocked=Только владелец сервера может менять эти настройки.
+
+Config.AltStaffs=Альтернативные посохи
+Config.AltStaffs.Desc=Посохи из драгоценных камней имеют альтернативы для других металлов + чуть-чуть изменен баланс.
+Config.MagicStones=Волшебные камни
+Config.MagicStones.Desc=Волшебные камни восстанавливают ману или здоровье определенное количество раз.
+Config.GodStone=Божественный камень
+Config.GodStone.Desc=Предмет для читеров (требуется Cheat Sheet или нечто подобное)
+Config.DemonCrown=Демоническая корона
+Config.DemonCrown.Desc=Редкий дроп из Демонов в Хардмоде. Улучшает магические характеристики и призывает Красный кристалл, защищающий вас.
+Config.HeartLocket=Медальон-сердце
+Config.HeartLocket.Desc=Медальон-сердце = Ожерелье паники + Золотой крестик.
+Config.Magnet=Магниты
+Config.Magnet.Desc=Аксессуар, притягиывющий предметы (+ комбинации).
+Config.NinjaGear=(Обычное) Снаряжение ниндзя
+Config.NinjaGear.Desc=Снаряжение ниндзя = Таби + Черный пояс\nСнаряжение ниндзя + Альпинистский набор = Снаряжение мастера ниндзя
+
+Config.ReinforcedVest=Бронежилет
+Config.AncientForges=Древние кузни
+Config.RedBrickFurniture=Мебель из красного кирпича
+Config.AncientMuramasa=Древняя Мурамаса
+Config.GasterBlaster=Скелетный посох
+Config.SpearofJustice=Копье правосудия
+Config.WormholeMirror=Зеркало-червоточина
+Config.WormholePhone=Телефон-червоточина
+Config.RodofWarping=Жезл искажения
+Config.RodofWarpingChaosState=Длительность Состояния хаоса при использовании Жезла искажения
+Config.EmblemofDeath=Эмблема смерти
+Config.BuildingMaterials=Стройматериалы
+Config.BaseballBats=Бейсбольные биты
+Config.AncientOrb=Сфера древнего света
+Config.CellPhoneResprite=Новый спрайт Телефона
+Config.ExtraDyes=Новые странные красители
+Config.Autofisher=Авто-рыбак
+Config.MechanicsRodOften=Увеличить шанс продажи Удочки механика
+Config.ChestVacuum=Предметосос
+
+Config.ReinforcedVest.Desc=Броня, защищающая вас от вашей взрывчатки.
+Config.AncientForges.Desc=Древние кузницы и Древние адские кузницы.
+Config.RedBrickFurniture.Desc=Дымоход и камин из красного кирпича.
+Config.AncientMuramasa.Desc=Мурамаса в стиле версии 1.0-1.1, редкий дроп из Гробницы.
+Config.GasterBlaster.Desc=Тупая отсылка на Андертейл, и довольно мощный стационарный стражник.
+Config.SpearofJustice.Desc=Неплохое магическое оружие для раннего Хардмода.
+Config.WormholeMirror.Desc=Бесконечное Зелье червоточины.
+Config.WormholePhone.Desc=Зеркало-червоточина + Телефон
+Config.RodofWarping.Desc=Пост-лунарный Rod of Discord.
+Config.RodofWarpingChaosState.Desc=(в секундах)
+Config.EmblemofDeath.Desc=Предмет, телепортирующий вас в последнее место смерти, но за такую услугу нужно заплатить...
+Config.BuildingMaterials.Desc=Стена из песчаной пластины
+Config.BaseballBats.Desc=Тупой английский каламбур (на англ. "бита" = "bat", при этом "bat" - это также "летучая мышь", короче, забейте).
+Config.AncientOrb.Desc=Сфера света в стиле версий 1.0-1.1, хардмодный апгрейд Теневой сферы.
+Config.CellPhoneResprite.Desc=Меняет спрайт Телефона, чтобы отличить его от Телефона-червоточины.
+Config.Autofisher.Desc=Автоматический рыбак! Потребляет наживку.
+Config.MechanicsRodOften.Desc=Полезно для крафта Авто-рыбака.
+Config.ChestVacuum.Desc=Автоматически кладет предметы в сундуки!

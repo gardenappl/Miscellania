@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.World.Generation;
 using GoldensMisc.Tiles;
+using Terraria.Localization;
 
 namespace GoldensMisc
 {
@@ -34,12 +35,12 @@ namespace GoldensMisc
 		
 		public void AddHellforges(GenerationProgress progress = null)
 		{
-			AddFurniture(progress, "ancient hellforges", mod.TileType<AncientHellforge>(), 1500, Main.maxTilesY - 250, Main.maxTilesY - 5, WallID.ObsidianBrickUnsafe, WallID.HellstoneBrickUnsafe);
+			AddFurniture(progress, Language.GetTextValue("Mods.GoldensMisc.WorldGen.AncientHellforge"), mod.TileType<AncientHellforge>(), 1500, Main.maxTilesY - 250, Main.maxTilesY - 5, WallID.ObsidianBrickUnsafe, WallID.HellstoneBrickUnsafe);
 		}
 		
 		public void AddForges(GenerationProgress progress = null)
 		{
-			AddFurniture(progress, "ancient forges", mod.TileType<AncientForge>(), 300, (int)Main.worldSurface, Main.maxTilesY - 300, WallID.Planked, WallID.BorealWood);
+			AddFurniture(progress, Language.GetTextValue("Mods.GoldensMisc.WorldGen.AncientForge"), mod.TileType<AncientForge>(), 300, (int)Main.worldSurface, Main.maxTilesY - 300, WallID.Planked, WallID.BorealWood);
 		}
 		
 		static void AddFurniture(GenerationProgress progress, string name, int type, int rarity, int minY, int maxY, params int[] wallIDs)
@@ -48,16 +49,15 @@ namespace GoldensMisc
 			{
 				if (progress != null)
 				{
-					progress.Message = "Adding " + name;
+					progress.Message = name;
 				}
 				else
 				{
-					Main.NewText("Adding " + name);
+					Main.NewText(name);
 				}
 				int generated = 0;
-				float toGenerate = Main.maxTilesX / rarity;
+				int toGenerate = Main.maxTilesX / rarity;
 				
-//				var watch = Stopwatch.StartNew();
 				for (int i = 0; i < toGenerate; i++)
 				{
 					progress.Set(i / toGenerate);
@@ -65,20 +65,12 @@ namespace GoldensMisc
 					int attempts = 0;
 					while (!success)
 					{
-//						if(watch.Elapsed.Seconds >= 10)
-//						{
-//							GoldensMisc.Log("SUCC FOR TOO LONG IMMA NUT");
-//							GoldensMisc.Log("Generated {0}/{1} {2}", generated, toGenerate, name);
-//							watch.Stop();
-//							return;
-//						}
 						int x = WorldGen.genRand.Next(1, Main.maxTilesX);
 						int y = WorldGen.genRand.Next(minY, maxY);
 						foreach(int wallID in wallIDs)
 						{
 							if(Main.tile[x, y].wall == wallID)
 							{
-//								GoldensMisc.Log("READY FOR THE SUCC {0} {1}", num, attempts);
 								while (!Main.tile[x, y].active())
 								{
 									y++;
@@ -89,14 +81,12 @@ namespace GoldensMisc
 								{
 									generated++;
 									success = true;
-//									GoldensMisc.Log("SUCCESS");
 								}
 								else
 								{
 									attempts++;
 									if (attempts >= 1000)
 									{
-//										GoldensMisc.Log("OH NO");
 										success = true;
 									}
 								}
@@ -106,17 +96,17 @@ namespace GoldensMisc
 				}
 				if(progress != null)
 				{
-					GoldensMisc.Log("Generated {0}/{1} {2}", generated, toGenerate, name);
+					GoldensMisc.Log(name + ' ' + Language.GetTextValue("Mods.GoldensMisc.WorldGen.FurnitureGeneratorResults"), generated, toGenerate);
 				}
 				else
 				{
-					Main.NewText(String.Format("Generated {0}/{1} {2}", generated, toGenerate, name));
+					Main.NewText(Language.GetTextValue("Mods.GoldensMisc.WorldGen.FurnitureGeneratorResults", generated, toGenerate));
 				}
 			}
 			//Vanilla Terraria does this, so I guess this is OK...?
 			catch(Exception e)
 			{
-				ErrorLogger.Log(e.ToString());
+				GoldensMisc.Instance.Logger.Error(e.ToString());
 			}
 		}
 	}
