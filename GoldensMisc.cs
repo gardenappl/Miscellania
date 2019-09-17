@@ -21,7 +21,7 @@ using Terraria.UI;
 
 namespace GoldensMisc
 {
-    public class GoldensMisc : Mod
+	public class GoldensMisc : Mod
 	{
 		public static GoldensMisc Instance;
 		public static bool VanillaTweaksLoaded;
@@ -38,12 +38,12 @@ namespace GoldensMisc
 			AutofisherHooks.Initialize();
 			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
 
-            if (ServerConfig.Instance.WormholeMirror)
-                WormholeHacks.Load();
+			if (ServerConfig.Instance.WormholeMirror)
+				WormholeHacks.Load();
 
 			if(!Main.dedServ)
-            {
-                MiscGlowMasks.Load();
+			{
+				MiscGlowMasks.Load();
 				if(ClientConfig.Instance.CellPhoneResprite)
 				{
 					CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
@@ -160,14 +160,14 @@ namespace GoldensMisc
 
 		public static void Log(object message)
 		{
-            Instance.Logger.Info(message);
+			Instance.Logger.Info(message);
 			//ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), message));
 		}
 		
 		public static void Log(string message, params object[] formatData)
-        {
-            Instance.Logger.Info(string.Format(message, formatData));
-            //ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), String.Format(message, formatData)));
+		{
+			Instance.Logger.Info(string.Format(message, formatData));
+			//ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), String.Format(message, formatData)));
 		}
 	}
 

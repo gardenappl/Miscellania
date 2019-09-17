@@ -60,8 +60,8 @@ namespace GoldensMisc
 				
 				for (int i = 0; i < toGenerate; i++)
 				{
-                    if(progress != null)
-					progress.Set(i / toGenerate);
+					if(progress != null)
+						progress.Set(i / toGenerate);
 					bool success = false;
 					int attempts = 0;
 					while (!success)
