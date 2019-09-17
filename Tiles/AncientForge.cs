@@ -47,9 +47,9 @@ namespace GoldensMisc.Tiles
 			float rand = 0f;
 			//float rand = (float)Main.rand.Next(28, 42) * 0.005f;
 			//rand += (float)(270 - (int)Main.mouseTextColor) / 700f;
-			r = 0.5f + rand;
-			g = 0.8f + rand;
-			b = 0.35f + rand;
+			r = 0.83f + rand;
+			g = 0.6f + rand;
+			b = 0.5f + rand;
 		}
 	}
 }
