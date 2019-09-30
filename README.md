@@ -5,7 +5,7 @@ For more info visit the **TCF thread**: http://forums.terraria.org/index.php?thr
 
 Download either from *[Releases](https://github.com/goldenapple3/Miscellania/releases)* or in-game through the Mod Browser.
 
-Licensed under the [GPL v3](LICENSE.md).
+Licensed under the [MIT license](LICENSE.md).
 Copyright (c) 2019 Yurii H.
 
 
