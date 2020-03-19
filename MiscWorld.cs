@@ -107,7 +107,7 @@ namespace GoldensMisc
 			//Vanilla Terraria does this, so I guess this is OK...?
 			catch(Exception e)
 			{
-				GoldensMisc.Instance.Logger.Error(e.ToString());
+				GoldensMisc.Error("Error during worldgen", e);
 			}
 		}
 	}

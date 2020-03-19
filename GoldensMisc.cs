@@ -23,7 +23,6 @@ namespace GoldensMisc
 {
 	public class GoldensMisc : Mod
 	{
-		public static GoldensMisc Instance;
 		public static bool VanillaTweaksLoaded;
 		public static Texture2D CellPhoneTexture;
 		
@@ -34,7 +33,6 @@ namespace GoldensMisc
 		
 		public override void Load()
 		{
-			Instance = this; //apparently you get some problems with Mod Reloading if you put this in the constructor
 			AutofisherHooks.Initialize();
 			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
 
@@ -75,9 +73,9 @@ namespace GoldensMisc
 			var hotkeysMod = ModLoader.GetMod("HelpfulHotkeys");
 			if(hotkeysMod != null && ServerConfig.Instance.WormholeMirror)
 			{
-                hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeDoubleMirror>());
-                hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeIceMirror>());
-                hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeCellPhone>());
+				hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeDoubleMirror>());
+				hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeIceMirror>());
+				hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeCellPhone>());
 			}
 			if(ServerConfig.Instance.ChestVacuum)
 			{
@@ -89,8 +87,6 @@ namespace GoldensMisc
 
 		public override void Unload()
 		{
-			Instance = null;
-
 			MiscGlowMasks.Unload();
 			if(CellPhoneTexture != null)
 			{
@@ -154,18 +150,23 @@ namespace GoldensMisc
 			catch(Exception e)
 			{
 				Main.NewText("Network error!");
-				Logger.Error("Network error", e);
+				Error("Network error", e);
 			}
 		}
 
 		public static void Log(object message)
 		{
-			Instance.Logger.Info(message);
+			ModContent.GetInstance<GoldensMisc>().Logger.Info(message);
+		}
+
+		public static void Error(object message, Exception e)
+		{
+			ModContent.GetInstance<GoldensMisc>().Logger.Error(message, e);
 		}
 		
 		public static void Log(string message, params object[] formatData)
 		{
-			Instance.Logger.Info(string.Format(message, formatData));
+			ModContent.GetInstance<GoldensMisc>().Logger.Info(string.Format(message, formatData));
 		}
 	}
 
