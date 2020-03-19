@@ -110,8 +110,16 @@ namespace GoldensMisc
 			{
 				if(File.Exists(OldConfigPath))
 				{
-					Logger.Warn("Found config file in old folder! Moving config...");
-					File.Move(OldConfigPath, ConfigPath);
+					if(!File.Exists(ConfigPath))
+					{
+						Logger.Warn("Found config file in old folder! Moving config...");
+						File.Move(OldConfigPath, ConfigPath);
+					}
+					else
+					{
+						Logger.Warn("Found config file in old folder! Deleting...");
+						File.Delete(OldConfigPath);
+					}
 				}
 				if(File.Exists(OldConfigVersionPath))
 					File.Delete(OldConfigVersionPath);
@@ -212,7 +220,10 @@ namespace GoldensMisc
             string newConfigPathServer = Path.Combine(ConfigManager.ModConfigPath,
                     nameof(GoldensMisc) + '_' + ServerConfig.ConfigName + ".json");
 
-            File.Move(ConfigPath, newConfigPathServer);
+	    if(!File.Exists(newConfigPathServer))
+	            File.Move(ConfigPath, newConfigPathServer);
+	    else
+		    File.Delete(ConfigPath);
         }
     }
 }
