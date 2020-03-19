@@ -1,13 +1,12 @@
 ﻿
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using GoldensMisc.Items;
+using Terraria.Localization;
 using GoldensMisc.Items.Equipable;
 using GoldensMisc.Items.Placeable;
-using GoldensMisc.Items.Tools;
 using GoldensMisc.Items.Weapons;
+
 
 namespace GoldensMisc
 {
@@ -24,7 +23,7 @@ namespace GoldensMisc
 			{
 				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Muramasa), 
 					ItemID.Muramasa,
-					GoldensMisc.Instance.ItemType<AncientMuramasa>()
+				    ModContent.ItemType<AncientMuramasa>()
 				);
 				RecipeGroup.RegisterGroup("GoldensMisc:Muramasa", recipeGroup);
 			}
@@ -32,7 +31,7 @@ namespace GoldensMisc
 			{
 				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Hellforge),
 					ItemID.Hellforge,
-					GoldensMisc.Instance.ItemType<AncientHellforge>()
+					ModContent.ItemType<AncientHellforge>()
 				);
 				RecipeGroup.RegisterGroup("GoldensMisc:Hellforge", recipeGroup);
 			}
@@ -76,7 +75,7 @@ namespace GoldensMisc
 					var editor = new RecipeEditor(foundRecipe);
 					editor.DeleteIngredient(ItemID.Tabi);
 					editor.DeleteIngredient(ItemID.BlackBelt);
-					editor.AddIngredient(GoldensMisc.Instance.ItemType<NinjaGear>());
+					editor.AddIngredient(ModContent.ItemType<NinjaGear>());
 				}
 			}
 		}

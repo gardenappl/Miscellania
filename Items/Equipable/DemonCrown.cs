@@ -30,7 +30,7 @@ namespace GoldensMisc.Items.Equipable
 			player.magicCrit += 7;
 			player.manaCost -= 0.1f;
 			player.statManaMax2 += 40;
-			player.GetModPlayer<MiscPlayer>(mod).DemonCrown = true;
+			player.GetModPlayer<MiscPlayer>().DemonCrown = true;
 		}
 	}
 }

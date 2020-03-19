@@ -16,7 +16,7 @@ namespace GoldensMisc.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.GetModPlayer<MiscPlayer>(mod).OrbofLight = true;
+			player.GetModPlayer<MiscPlayer>().OrbofLight = true;
 			player.buffTime[buffIndex] = 18000;
 			bool projSpawned = player.ownedProjectileCounts[mod.ProjectileType(GetType().Name)] > 0;
 			if(!projSpawned && player.whoAmI == Main.myPlayer)

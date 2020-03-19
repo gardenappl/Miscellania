@@ -36,7 +36,7 @@ namespace GoldensMisc.Projectiles
 			if(DustDelay <= 0)
 			{
 				var dustVel = projectile.velocity * 0.5f + new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f));
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<RedDust>(), dustVel.X, dustVel.Y, Scale: 1.2f);
+				Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<RedDust>(), dustVel.X, dustVel.Y, Scale: 1.2f);
 				DustDelay = 8;
 			}
 		}

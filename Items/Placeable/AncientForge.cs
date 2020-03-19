@@ -26,7 +26,7 @@ namespace GoldensMisc.Items.Placeable
 			item.useStyle = 1;
 			item.consumable = true;
 			item.value = Item.sellPrice(silver: 6);
-			item.createTile = mod.TileType<Tiles.AncientForge>();
+			item.createTile = ModContent.TileType<Tiles.AncientForge>();
 		}
 	}
 }

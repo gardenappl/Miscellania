@@ -26,7 +26,7 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.GetModPlayer<MiscPlayer>(mod).Magnet = true;
+			player.GetModPlayer<MiscPlayer>().Magnet = true;
 			player.goldRing = true;
 			player.manaMagnet = true;
 		}
@@ -34,7 +34,7 @@ namespace GoldensMisc.Items.Equipable
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType<UniversalMagnet>());
+			recipe.AddIngredient(ModContent.ItemType<UniversalMagnet>());
 			recipe.AddIngredient(ItemID.CelestialMagnet);
 			recipe.AddIngredient(ItemID.GoldRing);
 			recipe.AddTile(TileID.TinkerersWorkbench);

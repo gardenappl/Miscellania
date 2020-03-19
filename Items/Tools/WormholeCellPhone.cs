@@ -86,21 +86,21 @@ namespace GoldensMisc.Items.Tools
 		{
 			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.PDA);
-			recipe.AddIngredient(mod.ItemType<WormholeDoubleMirror>());
+			recipe.AddIngredient(ModContent.ItemType<WormholeDoubleMirror>());
 			recipe.AddTile(TileID.TinkerersWorkbench);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 			
 			recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.PDA);
-			recipe.AddIngredient(mod.ItemType<WormholeIceMirror>());
+			recipe.AddIngredient(ModContent.ItemType<WormholeIceMirror>());
 			recipe.AddTile(TileID.TinkerersWorkbench);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 			
 			recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.CellPhone);
-			recipe.AddIngredient(mod.ItemType<WormholeMirror>());
+			recipe.AddIngredient(ModContent.ItemType<WormholeMirror>());
 			recipe.AddTile(TileID.TinkerersWorkbench);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

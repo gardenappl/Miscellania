@@ -35,12 +35,12 @@ namespace GoldensMisc
 		
 		public void AddHellforges(GenerationProgress progress = null)
 		{
-			AddFurniture(progress, Language.GetTextValue("Mods.GoldensMisc.WorldGen.AncientHellforge"), mod.TileType<AncientHellforge>(), 1500, Main.maxTilesY - 250, Main.maxTilesY - 5, WallID.ObsidianBrickUnsafe, WallID.HellstoneBrickUnsafe);
+			AddFurniture(progress, Language.GetTextValue("Mods.GoldensMisc.WorldGen.AncientHellforge"), ModContent.TileType<AncientHellforge>(), 1500, Main.maxTilesY - 250, Main.maxTilesY - 5, WallID.ObsidianBrickUnsafe, WallID.HellstoneBrickUnsafe);
 		}
 		
 		public void AddForges(GenerationProgress progress = null)
 		{
-			AddFurniture(progress, Language.GetTextValue("Mods.GoldensMisc.WorldGen.AncientForge"), mod.TileType<AncientForge>(), 300, (int)Main.worldSurface, Main.maxTilesY - 300, WallID.Planked, WallID.BorealWood);
+			AddFurniture(progress, Language.GetTextValue("Mods.GoldensMisc.WorldGen.AncientForge"), ModContent.TileType<AncientForge>(), 300, (int)Main.worldSurface, Main.maxTilesY - 300, WallID.Planked, WallID.BorealWood);
 		}
 		
 		static void AddFurniture(GenerationProgress progress, string name, int type, int rarity, int minY, int maxY, params int[] wallIDs)

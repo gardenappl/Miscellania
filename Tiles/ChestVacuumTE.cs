@@ -25,7 +25,7 @@ namespace GoldensMisc.Tiles
 		public override bool ValidTile(int i, int j)
 		{
 			var tile = Main.tile[i, j];
-			return tile.active() && tile.type == mod.TileType<ChestVacuum>() && tile.frameX == 0;
+			return tile.active() && tile.type == ModContent.TileType<ChestVacuum>() && tile.frameX == 0;
 		}
 
 		public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction)
@@ -95,7 +95,7 @@ namespace GoldensMisc.Tiles
 			catch(Exception e)
 			{
 				Main.NewText("chest vacuum error. look at Logs.txt");
-				ErrorLogger.Log(e);
+				GoldensMisc.Log(e);
 			}
 		}
 

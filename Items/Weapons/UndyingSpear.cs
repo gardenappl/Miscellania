@@ -41,7 +41,7 @@ namespace GoldensMisc.Items.Weapons
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType<MagicSpear>());
+			recipe.AddIngredient(ModContent.ItemType<MagicSpear>());
 			recipe.AddIngredient(ItemID.SpectreBar, 15);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);

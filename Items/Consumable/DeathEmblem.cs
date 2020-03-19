@@ -52,7 +52,7 @@ namespace GoldensMisc.Items.Consumable
 				if(Main.netMode == NetmodeID.SinglePlayer)
 					NetMessage.SendData(65, -1, -1, null, 0, (float) player.whoAmI, player.lastDeathPostion.X, player.lastDeathPostion.Y, 3);
 				
-				player.AddBuff(mod.BuffType<CursedMemory>(), 120 * 60);
+				player.AddBuff(ModContent.BuffType<CursedMemory>(), 120 * 60);
 				for (int index = 0; index < 70; ++index)
 					Dust.NewDust(player.position, player.width, player.height, 15, 0.0f, 0.0f, 150, Color.Red, 1.5f);
 				return true;

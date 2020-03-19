@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -30,7 +27,7 @@ namespace GoldensMisc.Tiles
 			//TileObjectData.newTile.StyleWrapLimit = 2;
 			//TileObjectData.newTile.StyleMultiplier = 2;
 			//TileObjectData.newTile.StyleHorizontal = true;
-			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity<AutofisherTE>().Hook_AfterPlacement, -1, 0, false);
+			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(ModContent.GetInstance<AutofisherTE>().Hook_AfterPlacement, -1, 0, false);
 			TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile);
 			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceLeft;
 			TileObjectData.newAlternate.AnchorBottom = new AnchorData(AnchorType.SolidTile, 2, 1);
@@ -43,7 +40,7 @@ namespace GoldensMisc.Tiles
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType(GetType().Name));
-			mod.GetTileEntity<AutofisherTE>().Kill(i, j);
+            ModContent.GetInstance<AutofisherTE>().Kill(i, j);
 		}
 
 		public override void MouseOver(int i, int j)
@@ -53,7 +50,7 @@ namespace GoldensMisc.Tiles
 			Main.LocalPlayer.showItemIcon2 = mod.ItemType(GetType().Name);
 		}
 
-		public override void RightClick(int i, int j)
+		public override bool NewRightClick(int i, int j)
 		{
 			//Top left tile
 			int x = i - Main.tile[i, j].frameX % 54 / 18;
@@ -77,9 +74,10 @@ namespace GoldensMisc.Tiles
 			}
 			catch(Exception e)
 			{
-				ErrorLogger.Log(e);
+				GoldensMisc.Log(e);
 				Main.NewText("Error! Report this error and send the Terraria/Logs/Logs.txt file!");
 			}
+            return true;
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace GoldensMisc.Items.Equipable.Vanity
 		{
 			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(this);
-			recipe.SetResult(mod.ItemType<BaseballCapBackwards>());
+			recipe.SetResult(ModContent.ItemType<BaseballCapBackwards>());
 			recipe.AddRecipe();
 		}
 	}
@@ -53,7 +53,7 @@ namespace GoldensMisc.Items.Equipable.Vanity
 		{
 			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(this);
-			recipe.SetResult(mod.ItemType<BaseballCap>());
+			recipe.SetResult(ModContent.ItemType<BaseballCap>());
 			recipe.AddRecipe();
 		}
 	}

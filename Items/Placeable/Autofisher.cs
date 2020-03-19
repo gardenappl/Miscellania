@@ -28,7 +28,7 @@ namespace GoldensMisc.Items.Placeable
 			item.useStyle = 1;
 			item.consumable = true;
 			item.value = Item.buyPrice(gold: 20);
-			item.createTile = mod.TileType<Tiles.Autofisher>();
+			item.createTile = ModContent.TileType<Tiles.Autofisher>();
 		}
 
 		public override void AddRecipes()

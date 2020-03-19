@@ -27,7 +27,7 @@ namespace GoldensMisc.Items.Placeable
 			item.useStyle = 1;
 			item.consumable = true;
 			item.value = Item.sellPrice(silver: 60);
-			item.createTile = mod.TileType<Tiles.AncientHellforge>();
+			item.createTile = ModContent.TileType<Tiles.AncientHellforge>();
 		}
 		
 		public override void AddRecipes()

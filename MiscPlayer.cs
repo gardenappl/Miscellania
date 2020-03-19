@@ -74,8 +74,8 @@ namespace GoldensMisc
 		
 		public override void PostUpdateEquips()
 		{
-			if(DemonCrown && player.ownedProjectileCounts[mod.ProjectileType<RedCrystal>()] == 0)
-				Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<RedCrystal>(), 60, 8, player.whoAmI);
+			if(DemonCrown && player.ownedProjectileCounts[ModContent.ProjectileType<RedCrystal>()] == 0)
+				Projectile.NewProjectile(player.Center, Vector2.Zero, ModContent.ProjectileType<RedCrystal>(), 60, 8, player.whoAmI);
 		}
 		
 //		//stolen from Elemental Unleash
@@ -98,17 +98,17 @@ namespace GoldensMisc
 //		static readonly PlayerLayer PreHeldItem = new PlayerLayer("GoldensMisc", "PreHeldItem", PlayerLayer.HeldItem, delegate(PlayerDrawInfo drawInfo)
 //		{
 //			var mod = GoldensMisc.Instance;
-//			Main.itemTexture[mod.ItemType<WormholeIceMirror>()] = Main.itemTexture[ItemID.IceMirror];
-//			Main.itemTexture[mod.ItemType<WormholeDoubleMirror>()] = Main.itemTexture[ItemID.MagicMirror];
-//			Main.itemTexture[mod.ItemType<WormholeCellPhone>()] = Main.itemTexture[ItemID.CellPhone];
+//			Main.itemTexture[ModContent.ItemType<WormholeIceMirror>()] = Main.itemTexture[ItemID.IceMirror];
+//			Main.itemTexture[ModContent.ItemType<WormholeDoubleMirror>()] = Main.itemTexture[ItemID.MagicMirror];
+//			Main.itemTexture[ModContent.ItemType<WormholeCellPhone>()] = Main.itemTexture[ItemID.CellPhone];
 //		});
 		
 //		static readonly PlayerLayer PostHeldItem = new PlayerLayer("GoldensMisc", "PostHeldItem", PlayerLayer.HeldItem, delegate(PlayerDrawInfo drawInfo)
 //		{
 //			var mod = GoldensMisc.Instance;
-//			Main.itemTexture[mod.ItemType<WormholeIceMirror>()] = mod.GetTexture("Items/Tools/WormholeIceMirror");
-//			Main.itemTexture[mod.ItemType<WormholeDoubleMirror>()] = mod.GetTexture("Items/Tools/WormholeDoubleMirror");
-//			Main.itemTexture[mod.ItemType<WormholeCellPhone>()] = mod.GetTexture("Items/Tools/WormholeCellPhone");
+//			Main.itemTexture[ModContent.ItemType<WormholeIceMirror>()] = mod.GetTexture("Items/Tools/WormholeIceMirror");
+//			Main.itemTexture[ModContent.ItemType<WormholeDoubleMirror>()] = mod.GetTexture("Items/Tools/WormholeDoubleMirror");
+//			Main.itemTexture[ModContent.ItemType<WormholeCellPhone>()] = mod.GetTexture("Items/Tools/WormholeCellPhone");
 //		});
 
 
@@ -119,17 +119,17 @@ namespace GoldensMisc
 
 			if(Main.hardMode)
 			{
-				rewardPool.Add(mod.ItemType<MatrixDye>());
-				rewardPool.Add(mod.ItemType<VirtualDye>());
-				rewardPool.Add(mod.ItemType<CobaltDye>());
-				rewardPool.Add(mod.ItemType<PalladiumDye>());
-				rewardPool.Add(mod.ItemType<MythrilDye>());
-				rewardPool.Add(mod.ItemType<OrichalcumDye>());
-				rewardPool.Add(mod.ItemType<AdamantiteDye>());
-				rewardPool.Add(mod.ItemType<TitaniumDye>());
+				rewardPool.Add(ModContent.ItemType<MatrixDye>());
+				rewardPool.Add(ModContent.ItemType<VirtualDye>());
+				rewardPool.Add(ModContent.ItemType<CobaltDye>());
+				rewardPool.Add(ModContent.ItemType<PalladiumDye>());
+				rewardPool.Add(ModContent.ItemType<MythrilDye>());
+				rewardPool.Add(ModContent.ItemType<OrichalcumDye>());
+				rewardPool.Add(ModContent.ItemType<AdamantiteDye>());
+				rewardPool.Add(ModContent.ItemType<TitaniumDye>());
 				if(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
 				{
-					rewardPool.Add(mod.ItemType<ChlorophyteDye>());
+					rewardPool.Add(ModContent.ItemType<ChlorophyteDye>());
 				}
 			}
 		}
