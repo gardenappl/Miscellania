@@ -13,7 +13,7 @@ namespace GoldensMisc.Tiles
 	{
 		public override bool Autoload(ref string name, ref string texture)
 		{
-			return ServerConfig.Instance.Autofisher;
+			return ModContent.GetInstance<ServerConfig>().Autofisher;
 		}
 
 		public override void SetDefaults()

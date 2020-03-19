@@ -13,7 +13,7 @@ namespace GoldensMisc.Tiles
 	{
 		public override bool Autoload(ref string name, ref string texture)
 		{
-			return ServerConfig.Instance.AncientForges;
+			return ModContent.GetInstance<ServerConfig>().AncientForges;
 		}
 		
 		public override void SetDefaults()

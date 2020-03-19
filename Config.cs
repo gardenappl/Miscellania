@@ -25,8 +25,6 @@ namespace GoldensMisc
 
 		public override ConfigScope Mode => ConfigScope.ServerSide;
 
-		public static ServerConfig Instance;
-
 		public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
 		{
 			message = Language.GetTextValue("Mods.GoldensMisc.Config.ServerBlocked");
@@ -196,8 +194,6 @@ namespace GoldensMisc
 		}
 
 		public override ConfigScope Mode => ConfigScope.ClientSide;
-
-		public static ClientConfig Instance;
 
 		[Label("$Mods.GoldensMisc.Config.CellPhoneResprite")]
 		[Tooltip("$Mods.GoldensMisc.Config.CellPhoneResprite.Desc")]

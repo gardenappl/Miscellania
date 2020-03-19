@@ -35,7 +35,7 @@ namespace GoldensMisc.Items
 		
 		public override void SetDefaults(Item item)
 		{
-			if(ServerConfig.Instance.AltStaffs)
+			if(ModContent.GetInstance<ServerConfig>().AltStaffs)
 			{
 				switch(item.type)
 				{

@@ -19,7 +19,7 @@ namespace GoldensMisc
 				ItemID.TungstenBar
 			);
 			RecipeGroup.RegisterGroup("GoldensMisc:Silver", recipeGroup);
-			if(ServerConfig.Instance.AncientMuramasa)
+			if(ModContent.GetInstance<ServerConfig>().AncientMuramasa)
 			{
 				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Muramasa), 
 					ItemID.Muramasa,
@@ -27,7 +27,7 @@ namespace GoldensMisc
 				);
 				RecipeGroup.RegisterGroup("GoldensMisc:Muramasa", recipeGroup);
 			}
-			if(ServerConfig.Instance.AncientForges)
+			if(ModContent.GetInstance<ServerConfig>().AncientForges)
 			{
 				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Hellforge),
 					ItemID.Hellforge,
@@ -39,7 +39,7 @@ namespace GoldensMisc
 		
 		public static void PostAddRecipes()
 		{
-			if(ServerConfig.Instance.AncientMuramasa)
+			if(ModContent.GetInstance<ServerConfig>().AncientMuramasa)
 			{
 				var finder = new RecipeFinder();
 				finder.AddIngredient(ItemID.Muramasa);
@@ -50,7 +50,7 @@ namespace GoldensMisc
 					editor.AcceptRecipeGroup("GoldensMisc:Muramasa");
 				}
 			}
-			if(ServerConfig.Instance.AncientForges)
+			if(ModContent.GetInstance<ServerConfig>().AncientForges)
 			{
 				var finder = new RecipeFinder();
 				finder.AddIngredient(ItemID.Hellforge);
@@ -61,7 +61,7 @@ namespace GoldensMisc
 					editor.AcceptRecipeGroup("GoldensMisc:Hellforge");
 				}
 			}
-			if(ServerConfig.Instance.NinjaGear)
+			if(ModContent.GetInstance<ServerConfig>().NinjaGear)
 			{
 				var finder = new RecipeFinder();
 				finder.AddIngredient(ItemID.TigerClimbingGear);

@@ -17,7 +17,7 @@ namespace GoldensMisc
 	{
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
-			if(ServerConfig.Instance.AncientForges)
+			if(ModContent.GetInstance<ServerConfig>().AncientForges)
 			{
 				int index = tasks.FindIndex(genpass => genpass.Name.Equals("Hellforge"));
 				if(index != -1)

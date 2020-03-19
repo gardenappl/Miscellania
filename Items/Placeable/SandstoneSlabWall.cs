@@ -11,7 +11,7 @@ namespace GoldensMisc.Items.Placeable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.BuildingMaterials;
+			return ModContent.GetInstance<ServerConfig>().BuildingMaterials;
 		}
 		
 		public override void SetDefaults()

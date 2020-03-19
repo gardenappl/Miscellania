@@ -10,7 +10,7 @@ namespace GoldensMisc.Projectiles
 	{
 		public override void SetDefaults(Projectile projectile)
 		{
-			if(ServerConfig.Instance.AltStaffs)
+			if(ModContent.GetInstance<ServerConfig>().AltStaffs)
 			{
 				switch(projectile.type)
 				{

@@ -11,7 +11,7 @@ namespace GoldensMisc.Tiles
 	{
 		public override bool Autoload(ref string name, ref string texture)
 		{
-			return ServerConfig.Instance.BuildingMaterials;
+			return ModContent.GetInstance<ServerConfig>().BuildingMaterials;
 		}
 		
 		public override void SetDefaults()

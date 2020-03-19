@@ -114,7 +114,7 @@ namespace GoldensMisc
 
 		public override void GetDyeTraderReward(List<int> rewardPool)
 		{
-			if(!ServerConfig.Instance.ExtraDyes)
+			if(!ModContent.GetInstance<ServerConfig>().ExtraDyes)
 				return;
 
 			if(Main.hardMode)

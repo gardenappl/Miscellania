@@ -19,7 +19,7 @@ namespace GoldensMisc.Projectiles
 
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.DemonCrown;
+			return ModContent.GetInstance<ServerConfig>().DemonCrown;
 		}
 
 		public override string Texture => "Terraria/Projectile_" + ProjectileID.RubyBolt;

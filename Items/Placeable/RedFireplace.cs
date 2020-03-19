@@ -11,7 +11,7 @@ namespace GoldensMisc.Items.Placeable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.RedBrickFurniture;
+			return ModContent.GetInstance<ServerConfig>().RedBrickFurniture;
 		}
 		
 		public override void SetDefaults()

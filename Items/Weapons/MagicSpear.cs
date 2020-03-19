@@ -13,7 +13,7 @@ namespace GoldensMisc.Items.Weapons
 	{
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.SpearofJustice;
+			return ModContent.GetInstance<ServerConfig>().SpearofJustice;
 		}
 		
 		public override void SetDefaults()

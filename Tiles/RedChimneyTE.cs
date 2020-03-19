@@ -13,7 +13,7 @@ namespace GoldensMisc.Tiles
 	{
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.RedBrickFurniture;
+			return ModContent.GetInstance<ServerConfig>().RedBrickFurniture;
 		}
 		
 		public enum State : byte

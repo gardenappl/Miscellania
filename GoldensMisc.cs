@@ -36,20 +36,20 @@ namespace GoldensMisc
 			AutofisherHooks.Initialize();
 			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
 
-			if (ServerConfig.Instance.WormholeMirror)
+			if (ModContent.GetInstance<ServerConfig>().WormholeMirror)
 				WormholeHacks.Load();
 
 			if(!Main.dedServ)
 			{
 				MiscGlowMasks.Load();
-				if(ClientConfig.Instance.CellPhoneResprite)
+				if(ModContent.GetInstance<ClientConfig>().CellPhoneResprite)
 				{
 					CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
 					Main.itemTexture[ItemID.CellPhone] = GetTexture("Items/Tools/CellPhone_Resprite");
 				}
 				//				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
 
-				if(ServerConfig.Instance.ExtraDyes)
+				if(ModContent.GetInstance<ServerConfig>().ExtraDyes)
 				{
 					GameShaders.Armor.BindShader(ModContent.ItemType<MatrixDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(0f, 1.0f, 0.2f);
 					GameShaders.Armor.BindShader(ModContent.ItemType<VirtualDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(1f, 0.1f, 0.1f);
@@ -62,7 +62,7 @@ namespace GoldensMisc
 					GameShaders.Armor.BindShader(ModContent.ItemType<ChlorophyteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 1.1f, 0.1f);
 				}
 			}
-			if(ServerConfig.Instance.SpearofJustice)
+			if(ModContent.GetInstance<ServerConfig>().SpearofJustice)
 			{
 				AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
 			}
@@ -71,13 +71,13 @@ namespace GoldensMisc
 		public override void PostSetupContent()
 		{
 			var hotkeysMod = ModLoader.GetMod("HelpfulHotkeys");
-			if(hotkeysMod != null && ServerConfig.Instance.WormholeMirror)
+			if(hotkeysMod != null && ModContent.GetInstance<ServerConfig>().WormholeMirror)
 			{
 				hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeDoubleMirror>());
 				hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeIceMirror>());
 				hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeCellPhone>());
 			}
-			if(ServerConfig.Instance.ChestVacuum)
+			if(ModContent.GetInstance<ServerConfig>().ChestVacuum)
 			{
 				ModContent.GetInstance<Tiles.ChestVacuum>().SetDefaultsPostContent();
 			}

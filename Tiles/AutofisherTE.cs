@@ -35,7 +35,7 @@ namespace GoldensMisc.Tiles
 
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.Autofisher;
+			return ModContent.GetInstance<ServerConfig>().Autofisher;
 		}
 
 		public override bool ValidTile(int i, int j)

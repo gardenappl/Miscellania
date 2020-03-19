@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Equipable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.Magnet;
+			return ModContent.GetInstance<ServerConfig>().Magnet;
 		}
 		
 		public override void SetDefaults()

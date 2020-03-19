@@ -19,7 +19,7 @@ namespace GoldensMisc.Tiles
 
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.ChestVacuum;
+			return ModContent.GetInstance<ServerConfig>().ChestVacuum;
 		}
 
 		public override bool ValidTile(int i, int j)

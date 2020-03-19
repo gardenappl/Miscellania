@@ -12,7 +12,7 @@ namespace GoldensMisc.Items.Weapons
 	{
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.AltStaffs;
+			return ModContent.GetInstance<ServerConfig>().AltStaffs;
 		}
 		
 		public override void SetStaticDefaults()

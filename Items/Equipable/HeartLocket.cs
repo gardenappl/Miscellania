@@ -13,7 +13,7 @@ namespace GoldensMisc.Items.Equipable
 	{
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.HeartLocket;
+			return ModContent.GetInstance<ServerConfig>().HeartLocket;
 		}
 
 		public override void SetDefaults()

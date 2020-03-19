@@ -11,7 +11,7 @@ namespace GoldensMisc.Items.Materials
 	{
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.WormholeMirror;
+			return ModContent.GetInstance<ServerConfig>().WormholeMirror;
 		}
 		
 		public override void SetStaticDefaults()

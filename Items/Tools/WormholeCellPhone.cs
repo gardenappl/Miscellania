@@ -14,7 +14,7 @@ namespace GoldensMisc.Items.Tools
 	{
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.WormholeMirror && ServerConfig.Instance.WormholePhone;
+			return ModContent.GetInstance<ServerConfig>().WormholeMirror && ModContent.GetInstance<ServerConfig>().WormholePhone;
 		}
 
 		public override void SetDefaults()

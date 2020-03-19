@@ -13,7 +13,7 @@ namespace GoldensMisc.Items.Weapons
 	{
 		public override bool Autoload(ref string name)
 		{
-			return ServerConfig.Instance.AncientMuramasa;
+			return ModContent.GetInstance<ServerConfig>().AncientMuramasa;
 		}
 		
 		public override void SetDefaults()

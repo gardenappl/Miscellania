@@ -15,7 +15,7 @@ namespace GoldensMisc.Tiles
 	{
 		public override bool Autoload(ref string name, ref string texture)
 		{
-			return ServerConfig.Instance.RedBrickFurniture;
+			return ModContent.GetInstance<ServerConfig>().RedBrickFurniture;
 		}
 		
 		public override void SetDefaults()

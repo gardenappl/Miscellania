@@ -37,7 +37,7 @@ namespace GoldensMisc
 
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 		{
-			if(item.type == ItemID.MechanicsRod && ServerConfig.Instance.Autofisher)
+			if(item.type == ItemID.MechanicsRod && ModContent.GetInstance<ServerConfig>().Autofisher)
 			{
 				for(int i = 0; i < tooltips.Count; i++)
 				{

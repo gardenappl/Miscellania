@@ -15,7 +15,7 @@ namespace GoldensMisc.Tiles
 	{
 		public override bool Autoload(ref string name, ref string texture)
 		{
-			return ServerConfig.Instance.ChestVacuum;
+			return ModContent.GetInstance<ServerConfig>().ChestVacuum;
 		}
 
 		public override void SetDefaults()

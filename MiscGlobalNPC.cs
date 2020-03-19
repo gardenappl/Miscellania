@@ -19,28 +19,28 @@ namespace GoldensMisc
 			switch(type)
 			{
 				case NPCID.GoblinTinkerer:
-					if(ServerConfig.Instance.Magnet && Main.hardMode && !Main.dayTime)
+					if(ModContent.GetInstance<ServerConfig>().Magnet && Main.hardMode && !Main.dayTime)
 					{
 						shop.item[nextSlot].SetDefaults(ModContent.ItemType<UniversalMagnet>());
 						nextSlot++;
 					}
 					break;
 				case NPCID.Demolitionist:
-					if(ServerConfig.Instance.ReinforcedVest && Main.hardMode)
+					if(ModContent.GetInstance<ServerConfig>().ReinforcedVest && Main.hardMode)
 					{
 						shop.item[nextSlot].SetDefaults(ModContent.ItemType<ReinforcedVest>());
 						nextSlot++;
 					}
 					break;
 				case NPCID.Wizard:
-					if(ServerConfig.Instance.MagicStones && NPC.downedMechBossAny)
+					if(ModContent.GetInstance<ServerConfig>().MagicStones && NPC.downedMechBossAny)
 					{
 						shop.item[nextSlot].SetDefaults(ModContent.ItemType<InertStone>());
 						nextSlot++;
 					}
 					break;
 				case NPCID.Mechanic:
-					if(ServerConfig.Instance.MechanicsRodOften && Main.hardMode && Main.moonPhase <= 4 && NPC.AnyNPCs(NPCID.Angler))
+					if(ModContent.GetInstance<ServerConfig>().MechanicsRodOften && Main.hardMode && Main.moonPhase <= 4 && NPC.AnyNPCs(NPCID.Angler))
 					{
 						if(!MiscUtils.ChestHasItem(shop, ItemID.MechanicsRod))
 						{
@@ -50,7 +50,7 @@ namespace GoldensMisc
 					}
 					break;
 				case NPCID.Steampunker:
-					if(ServerConfig.Instance.ChestVacuum)
+					if(ModContent.GetInstance<ServerConfig>().ChestVacuum)
 					{
 						shop.item[nextSlot].SetDefaults(ModContent.ItemType<ChestVacuum>());
 						nextSlot++;
@@ -68,15 +68,15 @@ namespace GoldensMisc
 				case NPCID.AngryBonesBigHelmet:
 				case NPCID.AngryBonesBigMuscle:
 				case NPCID.DarkCaster:
-					if(ServerConfig.Instance.AncientMuramasa && Main.rand.Next(250) == 0)
+					if(ModContent.GetInstance<ServerConfig>().AncientMuramasa && Main.rand.Next(250) == 0)
 						Item.NewItem(npc.position, npc.Size, ModContent.ItemType<AncientMuramasa>(), prefixGiven: -1);
 					break;
 				case NPCID.Demon:
-					if(ServerConfig.Instance.DemonCrown && Main.hardMode && Main.rand.Next(100) == 0)
+					if(ModContent.GetInstance<ServerConfig>().DemonCrown && Main.hardMode && Main.rand.Next(100) == 0)
 						Item.NewItem(npc.position, npc.Size, ModContent.ItemType<DemonCrown>(), prefixGiven: -1);
 					break;
 				case NPCID.VoodooDemon:
-					if(ServerConfig.Instance.DemonCrown && Main.hardMode && Main.rand.Next(15) == 0)
+					if(ModContent.GetInstance<ServerConfig>().DemonCrown && Main.hardMode && Main.rand.Next(15) == 0)
 						Item.NewItem(npc.position, npc.Size, ModContent.ItemType<DemonCrown>(), prefixGiven: -1);
 					break;
 				//case NPCID.Necromancer:
