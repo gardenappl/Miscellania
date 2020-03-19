@@ -12,7 +12,7 @@ namespace GoldensMisc
 	{
 		public override void GrabRange(Item item, Player player, ref int grabRange)
 		{
-			if(player.GetModPlayer<MiscPlayer>(mod).Magnet)
+			if(player.GetModPlayer<MiscPlayer>().Magnet)
 			{
 				switch(item.type)
 				{

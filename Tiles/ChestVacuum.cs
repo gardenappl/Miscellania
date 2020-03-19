@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -33,7 +31,7 @@ namespace GoldensMisc.Tiles
 				TileID.Containers,
 				TileID.Containers2
 			};
-			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity<ChestVacuumTE>().Hook_AfterPlacement, -1, 0, false);
+			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(ModContent.GetInstance<ChestVacuumTE>().Hook_AfterPlacement, -1, 0, false);
 			TileObjectData.addTile(Type);
 			AddMapEntry(Color.Gray, CreateMapEntryName());
 			disableSmartCursor = true;
@@ -58,10 +56,10 @@ namespace GoldensMisc.Tiles
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType(GetType().Name));
-			mod.GetTileEntity<ChestVacuumTE>().Kill(i, j);
+            ModContent.GetInstance<ChestVacuumTE>().Kill(i, j);
 		}
 
-		public override void RightClick(int i, int j)
+		public override bool NewRightClick(int i, int j)
 		{
 			int teX = i;
 			int teY = j;
@@ -72,7 +70,7 @@ namespace GoldensMisc.Tiles
 
 			var te = TileEntity.ByPosition[new Point16(teX, teY)] as ChestVacuumTE;
 			if(te == null)
-				return;
+				return true;
 			if(te.SmartStack)
 			{
 				te.SmartStack = false;
@@ -85,6 +83,7 @@ namespace GoldensMisc.Tiles
 				Main.NewText(Language.GetTextValue("Mods.GoldensMisc.ChestVacuum.SmartStackOn"));
 				Main.NewText(Language.GetTextValue("Mods.GoldensMisc.ChestVacuum.SmartStackOn2"));
 			}
+            return true;
 		}
 
 		public override void MouseOver(int i, int j)

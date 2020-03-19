@@ -44,7 +44,7 @@ namespace GoldensMisc.Items.Tools
 			var recipe = new ModRecipe(mod);
 			recipe.AddRecipeGroup("GoldensMisc:Silver", 10);
 			recipe.AddIngredient(ItemID.Glass, 12);
-			//recipe.AddIngredient(mod.ItemType<WormholeCrystal>(), 2);
+			//recipe.AddIngredient(ModContent.ItemType<WormholeCrystal>(), 2);
 			recipe.AddIngredient(ItemID.SoulofSight, 8);
 			recipe.AddIngredient(ItemID.WormholePotion, 5);
 			recipe.AddTile(TileID.MythrilAnvil);

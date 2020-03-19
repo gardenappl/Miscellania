@@ -70,7 +70,7 @@ namespace GoldensMisc.Items.Tools
 		{
 			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.IceMirror);
-			recipe.AddIngredient(mod.ItemType<WormholeMirror>());
+			recipe.AddIngredient(ModContent.ItemType<WormholeMirror>());
 			recipe.AddTile(TileID.TinkerersWorkbench);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

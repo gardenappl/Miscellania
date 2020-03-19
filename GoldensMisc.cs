@@ -53,15 +53,15 @@ namespace GoldensMisc
 
 				if(ServerConfig.Instance.ExtraDyes)
 				{
-					GameShaders.Armor.BindShader(ItemType<MatrixDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(0f, 1.0f, 0.2f);
-					GameShaders.Armor.BindShader(ItemType<VirtualDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(1f, 0.1f, 0.1f);
-					GameShaders.Armor.BindShader(ItemType<CobaltDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.4f, 0.7f, 1.2f);
-					GameShaders.Armor.BindShader(ItemType<PalladiumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.2f, 0.5f, 0.3f);
-					GameShaders.Armor.BindShader(ItemType<MythrilDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.3f, 0.8f, 0.8f);
-					GameShaders.Armor.BindShader(ItemType<OrichalcumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.3f, 1.1f);
-					GameShaders.Armor.BindShader(ItemType<AdamantiteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.4f, 0.6f);
-					GameShaders.Armor.BindShader(ItemType<TitaniumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 0.7f, 0.7f);
-					GameShaders.Armor.BindShader(ItemType<ChlorophyteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 1.1f, 0.1f);
+					GameShaders.Armor.BindShader(ModContent.ItemType<MatrixDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(0f, 1.0f, 0.2f);
+					GameShaders.Armor.BindShader(ModContent.ItemType<VirtualDye>(), new ArmorShaderData(Main.PixelShaderRef, "ArmorPhase")).UseImage("Images/Misc/noise").UseColor(1f, 0.1f, 0.1f);
+					GameShaders.Armor.BindShader(ModContent.ItemType<CobaltDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.4f, 0.7f, 1.2f);
+					GameShaders.Armor.BindShader(ModContent.ItemType<PalladiumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.2f, 0.5f, 0.3f);
+					GameShaders.Armor.BindShader(ModContent.ItemType<MythrilDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.3f, 0.8f, 0.8f);
+					GameShaders.Armor.BindShader(ModContent.ItemType<OrichalcumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.3f, 1.1f);
+					GameShaders.Armor.BindShader(ModContent.ItemType<AdamantiteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(1.1f, 0.4f, 0.6f);
+					GameShaders.Armor.BindShader(ModContent.ItemType<TitaniumDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 0.7f, 0.7f);
+					GameShaders.Armor.BindShader(ModContent.ItemType<ChlorophyteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 1.1f, 0.1f);
 				}
 			}
 			if(ServerConfig.Instance.SpearofJustice)
@@ -75,13 +75,13 @@ namespace GoldensMisc
 			var hotkeysMod = ModLoader.GetMod("HelpfulHotkeys");
 			if(hotkeysMod != null && ServerConfig.Instance.WormholeMirror)
 			{
-				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeDoubleMirror>());
-				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeIceMirror>());
-				hotkeysMod.Call("RegisterRecallItem", ItemType<WormholeCellPhone>());
+                hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeDoubleMirror>());
+                hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeIceMirror>());
+                hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeCellPhone>());
 			}
 			if(ServerConfig.Instance.ChestVacuum)
 			{
-				GetTile<Tiles.ChestVacuum>().SetDefaultsPostContent();
+				ModContent.GetInstance<Tiles.ChestVacuum>().SetDefaultsPostContent();
 			}
 			//Call("RegisterHookGetFishingLevel", typeof(AutofisherHooks), "TestHookGetFishingLevel");
 			//Call("RegisterHookCatchFish", typeof(AutofisherHooks), "TestHookCatchFish");
@@ -161,13 +161,11 @@ namespace GoldensMisc
 		public static void Log(object message)
 		{
 			Instance.Logger.Info(message);
-			//ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), message));
 		}
 		
 		public static void Log(string message, params object[] formatData)
 		{
 			Instance.Logger.Info(string.Format(message, formatData));
-			//ErrorLogger.Log(String.Format("[Miscellania][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), String.Format(message, formatData)));
 		}
 	}
 

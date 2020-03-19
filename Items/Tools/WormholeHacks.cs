@@ -24,10 +24,10 @@ namespace GoldensMisc.Items.Tools
 
         public static bool HasWormholeItem(Player player)
         {
-            return player.HasItem(GoldensMisc.Instance.ItemType<WormholeMirror>()) ||
-               player.HasItem(GoldensMisc.Instance.ItemType<WormholeDoubleMirror>()) ||
-               player.HasItem(GoldensMisc.Instance.ItemType<WormholeIceMirror>()) ||
-               player.HasItem(GoldensMisc.Instance.ItemType<WormholeCellPhone>());
+            return player.HasItem(ModContent.ItemType<WormholeMirror>()) ||
+               player.HasItem(ModContent.ItemType<WormholeDoubleMirror>()) ||
+               player.HasItem(ModContent.ItemType<WormholeIceMirror>()) ||
+               player.HasItem(ModContent.ItemType<WormholeCellPhone>());
         }
 
         private static bool PlayerHasUnityPotion(On.Terraria.Player.orig_HasUnityPotion orig, Player self)

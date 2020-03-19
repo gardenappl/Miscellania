@@ -27,7 +27,7 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MiscPlayer>(mod).ExplosionResistant = true;
+			player.GetModPlayer<MiscPlayer>().ExplosionResistant = true;
 		}
 		
 		public override void DrawHands(ref bool drawHands, ref bool drawArms)

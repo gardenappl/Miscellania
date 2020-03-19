@@ -56,7 +56,7 @@ namespace GoldensMisc.Projectiles
 		public override void CheckActive()
 		{
 			var player = Main.player[projectile.owner];
-			var modPlayer = player.GetModPlayer<MiscPlayer>(mod);
+			var modPlayer = player.GetModPlayer<MiscPlayer>();
 			if(modPlayer.DemonCrown)
 			{
 				projectile.timeLeft = 2;
@@ -95,7 +95,7 @@ namespace GoldensMisc.Projectiles
 					var shootVel = Main.npc[target].Center - projectile.Center;
 					shootVel.Normalize();
 					shootVel *= 6f;
-					Projectile.NewProjectile(projectile.Center, shootVel, mod.ProjectileType<RedBullet>(), projectile.damage, projectile.knockBack * 0.5f, projectile.owner);
+					Projectile.NewProjectile(projectile.Center, shootVel, ModContent.ProjectileType<RedBullet>(), projectile.damage, projectile.knockBack * 0.5f, projectile.owner);
 					ShootDelay = 50;
 				}
 			}
@@ -103,7 +103,7 @@ namespace GoldensMisc.Projectiles
 			DustDelay--;
 			if(DustDelay <= 0)
 			{
-				Dust.NewDustPerfect(projectile.Center, mod.DustType<RedDustStatic>(), Vector2.Zero, Alpha: 80, Scale: 1.3f);
+				Dust.NewDustPerfect(projectile.Center, ModContent.DustType<RedDustStatic>(), Vector2.Zero, Alpha: 80, Scale: 1.3f);
 				DustDelay = 20;
 			}
 		}

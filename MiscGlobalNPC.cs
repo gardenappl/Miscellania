@@ -21,21 +21,21 @@ namespace GoldensMisc
 				case NPCID.GoblinTinkerer:
 					if(ServerConfig.Instance.Magnet && Main.hardMode && !Main.dayTime)
 					{
-						shop.item[nextSlot].SetDefaults(mod.ItemType<UniversalMagnet>());
+						shop.item[nextSlot].SetDefaults(ModContent.ItemType<UniversalMagnet>());
 						nextSlot++;
 					}
 					break;
 				case NPCID.Demolitionist:
 					if(ServerConfig.Instance.ReinforcedVest && Main.hardMode)
 					{
-						shop.item[nextSlot].SetDefaults(mod.ItemType<ReinforcedVest>());
+						shop.item[nextSlot].SetDefaults(ModContent.ItemType<ReinforcedVest>());
 						nextSlot++;
 					}
 					break;
 				case NPCID.Wizard:
 					if(ServerConfig.Instance.MagicStones && NPC.downedMechBossAny)
 					{
-						shop.item[nextSlot].SetDefaults(mod.ItemType<InertStone>());
+						shop.item[nextSlot].SetDefaults(ModContent.ItemType<InertStone>());
 						nextSlot++;
 					}
 					break;
@@ -52,7 +52,7 @@ namespace GoldensMisc
 				case NPCID.Steampunker:
 					if(ServerConfig.Instance.ChestVacuum)
 					{
-						shop.item[nextSlot].SetDefaults(mod.ItemType<ChestVacuum>());
+						shop.item[nextSlot].SetDefaults(ModContent.ItemType<ChestVacuum>());
 						nextSlot++;
 					}
 					break;
@@ -69,15 +69,15 @@ namespace GoldensMisc
 				case NPCID.AngryBonesBigMuscle:
 				case NPCID.DarkCaster:
 					if(ServerConfig.Instance.AncientMuramasa && Main.rand.Next(250) == 0)
-						Item.NewItem(npc.position, npc.Size, mod.ItemType<AncientMuramasa>(), prefixGiven: -1);
+						Item.NewItem(npc.position, npc.Size, ModContent.ItemType<AncientMuramasa>(), prefixGiven: -1);
 					break;
 				case NPCID.Demon:
 					if(ServerConfig.Instance.DemonCrown && Main.hardMode && Main.rand.Next(100) == 0)
-						Item.NewItem(npc.position, npc.Size, mod.ItemType<DemonCrown>(), prefixGiven: -1);
+						Item.NewItem(npc.position, npc.Size, ModContent.ItemType<DemonCrown>(), prefixGiven: -1);
 					break;
 				case NPCID.VoodooDemon:
 					if(ServerConfig.Instance.DemonCrown && Main.hardMode && Main.rand.Next(15) == 0)
-						Item.NewItem(npc.position, npc.Size, mod.ItemType<DemonCrown>(), prefixGiven: -1);
+						Item.NewItem(npc.position, npc.Size, ModContent.ItemType<DemonCrown>(), prefixGiven: -1);
 					break;
 				//case NPCID.Necromancer:
 				//case NPCID.NecromancerArmored:
@@ -86,7 +86,7 @@ namespace GoldensMisc
 				//case NPCID.DiabolistRed:
 				//case NPCID.DiabolistWhite:
 				//	if((Config.WormholeMirror || Config.RodofWarping) && Main.rand.Next(8) == 0)
-				//		Item.NewItem(npc.position, npc.Size, mod.ItemType<WormholeCrystal>());
+				//		Item.NewItem(npc.position, npc.Size, ModContent.ItemType<WormholeCrystal>());
 				//	break;
 			}
 		}

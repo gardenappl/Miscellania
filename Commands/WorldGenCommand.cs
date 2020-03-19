@@ -31,7 +31,7 @@ namespace GoldensMisc.Commands
 					Main.NewText(Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.HellforgeDisabled"));
 					return;
 				}
-				new Task(() => mod.GetModWorld<MiscWorld>().AddHellforges()).Start();
+				new Task(() => ModContent.GetInstance<MiscWorld>().AddHellforges()).Start();
 			}
 			else if(args[0].Equals("forge", StringComparison.OrdinalIgnoreCase))
 			{
@@ -40,7 +40,7 @@ namespace GoldensMisc.Commands
 					Main.NewText(Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.ForgeDisabled"));
 					return;
 				}
-				new Task(() => mod.GetModWorld<MiscWorld>().AddForges()).Start();
+				new Task(() => ModContent.GetInstance<MiscWorld>().AddForges()).Start();
 			}
 			else
 			{

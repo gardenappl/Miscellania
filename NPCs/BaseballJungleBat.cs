@@ -40,9 +40,9 @@ namespace GoldensMisc.NPCs
 			if(Main.rand.Next(100) == 0)
 				Item.NewItem(npc.position, npc.width, npc.height, ItemID.DepthMeter, prefixGiven: -1);
 			if(Main.rand.Next(Main.expertMode ? 2 : 4) == 0)
-				Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<BaseballBat>(), prefixGiven: -1);
+				Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<BaseballBat>(), prefixGiven: -1);
 			if(Main.rand.Next(3) == 0)
-				Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<BaseballCap>());
+				Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<BaseballCap>());
 		}
 		
 		public override void OnHitPlayer(Player target, int damage, bool crit)

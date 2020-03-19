@@ -41,7 +41,7 @@ namespace GoldensMisc.Tiles
 		public override bool ValidTile(int i, int j)
 		{
 			var tile = Main.tile[i, j];
-			return tile.active() && tile.type == mod.TileType<Autofisher>() && (tile.frameX == 0 || tile.frameX == 54) && tile.frameY == 0;
+			return tile.active() && tile.type == ModContent.TileType<Autofisher>() && (tile.frameX == 0 || tile.frameX == 54) && tile.frameY == 0;
 		}
 
 		public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction)
@@ -68,10 +68,10 @@ namespace GoldensMisc.Tiles
 					DisplayedFishingInfo = Language.GetTextValue("Mods.GoldensMisc.Autofisher.NoBait");
 				}
 				else if(bobberProj == -1 || !Main.projectile[bobberProj].active ||
-					Main.projectile[bobberProj].type != mod.ProjectileType<AutofisherBobber>())
+					Main.projectile[bobberProj].type != ModContent.ProjectileType<AutofisherBobber>())
 				{
 					var bobberPos = new Point(Position.X + (facingRight ? 2 : 0), Position.Y).ToWorldCoordinates();
-					bobberProj = Projectile.NewProjectile(bobberPos, new Vector2(facingRight ? 3f : -3f, 0f), mod.ProjectileType<AutofisherBobber>(), 0, 0, ai1: this.ID);
+					bobberProj = Projectile.NewProjectile(bobberPos, new Vector2(facingRight ? 3f : -3f, 0f), ModContent.ProjectileType<AutofisherBobber>(), 0, 0, ai1: this.ID);
 					Main.projectile[bobberProj].ai[1] = this.ID;
 					Main.projectile[bobberProj].netUpdate = true;
 					_fishingInfo = null;
@@ -100,7 +100,7 @@ namespace GoldensMisc.Tiles
 						}
 						catch(Exception e)
 						{
-							ErrorLogger.Log(e);
+							GoldensMisc.Log(e);
 							Main.NewText("autofisher error! look at Logs.txt");
 						}
 					}
@@ -187,7 +187,7 @@ namespace GoldensMisc.Tiles
 		void GetDefaultFishingInfo()
 		{
 			if(bobberProj != -1 && Main.projectile[bobberProj].active &&
-					Main.projectile[bobberProj].type == mod.ProjectileType<AutofisherBobber>())
+					Main.projectile[bobberProj].type == ModContent.ProjectileType<AutofisherBobber>())
 			{
 				var projectile = Main.projectile[bobberProj];
 				((AutofisherBobber)projectile.modProjectile).FishingCheck(false);

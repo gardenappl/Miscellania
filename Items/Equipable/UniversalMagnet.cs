@@ -25,7 +25,7 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.GetModPlayer<MiscPlayer>(mod).Magnet = true;
+			player.GetModPlayer<MiscPlayer>().Magnet = true;
 		}
 	}
 }

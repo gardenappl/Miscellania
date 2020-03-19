@@ -24,7 +24,7 @@ namespace GoldensMisc.Tiles
 			Main.tileNoAttach[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
-			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity<RedChimneyTE>().Hook_AfterPlacement, -1, 0, false);
+			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(ModContent.GetInstance<RedChimneyTE>().Hook_AfterPlacement, -1, 0, false);
 			TileObjectData.addTile(Type);
 			AddMapEntry(Color.Red);
 			disableSmartCursor = true;
@@ -34,7 +34,7 @@ namespace GoldensMisc.Tiles
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(i * 16, j * 16, 48, 48, mod.ItemType(GetType().Name));
-			mod.GetTileEntity<RedChimneyTE>().Kill(i, j);
+            ModContent.GetInstance<RedChimneyTE>().Kill(i, j);
 		}
 		
 		//Don't animate if deactivated
@@ -51,7 +51,11 @@ namespace GoldensMisc.Tiles
 					frameYOffset = animationFrameHeight * 6;
 				}
 			}
-			catch(KeyNotFoundException e) {}
+			catch(KeyNotFoundException e)
+            {
+                GoldensMisc.Log(e);
+                Main.NewText("Error! Report this error and send the Terraria/Logs/Logs.txt file!");
+            }
 		}
 		
 		public override void AnimateTile(ref int frame, ref int frameCounter)
@@ -83,7 +87,7 @@ namespace GoldensMisc.Tiles
 			}
 			catch(Exception e)
 			{
-				ErrorLogger.Log("Chimney TileEntity not found! Error! " + e);
+				GoldensMisc.Log("Chimney TileEntity not found! Error! " + e);
 			}
 		}
 	}

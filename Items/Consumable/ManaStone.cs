@@ -44,7 +44,7 @@ namespace GoldensMisc.Items.Consumable
 			uses++;
 			if(uses >= maxUses)
 			{
-				item.SetDefaults(mod.ItemType<InertStone>());
+				item.SetDefaults(ModContent.ItemType<InertStone>());
 			}
 			return true;
 		}
@@ -58,7 +58,7 @@ namespace GoldensMisc.Items.Consumable
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType<InertStone>());
+			recipe.AddIngredient(ModContent.ItemType<InertStone>());
 			recipe.AddIngredient(ItemID.ManaCrystal, 3);
 			recipe.AddIngredient(ItemID.CrystalShard, 5);
 			recipe.AddTile(TileID.CrystalBall);

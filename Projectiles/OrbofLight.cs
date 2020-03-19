@@ -45,7 +45,7 @@ namespace GoldensMisc.Projectiles
 		public override void AI()
 		{
 			var player = Main.player[projectile.owner];
-			var modPlayer = player.GetModPlayer<MiscPlayer>(mod);
+			var modPlayer = player.GetModPlayer<MiscPlayer>();
 			if (!player.active)
 			{
 				projectile.active = false;

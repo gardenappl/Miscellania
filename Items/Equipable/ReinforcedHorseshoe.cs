@@ -29,14 +29,14 @@ namespace GoldensMisc.Items.Equipable
 		{
 			player.noFallDmg = true;
 			player.fireWalk = true;
-			player.GetModPlayer<MiscPlayer>(mod).ExplosionResistant = true;
+			player.GetModPlayer<MiscPlayer>().ExplosionResistant = true;
 		}
 		
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.ObsidianHorseshoe);
-			recipe.AddIngredient(mod.ItemType<ReinforcedVest>());
+			recipe.AddIngredient(ModContent.ItemType<ReinforcedVest>());
 			recipe.AddTile(TileID.TinkerersWorkbench);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
