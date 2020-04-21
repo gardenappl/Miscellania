@@ -1,8 +1,9 @@
 ﻿displayName = Miscellania
 author = gardenapple
-version = 1.7.3
+version = 1.7.4
 homepage = http://forums.terraria.org/index.php?threads/miscellania.39500/
 hideResources = false
 hideCode = false
-buildIgnore = build.txt, .gitattributes, .gitignore, .git/, .vs/, .idea/, bin/, obj/, Thumbs.db, *.csproj, .cs, .sln, readme.md
+includeSource = true
 includePDB = true
+buildIgnore = .gitattributes, .gitignore, .git\*, Unused Art\*, .vs\*, .idea\*, bin\*, obj\*, Thumbs.db, readme.md

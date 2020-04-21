@@ -144,7 +144,18 @@ namespace GoldensMisc
 						var te = (AutofisherTE)TileEntity.ByID[id];
 						NetMessage.SendChatMessageToClient(NetworkText.FromLiteral(te.DisplayedFishingInfo), Color.White, whoAmI);
 						break;
-				}
+                    case MiscMessageType.AddItemByWayOfVacuum:
+                        id = reader.ReadInt32();
+                        var vacuumTE = (ChestVacuumTE)TileEntity.ByID[id];
+                        vacuumTE.FindAndAddItemToChest();
+                        break;
+                    case MiscMessageType.UpdateVacuumSmartStack:
+                        id = reader.ReadInt32();
+                        vacuumTE = (ChestVacuumTE)TileEntity.ByID[id];
+                        vacuumTE.smartStack = reader.ReadBoolean();
+                        vacuumTE.smartStackChanged = true;
+                        break;
+                }
 
 			}
 			catch(Exception e)
@@ -172,6 +183,8 @@ namespace GoldensMisc
 
 	public enum MiscMessageType : byte
 	{
-		PrintAutofisherInfo = 0
+		PrintAutofisherInfo = 0,
+        AddItemByWayOfVacuum = 1,
+        UpdateVacuumSmartStack = 2
 	}
 }

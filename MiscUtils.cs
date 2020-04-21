@@ -270,41 +270,48 @@ namespace GoldensMisc
 			bool hasSameItem = false;
 			for(int index = 0; index < chest.item.Length; ++index)
 			{
-				if(chest.item[index].type > 0 && chest.item[index].stack > 0)
-				{
-					if(item.IsTheSameAs(chest.item[index]))
-					{
-						int num = chest.item[index].maxStack - chest.item[index].stack;
-						if(num > 0)
-						{
-							if(num > item.stack)
-								num = item.stack;
-							item.stack -= num;
-							chest.item[index].stack += num;
-							if(item.stack <= 0)
-							{
-								DoCoins(index, chest.item);
-								item.SetDefaults(0, true);
-								return item;
-							}
-						}
-						hasSameItem = true;
-					}
-				}
-				else
-					hasEmptySpace = true;
-				DoCoins(index, chest.item);
+                if (chest.item[index] != null)
+                {
+                    if (chest.item[index].type > 0 && chest.item[index].stack > 0)
+                    {
+                        if (item.IsTheSameAs(chest.item[index]))
+                        {
+                            int num = chest.item[index].maxStack - chest.item[index].stack;
+                            if (num > 0)
+                            {
+                                if (num > item.stack)
+                                    num = item.stack;
+                                item.stack -= num;
+                                chest.item[index].stack += num;
+                                if (item.stack <= 0)
+                                {
+                                    DoCoins(index, chest.item);
+                                    item.SetDefaults(0, true);
+                                    return item;
+                                }
+                            }
+                            hasSameItem = true;
+                        }
+                    }
+                    else
+                        hasEmptySpace = true;
+                    DoCoins(index, chest.item);
+                }
 			}
 			if((!smartStack || hasSameItem) && hasEmptySpace && item.stack > 0)
 			{
+
 				for(int index = 0; index < chest.item.Length; ++index)
 				{
-					if(chest.item[index].type == 0 || chest.item[index].stack == 0)
-					{
-						chest.item[index] = item.Clone();
-						item.SetDefaults(0, true);
-						return item;
-					}
+                    if (chest.item[index] != null)
+                    {
+                        if (chest.item[index].type == 0 || chest.item[index].stack == 0)
+                        {
+                            chest.item[index] = item.Clone();
+                            item.SetDefaults(0, true);
+                            return item;
+                        }
+                    }
 				}
 			}
 			return item;

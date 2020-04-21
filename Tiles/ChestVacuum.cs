@@ -71,18 +71,36 @@ namespace GoldensMisc.Tiles
 			var te = TileEntity.ByPosition[new Point16(teX, teY)] as ChestVacuumTE;
 			if(te == null)
 				return true;
-			if(te.SmartStack)
+			if(te.smartStack)
 			{
-				te.SmartStack = false;
-				Main.NewText(Language.GetTextValue("Mods.GoldensMisc.ChestVacuum.SmartStackOff"));
+                te.smartStack = false;
+                te.smartStackChanged = true;
+                Main.NewText(Language.GetTextValue("Mods.GoldensMisc.ChestVacuum.SmartStackOff"));
 				Main.NewText(Language.GetTextValue("Mods.GoldensMisc.ChestVacuum.SmartStackOff2"));
-			}
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    var netMessage = mod.GetPacket();
+                    netMessage.Write((byte)MiscMessageType.UpdateVacuumSmartStack);
+                    netMessage.Write(te.ID);
+                    netMessage.Write(te.smartStack);
+                    netMessage.Send();
+                }
+            }
 			else
 			{
-				te.SmartStack = true;
-				Main.NewText(Language.GetTextValue("Mods.GoldensMisc.ChestVacuum.SmartStackOn"));
+                te.smartStack = true;
+                te.smartStackChanged = true;
+                Main.NewText(Language.GetTextValue("Mods.GoldensMisc.ChestVacuum.SmartStackOn"));
 				Main.NewText(Language.GetTextValue("Mods.GoldensMisc.ChestVacuum.SmartStackOn2"));
-			}
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    var netMessage = mod.GetPacket();
+                    netMessage.Write((byte)MiscMessageType.UpdateVacuumSmartStack);
+                    netMessage.Write(te.ID);
+                    netMessage.Write(te.smartStack);
+                    netMessage.Send();
+                }
+            }
             return true;
 		}
 

@@ -162,11 +162,15 @@ namespace GoldensMisc.Tiles
 			var chest = Main.chest[chestID];
 			for(int i = 0; i < Chest.maxItems; i++)
 			{
-				if(chest.item[i].stack > 0)
-				{
-					if(chest.item[i].bait > 0 || chest.item[i].type == ItemID.TruffleWorm)
-						return chest.item[i];
-				}
+                if (chest.item[i] != null)
+                {
+                    if (chest.item[i].stack > 0)
+                    {
+                        if (chest.item[i].bait > 0 || chest.item[i].type == ItemID.TruffleWorm)
+                            return chest.item[i];
+                    }
+
+                }
 			}
 			return null;
 		}
