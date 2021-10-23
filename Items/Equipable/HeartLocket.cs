@@ -11,18 +11,18 @@ namespace GoldensMisc.Items.Equipable
 	[AutoloadEquip(EquipType.Neck)]
 	public class HeartLocket : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().HeartLocket;
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 26;
-			item.height = 38;
-			item.value = Item.sellPrice(0, 2);
-			item.rare = 5;
-			item.accessory = true;
+			Item.width = 26;
+			Item.height = 38;
+			Item.value = Item.sellPrice(0, 2);
+			Item.rare = ItemRarityID.Pink;
+			Item.accessory = true;
 		}
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -33,12 +33,11 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.PanicNecklace);
-			recipe.AddIngredient(ItemID.CrossNecklace);
-			recipe.AddTile(TileID.TinkerersWorkbench);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.PanicNecklace)
+				.AddIngredient(ItemID.CrossNecklace)
+				.AddTile(TileID.TinkerersWorkbench)
+				.Register();
 		}
 	}
 }

@@ -9,18 +9,18 @@ namespace GoldensMisc.Items.Equipable.Vanity
 {
 	public class CobaltDye : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().ExtraDyes;
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 99;
-			item.value = Item.sellPrice(0, 1, 50);
-			item.rare = 3;
+			Item.width = 20;
+			Item.height = 20;
+			Item.maxStack = 99;
+			Item.value = Item.sellPrice(0, 1, 50);
+			Item.rare = ItemRarityID.Orange;
 		}
 	}
 }

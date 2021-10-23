@@ -199,6 +199,7 @@ namespace GoldensMisc
 				Configuration.Get(BaseballBatsKey, ref BaseballBats);
 				Configuration.Get(ExtraDyesKey, ref ExtraDyes);
 				Configuration.Get(AutofisherKey, ref Autofisher);
+				Configuration.Get(AncientOrbKey, ref AncientOrb);
 				Configuration.Get(MechanicsRodOftenKey, ref MechanicsRodOften);
 				Configuration.Get(ChestVacuumKey, ref ChestVacuum);
 				return true;

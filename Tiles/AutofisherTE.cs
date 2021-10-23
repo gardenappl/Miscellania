@@ -33,18 +33,18 @@ namespace GoldensMisc.Tiles
 		int bobberProj = -1;
 		int FishingCooldown = 300;
 
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled(Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().Autofisher;
 		}
 
-		public override bool ValidTile(int i, int j)
+		public override bool IsTileValidForEntity(int i, int j)
 		{
 			var tile = Main.tile[i, j];
-			return tile.active() && tile.type == ModContent.TileType<Autofisher>() && (tile.frameX == 0 || tile.frameX == 54) && tile.frameY == 0;
+			return tile.IsActive && tile.type == ModContent.TileType<Autofisher>() && (tile.frameX == 0 || tile.frameX == 54) && tile.frameY == 0;
 		}
 
-		public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction)
+		public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction, int alternate)
 		{
 			if(Main.netMode == NetmodeID.MultiplayerClient)
 			{
@@ -71,7 +71,7 @@ namespace GoldensMisc.Tiles
 					Main.projectile[bobberProj].type != ModContent.ProjectileType<AutofisherBobber>())
 				{
 					var bobberPos = new Point(Position.X + (facingRight ? 2 : 0), Position.Y).ToWorldCoordinates();
-					bobberProj = Projectile.NewProjectile(bobberPos, new Vector2(facingRight ? 3f : -3f, 0f), ModContent.ProjectileType<AutofisherBobber>(), 0, 0, ai1: this.ID);
+					bobberProj = Projectile.NewProjectile(null , bobberPos, new Vector2(facingRight ? 3f : -3f, 0f), ModContent.ProjectileType<AutofisherBobber>(), 0, 0, ai1: this.ID);
 					Main.projectile[bobberProj].ai[1] = this.ID;
 					Main.projectile[bobberProj].netUpdate = true;
 					_fishingInfo = null;
@@ -91,7 +91,7 @@ namespace GoldensMisc.Tiles
 							if(baitItem == null)
 								return;
 							var projectile = Main.projectile[bobberProj];
-							itemType = ((AutofisherBobber)projectile.modProjectile).FishingCheck(true);
+							itemType = ((AutofisherBobber)projectile.ModProjectile).FishingCheck(true);
 
 							if(itemType > 0)
 							{
@@ -101,7 +101,7 @@ namespace GoldensMisc.Tiles
 						catch(Exception e)
 						{
 							GoldensMisc.Log(e);
-							Main.NewText("autofisher error! look at Logs.txt");
+							Main.NewText("autofisher error! look at client.log");
 						}
 					}
 				}
@@ -180,7 +180,7 @@ namespace GoldensMisc.Tiles
 			var item = GetCurrentBait();
 			if(item == null)
 				return;
-			//Vanilla chance: item.bait / 5 + 1
+			//Vanilla chance: Item.bait / 5 + 1
 			int consumeChance = item.bait / 10 + 1;
 			if(Main.rand.Next(consumeChance) == 0)
 				item.stack--;
@@ -194,7 +194,7 @@ namespace GoldensMisc.Tiles
 					Main.projectile[bobberProj].type == ModContent.ProjectileType<AutofisherBobber>())
 			{
 				var projectile = Main.projectile[bobberProj];
-				((AutofisherBobber)projectile.modProjectile).FishingCheck(false);
+				((AutofisherBobber)projectile.ModProjectile).FishingCheck(false);
 			}
 		}
 	}

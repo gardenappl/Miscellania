@@ -8,11 +8,12 @@ namespace GoldensMisc.Buffs
 {
 	public class CursedMemory : ModBuff
 	{
-		public override void SetDefaults()
+
+		public override void SetStaticDefaults()
 		{
-			canBeCleared = false;
-			longerExpertDebuff = true;
+			CanBeCleared = false;
 			Main.debuff[Type] = true;
+			LongerExpertDebuff = true;
 		}
 		
 		public override void Update(Player player, ref int buffIndex)

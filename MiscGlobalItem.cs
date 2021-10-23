@@ -43,7 +43,7 @@ namespace GoldensMisc
 				{
 					if(tooltips[i].Name == "Material")
 					{
-						tooltips.Insert(i + 1, new TooltipLine(mod, "AutofisherMaterial", Language.GetTextValue("Mods.GoldensMisc.ItemTooltip.MechanicsRod")));
+						tooltips.Insert(i + 1, new TooltipLine(Mod, "AutofisherMaterial", Language.GetTextValue("Mods.GoldensMisc.ItemTooltip.MechanicsRod")));
 						return;
 					}
 				}

@@ -1,7 +1,7 @@
 ﻿
 using System;
 using Terraria;
-using Terraria.Localization;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Equipable.Vanity
@@ -9,52 +9,37 @@ namespace GoldensMisc.Items.Equipable.Vanity
 	[AutoloadEquip(EquipType.Head)]
 	public class BaseballCap : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().BaseballBats;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.width = 28;
-			item.height = 10;
-			item.rare = 1;
-			item.vanity = true;
-			item.value = Item.sellPrice(0, 0, 50);
+			Item.width = 28;
+			Item.height = 10;
+			Item.rare = ItemRarityID.Blue;
+			Item.vanity = true;
+			Item.value = Item.sellPrice(0, 0, 50);
 		}
 
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(this);
-			recipe.SetResult(ModContent.ItemType<BaseballCapBackwards>());
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<BaseballCapBackwards>())
+				.Register();
 		}
 	}
 
 	[AutoloadEquip(EquipType.Head)]
-	public class BaseballCapBackwards : ModItem
+	public class BaseballCapBackwards : BaseballCap
 	{
-		public override bool Autoload(ref string name)
-		{
-			return ModContent.GetInstance<ServerConfig>().BaseballBats;
-		}
-
-		public override void SetDefaults()
-		{
-			item.width = 28;
-			item.height = 10;
-			item.rare = 1;
-			item.vanity = true;
-			item.value = Item.sellPrice(0, 0, 50);
-		}
 
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(this);
-			recipe.SetResult(ModContent.ItemType<BaseballCap>());
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<BaseballCap>())
+				.Register();
 		}
 	}
 }

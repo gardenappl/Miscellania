@@ -1,36 +1,39 @@
 ﻿
-using System;
-using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Localization;
+using Terraria.ID;
 using Terraria.ModLoader;
+using GoldensMisc.Projectiles;
 
 namespace GoldensMisc.Items.Equipable
 {
 	[AutoloadEquip(EquipType.Face)]
 	public class DemonCrown : ModItem
 	{
-		public override bool Autoload(ref string name)
+			
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().DemonCrown;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.width = 22;
-			item.height = 30;
-			item.value = Item.sellPrice(0, 8);
-			item.rare = 5;
-			item.accessory = true;
+			Item.width = 22;
+			Item.height = 30;
+			Item.value = Item.sellPrice(0, 8);
+			Item.rare = ItemRarityID.Pink;
+			Item.accessory = true;
 		}
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.magicDamage += 0.1f;
-			player.magicCrit += 7;
+			player.GetDamage(DamageClass.Magic) += 0.1f;
+			player.GetCritChance(DamageClass.Magic) += 7;
 			player.manaCost -= 0.1f;
 			player.statManaMax2 += 40;
 			player.GetModPlayer<MiscPlayer>().DemonCrown = true;
+			if (player.ownedProjectileCounts[ModContent.ProjectileType<RedCrystal>()] == 0)
+				Projectile.NewProjectile(player.GetProjectileSource_Accessory(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<RedCrystal>(), 60, 8, player.whoAmI);
 		}
 	}
 }

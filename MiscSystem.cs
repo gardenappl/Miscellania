@@ -7,13 +7,14 @@ using Terraria;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.World.Generation;
+using Terraria.WorldBuilding;
 using GoldensMisc.Tiles;
 using Terraria.Localization;
+using Terraria.IO;
 
 namespace GoldensMisc
 {
-	public class MiscWorld : ModWorld
+	public class MiscSystem : ModSystem
 	{
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
@@ -32,13 +33,13 @@ namespace GoldensMisc
 				}
 			}
 		}
-		
-		public void AddHellforges(GenerationProgress progress = null)
+
+        public void AddHellforges(GenerationProgress progress = null, GameConfiguration configuration = null)
 		{
 			AddFurniture(progress, Language.GetTextValue("Mods.GoldensMisc.WorldGen.AncientHellforge"), ModContent.TileType<AncientHellforge>(), 1500, Main.maxTilesY - 250, Main.maxTilesY - 5, WallID.ObsidianBrickUnsafe, WallID.HellstoneBrickUnsafe);
 		}
 		
-		public void AddForges(GenerationProgress progress = null)
+		public void AddForges(GenerationProgress progress = null, GameConfiguration configuration = null)
 		{
 			AddFurniture(progress, Language.GetTextValue("Mods.GoldensMisc.WorldGen.AncientForge"), ModContent.TileType<AncientForge>(), 300, (int)Main.worldSurface, Main.maxTilesY - 300, WallID.Planked, WallID.BorealWood);
 		}
@@ -72,7 +73,7 @@ namespace GoldensMisc
 						{
 							if(Main.tile[x, y].wall == wallID)
 							{
-								while (!Main.tile[x, y].active())
+								while (!Main.tile[x, y].IsActive)
 								{
 									y++;
 								}

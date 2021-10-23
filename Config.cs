@@ -12,12 +12,12 @@ using Terraria.ModLoader.Config;
 namespace GoldensMisc
 {
 	[Label("$Mods.GoldensMisc.Config.Server")]
-	class ServerConfig : ModConfig
+	public class ServerConfig : ModConfig
 	{
 		[JsonIgnore]
 		public const string ConfigName = "Miscellania";
 
-		public override bool Autoload(ref string name)
+        public override bool Autoload(ref string name)
 		{
 			name = ConfigName;
 			return base.Autoload(ref name);
@@ -182,12 +182,12 @@ namespace GoldensMisc
 	}
 
 	[Label("$Mods.GoldensMisc.Config.Client")]
-	class ClientConfig : ModConfig
+	public class ClientConfig : ModConfig
 	{
 		[JsonIgnore]
 		public const string ConfigName = "MiscellaniaClient";
 
-		public override bool Autoload(ref string name)
+        public override bool Autoload(ref string name)
 		{
 			name = ConfigName;
 			return base.Autoload(ref name);

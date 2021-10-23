@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
+using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.UI;
@@ -51,7 +51,7 @@ namespace GoldensMisc
 
 		public static bool IsActuallyAnItem(Item item)
 		{
-			return item.stack != 0 && item.type != 0 && !vanillaPowerups.Contains(item.type);
+			return item.stack != 0 && item.type != ItemID.None && !vanillaPowerups.Contains(item.type);
 		}
 
 		public static class UI
@@ -61,7 +61,7 @@ namespace GoldensMisc
 
 			public static void FadedMouseOver(UIMouseEvent evt, UIElement listeningElement)
 			{
-				Main.PlaySound(SoundID.MenuTick);
+				SoundEngine.PlaySound(SoundID.MenuTick);
 				((UIPanel)evt.Target).BackgroundColor = defaultUIBlue;
 			}
 
@@ -72,7 +72,7 @@ namespace GoldensMisc
 
 			public static void CustomFadedMouseOver(Color customColor, UIMouseEvent evt, UIElement listeningElement)
 			{
-				Main.PlaySound(SoundID.MenuTick);
+				SoundEngine.PlaySound(SoundID.MenuTick);
 				((UIPanel)evt.Target).BackgroundColor = customColor;
 			}
 
@@ -113,17 +113,19 @@ namespace GoldensMisc
 		static int[] CountBiomeTiles(int x, int y)
 		{
 			int[] results = new int[8];
+			const int zoneX = 99;
+			const int zoneY = 87;
 
-			int startX = Math.Max(0, x - Main.zoneX / 2);
-			int startY = Math.Max(0, y - Main.zoneY / 2);
-			int endX = Math.Min(Main.maxTilesX, x + Main.zoneX / 2);
-			int endY = Math.Min(Main.maxTilesY, y + Main.zoneY / 2);
+			int startX = Math.Max(0, x - zoneX / 2);
+			int startY = Math.Max(0, y - zoneY / 2);
+			int endX = Math.Min(Main.maxTilesX, x + zoneX / 2);
+			int endY = Math.Min(Main.maxTilesY, y + zoneY / 2);
 			for(int i = startX; i < endX; i++)
 			{
 				for(int j = startY; j < endY; j++)
 				{
 					var tile = Main.tile[i, j];
-					if(tile == null || !tile.active())
+					if(tile == null || !tile.IsActive)
 						continue;
 
 					switch(tile.type)
@@ -272,7 +274,7 @@ namespace GoldensMisc
 			{
                 if (chest.item[index] != null)
                 {
-                    if (chest.item[index].type > 0 && chest.item[index].stack > 0)
+                    if (chest.item[index].type > ItemID.None && chest.item[index].stack > 0)
                     {
                         if (item.IsTheSameAs(chest.item[index]))
                         {
@@ -305,7 +307,7 @@ namespace GoldensMisc
 				{
                     if (chest.item[index] != null)
                     {
-                        if (chest.item[index].type == 0 || chest.item[index].stack == 0)
+                        if (chest.item[index].type == ItemID.None || chest.item[index].stack == 0)
                         {
                             chest.item[index] = item.Clone();
                             item.SetDefaults(0, true);
@@ -319,7 +321,7 @@ namespace GoldensMisc
 
 		static void DoCoins(int i, Item[] inventory)
 		{
-			if(inventory[i].stack != 100 || inventory[i].type != 71 && inventory[i].type != 72 && inventory[i].type != 73)
+			if(inventory[i].stack != 100 || inventory[i].type != ItemID.CopperCoin && inventory[i].type != ItemID.SilverCoin && inventory[i].type != ItemID.GoldCoin)
 				return;
 			inventory[i].SetDefaults(inventory[i].type + 1, false);
 			for(int i1 = 0; i1 < inventory.Length; ++i1)
@@ -342,7 +344,7 @@ namespace GoldensMisc
 				zone |= Zone.Corrupt;
 			if(player.ZoneCrimson)
 				zone |= Zone.Crimson;
-			if(player.ZoneHoly)
+			if(player.ZoneHallow)
 				zone |= Zone.Holy;
 			if(player.ZoneSnow)
 				zone |= Zone.Snow;
@@ -356,8 +358,43 @@ namespace GoldensMisc
 				zone |= Zone.Desert;
 			return zone;
 		}
+
+		public static bool hasHoney(Tile tile)
+		{
+			return (tile.bTileHeader & 64) == 64;
+		}
+		public static bool hasLava(Tile tile)
+		{
+			return (tile.bTileHeader & 32) == 32;
+		}
+
+		public static bool magicMirrorRecall(Player player, Item item)
+        {
+			if (Main.rand.Next(2) == 0)
+				Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0.0f, 0.0f, 150, Color.White, 1.1f);
+			if (player.itemAnimation == item.useAnimation / 2)
+			{
+				for (int index = 0; index < 70; ++index)
+					Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, (float)(player.velocity.X * 0.5), (float)(player.velocity.Y * 0.5), 150, Color.White, 1.5f);
+				player.grappling[0] = -1;
+				player.grapCount = 0;
+				for (int index = 0; index < 1000; ++index)
+				{
+					if (Main.projectile[index].active && Main.projectile[index].owner == player.whoAmI && Main.projectile[index].aiStyle == 7)
+						Main.projectile[index].Kill();
+				}
+				player.Spawn(PlayerSpawnContext.RecallFromItem);
+				for (int index = 0; index < 70; ++index)
+					Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0.0f, 0.0f, 150, Color.White, 1.5f);
+			}
+			return false;
+		}
+
+
 	}
-	
+
+
+
 	[Flags]
 	public enum Zone
 	{

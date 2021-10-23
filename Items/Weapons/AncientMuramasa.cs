@@ -1,29 +1,26 @@
 ﻿
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
 {
 	public class AncientMuramasa : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().AncientMuramasa;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.Muramasa);
+			Item.CloneDefaults(ItemID.Muramasa);
 		}
 		
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
-			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), (int)(hitbox.Width * 1.25F), (int)(hitbox.Height * 1.25F), 29);
+			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), (int)(hitbox.Width * 1.25F), (int)(hitbox.Height * 1.25F), DustID.DungeonWater);
 			Main.dust[dust].noGravity = true;
 		}
 		

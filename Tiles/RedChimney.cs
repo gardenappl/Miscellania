@@ -13,12 +13,12 @@ namespace GoldensMisc.Tiles
 {
 	public class RedChimney : ModTile
 	{
-		public override bool Autoload(ref string name, ref string texture)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().RedBrickFurniture;
 		}
 		
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
@@ -27,13 +27,12 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(ModContent.GetInstance<RedChimneyTE>().Hook_AfterPlacement, -1, 0, false);
 			TileObjectData.addTile(Type);
 			AddMapEntry(Color.Red);
-			disableSmartCursor = true;
-			animationFrameHeight = 56;
+			AnimationFrameHeight = 56;
 		}
 		
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 48, mod.ItemType(GetType().Name));
+			Item.NewItem(i * 16, j * 16, 48, 48, ModContent.ItemType<Items.Placeable.RedChimney>());
             ModContent.GetInstance<RedChimneyTE>().Kill(i, j);
 		}
 		
@@ -42,13 +41,13 @@ namespace GoldensMisc.Tiles
 		{
 			//Top left tile
 			int x = i - Main.tile[i, j].frameX / 18;
-			int y = j - Main.tile[i, j].frameY % animationFrameHeight / 18;
+			int y = j - Main.tile[i, j].frameY % AnimationFrameHeight / 18;
 			try
 			{
 				var tileEntity = (RedChimneyTE)TileEntity.ByPosition[new Point16(x, y)];
 				if(tileEntity.CurrentState == RedChimneyTE.State.Deactivated)
 				{
-					frameYOffset = animationFrameHeight * 6;
+					frameYOffset = AnimationFrameHeight * 6;
 				}
 			}
 			catch(KeyNotFoundException e)
@@ -67,7 +66,7 @@ namespace GoldensMisc.Tiles
 		{
 			//Top left tile
 			int x = i - Main.tile[i, j].frameX / 18;
-			int y = j - Main.tile[i, j].frameY % animationFrameHeight / 18;
+			int y = j - Main.tile[i, j].frameY % AnimationFrameHeight / 18;
 			
 			Wiring.SkipWire(x, y);
 			Wiring.SkipWire(x, y + 1);

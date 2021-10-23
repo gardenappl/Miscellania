@@ -10,17 +10,17 @@ namespace GoldensMisc.Items.Consumable
 {
 	public class InertStone : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().MagicStones;
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 26;
-			item.height = 26;
-			item.rare = 3;
-			item.value = Item.buyPrice(0, 50);
+			Item.width = 26;
+			Item.height = 26;
+			Item.rare = ItemRarityID.Orange;
+			Item.value = Item.buyPrice(0, 50);
 		}
 		
 		//This is necessary to prevent Life and Mana Stones from dissapearing when using Quick Heal/Mana

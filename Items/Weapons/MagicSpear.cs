@@ -11,43 +11,42 @@ namespace GoldensMisc.Items.Weapons
 {
 	public class MagicSpear : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().SpearofJustice;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.value = Item.sellPrice(0, 4);
-			item.useStyle = 1;
-			item.useAnimation = 25;
-			item.useTime = 25;
-			item.autoReuse = true;
-			item.rare = 4;
-			item.width = 42;
-			item.height = 42;
-			item.UseSound = SoundID.Item8;
-			item.damage = 46;
-			item.knockBack = 6;
-			item.mana = 13;
-			item.shoot = mod.ProjectileType(GetType().Name);
-			item.shootSpeed = 14f;
-			item.noMelee = true; //So that the swing itself doesn't do damage; this weapon is projectile-only
-			item.noUseGraphic = true; //No swing animation
-			item.magic = true;
-			item.crit = 7;
+			Item.value = Item.sellPrice(0, 4);
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.useAnimation = 25;
+			Item.useTime = 25;
+			Item.autoReuse = true;
+			Item.rare = ItemRarityID.LightRed;
+			Item.width = 42;
+			Item.height = 42;
+			Item.UseSound = SoundID.Item8;
+			Item.damage = 46;
+			Item.knockBack = 6;
+			Item.mana = 13;
+			Item.shoot = ModContent.ProjectileType<Projectiles.MagicSpear>();
+			Item.shootSpeed = 14f;
+			Item.noMelee = true; //So that the swing itself doesn't do damage; this weapon is projectile-only
+			Item.noUseGraphic = true; //No swing animation
+			Item.DamageType = DamageClass.Magic;
+			Item.crit = 7;
 		}
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.CrystalShard, 20);
-			recipe.AddIngredient(ItemID.SoulofFright, 15);
-			recipe.AddIngredient(ItemID.SoulofNight, 10);
-			recipe.AddIngredient(ItemID.UnicornHorn, 3);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.CrystalShard, 20)
+				.AddIngredient(ItemID.SoulofFright, 15)
+				.AddIngredient(ItemID.SoulofNight, 10)
+				.AddIngredient(ItemID.UnicornHorn, 3)
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
 		}
 		
 		public override Color? GetAlpha(Color lightColor)

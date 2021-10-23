@@ -11,14 +11,14 @@ namespace GoldensMisc.Tiles
 {
 	public class RedFireplace : ModTile
 	{
-		public override bool Autoload(ref string name, ref string texture)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().RedBrickFurniture;
 		}
 		
 		const int animationFrameWidth = 54;
 		
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
@@ -30,21 +30,20 @@ namespace GoldensMisc.Tiles
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 			AddMapEntry(Color.Red);
-			disableSmartCursor = true;
-			animationFrameHeight = 38;
-			adjTiles = new int[]{ TileID.Fireplace };
+			AnimationFrameHeight = 38;
+			AdjTiles = new int[]{ TileID.Fireplace };
 		}
 		
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType(GetType().Name));
+			Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.RedFireplace>());
 		}
 		
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
 			if(closer)
 			{
-				Main.campfire = true;
+				Main.SceneMetrics.HasCampfire = true;
 			}
 		}
 		
@@ -78,7 +77,7 @@ namespace GoldensMisc.Tiles
 		{
 			//Top left tile
 			int x = i - Main.tile[i, j].frameX % animationFrameWidth / 18;
-			int y = j - Main.tile[i, j].frameY % animationFrameHeight / 18;
+			int y = j - Main.tile[i, j].frameY % AnimationFrameHeight / 18;
 			
 			Wiring.SkipWire(x, y);
 			Wiring.SkipWire(x, y + 1);
@@ -96,7 +95,7 @@ namespace GoldensMisc.Tiles
 					{
 						Main.tile[l, m] = new Tile();
 					}
-					if(Main.tile[l, m].active() && Main.tile[l, m].type == Type)
+					if(Main.tile[l, m].IsActive && Main.tile[l, m].type == Type)
 					{
 						if(activate)
 						{

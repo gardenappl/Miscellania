@@ -1,7 +1,5 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Graphics.Effects;
@@ -16,29 +14,29 @@ namespace GoldensMisc.Items.Tools
 
     public class IslandStaff : ModItem
     {
-        public override bool Autoload(ref string name)
+        public override bool IsLoadingEnabled (Mod mod)
         {
             return false;
         }
 
         public override void SetDefaults()
         {
-            item.consumable = true;
-            item.width = 42;
-            item.height = 42;
-            item.value = Item.sellPrice(0, 10);
-            item.useTurn = false;
-            item.useStyle = 4;
-            item.useAnimation = 100;
-            item.useTime = 100;
-            item.rare = 10;
-            item.UseSound = SoundID.Item4;
-            //			item.shoot = mod.ProjectileType("Laputa");
-            //			item.shootSpeed = 20f;
-            item.noMelee = true;
+            Item.consumable = true;
+            Item.width = 42;
+            Item.height = 42;
+            Item.value = Item.sellPrice(0, 10);
+            Item.useTurn = false;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.useAnimation = 100;
+            Item.useTime = 100;
+            Item.rare = ItemRarityID.Red;
+            Item.UseSound = SoundID.Item4;
+            //			Item.shoot = Mod.ProjectileType("Laputa");
+            //			Item.shootSpeed = 20f;
+            Item.noMelee = true;
         }
 
-        public override void UseStyle(Player player)
+        public override void UseStyle(Player player, Rectangle heldItemFrame)
         {
             player.itemRotation = -(float)Math.PI / 4f * player.direction;
         }
@@ -60,7 +58,7 @@ namespace GoldensMisc.Items.Tools
             {
                 for (int y = cloudY - 50; y < cloudY + 30; y++)
                 {
-                    if (Main.tile[x, y].active() || Main.tile[x, y].wall != 0)
+                    if (Main.tile[x, y].IsActive || Main.tile[x, y].wall != 0)
                     {
                         Main.NewText(Language.GetTextValue("Mods.GoldensMisc.LaputaCannotUse"), 30, 200, 255);
                         Main.NewText(Language.GetTextValue("Mods.GoldensMisc.LaputaBlocked"), 30, 200, 255);
@@ -71,9 +69,9 @@ namespace GoldensMisc.Items.Tools
             return true;
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)
         {
-            Projectile.NewProjectile(player.Center.X, player.Center.Y - 1, 0, -20f, mod.ProjectileType("Laputa"), 0, 0, player.whoAmI, player.Center.Y, cloudY);
+            Projectile.NewProjectile(null , player.Center.X, player.Center.Y - 1, 0, -20f, ModContent.ProjectileType<Projectiles.Laputa>(), 0, 0, player.whoAmI, player.Center.Y, cloudY);
             if (!Main.dedServ)
             {
                 SkyManager.Instance.Activate("GoldensMisc:Laputa");
@@ -96,7 +94,7 @@ namespace GoldensMisc.Items.Tools
                 bool canPlaceTree = true;
                 for (int x = dirt.X - 1; x <= dirt.X + 1; x++)
                 {
-                    if (!Main.tile[x, dirt.Y].active() || Main.tile[x, dirt.Y].type != TileID.Grass)
+                    if (!Main.tile[x, dirt.Y].IsActive || Main.tile[x, dirt.Y].type != TileID.Grass)
                     {
                         canPlaceTree = false;
                     }
@@ -104,7 +102,7 @@ namespace GoldensMisc.Items.Tools
 
                 for (int x = dirt.X - 2; x <= dirt.X + 2; x++)
                 {
-                    if (Main.tile[x, dirt.Y - 1].active())
+                    if (Main.tile[x, dirt.Y - 1].IsActive)
                     {
                         canPlaceTree = false;
                     }
@@ -129,17 +127,17 @@ namespace GoldensMisc.Items.Tools
             {
                 int x = cloudX + Main.rand.Next(-30, 30);
                 int y = cloudY;
-                if (!Main.tile[x, y].active())
+                if (!Main.tile[x, y].IsActive)
                 {
                     attempts++;
                     continue;
                 }
-                while (Main.tile[x, y].active())
+                while (Main.tile[x, y].IsActive)
                 {
                     y--;
                 }
 
-                if (Main.tile[x, y + 1].type == dirt && !Main.tile[x, y].active())
+                if (Main.tile[x, y + 1].type == dirt && !Main.tile[x, y].IsActive)
                 {
                     return new Point(x, y + 1);
                 }
@@ -152,14 +150,13 @@ namespace GoldensMisc.Items.Tools
 
         public override void AddRecipes()
         {
-            var recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.FragmentSolar, 15);
-            recipe.AddIngredient(ItemID.FragmentVortex, 15);
-            recipe.AddIngredient(ItemID.FragmentNebula, 15);
-            recipe.AddIngredient(ItemID.FragmentStardust, 15);
-            recipe.AddTile(TileID.LunarCraftingStation);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.FragmentSolar, 15)
+                .AddIngredient(ItemID.FragmentVortex, 15)
+                .AddIngredient(ItemID.FragmentNebula, 15)
+                .AddIngredient(ItemID.FragmentStardust, 15)
+                .AddTile(TileID.LunarCraftingStation)
+                .Register();
         }
     }
 }

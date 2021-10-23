@@ -9,25 +9,25 @@ namespace GoldensMisc.Items.Materials
 {
 	public class WormholeCrystal : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().WormholeMirror;
 		}
 		
 		public override void SetStaticDefaults()
 		{
-			ItemID.Sets.ItemNoGravity[item.type] = true;
+			ItemID.Sets.ItemNoGravity[Item.type] = true;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			//item.rare = 8;
-			item.rare = -1;
-			item.value = Item.sellPrice(0, 1);
-			item.maxStack = 99;
-			item.alpha = 50;
+			Item.width = 20;
+			Item.height = 20;
+			//Item.rare = 8;
+			Item.rare = -1;
+			Item.value = Item.sellPrice(0, 1);
+			Item.maxStack = 99;
+			Item.alpha = 50;
 		}
 	}
 }

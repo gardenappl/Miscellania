@@ -10,44 +10,43 @@ namespace GoldensMisc.Items.Weapons
 {
 	public class RubyStaff : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().AltStaffs;
 		}
 		
 		public override void SetStaticDefaults()
 		{
-			Item.staff[item.type] = true;
+			Item.staff[Item.type] = true;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.rare = 2;
-			item.mana = 8;
-			item.UseSound = SoundID.Item43;
-			item.useStyle = 5;
-			item.damage = 22;
-			item.useAnimation = 27;
-			item.useTime = 27;
-			item.width = 40;
-			item.height = 40;
-			item.shoot = ProjectileID.RubyBolt;
-			item.shootSpeed = 9.25f;
-			item.knockBack = 5f;
-			item.value = Item.sellPrice(0, 0, 45);
-			item.magic = true;
-			item.noMelee = true;
-			item.autoReuse = true;
+			Item.rare = ItemRarityID.Green;
+			Item.mana = 8;
+			Item.UseSound = SoundID.Item43;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.damage = 22;
+			Item.useAnimation = 27;
+			Item.useTime = 27;
+			Item.width = 40;
+			Item.height = 40;
+			Item.shoot = ProjectileID.RubyBolt;
+			Item.shootSpeed = 9.25f;
+			Item.knockBack = 5f;
+			Item.value = Item.sellPrice(0, 0, 45);
+			Item.DamageType = DamageClass.Magic;
+			Item.noMelee = true;
+			Item.autoReuse = true;
 		}
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.PlatinumBar, 10);
-			recipe.AddIngredient(ItemID.Ruby, 8);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.PlatinumBar, 10)
+				.AddIngredient(ItemID.Ruby, 8)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

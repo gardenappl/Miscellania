@@ -10,19 +10,19 @@ namespace GoldensMisc.Items.Equipable
 {
 	public class ReinforcedHorseshoe : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().ReinforcedVest;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 24;
-			item.rare = 4;
-			item.defense = 4;
-			item.accessory = true;
-			item.value = Item.buyPrice(0, 20);
+			Item.width = 24;
+			Item.height = 24;
+			Item.rare = ItemRarityID.LightRed;
+			Item.defense = 4;
+			Item.accessory = true;
+			Item.value = Item.buyPrice(0, 20);
 		}
 		
 		public override void UpdateEquip(Player player)
@@ -34,12 +34,11 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.ObsidianHorseshoe);
-			recipe.AddIngredient(ModContent.ItemType<ReinforcedVest>());
-			recipe.AddTile(TileID.TinkerersWorkbench);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.ObsidianHorseshoe)
+				.AddIngredient(ModContent.ItemType<ReinforcedVest>())
+				.AddTile(TileID.TinkerersWorkbench)
+				.Register();
 		}
 	}
 }

@@ -1,8 +1,8 @@
 ﻿
-using System;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ModLoader.Utilities;
 using Terraria.ModLoader;
 using GoldensMisc.Items.Equipable.Vanity;
 using GoldensMisc.Items.Weapons;
@@ -11,40 +11,37 @@ namespace GoldensMisc.NPCs
 {
 	public class BaseballJungleBat : ModNPC
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().BaseballBats;
 		}
 		
 		public override void SetStaticDefaults()
 		{
-			Main.npcFrameCount[npc.type] = 5;
+			Main.npcFrameCount[NPC.type] = 5;
 		}
 		
 		public override void SetDefaults()
 		{
-			npc.CloneDefaults(NPCID.JungleBat);
-			npc.defense += 8;
-			npc.rarity = 2;
-			aiType = NPCID.JungleBat;
-			animationType = NPCID.JungleBat;
+			NPC.CloneDefaults(NPCID.JungleBat);
+			NPC.defense += 8;
+			NPC.rarity = 2;
+			AIType = NPCID.JungleBat;
+			AnimationType = NPCID.JungleBat;
 		}
 		
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return SpawnCondition.SurfaceJungle.Chance / 100f + SpawnCondition.UndergroundJungle.Chance / 100f;
 		}
-		
-		public override void NPCLoot()
+
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			if(Main.rand.Next(100) == 0)
-				Item.NewItem(npc.position, npc.width, npc.height, ItemID.DepthMeter, prefixGiven: -1);
-			if(Main.rand.Next(Main.expertMode ? 2 : 4) == 0)
-				Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<BaseballBat>(), prefixGiven: -1);
-			if(Main.rand.Next(3) == 0)
-				Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<BaseballCap>());
+			npcLoot.Add(ItemDropRule.Common(ItemID.DepthMeter, 100));
+			npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<BaseballBat>(), 4, 2));
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BaseballCap>(), 3));
 		}
-		
+
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
 			if(Main.expertMode && Main.rand.Next(10) == 0)

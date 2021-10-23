@@ -12,34 +12,34 @@ namespace GoldensMisc.Items.Tools
 {
 	public class RodofWarping : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().RodofWarping;
 		}
 		
 		public override void SetStaticDefaults()
 		{
-			Item.staff[item.type] = true;
+			Item.staff[Item.type] = true;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.autoReuse = false;
-			item.useStyle = 1;
-			item.useAnimation = 18;
-			item.useTime = 18;
-//			item.reuseDelay = 60;
-			item.width = 38;
-			item.height = 38;
-			item.UseSound = SoundID.Item8;
-			item.rare = 10;
-			item.value = Item.sellPrice(0, 20);
-			item.glowMask = MiscGlowMasks.RodofWarping;
+			Item.autoReuse = false;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.useAnimation = 18;
+			Item.useTime = 18;
+//			Item.reuseDelay = 60;
+			Item.width = 38;
+			Item.height = 38;
+			Item.UseSound = SoundID.Item8;
+			Item.rare = ItemRarityID.Red;
+			Item.value = Item.sellPrice(0, 20);
+			Item.glowMask = MiscGlowMasks.RodofWarping;
 		}
 		
-		public override bool UseItem(Player player)
+		public override bool? UseItem(Player player)
 		{
-//			player.itemTime = item.useTime;
+//			player.itemTime = Item.useTime;
 			var teleportPos = new Vector2();
 			teleportPos.X = Main.mouseX + Main.screenPosition.X - player.width / 2;
 			teleportPos.Y = player.gravDir != 1 ? (Main.screenPosition.Y + Main.screenHeight - Main.mouseY) : (Main.mouseY + Main.screenPosition.Y - player.height);
@@ -51,7 +51,7 @@ namespace GoldensMisc.Items.Tools
 				if (!Collision.SolidCollision(teleportPos, player.width, player.height)) //removed the Jungle Temple check because it's a post-Moon Lord tool and we don't give a damn
 				{
 					player.Teleport(teleportPos, 1);
-					NetMessage.SendData(65, -1, -1, null, 0, (float) player.whoAmI, teleportPos.X, teleportPos.Y, 1);
+					NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float) player.whoAmI, teleportPos.X, teleportPos.Y, 1);
 					if(ModContent.GetInstance<ServerConfig>().RodofWarpingChaosState > 0f)
 					{
 						if(player.chaosState)
@@ -76,16 +76,15 @@ namespace GoldensMisc.Items.Tools
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.RodofDiscord);
-			recipe.AddIngredient(ItemID.LunarBar, 15);
-			recipe.AddIngredient(ItemID.FragmentSolar, 10);
-			recipe.AddIngredient(ItemID.FragmentVortex, 10);
-			recipe.AddIngredient(ItemID.FragmentNebula, 10);
-			recipe.AddIngredient(ItemID.FragmentStardust, 10);
-			recipe.AddTile(TileID.LunarCraftingStation);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.RodofDiscord)
+				.AddIngredient(ItemID.LunarBar, 15)
+				.AddIngredient(ItemID.FragmentSolar, 10)
+				.AddIngredient(ItemID.FragmentVortex, 10)
+				.AddIngredient(ItemID.FragmentNebula, 10)
+				.AddIngredient(ItemID.FragmentStardust, 10)
+				.AddTile(TileID.LunarCraftingStation)
+				.Register();
 		}
 	}
 }
