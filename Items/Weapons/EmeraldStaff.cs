@@ -10,44 +10,43 @@ namespace GoldensMisc.Items.Weapons
 {
 	public class EmeraldStaff : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().AltStaffs;
 		}
 		
 		public override void SetStaticDefaults()
 		{
-			Item.staff[item.type] = true;
+			Item.staff[Item.type] = true;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.rare = 1;
-			item.mana = 5;
-			item.UseSound = SoundID.Item43;
-			item.useStyle = 5;
-			item.damage = 19;
-			item.useAnimation = 32;
-			item.useTime = 32;
-			item.width = 40;
-			item.height = 40;
-			item.shoot = ProjectileID.EmeraldBolt;
-			item.shootSpeed = 8f;
-			item.knockBack = 4.25f;
-			item.value = Item.sellPrice(0, 0, 30);
-			item.magic = true;
-			item.noMelee = true;
-			item.autoReuse = true;
+			Item.rare = ItemRarityID.Blue;
+			Item.mana = 5;
+			Item.UseSound = SoundID.Item43;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.damage = 19;
+			Item.useAnimation = 32;
+			Item.useTime = 32;
+			Item.width = 40;
+			Item.height = 40;
+			Item.shoot = ProjectileID.EmeraldBolt;
+			Item.shootSpeed = 8f;
+			Item.knockBack = 4.25f;
+			Item.value = Item.sellPrice(0, 0, 30);
+			Item.DamageType = DamageClass.Magic;
+			Item.noMelee = true;
+			Item.autoReuse = true;
 		}
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SilverBar, 10);
-			recipe.AddIngredient(ItemID.Emerald, 8);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.SilverBar, 10)
+				.AddIngredient(ItemID.Emerald, 8)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

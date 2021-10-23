@@ -13,21 +13,21 @@ namespace GoldensMisc.Projectiles
 	{	
 		int DustDelay
 		{
-			get { return (int)projectile.localAI[0]; }
-			set { projectile.localAI[0] = value; }
+			get { return (int)Projectile.localAI[0]; }
+			set { Projectile.localAI[0] = value; }
 		}
 
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().DemonCrown;
 		}
 
-		public override string Texture => "Terraria/Projectile_" + ProjectileID.RubyBolt;
+		public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.RubyBolt;
 		
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.RubyBolt);
-			aiType = ProjectileID.RubyBolt;
+			Projectile.CloneDefaults(ProjectileID.RubyBolt);
+			AIType = ProjectileID.RubyBolt;
 		}
 		
 		public override void AI()
@@ -35,8 +35,8 @@ namespace GoldensMisc.Projectiles
 			DustDelay--;
 			if(DustDelay <= 0)
 			{
-				var dustVel = projectile.velocity * 0.5f + new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f));
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<RedDust>(), dustVel.X, dustVel.Y, Scale: 1.2f);
+				var dustVel = Projectile.velocity * 0.5f + new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f));
+				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<RedDust>(), dustVel.X, dustVel.Y, Scale: 1.2f);
 				DustDelay = 8;
 			}
 		}

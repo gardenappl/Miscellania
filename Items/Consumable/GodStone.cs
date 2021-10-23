@@ -1,32 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Consumable
 {
 	public class GodStone : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().GodStone;
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 26;
-			item.height = 26;
-			item.healLife = 1000;
-			item.healMana = 500;
-			item.potion = true;
-			item.useStyle = 4;
-			item.useTime = 30;
-			item.useAnimation = 30;
-			item.UseSound = SoundID.Item29;
-			item.rare = 11;
+			Item.width = 26;
+			Item.height = 26;
+			Item.healLife = 1000;
+			Item.healMana = 500;
+			Item.potion = true;
+			Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.useTime = 30;
+			Item.useAnimation = 30;
+			Item.UseSound = SoundID.Item29;
+			Item.rare = ItemRarityID.Purple;
 		}
 		
 		public override bool ConsumeItem(Player player)
@@ -34,14 +32,14 @@ namespace GoldensMisc.Items.Consumable
 			return false;
 		}
 		
-		public override bool UseItem(Player player)
+		public override bool? UseItem(Player player)
 		{
 			player.ClearBuff(BuffID.PotionSickness);
 			player.potionDelay = 0;
 			return true;
 		}
 		
-		public override void HoldStyle(Player player)
+		public override void HoldStyle(Player player, Rectangle heldItemFrame)
 		{
 			player.itemLocation.X -= 10 * player.direction;
 			player.itemLocation.Y += 10 * player.gravDir;

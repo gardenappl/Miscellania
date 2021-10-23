@@ -11,7 +11,7 @@ namespace GoldensMisc.Tiles
 {
 	public class RedChimneyTE : ModTileEntity
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled(Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().RedBrickFurniture;
 		}
@@ -31,9 +31,9 @@ namespace GoldensMisc.Tiles
 			{
 				var smokePos = new Vector2(Position.X * 16 + 16, Position.Y * 16 + 8);
 				var smokeVel = Vector2.Zero;
-				if (Main.windSpeed < 0f)
+				if (Main.windSpeedCurrent < 0f)
 				{
-					smokeVel.X = -Main.windSpeed;
+					smokeVel.X = -Main.windSpeedCurrent;
 				}
 				int smokeType = Main.rand.Next(825, 828);
 				if (Main.rand.Next(4) == 0)
@@ -51,13 +51,13 @@ namespace GoldensMisc.Tiles
 			}
 		}
 
-		public override bool ValidTile(int i, int j)
+		public override bool IsTileValidForEntity(int i, int j)
 		{
 			var tile = Main.tile[i, j];
-			return tile.active() && tile.type == ModContent.TileType<RedChimney>() && tile.frameX == 0 && tile.frameY == 0;
+			return tile.IsActive && tile.type == ModContent.TileType<RedChimney>() && tile.frameX == 0 && tile.frameY == 0;
 		}
 
-		public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction)
+		public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction, int alternate)
 		{
 			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
@@ -68,25 +68,22 @@ namespace GoldensMisc.Tiles
 			return Place(i - 1, j - 2);
 		}
 		
-		public override TagCompound Save()
+		public override void SaveData(TagCompound tag)
 		{
-			return new TagCompound
-			{
-				{"s", (byte)CurrentState}
-			};
+			tag["s"] = CurrentState;
 		}
 		
-		public override void Load(TagCompound tag)
+		public override void LoadData(TagCompound tag)
 		{
 			CurrentState = (State)tag.GetByte("s");
 		}
 		
-		public override void NetSend(BinaryWriter writer, bool lightSend)
+		public override void NetSend(BinaryWriter writer)
 		{
 			writer.Write((byte)CurrentState);
 		}
 		
-		public override void NetReceive(BinaryReader reader, bool lightReceive)
+		public override void NetReceive(BinaryReader reader)
 		{
 			CurrentState = (State)reader.ReadByte();
 		}

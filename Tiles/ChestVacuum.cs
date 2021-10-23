@@ -13,12 +13,12 @@ namespace GoldensMisc.Tiles
 {
 	public class ChestVacuum : ModTile
 	{
-		public override bool Autoload(ref string name, ref string texture)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().ChestVacuum;
 		}
 
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
@@ -34,8 +34,7 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(ModContent.GetInstance<ChestVacuumTE>().Hook_AfterPlacement, -1, 0, false);
 			TileObjectData.addTile(Type);
 			AddMapEntry(Color.Gray, CreateMapEntryName());
-			disableSmartCursor = true;
-			animationFrameHeight = 26;
+			AnimationFrameHeight = 26;
 		}
 
 		//add modded chests
@@ -45,7 +44,7 @@ namespace GoldensMisc.Tiles
 			var anchorTileList = new List<int>(tileObjectData.AnchorAlternateTiles);
 			for(int i = TileID.Count; i < TileLoader.TileCount; i++)
 			{
-				if(TileLoader.ModChestName(i) != String.Empty)
+				if(TileLoader.ContainerName(i) != String.Empty)
 				{
 					anchorTileList.Add(i);
 				}
@@ -55,11 +54,11 @@ namespace GoldensMisc.Tiles
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType(GetType().Name));
+			Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.ChestVacuum>());
             ModContent.GetInstance<ChestVacuumTE>().Kill(i, j);
 		}
 
-		public override bool NewRightClick(int i, int j)
+		public override bool RightClick(int i, int j)
 		{
 			int teX = i;
 			int teY = j;
@@ -79,7 +78,7 @@ namespace GoldensMisc.Tiles
 				Main.NewText(Language.GetTextValue("Mods.GoldensMisc.ChestVacuum.SmartStackOff2"));
                 if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    var netMessage = mod.GetPacket();
+                    var netMessage = Mod.GetPacket();
                     netMessage.Write((byte)MiscMessageType.UpdateVacuumSmartStack);
                     netMessage.Write(te.ID);
                     netMessage.Write(te.smartStack);
@@ -94,7 +93,7 @@ namespace GoldensMisc.Tiles
 				Main.NewText(Language.GetTextValue("Mods.GoldensMisc.ChestVacuum.SmartStackOn2"));
                 if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    var netMessage = mod.GetPacket();
+                    var netMessage = Mod.GetPacket();
                     netMessage.Write((byte)MiscMessageType.UpdateVacuumSmartStack);
                     netMessage.Write(te.ID);
                     netMessage.Write(te.smartStack);
@@ -107,8 +106,8 @@ namespace GoldensMisc.Tiles
 		public override void MouseOver(int i, int j)
 		{
 			Main.LocalPlayer.noThrow = 2;
-			Main.LocalPlayer.showItemIcon = true;
-			Main.LocalPlayer.showItemIcon2 = mod.ItemType(GetType().Name);
+			Main.LocalPlayer.cursorItemIconEnabled = true;
+			Main.LocalPlayer.cursorItemIconID = ModContent.ItemType<Items.Placeable.ChestVacuum>();
 		}
 
 		public override void AnimateTile(ref int frame, ref int frameCounter)

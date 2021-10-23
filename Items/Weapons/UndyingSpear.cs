@@ -10,42 +10,41 @@ namespace GoldensMisc.Items.Weapons
 {
 	public class UndyingSpear : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().SpearofJustice;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.value = Item.sellPrice(0, 7);
-			item.useStyle = 1;
-			item.useAnimation = 18;
-			item.useTime = 18;
-			item.autoReuse = true;
-			item.rare = 8;
-			item.width = 48;
-			item.height = 48;
-			item.UseSound = SoundID.Item8;
-			item.damage = 58;
-			item.knockBack = 8;
-			item.mana = 12;
-			item.shoot = mod.ProjectileType(GetType().Name);
-			item.shootSpeed = 16f;
-			item.noMelee = true; //So that the swing itself doesn't do damage; this weapon is projectile-only
-			item.noUseGraphic = true; //No swing animation
-			item.magic = true;
-			item.crit = 10;
-			item.glowMask = MiscGlowMasks.UndyingSpear;
+			Item.value = Item.sellPrice(0, 7);
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.useAnimation = 18;
+			Item.useTime = 18;
+			Item.autoReuse = true;
+			Item.rare = ItemRarityID.Yellow;
+			Item.width = 48;
+			Item.height = 48;
+			Item.UseSound = SoundID.Item8;
+			Item.damage = 58;
+			Item.knockBack = 8;
+			Item.mana = 12;
+			Item.shoot = ModContent.ProjectileType<Projectiles.UndyingSpear>();
+			Item.shootSpeed = 16f;
+			Item.noMelee = true; //So that the swing itself doesn't do damage; this weapon is projectile-only
+			Item.noUseGraphic = true; //No swing animation
+			Item.DamageType = DamageClass.Magic;
+			Item.crit = 10;
+			Item.glowMask = MiscGlowMasks.UndyingSpear;
 		}
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<MagicSpear>());
-			recipe.AddIngredient(ItemID.SpectreBar, 15);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<MagicSpear>())
+				.AddIngredient(ItemID.SpectreBar, 15)
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
 		}
 	}
 }

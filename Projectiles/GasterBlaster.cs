@@ -1,16 +1,16 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.GameContent;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
 {
-	public class GasterBlaster : ModProjectile
+    public class GasterBlaster : ModProjectile
 	{
 		const float Scale = 1.25f;
 		const float TargetDist = 700f;
@@ -24,59 +24,59 @@ namespace GoldensMisc.Projectiles
 		
 		int BeamProj
 		{
-			get { return (int)projectile.ai[0]; }
-			set { projectile.ai[0] = value; }
+			get { return (int)Projectile.ai[0]; }
+			set { Projectile.ai[0] = value; }
 		}
 		int ShootCounter
 		{
-			get { return (int)projectile.ai[1]; }
-			set { projectile.ai[1] = value; }
+			get { return (int)Projectile.ai[1]; }
+			set { Projectile.ai[1] = value; }
 		}
 		Vector2 TargetPos;
 		int SoundCounter
 		{
-			get { return (int)projectile.localAI[0]; }
-			set { projectile.localAI[0] = value; }
+			get { return (int)Projectile.localAI[0]; }
+			set { Projectile.localAI[0] = value; }
 		}
 		bool FirstSpawn = true;
 
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().GasterBlaster;
 		}
 
 		public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 2;
-            //Main.projPet[projectile.type] = true;
-			//ProjectileID.Sets.Homing[projectile.type] = true;
-			//ProjectileID.Sets.TurretFeature[projectile.type] = true;
-			ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+            Main.projFrames[Projectile.type] = 2;
+            //Main.projPet[Projectile.type] = true;
+			//ProjectileID.Sets.Homing[Projectile.type] = true;
+			//ProjectileID.Sets.TurretFeature[Projectile.type] = true;
+			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
 		}
 		
 		public override void SetDefaults()
 		{
-			projectile.netImportant = true;
-			projectile.width = 44;
-			projectile.height = 48;
-			projectile.friendly = true;
-//			projectile.scale = 1.5f;
-			//projectile.minion = true;
-			projectile.sentry = true;
-			projectile.penetrate = -1;
-			projectile.timeLeft = Projectile.SentryLifeTime;
-			projectile.ignoreWater = true;
+			Projectile.netImportant = true;
+			Projectile.width = 44;
+			Projectile.height = 48;
+			Projectile.friendly = true;
+//			Projectile.scale = 1.5f;
+			//Projectile.minion = true;
+			Projectile.sentry = true;
+			Projectile.penetrate = -1;
+			Projectile.timeLeft = Projectile.SentryLifeTime;
+			Projectile.ignoreWater = true;
 		}
 		
 		public override void AI()
 		{
             if (FirstSpawn)
             {
-                Main.player[projectile.owner].UpdateMaxTurrets();
+                Main.player[Projectile.owner].UpdateMaxTurrets();
                 FirstSpawn = false;
             }
-            projectile.velocity *= 0.9f;
-			var player = Main.player[projectile.owner];
+            Projectile.velocity *= 0.9f;
+			var player = Main.player[Projectile.owner];
 			var targetNPCHitbox = new Rectangle();
 			float targetDist = TargetDist;
 			if(ShootCounter == 0)
@@ -85,9 +85,9 @@ namespace GoldensMisc.Projectiles
 				if(player.HasMinionAttackTargetNPC)
 				{
 					var npc = Main.npc[player.MinionAttackTargetNPC];
-					if(Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+					if(Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height))
 					{
-						targetDist = Vector2.Distance(projectile.Center, TargetPos);
+						targetDist = Vector2.Distance(Projectile.Center, TargetPos);
 						TargetPos = Main.npc[player.MinionAttackTargetNPC].Center;
 						targetNPCHitbox = Main.npc[player.MinionAttackTargetNPC].Hitbox;
 						ShootCounter++;
@@ -98,8 +98,8 @@ namespace GoldensMisc.Projectiles
 					var npc = Main.npc[k];
 					if (npc.CanBeChasedBy(this))
 					{
-						float distance = Vector2.Distance(npc.Center, projectile.Center);
-						if (distance < targetDist && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+						float distance = Vector2.Distance(npc.Center, Projectile.Center);
+						if (distance < targetDist && Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height))
 						{
 							targetDist = distance;
 							TargetPos = npc.Center;
@@ -116,20 +116,20 @@ namespace GoldensMisc.Projectiles
 				if(ShootCounter < ShootDelay)
 				{
 					#region Prepare to shoot
-					projectile.frame = 1;
+					Projectile.frame = 1;
 					
 					//Rotate
-					var direction = TargetPos - projectile.Center;
-					projectile.rotation = projectile.rotation.AngleLerp(direction.ToRotation() + (float)Math.PI * 1.5f, 0.2f);
+					var direction = TargetPos - Projectile.Center;
+					Projectile.rotation = Projectile.rotation.AngleLerp(direction.ToRotation() + (float)Math.PI * 1.5f, 0.2f);
 					#endregion
 				}
 				else if(ShootCounter == ShootDelay)
 				{
 					#region Shoot
 					//Push the Blaster back
-					var angle = (projectile.rotation + MathHelper.PiOver2).ToRotationVector2();
+					var angle = (Projectile.rotation + MathHelper.PiOver2).ToRotationVector2();
 					angle *= -3f;
-					projectile.velocity = angle;
+					Projectile.velocity = angle;
                     SoundCounter = 50;
 				}
 				else if(ShootCounter < ShootTired)
@@ -137,7 +137,7 @@ namespace GoldensMisc.Projectiles
 					Projectile laser;
 					if(BeamProj == -1 || Main.projectile[BeamProj] == null || Main.projectile[BeamProj].type != ModContent.ProjectileType<GasterLaser>())
 					{
-						int i = Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<GasterLaser>(), projectile.damage, projectile.knockBack, projectile.owner);
+						int i = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GasterLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 						laser = Main.projectile[i];
 						BeamProj = i;
 					}
@@ -145,15 +145,15 @@ namespace GoldensMisc.Projectiles
 					{
 						laser = Main.projectile[BeamProj];
 					}
-					laser.rotation = projectile.rotation + MathHelper.PiOver2;
-					laser.Center = projectile.Center;
+					laser.rotation = Projectile.rotation + MathHelper.PiOver2;
+					laser.Center = Projectile.Center;
 					laser.timeLeft = 2;
 					
 					SoundCounter++;
 					if (SoundCounter > 22)
 					{
 						SoundCounter = 0;
-						Main.PlaySound(SoundID.Item34, projectile.position); //flamethrower sound
+						SoundEngine.PlaySound(SoundID.Item34, Projectile.position); //flamethrower sound
 					}
 					#endregion
 				}
@@ -161,13 +161,13 @@ namespace GoldensMisc.Projectiles
 				{
 					SoundCounter = 0;
 					#region Tired of shooting
-					projectile.frame = 0;
+					Projectile.frame = 0;
 					BeamProj = -1;
 					
 					//Push the Blaster forward with same velocity
-					var angle = (projectile.rotation + MathHelper.PiOver2).ToRotationVector2();
+					var angle = (Projectile.rotation + MathHelper.PiOver2).ToRotationVector2();
 					angle *= 3f;
-					projectile.velocity = angle;
+					Projectile.velocity = angle;
 					#endregion
 				}
 				else if(ShootCounter > ShootStop)
@@ -179,28 +179,28 @@ namespace GoldensMisc.Projectiles
 		
 		public override void Kill(int timeLeft)
 		{
-			Main.PlaySound(SoundID.Item14, projectile.Center);
+			SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
 			for(int i = 0; i < 10; i++)
 			{
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.SparksMech);
+				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.SparksMech);
 			}
 			for(int i = 0; i < 15; i++)
 			{
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Smoke, Scale: 2f);
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire, Scale: 2f);
+				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Smoke, Scale: 2f);
+				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, Scale: 2f);
 			}
 		}
 		
 		//Had to do this otherwise the Laser has a weird offset :/
 		//I guess the way Terraria handles a scaled projectile's Center is really weird
 		
-		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+		public override bool PreDraw(ref Color lightColor)
 		{
-			var texture = Main.projectileTexture[projectile.type];
-			var source = new Rectangle(0, texture.Height / Main.projFrames[projectile.type] * projectile.frame, texture.Width, texture.Height / Main.projFrames[projectile.type]);
-			var origin = new Vector2(texture.Width / 2, (texture.Height / Main.projFrames[projectile.type]) / 2);
-			spriteBatch.Draw(Main.projectileTexture[projectile.type], projectile.Center - Main.screenPosition, source, lightColor,
-			                 projectile.rotation, origin, projectile.scale * Scale, 0, 0);
+			var texture = TextureAssets.Projectile[Projectile.type].Value;
+			var source = new Rectangle(0, texture.Height / Main.projFrames[Projectile.type] * Projectile.frame, texture.Width, texture.Height / Main.projFrames[Projectile.type]);
+			var origin = new Vector2(texture.Width / 2, (texture.Height / Main.projFrames[Projectile.type]) / 2);
+			Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, source, lightColor,
+			                 Projectile.rotation, origin, Projectile.scale * Scale, 0, 0);
 			return false;
 		}
 	}

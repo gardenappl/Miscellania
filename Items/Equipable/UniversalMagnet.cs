@@ -2,25 +2,25 @@
 using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Localization;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Equipable
 {
 	public class UniversalMagnet : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().Magnet;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.width = 30;
-			item.height = 32;
-			item.value = Item.buyPrice(0, 30);
-			item.rare = 4;
-			item.accessory = true;
+			Item.width = 30;
+			Item.height = 32;
+			Item.value = Item.buyPrice(0, 30);
+			Item.rare = ItemRarityID.LightRed;
+			Item.accessory = true;
 		}
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)

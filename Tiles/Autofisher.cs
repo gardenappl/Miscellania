@@ -11,12 +11,12 @@ namespace GoldensMisc.Tiles
 {
 	public class Autofisher : ModTile
 	{
-		public override bool Autoload(ref string name, ref string texture)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().Autofisher;
 		}
 
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
@@ -34,23 +34,22 @@ namespace GoldensMisc.Tiles
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
 			AddMapEntry(Color.Gray, CreateMapEntryName());
-			disableSmartCursor = true;
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType(GetType().Name));
+			Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.Autofisher>());
             ModContent.GetInstance<AutofisherTE>().Kill(i, j);
 		}
 
 		public override void MouseOver(int i, int j)
 		{
 			Main.LocalPlayer.noThrow = 2;
-			Main.LocalPlayer.showItemIcon = true;
-			Main.LocalPlayer.showItemIcon2 = mod.ItemType(GetType().Name);
+			Main.LocalPlayer.cursorItemIconEnabled = true;
+			Main.LocalPlayer.cursorItemIconID = ModContent.ItemType<Items.Placeable.Autofisher>();
 		}
 
-		public override bool NewRightClick(int i, int j)
+		public override bool RightClick(int i, int j)
 		{
 			//Top left tile
 			int x = i - Main.tile[i, j].frameX % 54 / 18;
@@ -61,7 +60,7 @@ namespace GoldensMisc.Tiles
 				var te = (AutofisherTE)TileEntity.ByPosition[new Point16(x, y)];
 				if(Main.netMode == NetmodeID.MultiplayerClient)
 				{
-					var message = mod.GetPacket();
+					var message = Mod.GetPacket();
 					message.Write((byte)MiscMessageType.PrintAutofisherInfo);
 					message.Write(te.ID);
 					message.Send();

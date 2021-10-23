@@ -9,26 +9,25 @@ namespace GoldensMisc.Items.Placeable
 {
 	public class RedFireplace : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().RedBrickFurniture;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.Fireplace);
-			item.createTile = mod.TileType(GetType().Name);
+			Item.CloneDefaults(ItemID.Fireplace);
+			Item.createTile = ModContent.TileType<Tiles.RedFireplace>();
 		}
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.RedBrick, 10);
-			recipe.AddRecipeGroup("Wood", 4);
-			recipe.AddIngredient(ItemID.Torch, 2);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.RedBrick, 10)
+				.AddRecipeGroup("Wood", 4)
+				.AddIngredient(ItemID.Torch, 2)
+				.AddTile(TileID.WorkBenches)
+				.Register();
 		}
 	}
 }

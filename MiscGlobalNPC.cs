@@ -3,6 +3,7 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.GameContent.ItemDropRules;
 using GoldensMisc.Items;
 using GoldensMisc.Items.Consumable;
 using GoldensMisc.Items.Equipable;
@@ -59,7 +60,7 @@ namespace GoldensMisc
 			}
 		}
 		
-		public override void NPCLoot(NPC npc)
+		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
 		{
 			switch(npc.type)
 			{  
@@ -68,16 +69,16 @@ namespace GoldensMisc
 				case NPCID.AngryBonesBigHelmet:
 				case NPCID.AngryBonesBigMuscle:
 				case NPCID.DarkCaster:
-					if(ModContent.GetInstance<ServerConfig>().AncientMuramasa && Main.rand.Next(250) == 0)
-						Item.NewItem(npc.position, npc.Size, ModContent.ItemType<AncientMuramasa>(), prefixGiven: -1);
+					if(ModContent.GetInstance<ServerConfig>().AncientMuramasa)
+						npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AncientMuramasa>(), 250));
 					break;
 				case NPCID.Demon:
-					if(ModContent.GetInstance<ServerConfig>().DemonCrown && Main.hardMode && Main.rand.Next(100) == 0)
-						Item.NewItem(npc.position, npc.Size, ModContent.ItemType<DemonCrown>(), prefixGiven: -1);
+					if(ModContent.GetInstance<ServerConfig>().DemonCrown && Main.hardMode)
+						npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DemonCrown>(), 100));
 					break;
 				case NPCID.VoodooDemon:
-					if(ModContent.GetInstance<ServerConfig>().DemonCrown && Main.hardMode && Main.rand.Next(15) == 0)
-						Item.NewItem(npc.position, npc.Size, ModContent.ItemType<DemonCrown>(), prefixGiven: -1);
+					if(ModContent.GetInstance<ServerConfig>().DemonCrown && Main.hardMode)
+						npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DemonCrown>(), 15));
 					break;
 				//case NPCID.Necromancer:
 				//case NPCID.NecromancerArmored:
@@ -86,7 +87,7 @@ namespace GoldensMisc
 				//case NPCID.DiabolistRed:
 				//case NPCID.DiabolistWhite:
 				//	if((Config.WormholeMirror || Config.RodofWarping) && Main.rand.Next(8) == 0)
-				//		Item.NewItem(npc.position, npc.Size, ModContent.ItemType<WormholeCrystal>());
+				//		Item.NewItem(NPC.position, NPC.Size, ModContent.ItemType<WormholeCrystal>());
 				//	break;
 			}
 		}

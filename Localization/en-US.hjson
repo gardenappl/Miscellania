@@ -1,0 +1,381 @@
+Mods: {
+	GoldensMisc: {
+		BuffName: {
+			CursedMemory: Cursed Memory
+			OrbofLight: Orb of Ancient Light
+		}
+
+		BuffDescription: {
+			CursedMemory: Cuts maximum HP in half
+			OrbofLight: A magical orb that provides light
+		}
+
+		CommandUsage: Usage:
+
+		Command: {
+			WorldGen: {
+				Description:
+					'''
+					Generates Miscellania world features in pre-existing worlds
+					WARNING: May cause lag, as well as damage previously built/generated structures!
+					'''
+				HellforgeDisabled: Ancient Hellforges are disabled in the config!
+				ForgeDisabled: Ancient Forges are disabled in the config!
+			}
+		}
+
+		ItemName: {
+			DeathEmblem: Emblem of Death
+			GodStone: God Stone
+			InertStone: Inert Stone
+			LifeStone: Healing Stone
+			ManaStone: Mana Stone
+			DemonCrown: Demon Crown
+			HeartLocket: Heart Locket
+			MagnetismRing: Magnetism Ring
+			NinjaGear: Ninja Gear
+			OrbofLight: Orb of Ancient Light
+			ReinforcedHorseshoe: Reinforced Horseshoe
+			ReinforcedVest: Reinforced Vest
+			UniversalMagnet: Universal Magnet
+			AdamantiteDye: Reflective Adamantite Dye
+			BaseballCap: Baseball Cap
+			ChlorophyteDye: Reflective Chlorophyte Dye
+			CobaltDye: Reflective Cobalt Dye
+			MatrixDye: Matrix Dye
+			MythrilDye: Reflective Mythril Dye
+			OrichalcumDye: Reflective Orichalcum Dye
+			PalladiumDye: Reflective Palladium Dye
+			TitaniumDye: Reflective Titanium Dye
+			VirtualDye: Virtual Dye
+			WormholeCrystal: Wormhole Crystal
+			AncientForge: Ancient Forge
+			AncientHellforge: Ancient Hellforge
+			RedChimney: Red Chimney
+			RedFireplace: Red Fireplace
+			SandstoneSlabWall: Sandstone Slab Wall
+			IslandStaff: Staff of Laputa
+			RodofWarping: Rod of Warping
+			WormholeCellPhone: Network Cell Phone
+			WormholeDoubleMirror: Wormhole Recall Mirror
+			WormholeIceMirror: Ice Wormhole Mirror
+			WormholeMirror: Wormhole Mirror
+			AmethystStaff: Amethyst Staff
+			AncientMuramasa: Ancient Muramasa
+			BaseballBat: Baseball Bat
+			DiamondStaff: Diamond Staff
+			EmeraldStaff: Emerald Staff
+			KarmaStaff: Skeletal Staff
+			MagicSpear: Spear of Justice
+			RubyStaff: Ruby Staff
+			SapphireStaff: Sapphire Staff
+			TopazStaff: Topaz Staff
+			UndyingSpear: Spear of Undying Justice
+			Autofisher: Autofisher
+			ChestVacuum: Item Vacuum
+			FishNet: Fishing Net
+			BaseballCapBackwards: "{$Mods.GoldensMisc.ItemName.BaseballCap}"
+		}
+
+		ItemTooltip: {
+			DeathEmblem:
+				'''
+				Stare into the eyes to return to the place of your last death
+				Will decrease maximum HP for a short period of time
+				'''
+			GodStone:
+				'''
+				Can be used infintely many times
+				Does not cause potion sickness
+				This is a cheater item
+				'''
+			InertStone: "'Has the potential to store magical energy'"
+			LifeStone: Can be used multiple times
+			ManaStone: Can be used multiple times
+			DemonCrown:
+				'''
+				Grants great magical powers
+				Summons a Red Crystal to fight for you
+				'''
+			HeartLocket: Increases movement speed and length of invincibility after being struck
+			MagnetismRing:
+				'''
+				Increases pickup range for items, coins and mana stars
+				'You're really attractive'
+				'''
+			NinjaGear:
+				'''
+				Allows the ability to dash
+				Gives a chance to dodge attacks
+				'''
+			OrbofLight: Creates a magical glowing orb
+			ReinforcedHorseshoe:
+				'''
+				Negates fall damage
+				Grants immunity to fire blocks and your own explosives
+				'''
+			ReinforcedVest: Grants immunity to your own explosives
+			UniversalMagnet: Increased pickup range for items
+			BaseballCap:
+				'''
+				'How do you do, fellow kids?'
+				Can be worn backwards via recipe
+				'''
+			WormholeCrystal:
+				'''
+				'You feel like it pulls you in as you hold it...'
+				This material currently has no use within Miscellania
+				You can sell it or keep it in case of future mod updates
+				'''
+			IslandStaff:
+				'''
+				Creates a floating island
+				Shatters after one use
+				'''
+			RodofWarping:
+				'''
+				Teleports to the position of the mouse
+				Significantly reduced duration and damage of Chaos State
+				'''
+			WormholeCellPhone:
+				'''
+				Displays everything
+				Allows you to return home and teleport to party members at will
+				Click their head on the fullscreen map
+				'''
+			WormholeDoubleMirror:
+				'''
+				Gaze in the mirror to return home
+				or teleport to a party member
+				Click their head on the fullscreen map
+				'''
+			WormholeIceMirror:
+				'''
+				Gaze in the mirror to return home
+				or teleport to a party member
+				Click their head on the fullscreen map
+				'''
+			WormholeMirror:
+				'''
+				Teleports you to a party member
+				Click their head on the fullscreen map
+				'''
+			KarmaStaff: Summons a blaster sentry to shoot lasers at your enemies.
+			MagicSpear:
+				'''
+				Rapidly throws piercing spears
+				'Ngahhh!!'
+				'''
+			UndyingSpear: Rapidly throws piercing spears
+			Autofisher:
+				'''
+				30% fishing power
+				Automatically catches fish and other items when placed near water, requires bait
+				Right-click for more info
+				Use an Item Vacuum to pick up caught items
+				'''
+			ChestVacuum:
+				'''
+				Sucks up nearby items and puts them in a chest below
+				Right-click to enable Smart Stack mode
+				'''
+			FishNet:
+				'''
+				Slowly catches fish and other items when placed in water
+				Must be emptied manually by right-clicking
+				'''
+			MechanicsRod: Can be turned into an Autofisher
+			BaseballCapBackwards: "{$Mods.GoldensMisc.ItemTooltip.BaseballCap}"
+		}
+
+		LaputaCannotUse: Perhaps it's not a good idea to use this here.
+		LaputaTooHigh: You're too high above the ground.
+		LaputaBlocked: Something is blocking the sky.
+
+		ProjectileName: {
+			GasterBlaster: Autoblaster
+			GasterLaser: Blaster Laser
+			Laputa: Laputa Light
+			MagicSpear: Spear of Justice
+			MagicSpearMini: Mini Spear of Justice
+			OrbofLight: Orb of Ancient Light
+			RedBullet: Red Bolt
+			RedCrystal: Red Crystal
+			UndyingSpear: Spear of Undying Justice
+		}
+
+		NPCName: {
+			BaseballCaveBat: Baseball Cave Bat
+			BaseballGiantBat: Baseball Giant Bat
+			BaseballHellBat: Baseball Hellbat
+			BaseballIceBat: Baseball Ice Bat
+			BaseballIlluminantBat: Baseball Illuminant Bat
+			BaseballJungleBat: Baseball Jungle Bat
+			BaseballLavaBat: Baseball Lava Bat
+		}
+
+		CloseButton: Close
+		HomeButton: Home
+
+		ChestVacuum: {
+			SmartStackOn: Smart Stack: On
+			SmartStackOn2: The Vacuum will only pick up items that are already present in the chest
+			SmartStackOff: Smart Stack: Off
+			SmartStackOff2: The Vacuum will pick up everything
+		}
+
+		Autofisher: {
+			NoBait: Missing bait (place bait in adjacent chest)
+		}
+
+		WorldGen: {
+			FurnitureGeneratorResults: Generated {0} out of {1}.
+			AncientForge: Adding Ancient Forges...
+			AncientHellforge: Adding Ancient Hellforges...
+		}
+
+		Config: {
+			Server: General settings
+			Client: Client-side only settings
+			ServerBlocked: Only the server owner can change the config settings.
+
+			AltStaffs: {
+				$parentVal: Alternative Staves
+				Desc: Stat changes and new early game gem staves.
+			}
+
+			MagicStones: {
+				$parentVal: Magic Stones
+				Desc: Magic stones that replenish health and mana for a number of uses.
+			}
+
+			GodStone: {
+				$parentVal: God Stone
+				Desc: Unobtainable God Mode item(use Cheat Sheet or another Mod.)
+			}
+
+			DemonCrown: {
+				$parentVal: Demon Crown
+				Desc: A rare drop from Demons in Hardmode. Boosts your magical abilities and summons a Red Crystal to protect you.
+			}
+
+			HeartLocket: {
+				$parentVal: Heart Locket
+				Desc: Heart Locket = Panic Necklace + Cross Necklace.
+			}
+
+			Magnet: {
+				$parentVal: Magnets
+				Desc: Item magnet and accessory combos.
+			}
+
+			NinjaGear: {
+				$parentVal: (Normal) Ninja Gear
+				Desc:
+					'''
+					Ninja Gear = Tabi + Black Belt
+					 Ninja Gear + Climbing Gear = Master Ninja Gear
+					'''
+			}
+
+			ReinforcedVest: {
+				$parentVal: Reinforced Vest
+				Desc: Armor item that protects you from explosions.
+			}
+
+			AncientForges: {
+				$parentVal: Ancient Forges
+				Desc: Ancient Forges and Hellforges (pre-1.2-style furnaces) spawn in the world.
+			}
+
+			RedBrickFurniture: {
+				$parentVal: Red Brick Furniture
+				Desc: Red Brick Chimney and Fireplace.
+			}
+
+			AncientMuramasa: {
+				$parentVal: Ancient Muramasa
+				Desc: Pre-1.2-style Muramasa, rare drop from the Dungeon.
+			}
+
+			GasterBlaster: {
+				$parentVal: Skeletal Staff
+				Desc: A stupid Undertale reference, also a powerful sentry summon.
+			}
+
+			SpearofJustice: {
+				$parentVal: Spear of Justice
+				Desc: A neat Hardmode magic weapon.
+			}
+
+			WormholeMirror: {
+				$parentVal: Wormhole Mirror
+				Desc: Endless Wormhole Potion.
+			}
+
+			WormholePhone: {
+				$parentVal: Wormhole Cell Phone
+				Desc: Wormhole Mirror + Cell Phone
+			}
+
+			RodofWarping: {
+				$parentVal: Rod of Warping
+				Desc: Post-lunar Rod of Discord
+			}
+
+			RodofWarpingChaosState: {
+				$parentVal: Rod of Warping Chaos State duration
+				Desc: (measured in seconds)
+			}
+
+			EmblemofDeath: {
+				$parentVal: Emblem of Death
+				Desc: Item that teleports to your last place of death, but is dangerous to use.
+			}
+
+			BuildingMaterials: {
+				$parentVal: Building Materials
+				Desc: Sandstone Slab Wall
+			}
+
+			BaseballBats: {
+				$parentVal: Baseball Bats
+				Desc: Self-explanatory.
+			}
+
+			AncientOrb: {
+				$parentVal: Orb of Ancient Light
+				Desc: Pre-1.2-style Orb of Light, acts as a Hardmode upgrade to Shadow Orb.
+			}
+
+			CellPhoneResprite: {
+				$parentVal: Cell Phone resprite
+				Desc: Changes the vanilla Cell Phone sprite to differentiate it from the Wormhole Cell Phone.
+			}
+
+			ExtraDyes: New strange dyes
+
+			Autofisher: {
+				$parentVal: Autofisher
+				Desc: Automatic fisher! Requires bait.
+			}
+
+			MechanicsRodOften: {
+				$parentVal: Mechanic's Rod increased chance
+				Desc: Useful for crafting the Autofisher.
+			}
+
+			ChestVacuum: {
+				$parentVal: Chest Vacuum
+				Desc: Automatically puts items in chests!
+			}
+		}
+
+		MapObject: {
+			Autofisher: "{$Mods.GoldensMisc.ItemName.Autofisher}"
+			AncientForge: "{$Mods.GoldensMisc.ItemName.AncientForge}"
+			AncientHellforge: "{$Mods.GoldensMisc.ItemName.AncientHellforge}"
+			ChestVacuum: "{$Mods.GoldensMisc.ItemName.ChestVacuum}"
+		}
+	}
+}

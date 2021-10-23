@@ -10,31 +10,31 @@ namespace GoldensMisc.Projectiles
 {
 	public class OrbofLight : ModProjectile
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().AncientOrb;
 		}
 
 		public override void SetStaticDefaults()
 		{
-			Main.projFrames[projectile.type] = 1;
-			Main.projPet[projectile.type] = true;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
-			ProjectileID.Sets.LightPet[projectile.type] = true;
+			Main.projFrames[Projectile.type] = 1;
+			Main.projPet[Projectile.type] = true;
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+			ProjectileID.Sets.LightPet[Projectile.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 32;
-			projectile.height = 32;
-			projectile.penetrate = -1;
-			projectile.netImportant = true;
-			projectile.timeLeft *= 5;
-			projectile.friendly = true;
-			projectile.ignoreWater = true;
-			projectile.tileCollide = false;
-			projectile.aiStyle = 11;
-			aiType = ProjectileID.ShadowOrb;
+			Projectile.width = 32;
+			Projectile.height = 32;
+			Projectile.penetrate = -1;
+			Projectile.netImportant = true;
+			Projectile.timeLeft *= 5;
+			Projectile.friendly = true;
+			Projectile.ignoreWater = true;
+			Projectile.tileCollide = false;
+			Projectile.aiStyle = 11;
+			AIType = ProjectileID.ShadowOrb;
 		}
 		
 		public override Color? GetAlpha(Color lightColor)
@@ -44,11 +44,11 @@ namespace GoldensMisc.Projectiles
 		
 		public override void AI()
 		{
-			var player = Main.player[projectile.owner];
+			var player = Main.player[Projectile.owner];
 			var modPlayer = player.GetModPlayer<MiscPlayer>();
 			if (!player.active)
 			{
-				projectile.active = false;
+				Projectile.active = false;
 				return;
 			}
 			if (player.dead)
@@ -57,13 +57,13 @@ namespace GoldensMisc.Projectiles
 			}
 			if (modPlayer.OrbofLight)
 			{
-				projectile.timeLeft = 2;
+				Projectile.timeLeft = 2;
 			}
 			else
 			{
-				projectile.timeLeft = 0;
+				Projectile.timeLeft = 0;
 			}
-			Lighting.AddLight(projectile.Center, 1f, 0.9f, 0.5f);
+			Lighting.AddLight(Projectile.Center, 1f, 0.9f, 0.5f);
 		}
 	}
 }

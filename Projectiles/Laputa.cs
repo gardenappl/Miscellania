@@ -1,12 +1,5 @@
-﻿
-using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
+﻿using Terraria;
 using Terraria.Graphics.Effects;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
@@ -15,25 +8,25 @@ namespace GoldensMisc.Projectiles
 	{
 		float startPosition
 		{
-			get { return projectile.ai[0]; }
-			set { projectile.ai[0] = value; }
+			get { return Projectile.ai[0]; }
+			set { Projectile.ai[0] = value; }
 		}
 		
 		float endPosition
 		{
-			get { return projectile.ai[1]; }
-			set { projectile.ai[1] = value; }
+			get { return Projectile.ai[1]; }
+			set { Projectile.ai[1] = value; }
 		}
 		
 		public override void SetDefaults()
 		{
-			projectile.width = 52;
-			projectile.height = 14;
-			projectile.friendly = true;
-			projectile.scale = 2f;
-//			projectile.aiStyle = 1;
-			projectile.tileCollide = false;
-			projectile.ignoreWater = true;
+			Projectile.width = 52;
+			Projectile.height = 14;
+			Projectile.friendly = true;
+			Projectile.scale = 2f;
+//			Projectile.aiStyle = 1;
+			Projectile.tileCollide = false;
+			Projectile.ignoreWater = true;
 		}
 		
 		public override void AI()
@@ -41,16 +34,16 @@ namespace GoldensMisc.Projectiles
 			if(!Main.dedServ)
 			{
 				Main.NewText("lel " + startPosition + " " + endPosition);
-				float intensity = (projectile.position.Y - startPosition) / (endPosition - startPosition);
+				float intensity = (Projectile.position.Y - startPosition) / (endPosition - startPosition);
 				Main.NewText("lol " + intensity);
 				((LaputaSky)SkyManager.Instance["GoldensMisc:Laputa"]).Intensity = intensity + 0.2f;
 			}
-			if(projectile.position.Y < endPosition)
+			if(Projectile.position.Y < endPosition)
 			{
 				Main.NewText("KILL");
 				if(!Main.dedServ)
 					SkyManager.Instance.Deactivate("GoldensMisc:Laputa");
-				projectile.Kill();
+				Projectile.Kill();
 			}
 		}
 		

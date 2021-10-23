@@ -8,7 +8,7 @@ namespace GoldensMisc.Buffs
 {
 	public class OrbofLight : ModBuff
 	{
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
@@ -18,10 +18,10 @@ namespace GoldensMisc.Buffs
 		{
 			player.GetModPlayer<MiscPlayer>().OrbofLight = true;
 			player.buffTime[buffIndex] = 18000;
-			bool projSpawned = player.ownedProjectileCounts[mod.ProjectileType(GetType().Name)] > 0;
+			bool projSpawned = player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.OrbofLight>()] > 0;
 			if(!projSpawned && player.whoAmI == Main.myPlayer)
 			{
-				Projectile.NewProjectile(player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, mod.ProjectileType(GetType().Name), 0, 0f, player.whoAmI);
+				Projectile.NewProjectile(player.GetProjectileSource_Buff(buffIndex), player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, ModContent.ProjectileType<Projectiles.OrbofLight>(), 0, 0f, player.whoAmI);
 			}
 		}
 	}

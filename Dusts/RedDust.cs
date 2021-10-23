@@ -8,6 +8,11 @@ namespace GoldensMisc.Dusts
 {
 	public class RedDust : ModDust
 	{
+		public override bool IsLoadingEnabled(Mod mod)
+		{
+			return ModContent.GetInstance<ServerConfig>().DemonCrown;
+		}
+
 		public override Color? GetAlpha(Dust dust, Color lightColor)
 		{
 			return Color.White;

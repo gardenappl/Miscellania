@@ -1,0 +1,289 @@
+
+---------------- Buffs
+
+
+BuffName.CursedMemory=Cursed Memory
+BuffDescription.CursedMemory=Cuts maximum HP in half
+
+BuffName.OrbofLight=Orb of Ancient Light
+BuffDescription.OrbofLight=A magical orb that provides light
+
+
+---------------- Commands
+
+
+CommandUsage=Usage:
+
+Command.WorldGen.Description=Generates Miscellania world features in pre-existing worlds\nWARNING: May cause lag, as well as damage previously built/generated structures!
+Command.WorldGen.HellforgeDisabled=Ancient Hellforges are disabled in the config!
+Command.WorldGen.ForgeDisabled=Ancient Forges are disabled in the config!
+
+
+---------------- Items
+
+
+ItemName.DeathEmblem=Emblem of Death
+ItemTooltip.DeathEmblem=Stare into the eyes to return to the place of your last death\nWill decrease maximum HP for a short period of time
+
+ItemName.GodStone=God Stone
+ItemTooltip.GodStone=Can be used infintely many times\nDoes not cause potion sickness\nThis is a cheater item
+
+ItemName.InertStone=Inert Stone
+ItemTooltip.InertStone='Has the potential to store magical energy'
+
+ItemName.LifeStone=Healing Stone
+ItemTooltip.LifeStone=Can be used multiple times
+
+ItemName.ManaStone=Mana Stone
+ItemTooltip.ManaStone=Can be used multiple times
+
+ItemName.DemonCrown=Demon Crown
+ItemTooltip.DemonCrown=Grants great magical powers\nSummons a Red Crystal to fight for you
+
+ItemName.HeartLocket=Heart Locket
+ItemTooltip.HeartLocket=Increases movement speed and length of invincibility after being struck
+
+ItemName.MagnetismRing=Magnetism Ring
+ -- (remove the stupid pun if you don't want to translate it)
+ItemTooltip.MagnetismRing=Increases pickup range for items, coins and mana stars\n'You're really attractive'
+
+ItemName.NinjaGear=Ninja Gear
+ItemTooltip.NinjaGear=Allows the ability to dash\nGives a chance to dodge attacks
+
+ItemName.OrbofLight=Orb of Ancient Light
+ItemTooltip.OrbofLight=Creates a magical glowing orb
+
+ItemName.ReinforcedHorseshoe=Reinforced Horseshoe
+ItemTooltip.ReinforcedHorseshoe=Negates fall damage\nGrants immunity to fire blocks and your own explosives
+
+ItemName.ReinforcedVest=Reinforced Vest
+ItemTooltip.ReinforcedVest=Grants immunity to your own explosives
+
+ItemName.UniversalMagnet=Universal Magnet
+ItemTooltip.UniversalMagnet=Increased pickup range for items
+
+ItemName.AdamantiteDye=Reflective Adamantite Dye
+
+ItemName.BaseballCap=Baseball Cap
+ -- (please remove the 'fellow kids' meme)
+ItemTooltip.BaseballCap='How do you do, fellow kids?'\nCan be worn backwards via recipe
+
+ItemName.ChlorophyteDye=Reflective Chlorophyte Dye
+
+ItemName.CobaltDye=Reflective Cobalt Dye
+
+ItemName.MatrixDye=Matrix Dye
+
+ItemName.MythrilDye=Reflective Mythril Dye
+
+ItemName.OrichalcumDye=Reflective Orichalcum Dye
+
+ItemName.PalladiumDye=Reflective Palladium Dye
+
+ItemName.TitaniumDye=Reflective Titanium Dye
+
+ItemName.VirtualDye=Virtual Dye
+
+ItemName.WormholeCrystal=Wormhole Crystal
+ItemTooltip.WormholeCrystal='You feel like it pulls you in as you hold it...'\nThis material currently has no use within Miscellania\nYou can sell it or keep it in case of future mod updates
+
+ItemName.AncientForge=Ancient Forge
+
+ItemName.AncientHellforge=Ancient Hellforge
+
+ItemName.RedChimney=Red Chimney
+
+ItemName.RedFireplace=Red Fireplace
+
+ItemName.SandstoneSlabWall=Sandstone Slab Wall
+
+ItemName.IslandStaff=Staff of Laputa
+ItemTooltip.IslandStaff=Creates a floating island\nShatters after one use
+LaputaCannotUse=Perhaps it's not a good idea to use this here.
+LaputaTooHigh=You're too high above the ground.
+LaputaBlocked=Something is blocking the sky.
+
+ItemName.RodofWarping=Rod of Warping
+ItemTooltip.RodofWarping=Teleports to the position of the mouse\nSignificantly reduced duration and damage of Chaos State
+
+ItemName.WormholeCellPhone=Network Cell Phone
+ItemTooltip.WormholeCellPhone=Displays everything\nAllows you to return home and teleport to party members at will\nClick their head on the fullscreen map
+
+ItemName.WormholeDoubleMirror=Wormhole Recall Mirror
+ItemTooltip.WormholeDoubleMirror=Gaze in the mirror to return home\nor teleport to a party member\nClick their head on the fullscreen map
+
+ItemName.WormholeIceMirror=Ice Wormhole Mirror
+ItemTooltip.WormholeIceMirror=Gaze in the mirror to return home\nor teleport to a party member\nClick their head on the fullscreen map
+
+ItemName.WormholeMirror=Wormhole Mirror
+ItemTooltip.WormholeMirror=Teleports you to a party member\nClick their head on the fullscreen map
+
+ItemName.AmethystStaff=Amethyst Staff
+
+ItemName.AncientMuramasa=Ancient Muramasa
+
+ItemName.BaseballBat=Baseball Bat
+
+ItemName.DiamondStaff=Diamond Staff
+
+ItemName.EmeraldStaff=Emerald Staff
+
+ItemName.KarmaStaff=Skeletal Staff
+ItemTooltip.KarmaStaff=Summons a blaster sentry to shoot lasers at your enemies.
+
+ItemName.MagicSpear=Spear of Justice
+ItemTooltip.MagicSpear=Rapidly throws piercing spears\n'Ngahhh!!'
+
+ItemName.RubyStaff=Ruby Staff
+
+ItemName.SapphireStaff=Sapphire Staff
+
+ItemName.TopazStaff=Topaz Staff
+
+ItemName.UndyingSpear=Spear of Undying Justice
+ItemTooltip.UndyingSpear=Rapidly throws piercing spears
+
+ItemName.Autofisher=Autofisher
+ItemTooltip.Autofisher=30% fishing power\nAutomatically catches fish and other items when placed near water, requires bait\nRight-click for more info\nUse an Item Vacuum to pick up caught items
+
+ItemName.ChestVacuum=Item Vacuum
+ItemTooltip.ChestVacuum=Sucks up nearby items and puts them in a chest below\nRight-click to enable Smart Stack mode
+
+ -- this item is not implemented, the tooltip might get changed or removed, be careful
+
+ItemName.FishNet=Fishing Net
+ItemTooltip.FishNet=Slowly catches fish and other items when placed in water\nMust be emptied manually by right-clicking
+
+
+---------------- Projectiles
+
+
+ProjectileName.GasterBlaster=Autoblaster
+
+ProjectileName.GasterLaser=Blaster Laser
+
+ProjectileName.Laputa=Laputa Light
+
+ProjectileName.MagicSpear=Spear of Justice
+
+ProjectileName.MagicSpearMini=Mini Spear of Justice
+
+ProjectileName.OrbofLight=Orb of Ancient Light
+
+ProjectileName.RedBullet=Red Bolt
+
+ProjectileName.RedCrystal=Red Crystal
+
+ProjectileName.UndyingSpear=Spear of Undying Justice
+
+
+---------------- NPCs
+
+
+NPCName.BaseballCaveBat=Baseball Cave Bat
+
+NPCName.BaseballGiantBat=Baseball Giant Bat
+
+NPCName.BaseballHellBat=Baseball Hellbat
+
+NPCName.BaseballIceBat=Baseball Ice Bat
+
+NPCName.BaseballIlluminantBat=Baseball Illuminant Bat
+
+NPCName.BaseballJungleBat=Baseball Jungle Bat
+
+NPCName.BaseballLavaBat=Baseball Lava Bat
+
+
+---------------- UI & Other
+
+
+CloseButton=Close
+
+HomeButton=Home
+
+ChestVacuum.SmartStackOn=Smart Stack: On
+ChestVacuum.SmartStackOn2=The Vacuum will only pick up items that are already present in the chest
+ChestVacuum.SmartStackOff=Smart Stack: Off
+ChestVacuum.SmartStackOff2=The Vacuum will pick up everything
+
+ItemTooltip.MechanicsRod=Can be turned into an Autofisher
+
+Autofisher.NoBait=Missing bait (place bait in adjacent chest)
+
+WorldGen.FurnitureGeneratorResults=Generated {0} out of {1}.
+WorldGen.AncientForge=Adding Ancient Forges...
+WorldGen.AncientHellforge=Adding Ancient Hellforges...
+
+
+---------------- Config
+
+
+Config.Server=General settings
+Config.Client=Client-side only settings
+Config.ServerBlocked=Only the server owner can change the config settings.
+
+Config.AltStaffs=Alternative Staves
+Config.AltStaffs.Desc=Stat changes and new early game gem staves.
+Config.MagicStones=Magic Stones
+Config.MagicStones.Desc=Magic stones that replenish health and mana for a number of uses.
+Config.GodStone=God Stone
+Config.GodStone.Desc=Unobtainable God Mode item(use Cheat Sheet or another Mod.)
+Config.DemonCrown=Demon Crown
+Config.DemonCrown.Desc=A rare drop from Demons in Hardmode. Boosts your magical abilities and summons a Red Crystal to protect you.
+Config.HeartLocket=Heart Locket
+Config.HeartLocket.Desc=Heart Locket = Panic Necklace + Cross Necklace.
+Config.Magnet=Magnets
+Config.Magnet.Desc=Item magnet and accessory combos.
+Config.NinjaGear=(Normal) Ninja Gear
+Config.NinjaGear.Desc=Ninja Gear = Tabi + Black Belt\n Ninja Gear + Climbing Gear = Master Ninja Gear
+
+Config.ReinforcedVest=Reinforced Vest
+Config.AncientForges=Ancient Forges
+Config.RedBrickFurniture=Red Brick Furniture
+Config.AncientMuramasa=Ancient Muramasa
+Config.GasterBlaster=Skeletal Staff
+Config.SpearofJustice=Spear of Justice
+Config.WormholeMirror=Wormhole Mirror
+Config.WormholePhone=Wormhole Cell Phone
+Config.RodofWarping=Rod of Warping
+Config.RodofWarpingChaosState=Rod of Warping Chaos State duration
+Config.EmblemofDeath=Emblem of Death
+Config.BuildingMaterials=Building Materials
+Config.BaseballBats=Baseball Bats
+Config.AncientOrb=Orb of Ancient Light
+Config.CellPhoneResprite=Cell Phone resprite
+Config.ExtraDyes=New strange dyes
+Config.Autofisher=Autofisher
+Config.MechanicsRodOften=Mechanic's Rod increased chance
+Config.ChestVacuum=Chest Vacuum
+
+Config.ReinforcedVest.Desc=Armor item that protects you from explosions.
+Config.AncientForges.Desc=Ancient Forges and Hellforges (pre-1.2-style furnaces) spawn in the world.
+Config.RedBrickFurniture.Desc=Red Brick Chimney and Fireplace.
+Config.AncientMuramasa.Desc=Pre-1.2-style Muramasa, rare drop from the Dungeon.
+Config.GasterBlaster.Desc=A stupid Undertale reference, also a powerful sentry summon.
+Config.SpearofJustice.Desc=A neat Hardmode magic weapon.
+Config.WormholeMirror.Desc=Endless Wormhole Potion.
+Config.WormholePhone.Desc=Wormhole Mirror + Cell Phone
+Config.RodofWarping.Desc=Post-lunar Rod of Discord
+Config.RodofWarpingChaosState.Desc=(measured in seconds)
+Config.EmblemofDeath.Desc=Item that teleports to your last place of death, but is dangerous to use.
+Config.BuildingMaterials.Desc=Sandstone Slab Wall
+ -- "Baseball Bats" are obviously a pun, translate it however you like
+Config.BaseballBats.Desc=Self-explanatory.
+Config.AncientOrb.Desc=Pre-1.2-style Orb of Light, acts as a Hardmode upgrade to Shadow Orb.
+Config.CellPhoneResprite.Desc=Changes the vanilla Cell Phone sprite to differentiate it from the Wormhole Cell Phone.
+Config.Autofisher.Desc=Automatic fisher! Requires bait.
+Config.MechanicsRodOften.Desc=Useful for crafting the Autofisher.
+Config.ChestVacuum.Desc=Automatically puts items in chests!
+
+----------------- Untranslatable (this section should be removed from all translation files other than en-US.lang)
+
+MapObject.Autofisher={$Mods.GoldensMisc.ItemName.Autofisher}
+MapObject.AncientForge={$Mods.GoldensMisc.ItemName.AncientForge}
+MapObject.AncientHellforge={$Mods.GoldensMisc.ItemName.AncientHellforge}
+MapObject.ChestVacuum={$Mods.GoldensMisc.ItemName.ChestVacuum}
+
+ItemName.BaseballCapBackwards={$Mods.GoldensMisc.ItemName.BaseballCap}
+ItemTooltip.BaseballCapBackwards={$Mods.GoldensMisc.ItemTooltip.BaseballCap}

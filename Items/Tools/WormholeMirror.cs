@@ -10,20 +10,20 @@ namespace GoldensMisc.Items.Tools
 {
 	public class WormholeMirror : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().WormholeMirror;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.width = 22;
-			item.height = 28;
-			item.useStyle = 4;
-			item.useTime = 90;
-			item.useAnimation = 90;
-			item.rare = 5;
-			item.value = Item.sellPrice(0, 10);
+			Item.width = 22;
+			Item.height = 28;
+			Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.useTime = 90;
+			Item.useAnimation = 90;
+			Item.rare = ItemRarityID.Pink;
+			Item.value = Item.sellPrice(0, 10);
 		}
 
         public override bool CanUseItem(Player player)
@@ -41,15 +41,13 @@ namespace GoldensMisc.Items.Tools
 
         public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddRecipeGroup("GoldensMisc:Silver", 10);
-			recipe.AddIngredient(ItemID.Glass, 12);
-			//recipe.AddIngredient(ModContent.ItemType<WormholeCrystal>(), 2);
-			recipe.AddIngredient(ItemID.SoulofSight, 8);
-			recipe.AddIngredient(ItemID.WormholePotion, 5);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddRecipeGroup("GoldensMisc:Silver", 10)
+				.AddIngredient(ItemID.Glass, 12)
+				.AddIngredient(ItemID.SoulofSight, 8)
+				.AddIngredient(ItemID.WormholePotion, 5)
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
 		}
 	}
 }

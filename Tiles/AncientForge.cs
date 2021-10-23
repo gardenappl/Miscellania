@@ -11,12 +11,12 @@ namespace GoldensMisc.Tiles
 {
 	public class AncientForge : ModTile
 	{
-		public override bool Autoload(ref string name, ref string texture)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().AncientForges;
 		}
 		
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
@@ -25,21 +25,21 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.CoordinateHeights = new []{ 16, 18 };
 			TileObjectData.addTile(Type);
 			AddMapEntry(Color.Gray, CreateMapEntryName());
-			//AddMapEntry(Color.Gray, mod.GetItem(GetType().Name).DisplayName);
-			disableSmartCursor = true;
-			adjTiles = new int[]{ TileID.Furnaces };
+			//AddMapEntry(Color.Gray, Mod.GetItem(GetType().Name).DisplayName);
+			//disableSmartCursor = true;
+			AdjTiles = new int[]{ TileID.Furnaces };
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType(GetType().Name));
+			Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.AncientForge>());
 		}
 
 		public override void RandomUpdate(int i, int j)
 		{
 			int amount = Main.rand.Next(1, 4);
 			for(int a = 0; a < amount; a++)
-				Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, DustID.Fire);
+				Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, DustID.Torch);
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

@@ -14,63 +14,63 @@ namespace GoldensMisc.Projectiles
 	{
 		float Rotation
 		{
-			get { return projectile.ai[0]; }
-			set { projectile.ai[0] = value; }
+			get { return Projectile.ai[0]; }
+			set { Projectile.ai[0] = value; }
 		}
 		int ShootDelay
 		{
-			get { return (int)projectile.ai[1]; }
-			set { projectile.ai[1] = value; }
+			get { return (int)Projectile.ai[1]; }
+			set { Projectile.ai[1] = value; }
 		}
 		int DustDelay
 		{
-			get { return (int)projectile.localAI[0]; }
-			set { projectile.localAI[0] = value; }
+			get { return (int)Projectile.localAI[0]; }
+			set { Projectile.localAI[0] = value; }
 		}
 		
 		const float TargetDist = 450f;
 
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().DemonCrown;
 		}
 
 		public override void SetStaticDefaults()
 		{
-			Main.projFrames[projectile.type] = 2;
+			Main.projFrames[Projectile.type] = 2;
 		}
 		
 		public override void SetDefaults()
 		{
-//			projectile.scale = 0.9f;
-			projectile.width = 16;
-			projectile.height = 25;
-			projectile.friendly = true;
-			projectile.penetrate = -1;
-			projectile.ignoreWater = true;
-			projectile.timeLeft = 5;
-			projectile.tileCollide = false;
-			projectile.magic = true;
+//			Projectile.scale = 0.9f;
+			Projectile.width = 16;
+			Projectile.height = 25;
+			Projectile.friendly = true;
+			Projectile.penetrate = -1;
+			Projectile.ignoreWater = true;
+			Projectile.timeLeft = 5;
+			Projectile.tileCollide = false;
+			Projectile.DamageType = DamageClass.Magic;
 		}
 		
 		public override void CheckActive()
 		{
-			var player = Main.player[projectile.owner];
+			var player = Main.player[Projectile.owner];
 			var modPlayer = player.GetModPlayer<MiscPlayer>();
 			if(modPlayer.DemonCrown)
 			{
-				projectile.timeLeft = 2;
+				Projectile.timeLeft = 2;
 			}
 		}
 		
 		public override void Behaviour()
 		{
-			var player = Main.player[projectile.owner];
+			var player = Main.player[Projectile.owner];
 			Rotation = MathHelper.WrapAngle(Rotation + 0.025f);
-			float distance = (float)Math.Sin(Main.time / 18f + (double)projectile.whoAmI / 50) * 64;
-			projectile.Center = player.MountedCenter + new Vector2(0, distance).RotatedBy(Rotation);
+			float distance = (float)Math.Sin(Main.time / 18f + (double)Projectile.whoAmI / 50) * 64;
+			Projectile.Center = player.MountedCenter + new Vector2(0, distance).RotatedBy(Rotation);
 			
-			Lighting.AddLight(projectile.Center, Color.Red.ToVector3() * 0.5f);
+			Lighting.AddLight(Projectile.Center, Color.Red.ToVector3() * 0.5f);
 			
 			ShootDelay--;
 			
@@ -82,8 +82,8 @@ namespace GoldensMisc.Projectiles
 					var npc = Main.npc[k];
 					if (npc.active && npc.CanBeChasedBy(this))
 					{
-						float distanceToNPC = Vector2.Distance(npc.Center, projectile.Center);
-						if (distanceToNPC < TargetDist && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+						float distanceToNPC = Vector2.Distance(npc.Center, Projectile.Center);
+						if (distanceToNPC < TargetDist && Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height))
 						{
 							target = k;
 						}
@@ -92,10 +92,10 @@ namespace GoldensMisc.Projectiles
 				
 				if(target != -1)
 				{
-					var shootVel = Main.npc[target].Center - projectile.Center;
+					var shootVel = Main.npc[target].Center - Projectile.Center;
 					shootVel.Normalize();
 					shootVel *= 6f;
-					Projectile.NewProjectile(projectile.Center, shootVel, ModContent.ProjectileType<RedBullet>(), projectile.damage, projectile.knockBack * 0.5f, projectile.owner);
+					Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center, shootVel, ModContent.ProjectileType<RedBullet>(), Projectile.damage, Projectile.knockBack * 0.5f, Projectile.owner);
 					ShootDelay = 50;
 				}
 			}
@@ -103,20 +103,20 @@ namespace GoldensMisc.Projectiles
 			DustDelay--;
 			if(DustDelay <= 0)
 			{
-				Dust.NewDustPerfect(projectile.Center, ModContent.DustType<RedDustStatic>(), Vector2.Zero, Alpha: 80, Scale: 1.3f);
+				Dust.NewDustPerfect(Projectile.Center, ModContent.DustType<RedDustStatic>(), Vector2.Zero, Alpha: 80, Scale: 1.3f);
 				DustDelay = 20;
 			}
 		}
 		
 		public override void Animate()
 		{
-			projectile.frameCounter++;
-			if(projectile.frameCounter >= 40)
+			Projectile.frameCounter++;
+			if(Projectile.frameCounter >= 40)
 			{
-				projectile.frame++;
-				if(projectile.frame > 1)
+				Projectile.frame++;
+				if(Projectile.frame > 1)
 				{
-					projectile.frame = 0;
+					Projectile.frame = 0;
 				}
 			}
 		}

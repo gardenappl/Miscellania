@@ -11,12 +11,12 @@ namespace GoldensMisc.Tiles
 {
 	public class AncientHellforge : ModTile
 	{
-		public override bool Autoload(ref string name, ref string texture)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().AncientForges;
 		}
 		
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			Main.tileObsidianKill[Type] = true;
 			Main.tileLighted[Type] = true;
@@ -27,20 +27,20 @@ namespace GoldensMisc.Tiles
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.addTile(Type);
 			AddMapEntry(Color.Red, CreateMapEntryName());
-			disableSmartCursor = true;
-			adjTiles = new int[]{ TileID.Hellforge };
+			//disableSmartCursor = true;
+			AdjTiles = new int[]{ TileID.Hellforge };
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType(GetType().Name));
+			Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.AncientHellforge>());
 		}
 
 		public override void RandomUpdate(int i, int j)
 		{
 			int amount = Main.rand.Next(1, 4);
 			for(int a = 0; a < amount; a++)
-				Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, DustID.Fire);
+				Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, DustID.Torch);
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

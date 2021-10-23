@@ -10,18 +10,18 @@ namespace GoldensMisc.Items.Equipable
 {
 	public class MagnetismRing : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().Magnet;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.width = 28;
-			item.height = 20;
-			item.value = Item.sellPrice(0, 10);
-			item.rare = 6;
-			item.accessory = true;
+			Item.width = 28;
+			Item.height = 20;
+			Item.value = Item.sellPrice(0, 10);
+			Item.rare = ItemRarityID.LightPurple;
+			Item.accessory = true;
 		}
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -33,13 +33,12 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<UniversalMagnet>());
-			recipe.AddIngredient(ItemID.CelestialMagnet);
-			recipe.AddIngredient(ItemID.GoldRing);
-			recipe.AddTile(TileID.TinkerersWorkbench);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<UniversalMagnet>())
+				.AddIngredient(ItemID.CelestialMagnet)
+				.AddIngredient(ItemID.GoldRing)
+				.AddTile(TileID.TinkerersWorkbench)
+				.Register();
 		}
 	}
 }

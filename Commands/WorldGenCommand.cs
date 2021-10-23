@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.World.Generation;
+using Terraria.WorldBuilding;
 
 namespace GoldensMisc.Commands
 {
@@ -31,7 +31,7 @@ namespace GoldensMisc.Commands
 					Main.NewText(Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.HellforgeDisabled"));
 					return;
 				}
-				new Task(() => ModContent.GetInstance<MiscWorld>().AddHellforges()).Start();
+				new Task(() => ModContent.GetInstance<MiscSystem>().AddHellforges()).Start();
 			}
 			else if(args[0].Equals("forge", StringComparison.OrdinalIgnoreCase))
 			{
@@ -40,7 +40,7 @@ namespace GoldensMisc.Commands
 					Main.NewText(Language.GetTextValue("Mods.GoldensMisc.Command.WorldGen.ForgeDisabled"));
 					return;
 				}
-				new Task(() => ModContent.GetInstance<MiscWorld>().AddForges()).Start();
+				new Task(() => ModContent.GetInstance<MiscSystem>().AddForges()).Start();
 			}
 			else
 			{

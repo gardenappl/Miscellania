@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.DataStructures;
+using Terraria.Audio;
 
 namespace GoldensMisc.Tiles
 {
@@ -15,21 +16,20 @@ namespace GoldensMisc.Tiles
         const float PickupRadiusSq = 160f * 160f;
         public bool smartStackChanged = false;
         private int timer = 0;
-        private int setupTimer = 0;
 
 
-        public override bool Autoload(ref string name)
+        public override bool IsLoadingEnabled(Mod mod)
         {
             return ModContent.GetInstance<ServerConfig>().ChestVacuum;
         }
 
-        public override bool ValidTile(int i, int j)
+        public override bool IsTileValidForEntity(int i, int j)
         {
             var tile = Main.tile[i, j];
-            return tile.active() && tile.type == ModContent.TileType<ChestVacuum>() && tile.frameX == 0;
+            return tile.IsActive && tile.type == ModContent.TileType<ChestVacuum>() && tile.frameX == 0;
         }
 
-        public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction)
+        public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction, int alternate)
         {
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
@@ -66,25 +66,22 @@ namespace GoldensMisc.Tiles
             }
         }
 
-        public override void NetReceive(BinaryReader reader, bool lightReceive)
+        public override void NetReceive(BinaryReader reader)
         {
             smartStack = reader.ReadBoolean();
         }
 
-        public override void NetSend(BinaryWriter writer, bool lightSend)
+        public override void NetSend(BinaryWriter writer)
         {
             writer.Write(smartStack);
         }
 
-        public override TagCompound Save()
+        public override void SaveData(TagCompound tag)
         {
-            return new TagCompound
-            {
-                {"smartStack", smartStack}
-            };
+            tag["smartStack"] = smartStack;
         }
 
-        public override void Load(TagCompound tag)
+        public override void LoadData(TagCompound tag)
         {
             smartStack = tag.GetBool("smartStack");
         }
@@ -102,29 +99,29 @@ namespace GoldensMisc.Tiles
                     Vector2 itemPos = item.position;
                     int itemWidth = item.width;
                     int itemHeight = item.height;
-                    //string itemName = item.Name;
+                    //string itemName = Item.Name;
                     int oldStack = item.stack;
                     MiscUtils.PutItem(chest, item, smartStack);
-                    if (item.type == 0 || oldStack - item.stack > 0)
+                    if (item.type == ItemID.None || oldStack - item.stack > 0)
                     {
-                        if (item.stack == 0 || item.type == 0)
+                        if (item.stack == 0 || item.type == ItemID.None)
                         {
                             item.active = false;
                         }
                         if (Main.netMode != NetmodeID.Server)
                         {
-                            Main.PlaySound(SoundID.Item8, itemPos);
-                            Main.PlaySound(SoundID.Grab, myPos);
+                            SoundEngine.PlaySound(SoundID.Item8, itemPos);
+                            SoundEngine.PlaySound(SoundID.Grab, myPos);
                             for (int j = 0; j < 10; j++)
                             {
-                                Dust.NewDust(itemPos, itemWidth, itemHeight, 159);
-                                Dust.NewDust(Position.ToWorldCoordinates(0, 0), 32, 16, 159);
+                                Dust.NewDust(itemPos, itemWidth, itemHeight, DustID.Teleporter);
+                                Dust.NewDust(Position.ToWorldCoordinates(0, 0), 32, 16, DustID.Teleporter);
                             }
                         }
                         else if (Main.netMode == NetmodeID.Server)
                         {
                             var te = (ChestVacuumTE)TileEntity.ByPosition[Position];
-                            var netMessage = mod.GetPacket();
+                            var netMessage = Mod.GetPacket();
                             netMessage.Write((byte)MiscMessageType.AddItemByWayOfVacuum);
                             netMessage.Write(te.ID);
                             netMessage.Send();

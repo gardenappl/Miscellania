@@ -10,20 +10,20 @@ namespace GoldensMisc.Items.Equipable
 {
 	public class NinjaGear : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().NinjaGear;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.width = 30;
-			item.height = 26;
-			item.value = Item.sellPrice(0, 5);
-			item.rare = 8;
-			item.accessory = true;
-			item.shoeSlot = 3; //Tabi equipped texture
-			item.waistSlot = 10; //Black Belt equipped texture
+			Item.width = 30;
+			Item.height = 26;
+			Item.value = Item.sellPrice(0, 5);
+			Item.rare = ItemRarityID.Yellow;
+			Item.accessory = true;
+			Item.shoeSlot = 3; //Tabi equipped texture
+			Item.waistSlot = 10; //Black Belt equipped texture
 		}
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -34,12 +34,11 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Tabi);
-			recipe.AddIngredient(ItemID.BlackBelt);
-			recipe.AddTile(TileID.TinkerersWorkbench);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.Tabi)
+				.AddIngredient(ItemID.BlackBelt)
+				.AddTile(TileID.TinkerersWorkbench)
+				.Register();
 		}
 	}
 }

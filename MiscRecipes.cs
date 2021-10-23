@@ -14,14 +14,14 @@ namespace GoldensMisc
 	{
 		public static void AddRecipeGroups()
 		{
-			var recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.SilverBar), 
+			var recipeGroup = new RecipeGroup(() => Language.GetText("LegacyMisc.37") + " " + Lang.GetItemNameValue(ItemID.SilverBar), 
 				ItemID.SilverBar,
 				ItemID.TungstenBar
 			);
 			RecipeGroup.RegisterGroup("GoldensMisc:Silver", recipeGroup);
 			if(ModContent.GetInstance<ServerConfig>().AncientMuramasa)
 			{
-				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Muramasa), 
+				recipeGroup = new RecipeGroup(() => Language.GetText("LegacyMisc.37") + " " + Lang.GetItemNameValue(ItemID.Muramasa), 
 					ItemID.Muramasa,
 				    ModContent.ItemType<AncientMuramasa>()
 				);
@@ -29,7 +29,7 @@ namespace GoldensMisc
 			}
 			if(ModContent.GetInstance<ServerConfig>().AncientForges)
 			{
-				recipeGroup = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemID.Hellforge),
+				recipeGroup = new RecipeGroup(() => Language.GetText("LegacyMisc.37") + " " + Lang.GetItemNameValue(ItemID.Hellforge),
 					ItemID.Hellforge,
 					ModContent.ItemType<AncientHellforge>()
 				);
@@ -39,43 +39,34 @@ namespace GoldensMisc
 		
 		public static void PostAddRecipes()
 		{
-			if(ModContent.GetInstance<ServerConfig>().AncientMuramasa)
+
+			for (int i = 0; i < Recipe.numRecipes; i++)
 			{
-				var finder = new RecipeFinder();
-				finder.AddIngredient(ItemID.Muramasa);
-				var foundRecipes = finder.SearchRecipes();
-				foreach(var foundRecipe in foundRecipes)
+				Recipe recipe = Main.recipe[i];
+
+				if (ModContent.GetInstance<ServerConfig>().AncientMuramasa)
 				{
-					var editor = new RecipeEditor(foundRecipe);
-					editor.AcceptRecipeGroup("GoldensMisc:Muramasa");
+					if (recipe.TryGetIngredient(ItemID.Muramasa, out Item ingredient))
+					{
+						ingredient.stack = 0;
+						recipe.AddRecipeGroup("GoldensMisc:Muramasa");
+					}
 				}
-			}
-			if(ModContent.GetInstance<ServerConfig>().AncientForges)
-			{
-				var finder = new RecipeFinder();
-				finder.AddIngredient(ItemID.Hellforge);
-				var foundRecipes = finder.SearchRecipes();
-				foreach(var foundRecipe in foundRecipes)
+				if (ModContent.GetInstance<ServerConfig>().AncientForges)
 				{
-					var editor = new RecipeEditor(foundRecipe);
-					editor.AcceptRecipeGroup("GoldensMisc:Hellforge");
+					if (recipe.TryGetIngredient(ItemID.Hellforge, out Item ingredient))
+					{
+						ingredient.stack = 0;
+						recipe.AddRecipeGroup("GoldensMisc:Hellforge");
+					}
 				}
-			}
-			if(ModContent.GetInstance<ServerConfig>().NinjaGear)
-			{
-				var finder = new RecipeFinder();
-				finder.AddIngredient(ItemID.TigerClimbingGear);
-				finder.AddIngredient(ItemID.Tabi);
-				finder.AddIngredient(ItemID.BlackBelt);
-				finder.SetResult(ItemID.MasterNinjaGear);
-				
-				var foundRecipes = finder.SearchRecipes();
-				foreach(var foundRecipe in foundRecipes)
+				if (ModContent.GetInstance<ServerConfig>().NinjaGear)
 				{
-					var editor = new RecipeEditor(foundRecipe);
-					editor.DeleteIngredient(ItemID.Tabi);
-					editor.DeleteIngredient(ItemID.BlackBelt);
-					editor.AddIngredient(ModContent.ItemType<NinjaGear>());
+					if (recipe.TryGetIngredient(ItemID.Tabi, out Item ingredientTabi) && recipe.TryGetIngredient(ItemID.BlackBelt, out Item ingredientBelt))
+					{
+						ingredientTabi.stack = 0;
+						ingredientBelt.stack = 0;
+					}
 				}
 			}
 		}

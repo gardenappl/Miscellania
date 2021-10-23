@@ -1,7 +1,6 @@
 ﻿
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using GoldensMisc.Items.Equipable.Vanity;
@@ -11,20 +10,22 @@ using GoldensMisc.Tiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Chat;
 using Terraria.DataStructures;
 using Terraria.GameContent.Dyes;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
+using Terraria.GameContent;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
+
 
 namespace GoldensMisc
 {
 	public class GoldensMisc : Mod
 	{
 		public static bool VanillaTweaksLoaded;
-		public static Texture2D CellPhoneTexture;
+		private static ReLogic.Content.Asset<Texture2D> CellPhoneTexture;
 		
 		public GoldensMisc()
 		{
@@ -34,7 +35,7 @@ namespace GoldensMisc
 		public override void Load()
 		{
 			AutofisherHooks.Initialize();
-			VanillaTweaksLoaded = ModLoader.GetMod("VanillaTweaks") != null;
+			VanillaTweaksLoaded = ModLoader.TryGetMod("VanillaTweaks", out Mod VanillaTweaks);
 
 			if (ModContent.GetInstance<ServerConfig>().WormholeMirror)
 				WormholeHacks.Load();
@@ -42,10 +43,10 @@ namespace GoldensMisc
 			if(!Main.dedServ)
 			{
 				MiscGlowMasks.Load();
-				if(ModContent.GetInstance<ClientConfig>().CellPhoneResprite)
+				if (ModContent.GetInstance<ClientConfig>().CellPhoneResprite)
 				{
-					CellPhoneTexture = Main.itemTexture[ItemID.CellPhone];
-					Main.itemTexture[ItemID.CellPhone] = GetTexture("Items/Tools/CellPhone_Resprite");
+					CellPhoneTexture = TextureAssets.Item[ItemID.CellPhone];
+					TextureAssets.Item[ItemID.CellPhone] = ModContent.Request<Texture2D>("GoldensMisc/Items/Tools/CellPhone_Resprite");
 				}
 				//				SkyManager.Instance["GoldensMisc:Laputa"] = new LaputaSky();
 
@@ -62,20 +63,16 @@ namespace GoldensMisc
 					GameShaders.Armor.BindShader(ModContent.ItemType<ChlorophyteDye>(), new ReflectiveArmorShaderData(Main.PixelShaderRef, "ArmorReflectiveColor")).UseColor(0.5f, 1.1f, 0.1f);
 				}
 			}
-			if(ModContent.GetInstance<ServerConfig>().SpearofJustice)
-			{
-				AddProjectile("MagicSpearMiniAlt", new MagicSpearMini());
-			}
 		}
 		
 		public override void PostSetupContent()
 		{
-			var hotkeysMod = ModLoader.GetMod("HelpfulHotkeys");
-			if(hotkeysMod != null && ModContent.GetInstance<ServerConfig>().WormholeMirror)
+			bool hotkeysModLoaded = ModLoader.TryGetMod("HelpfulHotkeys", out Mod helpfulHotkeysMod);
+			if(hotkeysModLoaded && ModContent.GetInstance<ServerConfig>().WormholeMirror)
 			{
-				hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeDoubleMirror>());
-				hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeIceMirror>());
-				hotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeCellPhone>());
+				helpfulHotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeDoubleMirror>());
+				helpfulHotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeIceMirror>());
+				helpfulHotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeCellPhone>());
 			}
 			if(ModContent.GetInstance<ServerConfig>().ChestVacuum)
 			{
@@ -90,7 +87,7 @@ namespace GoldensMisc
 			MiscGlowMasks.Unload();
 			if(CellPhoneTexture != null)
 			{
-				Main.itemTexture[ItemID.CellPhone] = CellPhoneTexture;
+				TextureAssets.Item[ItemID.CellPhone] = CellPhoneTexture;
 				CellPhoneTexture = null;
 			}
 			AutofisherHooks.Unload();
@@ -129,7 +126,7 @@ namespace GoldensMisc
 				Log("Added CatchFish hook");
 				return true;
 			}
-			throw new Exception("Invalid mod.Call() message. Could be caused by an outdated version of Miscellania, or by a typo in someone else's mod.");
+			throw new Exception("Invalid Mod.Call() message. Could be caused by an outdated version of Miscellania, or by a typo in someone else's Mod.");
 		}
 
 		public override void HandlePacket(BinaryReader reader, int whoAmI)
@@ -142,7 +139,7 @@ namespace GoldensMisc
 					case MiscMessageType.PrintAutofisherInfo:
 						int id = reader.ReadInt32();
 						var te = (AutofisherTE)TileEntity.ByID[id];
-						NetMessage.SendChatMessageToClient(NetworkText.FromLiteral(te.DisplayedFishingInfo), Color.White, whoAmI);
+						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(te.DisplayedFishingInfo), Color.White, whoAmI);
 						break;
                     case MiscMessageType.AddItemByWayOfVacuum:
                         id = reader.ReadInt32();

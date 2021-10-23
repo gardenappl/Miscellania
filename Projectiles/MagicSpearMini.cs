@@ -1,9 +1,6 @@
-﻿
-using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Projectiles
@@ -12,35 +9,35 @@ namespace GoldensMisc.Projectiles
 	{
 		int timesSpawned
 		{
-			get { return (int)projectile.ai[1]; }
-			set { projectile.ai[1] = value; }
+			get { return (int)Projectile.ai[1]; }
+			set { Projectile.ai[1] = value; }
 		}
 		
 		bool undying
 		{
-			get { return projectile.ai[0] > 0; }
-			set { projectile.ai[0] = value ? 1 : 0; }
+			get { return Projectile.ai[0] > 0; }
+			set { Projectile.ai[0] = value ? 1 : 0; }
 		}
 
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().SpearofJustice;
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 14;
-			projectile.height = 18;
-			projectile.scale = 1.3f;
-			projectile.aiStyle = 1;
-			projectile.friendly = true;
-			projectile.maxPenetrate = -1;
-			projectile.magic = true;
-			projectile.light = 0.1f;
-			projectile.tileCollide = false;
-			projectile.timeLeft = 60;
-			projectile.ignoreWater = true;
-			aiType = ProjectileID.Bullet;
+			Projectile.width = 14;
+			Projectile.height = 18;
+			Projectile.scale = 1.3f;
+			Projectile.aiStyle = 1;
+			Projectile.friendly = true;
+			Projectile.maxPenetrate = -1;
+			Projectile.DamageType = DamageClass.Magic;
+			Projectile.light = 0.1f;
+			Projectile.tileCollide = false;
+			Projectile.timeLeft = 60;
+			Projectile.ignoreWater = true;
+			AIType = ProjectileID.Bullet;
 		}
 		
 		public override Color? GetAlpha(Color lightColor)
@@ -54,23 +51,23 @@ namespace GoldensMisc.Projectiles
 			{
 				return;
 			}
-			int type = Main.rand.Next(2) == 0 ? mod.ProjectileType("MagicSpearMini") : mod.ProjectileType("MagicSpearMiniAlt");
-			
-			if(undying)
+			int type = Main.rand.Next(2) == 0 ? ModContent.ProjectileType<MagicSpearMini>() : ModContent.ProjectileType<MagicSpearMiniAlt>();
+
+			if (undying)
 			{
 				switch(Main.rand.Next(4))
 				{
 					case 0: //Shoot right
-						Projectile.NewProjectile(target.Left.X - 100, target.Left.Y, 5f, 0f, type, projectile.damage, 1f, projectile.owner, 1, timesSpawned + 1);
+						Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Left.X - 100, target.Left.Y, 5f, 0f, type, Projectile.damage, 1f, Projectile.owner, 1, timesSpawned + 1);
 						return;
 					case 1: //Shoot down
-						Projectile.NewProjectile(target.Top.X, target.Top.Y - 100, 0f, 5f, type, projectile.damage, 1f, projectile.owner, 1, timesSpawned + 1);
+						Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Top.X, target.Top.Y - 100, 0f, 5f, type, Projectile.damage, 1f, Projectile.owner, 1, timesSpawned + 1);
 						return;
 					case 2: //Shoot left
-						Projectile.NewProjectile(target.Right.X + 100, target.Right.Y, -5f, 0f, type, projectile.damage, 1f, projectile.owner, 1, timesSpawned + 1);
+						Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Right.X + 100, target.Right.Y, -5f, 0f, type, Projectile.damage, 1f, Projectile.owner, 1, timesSpawned + 1);
 						return;
 					case 3: //Shoot up
-						Projectile.NewProjectile(target.Bottom.X, target.Bottom.Y + 100, 0f, -5f, type, projectile.damage, 1f, projectile.owner, 1, timesSpawned + 1);
+						Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Bottom.X, target.Bottom.Y + 100, 0f, -5f, type, Projectile.damage, 1f, Projectile.owner, 1, timesSpawned + 1);
 						return;
 				}
 			}
@@ -79,16 +76,16 @@ namespace GoldensMisc.Projectiles
 				switch(Main.rand.Next(4))
 				{
 					case 0: //Shoot right
-						Projectile.NewProjectile(target.Left.X - 80, target.Left.Y, 4f, 0f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
+						Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Left.X - 80, target.Left.Y, 4f, 0f, type, Projectile.damage, 0.5f, Projectile.owner, 0, timesSpawned + 1);
 						return;
 					case 1: //Shoot down
-						Projectile.NewProjectile(target.Top.X, target.Top.Y - 80, 0f, 4f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
+						Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Top.X, target.Top.Y - 80, 0f, 4f, type, Projectile.damage, 0.5f, Projectile.owner, 0, timesSpawned + 1);
 						return;
 					case 2: //Shoot left
-						Projectile.NewProjectile(target.Right.X + 80, target.Right.Y, -4f, 0f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
+						Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Right.X + 80, target.Right.Y, -4f, 0f, type, Projectile.damage, 0.5f, Projectile.owner, 0, timesSpawned + 1);
 						return;
 					case 3: //Shoot up
-						Projectile.NewProjectile(target.Bottom.X, target.Bottom.Y + 80, 0f, -4f, type, projectile.damage, 0.5f, projectile.owner, 0, timesSpawned + 1);
+						Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Bottom.X, target.Bottom.Y + 80, 0f, -4f, type, Projectile.damage, 0.5f, Projectile.owner, 0, timesSpawned + 1);
 						return;
 				}
 			}

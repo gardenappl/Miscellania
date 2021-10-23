@@ -57,7 +57,7 @@ namespace GoldensMisc.Items
 						item.value = Item.sellPrice(0, 0, 35);
 						break;
 					case ItemID.RubyStaff:
-						item.rare = 2;
+						item.rare = ItemRarityID.Green;
 						item.useTime = 27;
 						item.useAnimation = 27;
 						break;
@@ -67,7 +67,7 @@ namespace GoldensMisc.Items
 						item.useAnimation = 25;
 						break;
 					case ItemID.AmberStaff:
-						item.rare = 2;
+						item.rare = ItemRarityID.Green;
 						item.damage = 22;
 						item.useTime = 26;
 						item.useAnimation = 26;

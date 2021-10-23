@@ -1,6 +1,7 @@
 ﻿
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -8,10 +9,11 @@ namespace GoldensMisc.Dusts
 {
 	public class RedDustStatic : ModDust
 	{
-		public override bool Autoload(ref string name, ref string texture)
+		public override string Texture => "GoldensMisc/Dusts/RedDust";
+
+		public override bool IsLoadingEnabled (Mod mod)
 		{
-			texture = "GoldensMisc/Dusts/RedDust";
-			return base.Autoload(ref name, ref texture);
+			return ModContent.GetInstance<ServerConfig>().DemonCrown;
 		}
 		
 		public override Color? GetAlpha(Dust dust, Color lightColor)

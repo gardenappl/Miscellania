@@ -63,20 +63,15 @@ namespace GoldensMisc
 		{
 			if(ExplosionResistant)
 			{
-				int projType = damageSource.SourceProjectileType;
+				int projType = (int)damageSource.SourceProjectileType;
 				var proj = new Projectile();
 				proj.SetDefaults(projType);
-				if(proj.aiStyle == 16 && damageSource.SourcePlayerIndex == player.whoAmI)
+				if(proj.aiStyle == 16 && damageSource.SourcePlayerIndex == Player.whoAmI)
 					return false;
 			}
 			return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource);
 		}
 		
-		public override void PostUpdateEquips()
-		{
-			if(DemonCrown && player.ownedProjectileCounts[ModContent.ProjectileType<RedCrystal>()] == 0)
-				Projectile.NewProjectile(player.Center, Vector2.Zero, ModContent.ProjectileType<RedCrystal>(), 60, 8, player.whoAmI);
-		}
 		
 //		//stolen from Elemental Unleash
 //		//tbh this is not necessary but switching the sprite to the normal Recall Mirror is a nice detail I hope
@@ -98,17 +93,17 @@ namespace GoldensMisc
 //		static readonly PlayerLayer PreHeldItem = new PlayerLayer("GoldensMisc", "PreHeldItem", PlayerLayer.HeldItem, delegate(PlayerDrawInfo drawInfo)
 //		{
 //			var mod = GoldensMisc.Instance;
-//			Main.itemTexture[ModContent.ItemType<WormholeIceMirror>()] = Main.itemTexture[ItemID.IceMirror];
-//			Main.itemTexture[ModContent.ItemType<WormholeDoubleMirror>()] = Main.itemTexture[ItemID.MagicMirror];
-//			Main.itemTexture[ModContent.ItemType<WormholeCellPhone>()] = Main.itemTexture[ItemID.CellPhone];
+//			GameContent.TextureAssets.Item[ModContent.ItemType<WormholeIceMirror>()].Value = GameContent.TextureAssets.Item[ItemID.IceMirror].Value;
+//			GameContent.TextureAssets.Item[ModContent.ItemType<WormholeDoubleMirror>()].Value = GameContent.TextureAssets.Item[ItemID.MagicMirror].Value;
+//			GameContent.TextureAssets.Item[ModContent.ItemType<WormholeCellPhone>()].Value = GameContent.TextureAssets.Item[ItemID.CellPhone].Value;
 //		});
 		
 //		static readonly PlayerLayer PostHeldItem = new PlayerLayer("GoldensMisc", "PostHeldItem", PlayerLayer.HeldItem, delegate(PlayerDrawInfo drawInfo)
 //		{
 //			var mod = GoldensMisc.Instance;
-//			Main.itemTexture[ModContent.ItemType<WormholeIceMirror>()] = mod.GetTexture("Items/Tools/WormholeIceMirror");
-//			Main.itemTexture[ModContent.ItemType<WormholeDoubleMirror>()] = mod.GetTexture("Items/Tools/WormholeDoubleMirror");
-//			Main.itemTexture[ModContent.ItemType<WormholeCellPhone>()] = mod.GetTexture("Items/Tools/WormholeCellPhone");
+//			GameContent.TextureAssets.Item[ModContent.ItemType<WormholeIceMirror>()].Value = Mod.GetTexture("Items/Tools/WormholeIceMirror");
+//			GameContent.TextureAssets.Item[ModContent.ItemType<WormholeDoubleMirror>()].Value = Mod.GetTexture("Items/Tools/WormholeDoubleMirror");
+//			GameContent.TextureAssets.Item[ModContent.ItemType<WormholeCellPhone>()].Value = Mod.GetTexture("Items/Tools/WormholeCellPhone");
 //		});
 
 

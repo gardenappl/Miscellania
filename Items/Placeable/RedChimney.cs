@@ -9,24 +9,23 @@ namespace GoldensMisc.Items.Placeable
 {
 	public class RedChimney : ModItem
 	{
-		public override bool Autoload(ref string name)
+		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().RedBrickFurniture;
 		}
 		
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.Chimney);
-			item.createTile = mod.TileType(GetType().Name);
+			Item.CloneDefaults(ItemID.Chimney);
+			Item.createTile = ModContent.TileType<Tiles.RedChimney>();
 		}
 		
 		public override void AddRecipes()
 		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.RedBrick, 10);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.RedBrick, 10)
+				.AddTile(TileID.WorkBenches)
+				.Register();
 		}
 	}
 }
