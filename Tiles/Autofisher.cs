@@ -74,7 +74,7 @@ namespace GoldensMisc.Tiles
 			catch(Exception e)
 			{
 				GoldensMisc.Log(e);
-				Main.NewText("Error! Report this error and send the Terraria/Logs/Logs.txt file!");
+				Main.NewText("Error! Report this error and send the Terraria/Modloader/Logs/Client.log file!");
 			}
             return true;
 		}

@@ -87,8 +87,8 @@ namespace GoldensMisc
 			int[] countedTiles = CountBiomeTiles(x, y);
 
 			var currentZone = (Zone)0;
-			if(countedTiles[0] >= 100)
-				currentZone |= Zone.Holy;
+			if (countedTiles[0] >= 100)
+				currentZone |= Zone.Hallow;
 			if(countedTiles[1] >= 200)
 				currentZone |= Zone.Corrupt;
 			if(countedTiles[2] >= 200)
@@ -103,6 +103,8 @@ namespace GoldensMisc
 				currentZone |= Zone.Dungeon;
 			if(countedTiles[7] >= 1000)
 				currentZone |= Zone.Desert;
+			if (countedTiles[7] >= 1000 && (x <= 380 || x >= Main.maxTilesX - 380))
+				currentZone |= Zone.Beach;
 
 			return currentZone;
 		}
@@ -345,7 +347,7 @@ namespace GoldensMisc
 			if(player.ZoneCrimson)
 				zone |= Zone.Crimson;
 			if(player.ZoneHallow)
-				zone |= Zone.Holy;
+				zone |= Zone.Hallow;
 			if(player.ZoneSnow)
 				zone |= Zone.Snow;
 			if(player.ZoneJungle)
@@ -356,6 +358,8 @@ namespace GoldensMisc
 				zone |= Zone.Dungeon;
 			if(player.ZoneDesert)
 				zone |= Zone.Desert;
+			if (player.ZoneBeach)
+				zone |= Zone.Beach;
 			return zone;
 		}
 
@@ -401,11 +405,12 @@ namespace GoldensMisc
 		None = 0,
 		Corrupt = 1,
 		Crimson = 2,
-		Holy = 4,
+		Hallow = 4,
 		Snow = 8,
 		Jungle = 16,
 		Shroom = 32,
 		Dungeon = 64,
-		Desert = 128
+		Desert = 128,
+		Beach = 256
 	}
 }

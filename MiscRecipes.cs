@@ -48,7 +48,7 @@ namespace GoldensMisc
 				{
 					if (recipe.TryGetIngredient(ItemID.Muramasa, out Item ingredient))
 					{
-						ingredient.stack = 0;
+						recipe.RemoveIngredient(ingredient);
 						recipe.AddRecipeGroup("GoldensMisc:Muramasa");
 					}
 				}
@@ -56,16 +56,17 @@ namespace GoldensMisc
 				{
 					if (recipe.TryGetIngredient(ItemID.Hellforge, out Item ingredient))
 					{
-						ingredient.stack = 0;
+						recipe.RemoveIngredient(ingredient);
 						recipe.AddRecipeGroup("GoldensMisc:Hellforge");
 					}
 				}
 				if (ModContent.GetInstance<ServerConfig>().NinjaGear)
 				{
-					if (recipe.TryGetIngredient(ItemID.Tabi, out Item ingredientTabi) && recipe.TryGetIngredient(ItemID.BlackBelt, out Item ingredientBelt))
+					if (recipe.TryGetIngredient(ItemID.Tabi, out Item ingredientTabi) && recipe.TryGetIngredient(ItemID.BlackBelt, out Item ingredientBelt) && !recipe.TryGetResult(ModContent.ItemType<NinjaGear>(), out Item result))
 					{
-						ingredientTabi.stack = 0;
-						ingredientBelt.stack = 0;
+						recipe.RemoveIngredient(ingredientTabi);
+						recipe.RemoveIngredient(ingredientBelt);
+						recipe.AddIngredient(ModContent.ItemType<NinjaGear>());
 					}
 				}
 			}

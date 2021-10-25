@@ -53,7 +53,7 @@ namespace GoldensMisc.Tiles
 			catch(KeyNotFoundException e)
             {
                 GoldensMisc.Log(e);
-                Main.NewText("Error! Report this error and send the Terraria/Logs/Logs.txt file!");
+                Main.NewText("Error! Report this error and send the Terraria/Modloader/Logs/client.log file!");
             }
 		}
 		
