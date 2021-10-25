@@ -52,7 +52,21 @@ namespace GoldensMisc.Tiles
 			tileObjectData.AnchorAlternateTiles = anchorTileList.ToArray();
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+		public override bool CanPlace(int i, int j)
+		{
+			Tile tile1 = Main.tile[i, j + 1];
+			Tile tile2 = Main.tile[i + 1, j + 1];
+			if ((tile2 != null || tile2.IsActive) && tile1.frameX != (tile2.frameX - 18))
+			{
+				return false;
+			}
+			else
+			{ 
+				return true;
+			}
+		}
+
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.ChestVacuum>());
             ModContent.GetInstance<ChestVacuumTE>().Kill(i, j);
