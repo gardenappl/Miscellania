@@ -169,7 +169,7 @@ Mods: {
 			UndyingSpear: Rapidly throws piercing spears
 			Autofisher:
 				'''
-				30% fishing power
+				35% fishing power
 				Automatically catches fish and other items when placed near water, requires bait
 				Right-click for more info
 				Use an Item Vacuum to pick up caught items

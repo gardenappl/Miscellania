@@ -37,10 +37,10 @@ namespace GoldensMisc
 		[DefaultValue(true)]
 		public bool Autofisher;
 
-		[Label("$Mods.GoldensMisc.Config.MechanicsRodOften")]
-		[Tooltip("$Mods.GoldensMisc.Config.MechanicsRodOften.Desc")]
-		[DefaultValue(true)]
-		public bool MechanicsRodOften;
+		//[Label("$Mods.GoldensMisc.Config.MechanicsRodOften")]
+		//[Tooltip("$Mods.GoldensMisc.Config.MechanicsRodOften.Desc")]
+		//[DefaultValue(true)]
+		//public bool MechanicsRodOften;
 
 		[Label("$Mods.GoldensMisc.Config.ChestVacuum")]
 		[Tooltip("$Mods.GoldensMisc.Config.ChestVacuum.Desc")]

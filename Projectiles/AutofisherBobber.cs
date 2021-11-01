@@ -1,4 +1,5 @@
 ﻿using GoldensMisc.Tiles;
+using static GoldensMisc.MiscUtils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -17,7 +18,7 @@ namespace GoldensMisc.Projectiles
 	public class AutofisherBobber : ModProjectile
 	{
 		static readonly Color FishingLineColor = new Color(250, 90, 70, 100);
-		
+
 		public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.BobberMechanics;
 
 		public override bool IsLoadingEnabled (Mod mod)
@@ -63,75 +64,27 @@ namespace GoldensMisc.Projectiles
 				Projectile.Kill();
 				return;
 			}
-			//Projectile.timeLeft = 60;
-			//if(Main.player[Projectile.owner].inventory[Main.player[Projectile.owner].selectedItem].fishingPole == 0 || Main.player[Projectile.owner].CCed || Main.player[Projectile.owner].noItems)
-			//	Projectile.Kill();
-			//else if(Main.player[Projectile.owner].inventory[Main.player[Projectile.owner].selectedItem].shoot != Projectile.type)
-			//	Projectile.Kill();
-			//else if(Main.player[Projectile.owner].pulley)
-			//	Projectile.Kill();
-			//else if(Main.player[Projectile.owner].dead)
-			//	Projectile.Kill();
-
-			//if((double)Projectile.ai[1] > 0.0 && (double)Projectile.localAI[1] >= 0.0)
-			//{
-			//	Projectile.localAI[1] = -1f;
-			//	if(!Projectile.lavaWet && !Projectile.honeyWet)
-			//	{
-			//		for(int index1 = 0; index1 < 100; ++index1)
-			//		{
-			//			int index2 = Dust.NewDust(new Vector2((float)(Projectile.position.X - 6.0), (float)(Projectile.position.Y - 10.0)), Projectile.width + 12, 24, Dust.dustWater(), 0.0f, 0.0f, 0);
-			//			Main.dust[index2].velocity.Y -= 4.0f;
-			//			Main.dust[index2].velocity.X *= 2.5f;
-			//			Main.dust[index2].scale = 0.8f;
-			//			Main.dust[index2].alpha = 100;
-			//			Main.dust[index2].noGravity = true;
-			//		}
-			//		Main.PlaySound(19, (int)Projectile.position.X, (int)Projectile.position.Y, 0, 1f, 0.0f);
-			//	}
-			//}
 
 			if((double)Projectile.ai[0] >= 1.0)
 			{
-				//don't know what this is
-				//if((double)Projectile.ai[0] == 2.0)
-				//{
-				//	++Projectile.ai[0];
-				//	Main.PlaySound(SoundID.Item17, Projectile.position);
-				//	if(!Projectile.lavaWet && !Projectile.honeyWet)
-				//	{
-				//		for(int index1 = 0; index1 < 100; ++index1)
-				//		{
-				//			int index2 = Dust.NewDust(new Vector2((float)(Projectile.position.X - 6.0), (float)(Projectile.position.Y - 10.0)), Projectile.width + 12, 24, Dust.dustWater(), 0.0f, 0.0f, 0);
-				//			Main.dust[index2].velocity.Y -= 4.0f;
-				//			Main.dust[index2].velocity.X *= 2.5f;
-				//			Main.dust[index2].scale = 0.8f;
-				//			Main.dust[index2].alpha = 100;
-				//			Main.dust[index2].noGravity = true;
-				//		}
-				//		Main.PlaySound(19, (int)Projectile.position.X, (int)Projectile.position.Y, 0, 1f, 0.0f);
-				//	}
-				//}
-				//if((double)Projectile.localAI[0] < 100.0)
-				//	++Projectile.localAI[0];
 				Projectile.tileCollide = false;
 				const double productDivisor = 15.8999996185303;
 				const double ten = 10;
 				Vector2 vector2 = new Vector2((float)(Projectile.position.X + (double)Projectile.width * 0.5), (float)(Projectile.position.Y + (double)Projectile.height * 0.5));
-				//float num5 = (float)(Main.player[Projectile.owner].position.X + (double)(Main.player[Projectile.owner].width / 2) - vector2.X);
-				//float num6 = (float)(Main.player[Projectile.owner].position.Y + (double)(Main.player[Projectile.owner].height / 2) - vector2.Y);
 				float num5 = (te.Position.X + 1.5f) * 16f - vector2.X;
 				float num6 = (te.Position.Y + 1) * 16f - vector2.Y; 
 				float num7 = (float)Math.Sqrt((double)num5 * (double)num5 + (double)num6 * (double)num6);
 				if((double)num7 > 3000.0)
+                {
 					Projectile.Kill();
+				}
+					
 				double num8 = (double)num7;
 				float num9 = (float)(productDivisor / num8);
 				float num10 = num5 * num9;
 				float num11 = num6 * num9;
 				Projectile.velocity.X = (float)((Projectile.velocity.X * (double)(ten - 1) + (double)num10) / ten);
 				Projectile.velocity.Y = (float)((Projectile.velocity.Y * (double)(ten - 1) + (double)num11) / ten);
-				//if(Main.myPlayer == Projectile.owner)
 				if(Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					Rectangle rectangle1 = new Rectangle((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
@@ -186,13 +139,6 @@ namespace GoldensMisc.Projectiles
 			}
 			else
 			{
-				//bool flag = false;
-				//Vector2 vector2 = new Vector2((float)(Projectile.position.X + (double)Projectile.width * 0.5), (float)(Projectile.position.Y + (double)Projectile.height * 0.5));
-				//float num1 = (float)(Main.player[Projectile.owner].position.X + (double)(Main.player[Projectile.owner].width / 2) - vector2.X);
-				//float num2 = (float)(Main.player[Projectile.owner].position.Y + (double)(Main.player[Projectile.owner].height / 2) - vector2.Y);
-				//Projectile.rotation = (float)Math.Atan2((double)num2, (double)num1) + 1.57f;
-				//if(Math.Sqrt((double)num1 * (double)num1 + (double)num2 * (double)num2) > 900.0)
-				//	Projectile.ai[0] = 1f;
 				if(Projectile.wet)
 				{
 					Projectile.rotation = 0.0f;
@@ -234,8 +180,6 @@ namespace GoldensMisc.Projectiles
 					}
 					else
 						Projectile.velocity.Y = (float)((double)num6 - Projectile.Center.Y);
-					//if((double)Projectile.velocity.Y >= -0.01f && (double)Projectile.velocity.Y <= 0.01f)
-					//	flag = true;
 				}
 				else
 				{
@@ -248,231 +192,149 @@ namespace GoldensMisc.Projectiles
 					if(Projectile.velocity.Y > 15.9f)
 						Projectile.velocity.Y = 15.9f;
 				}
-				//if(Main.netMode != NetmodeID.MultiplayerClient)
-				//{
-				//	int num3 = te.GetFishingLevel(te.GetCurrentBait());
-				//	if(num3 < 0 && num3 == -1)
-				//		te.displayedFishingInfo = Language.GetTextValue("GameUI.FishingWarning");
-				//}
-
-				//if((double)Projectile.ai[0] != 0.0)
-				//	flag = true;
-				//if(!flag)
-				//	return;
-				//if((double)Projectile.ai[1] == 0.0 && Main.netMode != NetmodeID.MultiplayerClient)
-				//{
-				//	int num3 = Main.player[Projectile.owner].FishingLevel();
-				//	if(num3 == -9000)
-				//	{
-				//		Projectile.localAI[1] += 5f;
-				//		Projectile.localAI[1] += (float)Main.rand.Next(1, 3);
-				//		if((double)Projectile.localAI[1] <= 660.0)
-				//			return;
-				//		Projectile.localAI[1] = 0.0f;
-				//		Projectile.FishingCheck();
-				//	}
-				//	else
-				//	{
-				//		if(Main.rand.Next(300) < num3)
-				//			Projectile.localAI[1] += (float)Main.rand.Next(1, 3);
-				//		Projectile.localAI[1] += (float)(num3 / 30);
-				//		Projectile.localAI[1] += (float)Main.rand.Next(1, 3);
-				//		if(Main.rand.Next(60) == 0)
-				//			Projectile.localAI[1] += 60f;
-				//		if((double)Projectile.localAI[1] <= 660.0)
-				//			return;
-				//		Projectile.localAI[1] = 0.0f;
-				//		Projectile.FishingCheck();
-				//	}
-				//}
-				//else
-				//{
-				//	if((double)Projectile.ai[1] >= 0.0)
-				//		return;
-				//	if(Projectile.velocity.Y == 0.0 || Projectile.honeyWet && (double)Projectile.velocity.Y >= -0.01 && (double)Projectile.velocity.Y <= 0.01)
-				//	{
-				//		Projectile.velocity.Y = (float)((double)Main.rand.Next(100, 500) * 0.0149999996647239);
-				//		Projectile.velocity.X = (float)((double)Main.rand.Next(-100, 101) * 0.0149999996647239);
-				//		Projectile.wet = false;
-				//		Projectile.lavaWet = false;
-				//		Projectile.honeyWet = false;
-				//	}
-				//	Projectile.ai[1] += (float)Main.rand.Next(1, 5);
-				//	if((double)Projectile.ai[1] < 0.0)
-				//		return;
-				//	Projectile.ai[1] = 0.0f;
-				//	Projectile.localAI[1] = 0.0f;
-				//	Projectile.netUpdate = true;
-				//}
 			}
 		}
 
 		public int FishingCheck(bool catchRealFish)
 		{
 			var te = (AutofisherTE)TileEntity.ByID[(int)Projectile.ai[1]];
-
-			var baitItem = te.GetCurrentBait();
+			AutoFishingAttempt autoFisher = new();
+			autoFisher.baitItem = te.GetCurrentBait();
 			int bobberTileX = (int)(Projectile.Center.X / 16.0);
 			int bobberTileY = (int)(Projectile.Center.Y / 16.0);
-			if((int)Main.tile[bobberTileX, bobberTileY].LiquidAmount < 0)
-				++bobberTileY;
-			bool lava = false;
-			bool honey = false;
-			int i1 = bobberTileX;
-			int i2 = bobberTileX;
-			while(i1 > 10 && (int)Main.tile[i1, bobberTileY].LiquidAmount > 0 && !WorldGen.SolidTile(i1, bobberTileY))
-				--i1;
-			while(i2 < Main.maxTilesX - 10 && (int)Main.tile[i2, bobberTileY].LiquidAmount > 0 && !WorldGen.SolidTile(i2, bobberTileY))
-				++i2;
-			int poolSize = 0;
-			for(int i3 = i1; i3 <= i2; ++i3)
-			{
-				int j2 = bobberTileY;
-				while((int)Main.tile[i3, j2].LiquidAmount > 0 && !WorldGen.SolidTile(i3, j2) && j2 < Main.maxTilesY - 10)
-				{
-					++poolSize;
-					++j2;
-					if(MiscUtils.hasLava(Main.tile[i3, j2]))
-						lava = true;
-					else if(MiscUtils.hasHoney(Main.tile[i3, j2]))
-						honey = true;
-				}
-			}
-			if(honey)
-				poolSize = (int)((double)poolSize * 1.5);
-			if(poolSize < 75)
+			autoFisher.position.X = bobberTileX;
+			autoFisher.position.Y = bobberTileY;
+			GetAutoFishingPondState(autoFisher.position.X, autoFisher.position.Y, out autoFisher.inLava, out autoFisher.inHoney, out autoFisher.poolSize, out autoFisher.chumsInWater);
+			if(autoFisher.poolSize < 75)
 			{
 				if(Main.netMode != NetmodeID.MultiplayerClient)
 					te.DisplayedFishingInfo = Language.GetTextValue("GameUI.NotEnoughWater");
 			}
 			else
 			{
-				int fishingPower = te.GetFishingLevel(baitItem);
-				if(fishingPower == 0)
+				autoFisher.fishingPower = te.GetFishingLevel(autoFisher.baitItem);
+				if(autoFisher.fishingPower == 0)
 					return -1;
-				if(Main.netMode != NetmodeID.MultiplayerClient)
-					te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FishingPower", (object)fishingPower);
-				//if(num2 < 0)
-				//{
-				//	if(num2 != -1)
-				//		return;
-				//	te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FishingWarning");
-				//	if(index >= 380 && index <= Main.maxTilesX - 380 || (num1 <= 1000 || NPC.AnyNPCs(370)))
-				//		return;
-
-				//	Projectile.ai[1] = (float)(Main.rand.Next(-180, -60) - 100);
-
-				//	Projectile.localAI[1] = (float)num2;
-
-				//	Projectile.netUpdate = true;
-
-				//}
-				//else
+				if (autoFisher.chumsInWater == 0)
+				{ 
+					//do nothing
+				}
+				else if(autoFisher.chumsInWater == 1 )
 				{
-					const double maxPoolSize = 300;
-					float worldSize = (float)(Main.maxTilesX / 4200);
-					float Atmosphere = (float)((Projectile.position.Y / 16.0 - (60.0 + 10.0 * (double)(worldSize * worldSize))) / (Main.worldSurface / 6.0));
-					if((double)Atmosphere < 0.25)
-						Atmosphere = 0.25f;
-					if((double)Atmosphere > 1.0)
-						Atmosphere = 1f;
-					int waterNeededToFish = (int)(maxPoolSize * (double)Atmosphere);
-					float waterQuality = (float)poolSize / (float)waterNeededToFish;
-					if((double)waterQuality < 1.0)
-						fishingPower = (int)((double)fishingPower * (double)waterQuality);
-					float invertedEffectivePoolSize = 1f - waterQuality;
-					if(poolSize < waterNeededToFish && Main.netMode != NetmodeID.MultiplayerClient)
-						te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FullFishingPower", (object)fishingPower, (object)-Math.Round((double)invertedEffectivePoolSize * 100.0));
-					int num9 = (fishingPower + 75) / 2;
+					autoFisher.fishingPower += 11;
+				}
+				else if (autoFisher.chumsInWater == 2)
+				{
+					autoFisher.fishingPower += 17;
+				}
+				else if (autoFisher.chumsInWater > 2)
+				{
+					autoFisher.fishingPower += 20;
+				}
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+					te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FishingPower", (object)autoFisher.fishingPower);
+				const double maxPoolSize = 300;
+				float worldSize = (float)(Main.maxTilesX / 4200);
+				autoFisher.atmosphere = (float)((Projectile.position.Y / 16.0 - (60.0 + 10.0 * (double)(worldSize * worldSize))) / (Main.worldSurface / 6.0));
+				if((double)autoFisher.atmosphere < 0.25)
+					autoFisher.atmosphere = 0.25f;
+				if((double)autoFisher.atmosphere > 1.0)
+					autoFisher.atmosphere = 1f;
+				autoFisher.waterNeededToFish = (int)(maxPoolSize * (double)autoFisher.atmosphere);
+				autoFisher.waterQuality = (float)autoFisher.poolSize / (float)autoFisher.waterNeededToFish;
+				if((double)autoFisher.waterQuality < 1.0)
+					autoFisher.fishingPower = (int)((double)autoFisher.fishingPower * (double)autoFisher.waterQuality);
+				double invertedWaterQuality = 1f - autoFisher.waterQuality;
+				if(autoFisher.poolSize < autoFisher.waterNeededToFish && Main.netMode != NetmodeID.MultiplayerClient)
+					te.DisplayedFishingInfo = Language.GetTextValue("GameUI.FullFishingPower", (object)autoFisher.fishingPower, (object)-Math.Round(invertedWaterQuality * 100.0));
+				int num9 = (autoFisher.fishingPower + 75) / 2;
 
-					if(!catchRealFish)
-						return -1;
+				if(!catchRealFish)
+					return -1;
 
-					if(/*Main.player[Projectile.owner].wet || */Main.rand.Next(100) > num9)
-						return -1;
-					int heightLevel;
-					bool isSurface = (double)Projectile.position.Y < Main.worldSurface * 0.5;
+				if(Main.rand.Next(3) > num9)
+					return -1;
+				bool isSky = autoFisher.position.Y < Main.worldSurface * 0.5;
+				if (isSky)
+				{
+					autoFisher.heightLevel = 0;
+				}
+				else
+				{
+					bool isSurface = autoFisher.position.Y < Main.worldSurface;
 					if (isSurface)
 					{
-						heightLevel = 0;
+						autoFisher.heightLevel = 1;
 					}
 					else
 					{
-						bool isUnderground = (double)Projectile.position.Y < Main.worldSurface;
+						bool isUnderground = autoFisher.position.Y < Main.rockLayer;
 						if (isUnderground)
 						{
-							heightLevel = 1;
+							autoFisher.heightLevel = 2;
 						}
 						else
 						{
-							bool isCavern = (double)Projectile.position.Y < Main.rockLayer;
+							bool isCavern = autoFisher.position.Y < Main.maxTilesY - 300;
 							if (isCavern)
 							{
-								heightLevel = 2;
+								autoFisher.heightLevel = 3;
 							}
 							else
 							{
-								bool isMolten = Projectile.position.Y < Main.maxTilesY - 300;
-								if (isMolten)
-								{
-									//Lava Layer
-									heightLevel = 3;
-								}
-								else
-								{
-									//Welcome to Hell
-									heightLevel = 4;
-								}
+								//Welcome to Hell
+								autoFisher.heightLevel = 4;
 							}
 						}
 					}
-					var zone = MiscUtils.GetZoneInLocation(te.Position.X, te.Position.Y);
-					bool junk = false;
-					// Vanilla Fishing Algorithm
-					AutofisherCheck_RollDropLevels(fishingPower, out bool common, out bool uncommon, out bool rare, out bool veryrare, out bool legendary, out bool crate);
-					int questFish = AutofisherCheck_ProbeForQuestFish();
-					int caughtType = AutofisherCheck_RollItemDrop(fishingPower, poolSize, waterNeededToFish, zone, heightLevel, Projectile.position, questFish, common, uncommon, rare, veryrare, legendary, crate, honey, lava);
-					AutofisherHooks.CatchFish(te, zone, baitItem, fishingPower, lava ? 1 : (honey ? 2 : 0), poolSize, heightLevel, ref caughtType, ref junk);
-
-					if(caughtType <= 0 /*|| Crates.Contains(num10) */)
-						return -1;
-
-					//          if (Main.player[Projectile.owner].sonarPotion)
-					//          {
-					//            Item newItem = new Item();
-					//int Type = num10;
-					//int num19 = 0;
-					//newItem.SetDefaults(Type, num19 != 0);
-					//            Vector2 position = Projectile.position;
-					//newItem.position = position;
-					//            int stack = 1;
-					//int num20 = 1;
-					//int num21 = 0;
-					//ItemText.NewText(newItem, stack, num20 != 0, num21 != 0);
-					//          }
-
-					//float num22 = (float)num2;
-
-					//Projectile.ai[1] = (float)Main.rand.Next(-240, -90) - num22;
-
-					//Projectile.localAI[1] = (float)num10;
-
-					//Projectile.netUpdate = true;
-					Projectile.ai[0] = caughtType;
-					Projectile.netUpdate = true;
-					return junk? -2 : caughtType;
 				}
+				autoFisher.zone = MiscUtils.GetZoneInLocation(te.Position.X, te.Position.Y);
+				autoFisher.isJunk = false;
+				// Vanilla Fishing Algorithm
+				AutofisherCheck_RollDropLevels(ref autoFisher);
+				AutofisherCheck_ProbeForQuestFish(ref autoFisher);
+				AutofisherCheck_RollItemDrop(ref autoFisher);
+				AutofisherHooks.CatchFish(te, autoFisher.zone, autoFisher.baitItem, autoFisher.fishingPower, autoFisher.inLava ? 1 : (autoFisher.inHoney ? 2 : 0), autoFisher.poolSize, autoFisher.heightLevel, ref autoFisher.caughtItem, ref autoFisher.isJunk);
+				//GoldensMisc.Log(autoFisher.caughtItem);
+				if(autoFisher.caughtItem <= 0 /*|| Crates.Contains(num10) */)
+					return -1;
+
+				//          if (Main.player[Projectile.owner].sonarPotion)
+				//          {
+				//            Item newItem = new Item();
+				//int Type = num10;
+				//int num19 = 0;
+				//newItem.SetDefaults(Type, num19 != 0);
+				//            Vector2 position = Projectile.position;
+				//newItem.position = position;
+				//            int stack = 1;
+				//int num20 = 1;
+				//int num21 = 0;
+				//ItemText.NewText(newItem, stack, num20 != 0, num21 != 0);
+				//          }
+
+				//float num22 = (float)num2;
+
+				//Projectile.ai[1] = (float)Main.rand.Next(-240, -90) - num22;
+
+				//Projectile.localAI[1] = (float)num10;
+
+				//Projectile.netUpdate = true;
+				Projectile.ai[0] = autoFisher.caughtItem;
+				Projectile.netUpdate = true;
+				return autoFisher.isJunk ? -2 : autoFisher.caughtItem;
+				
 			}
 			return -1;
 		}
 
-		static void AutofisherCheck_RollDropLevels(int fishingLevel, out bool common, out bool uncommon, out bool rare, out bool veryrare, out bool legendary, out bool crate)
+		static void AutofisherCheck_RollDropLevels(ref AutoFishingAttempt autoFisher)
 		{
-			int commonChance = 150 / fishingLevel;
-			int uncommonChance = 300 / fishingLevel;
-			int rareChance = 1050 / fishingLevel;
-			int veryRareChance = 2250 / fishingLevel;
-			int legendaryChance = 4500 / fishingLevel;
+			int commonChance = 150 / autoFisher.fishingPower;
+			int uncommonChance = 300 / autoFisher.fishingPower;
+			int rareChance = 1050 / autoFisher.fishingPower;
+			int veryRareChance = 2250 / autoFisher.fishingPower;
+			int legendaryChance = 4500 / autoFisher.fishingPower;
 			const int crateChance = 10;
 			bool flag = commonChance < 2;
 			if (flag)
@@ -499,76 +361,74 @@ namespace GoldensMisc.Projectiles
 			{
 				legendaryChance = 6;
 			}
-			common = false;
-			uncommon = false;
-			rare = false;
-			veryrare = false;
-			legendary = false;
-			crate = false;
+			autoFisher.common = false;
+			autoFisher.uncommon = false;
+			autoFisher.rare = false;
+			autoFisher.veryrare = false;
+			autoFisher.legendary = false;
+			autoFisher.crate = false;
 			bool flag6 = Main.rand.Next(commonChance) == 0;
 			if (flag6)
 			{
-				common = true;
+				autoFisher.common = true;
 			}
 			bool flag7 = Main.rand.Next(uncommonChance) == 0;
 			if (flag7)
 			{
-				uncommon = true;
+				autoFisher.uncommon = true;
 			}
 			bool flag8 = Main.rand.Next(rareChance) == 0;
 			if (flag8)
 			{
-				rare = true;
+				autoFisher.rare = true;
 			}
 			bool flag9 = Main.rand.Next(veryRareChance) == 0;
 			if (flag9)
 			{
-				veryrare = true;
+				autoFisher.veryrare = true;
 			}
 			bool flag10 = Main.rand.Next(legendaryChance) == 0;
 			if (flag10)
 			{
-				legendary = true;
+				autoFisher.legendary = true;
 			}
 			bool flag11 = Main.rand.Next(100) < crateChance;
 			if (flag11)
 			{
-				crate = true;
+				autoFisher.crate = true;
 			}
 		}
 
-		static int AutofisherCheck_ProbeForQuestFish()
+		static void AutofisherCheck_ProbeForQuestFish(ref AutoFishingAttempt autoFisher)
 		{
-			int questFish = Main.anglerQuestItemNetIDs[Main.anglerQuest];
+			autoFisher.questFish = Main.anglerQuestItemNetIDs[Main.anglerQuest];
 			bool isAnglerActive = !NPC.AnyNPCs(369);
 			if (isAnglerActive)
 			{
-				questFish = -1;
+				autoFisher.questFish = -1;
 			}
 			bool anglerQuestFinished = Main.anglerQuestFinished;
 			if (anglerQuestFinished)
 			{
-				questFish = -1;
+				autoFisher.questFish = -1;
 			}
-			return questFish;
 		}
 
-		static int AutofisherCheck_RollItemDrop(int fishingLevel , int poolSize, int waterNeededToFish, Zone zone, int heightLevel, Vector2 position, int questFish, bool common, bool uncommon, bool rare, bool veryrare, bool legendary, bool crate, bool inLava, bool inHoney)
+		static void AutofisherCheck_RollItemDrop(ref AutoFishingAttempt autoFisher)
 		{
-			int caughtItem = -1;
-			if (inLava)
+			if (autoFisher.inLava)
 			{
-				bool flag5 = crate && Main.rand.Next(5) == 0;
+				bool flag5 = autoFisher.crate && Main.rand.Next(5) == 0;
 				if (flag5)
 				{
-					caughtItem = (Main.hardMode ? 4878 : 4877);
+					autoFisher.caughtItem = (Main.hardMode ? 4878 : 4877);
 				}
 				else
 				{
-					bool flag6 = legendary && Main.hardMode && Main.rand.Next(3) == 0;
+					bool flag6 = autoFisher.legendary && Main.hardMode && Main.rand.Next(3) == 0;
 					if (flag6)
 					{
-						caughtItem = (int)Main.rand.NextFromList(new short[]
+						autoFisher.caughtItem = (int)Main.rand.NextFromList(new short[]
 						{
 							4819,
 							4820,
@@ -578,10 +438,10 @@ namespace GoldensMisc.Projectiles
 					}
 					else
 					{
-						bool flag7 = legendary && !Main.hardMode && Main.rand.Next(3) == 0;
+						bool flag7 = autoFisher.legendary && !Main.hardMode && Main.rand.Next(3) == 0;
 						if (flag7)
 						{
-							caughtItem = (int)Main.rand.NextFromList(new short[]
+							autoFisher.caughtItem = (int)Main.rand.NextFromList(new short[]
 							{
 								4819,
 								4820,
@@ -590,15 +450,15 @@ namespace GoldensMisc.Projectiles
 						}
 						else
 						{
-							if (veryrare)
+							if (autoFisher.veryrare)
 							{
-								caughtItem = 2312;
+								autoFisher.caughtItem = 2312;
 							}
 							else
 							{
-								if (rare)
+								if (autoFisher.rare)
 								{
-									caughtItem = 2315;
+									autoFisher.caughtItem = 2315;
 								}
 							}
 						}
@@ -607,111 +467,112 @@ namespace GoldensMisc.Projectiles
 			}
 			else
 			{
-				if (inHoney)
+				if (autoFisher.inHoney)
 				{
-					bool flag8 = rare || (uncommon && Main.rand.Next(2) == 0);
+					bool flag8 = autoFisher.rare || (autoFisher.uncommon && Main.rand.Next(2) == 0);
 					if (flag8)
 					{
-						caughtItem = 2314;
+						autoFisher.caughtItem = 2314;
 					}
 					else
 					{
-						bool flag9 = uncommon && questFish == 2451;
+						bool flag9 = autoFisher.uncommon && autoFisher.questFish == 2451;
 						if (flag9)
 						{
-							caughtItem = 2451;
+							autoFisher.caughtItem = 2451;
 						}
 					}
 				}
 				else
 				{
-					bool flag10 = Main.rand.Next(50) > fishingLevel && Main.rand.Next(50) > fishingLevel && poolSize < waterNeededToFish;
+					bool flag10 = Main.rand.Next(50) > autoFisher.fishingPower && Main.rand.Next(50) > autoFisher.fishingPower && autoFisher.poolSize < autoFisher.waterNeededToFish;
 					if (flag10)
 					{
-						caughtItem = Main.rand.Next(2337, 2340);
+						autoFisher.isJunk = true;
+						autoFisher.caughtItem = Main.rand.Next(2337, 2340);
 					}
 					else
 					{
-						if (crate)
+						if (autoFisher.crate)
 						{
 							bool hardMode = Main.hardMode;
-							bool flag11 = veryrare || legendary;
+							bool flag11 = autoFisher.veryrare || autoFisher.legendary;
 							if (flag11)
 							{
-								caughtItem = (hardMode ? 3981 : 2336);
+								autoFisher.caughtItem = (hardMode ? 3981 : 2336);
 							}
 							else
 							{
-								bool flag12 = rare && zone.HasFlag(Zone.Dungeon);
+								bool flag12 = autoFisher.rare && autoFisher.zone.HasFlag(Zone.Dungeon);
 								if (flag12)
 								{
-									caughtItem = (hardMode ? 3984 : 3205);
+									autoFisher.caughtItem = (hardMode ? 3984 : 3205);
 								}
 								else
 								{
-									bool flag13 = rare && zone.HasFlag(Zone.Beach);
+									bool flag13 = autoFisher.rare && autoFisher.zone.HasFlag(Zone.Beach);
 									if (flag13)
 									{
-										caughtItem = (hardMode ? 5003 : 5002);
+										autoFisher.caughtItem = (hardMode ? 5003 : 5002);
 									}
 									else
 									{
-										bool flag14 = rare && zone.HasFlag(Zone.Corrupt);
+										bool flag14 = autoFisher.rare && autoFisher.zone.HasFlag(Zone.Corrupt);
 										if (flag14)
 										{
-											caughtItem = (hardMode ? 3982 : 3203);
+											autoFisher.caughtItem = (hardMode ? 3982 : 3203);
 										}
 										else
 										{
-											bool flag15 = rare && zone.HasFlag(Zone.Crimson);
+											bool flag15 = autoFisher.rare && autoFisher.zone.HasFlag(Zone.Crimson);
 											if (flag15)
 											{
-												caughtItem = (hardMode ? 3983 : 3204);
+												autoFisher.caughtItem = (hardMode ? 3983 : 3204);
 											}
 											else
 											{
-												bool flag16 = rare && zone.HasFlag(Zone.Hallow);
+												bool flag16 = autoFisher.rare && autoFisher.zone.HasFlag(Zone.Hallow);
 												if (flag16)
 												{
-													caughtItem = (hardMode ? 3986 : 3207);
+													autoFisher.caughtItem = (hardMode ? 3986 : 3207);
 												}
 												else
 												{
-													bool flag17 = rare && zone.HasFlag(Zone.Jungle);
+													bool flag17 = autoFisher.rare && autoFisher.zone.HasFlag(Zone.Jungle);
 													if (flag17)
 													{
-														caughtItem = (hardMode ? 3987 : 3208);
+														autoFisher.caughtItem = (hardMode ? 3987 : 3208);
 													}
 													else
 													{
-														bool flag18 = rare && zone.HasFlag(Zone.Snow);
+														bool flag18 = autoFisher.rare && autoFisher.zone.HasFlag(Zone.Snow);
 														if (flag18)
 														{
-															caughtItem = (hardMode ? 4406 : 4405);
+															autoFisher.caughtItem = (hardMode ? 4406 : 4405);
 														}
 														else
 														{
-															bool flag19 = rare && zone.HasFlag(Zone.Desert);
+															bool flag19 = autoFisher.rare && autoFisher.zone.HasFlag(Zone.Desert);
 															if (flag19)
 															{
-																caughtItem = (hardMode ? 4408 : 4407);
+																autoFisher.caughtItem = (hardMode ? 4408 : 4407);
 															}
 															else
 															{
-																bool flag20 = rare && heightLevel == 0;
+																bool flag20 = autoFisher.rare && autoFisher.heightLevel == 0;
 																if (flag20)
 																{
-																	caughtItem = (hardMode ? 3985 : 3206);
+																	autoFisher.caughtItem = (hardMode ? 3985 : 3206);
 																}
 																else
 																{
-																	if (uncommon)
+																	if (autoFisher.uncommon)
 																	{
-																		caughtItem = (hardMode ? 3980 : 2335);
+																		autoFisher.caughtItem = (hardMode ? 3980 : 2335);
 																	}
 																	else
 																	{
-																		caughtItem = (hardMode ? 3979 : 2334);
+																		autoFisher.caughtItem = (hardMode ? 3979 : 2334);
 																	}
 																}
 															}
@@ -726,56 +587,56 @@ namespace GoldensMisc.Projectiles
 						}
 						else
 						{
-							bool flag21 = !NPC.combatBookWasUsed && Main.bloodMoon && legendary && Main.rand.Next(3) == 0;
+							bool flag21 = !NPC.combatBookWasUsed && Main.bloodMoon && autoFisher.legendary && Main.rand.Next(3) == 0;
 							if (flag21)
 							{
-								caughtItem = 4382;
+								autoFisher.caughtItem = 4382;
 							}
 							else
 							{
-								bool flag22 = legendary && Main.rand.Next(5) == 0;
+								bool flag22 = autoFisher.legendary && Main.rand.Next(5) == 0;
 								if (flag22)
 								{
-									caughtItem = 2423;
+									autoFisher.caughtItem = 2423;
 								}
 								else
 								{
-									bool flag23 = legendary && Main.rand.Next(5) == 0;
+									bool flag23 = autoFisher.legendary && Main.rand.Next(5) == 0;
 									if (flag23)
 									{
-										caughtItem = 3225;
+										autoFisher.caughtItem = 3225;
 									}
 									else
 									{
-										bool flag24 = legendary && Main.rand.Next(10) == 0;
+										bool flag24 = autoFisher.legendary && Main.rand.Next(10) == 0;
 										if (flag24)
 										{
-											caughtItem = 2420;
+											autoFisher.caughtItem = 2420;
 										}
 										else
 										{
-											bool flag25 = !legendary && !veryrare && uncommon && Main.rand.Next(5) == 0;
+											bool flag25 = !autoFisher.legendary && !autoFisher.veryrare && autoFisher.uncommon && Main.rand.Next(5) == 0;
 											if (flag25)
 											{
-												caughtItem = 3196;
+												autoFisher.caughtItem = 3196;
 											}
 											else
 											{
-												bool flag = zone.HasFlag(Zone.Desert);
-												bool zoneDungeon = zone.HasFlag(Zone.Dungeon);
+												bool flag = autoFisher.zone.HasFlag(Zone.Desert);
+												bool zoneDungeon = autoFisher.zone.HasFlag(Zone.Dungeon);
 												if (zoneDungeon)
 												{
 													flag = false;
-													bool flag26 = caughtItem == 0 && veryrare && Main.rand.Next(7) == 0;
+													bool flag26 = autoFisher.caughtItem == 0 && autoFisher.veryrare && Main.rand.Next(7) == 0;
 													if (flag26)
 													{
-														caughtItem = 3000;
+														autoFisher.caughtItem = 3000;
 													}
 												}
 												else
 												{
-													bool flag2 = zone.HasFlag(Zone.Corrupt);
-													bool flag3 = zone.HasFlag(Zone.Crimson);
+													bool flag2 = autoFisher.zone.HasFlag(Zone.Corrupt);
+													bool flag3 = autoFisher.zone.HasFlag(Zone.Crimson);
 													bool flag27 = flag2 && flag3;
 													if (flag27)
 													{
@@ -792,52 +653,52 @@ namespace GoldensMisc.Projectiles
 													bool flag29 = flag2;
 													if (flag29)
 													{
-														bool flag30 = legendary && Main.hardMode && zone.HasFlag(Zone.Snow) && heightLevel == 3 && Main.rand.Next(3) != 0;
+														bool flag30 = autoFisher.legendary && Main.hardMode && autoFisher.zone.HasFlag(Zone.Snow) && autoFisher.heightLevel == 3 && Main.rand.Next(3) != 0;
 														if (flag30)
 														{
-															caughtItem = 2429;
+															autoFisher.caughtItem = 2429;
 														}
 														else
 														{
-															bool flag31 = legendary && Main.hardMode && Main.rand.Next(2) == 0;
+															bool flag31 = autoFisher.legendary && Main.hardMode && Main.rand.Next(2) == 0;
 															if (flag31)
 															{
-																caughtItem = 3210;
+																autoFisher.caughtItem = 3210;
 															}
 															else
 															{
-																bool rare2 = rare;
+																bool rare2 = autoFisher.rare;
 																if (rare2)
 																{
-																	caughtItem = 2330;
+																	autoFisher.caughtItem = 2330;
 																}
 																else
 																{
-																	bool flag32 = uncommon && questFish == 2454;
+																	bool flag32 = autoFisher.uncommon && autoFisher.questFish == 2454;
 																	if (flag32)
 																	{
-																		caughtItem = 2454;
+																		autoFisher.caughtItem = 2454;
 																	}
 																	else
 																	{
-																		bool flag33 = uncommon && questFish == 2485;
+																		bool flag33 = autoFisher.uncommon && autoFisher.questFish == 2485;
 																		if (flag33)
 																		{
-																			caughtItem = 2485;
+																			autoFisher.caughtItem = 2485;
 																		}
 																		else
 																		{
-																			bool flag34 = uncommon && questFish == 2457;
+																			bool flag34 = autoFisher.uncommon && autoFisher.questFish == 2457;
 																			if (flag34)
 																			{
-																				caughtItem = 2457;
+																				autoFisher.caughtItem = 2457;
 																			}
 																			else
 																			{
-																				bool uncommon2 = uncommon;
+																				bool uncommon2 = autoFisher.uncommon;
 																				if (uncommon2)
 																				{
-																					caughtItem = 2318;
+																					autoFisher.caughtItem = 2318;
 																				}
 																			}
 																		}
@@ -851,43 +712,43 @@ namespace GoldensMisc.Projectiles
 														bool flag35 = flag3;
 														if (flag35)
 														{
-															bool flag36 = legendary && Main.hardMode && zone.HasFlag(Zone.Snow) && heightLevel == 3 && Main.rand.Next(3) != 0;
+															bool flag36 = autoFisher.legendary && Main.hardMode && autoFisher.zone.HasFlag(Zone.Snow) && autoFisher.heightLevel == 3 && Main.rand.Next(3) != 0;
 															if (flag36)
 															{
-																caughtItem = 2429;
+																autoFisher.caughtItem = 2429;
 															}
 															else
 															{
-																bool flag37 = legendary && Main.hardMode && Main.rand.Next(2) == 0;
+																bool flag37 = autoFisher.legendary && Main.hardMode && Main.rand.Next(2) == 0;
 																if (flag37)
 																{
-																	caughtItem = 3211;
+																	autoFisher.caughtItem = 3211;
 																}
 																else
 																{
-																	bool flag38 = uncommon && questFish == 2477;
+																	bool flag38 = autoFisher.uncommon && autoFisher.questFish == 2477;
 																	if (flag38)
 																	{
-																		caughtItem = 2477;
+																		autoFisher.caughtItem = 2477;
 																	}
 																	else
 																	{
-																		bool flag39 = uncommon && questFish == 2463;
+																		bool flag39 = autoFisher.uncommon && autoFisher.questFish == 2463;
 																		if (flag39)
 																		{
-																			caughtItem = 2463;
+																			autoFisher.caughtItem = 2463;
 																		}
 																		else
 																		{
-																			if (uncommon)
+																			if (autoFisher.uncommon)
 																			{
-																				caughtItem = 2319;
+																				autoFisher.caughtItem = 2319;
 																			}
 																			else
 																			{
-																				if (common)
+																				if (autoFisher.common)
 																				{
-																					caughtItem = 2305;
+																					autoFisher.caughtItem = 2305;
 																				}
 																			}
 																		}
@@ -897,62 +758,62 @@ namespace GoldensMisc.Projectiles
 														}
 														else
 														{
-															bool zoneHallow = zone.HasFlag(Zone.Hallow);
+															bool zoneHallow = autoFisher.zone.HasFlag(Zone.Hallow);
 															if (zoneHallow)
 															{
-																bool flag40 = legendary && Main.hardMode && zone.HasFlag(Zone.Snow) && heightLevel == 3 && Main.rand.Next(3) != 0;
+																bool flag40 = autoFisher.legendary && Main.hardMode && autoFisher.zone.HasFlag(Zone.Snow) && autoFisher.heightLevel == 3 && Main.rand.Next(3) != 0;
 																if (flag40)
 																{
-																	caughtItem = 2429;
+																	autoFisher.caughtItem = 2429;
 																}
 																else
 																{
-																	bool flag41 = legendary && Main.hardMode && Main.rand.Next(2) == 0;
+																	bool flag41 = autoFisher.legendary && Main.hardMode && Main.rand.Next(2) == 0;
 																	if (flag41)
 																	{
-																		caughtItem = 3209;
+																		autoFisher.caughtItem = 3209;
 																	}
 																	else
 																	{
-																		bool flag42 = heightLevel > 1 && veryrare;
+																		bool flag42 = autoFisher.heightLevel > 1 && autoFisher.veryrare;
 																		if (flag42)
 																		{
-																			caughtItem = 2317;
+																			autoFisher.caughtItem = 2317;
 																		}
 																		else
 																		{
-																			bool flag43 = heightLevel > 1 && uncommon && questFish == 2465;
+																			bool flag43 = autoFisher.heightLevel > 1 && autoFisher.uncommon && autoFisher.questFish == 2465;
 																			if (flag43)
 																			{
-																				caughtItem = 2465;
+																				autoFisher.caughtItem = 2465;
 																			}
 																			else
 																			{
-																				bool flag44 = heightLevel < 2 && uncommon && questFish == 2468;
+																				bool flag44 = autoFisher.heightLevel < 2 && autoFisher.uncommon && autoFisher.questFish == 2468;
 																				if (flag44)
 																				{
-																					caughtItem = 2468;
+																					autoFisher.caughtItem = 2468;
 																				}
 																				else
 																				{
-																					bool rare3 = rare;
+																					bool rare3 = autoFisher.rare;
 																					if (rare3)
 																					{
-																						caughtItem = 2310;
+																						autoFisher.caughtItem = 2310;
 																					}
 																					else
 																					{
-																						bool flag45 = uncommon && questFish == 2471;
+																						bool flag45 = autoFisher.uncommon && autoFisher.questFish == 2471;
 																						if (flag45)
 																						{
-																							caughtItem = 2471;
+																							autoFisher.caughtItem = 2471;
 																						}
 																						else
 																						{
-																							bool uncommon4 = uncommon;
+																							bool uncommon4 = autoFisher.uncommon;
 																							if (uncommon4)
 																							{
-																								caughtItem = 2307;
+																								autoFisher.caughtItem = 2307;
 																							}
 																						}
 																					}
@@ -964,60 +825,60 @@ namespace GoldensMisc.Projectiles
 															}
 														}
 													}
-													bool flag46 = caughtItem == 0 && zone.HasFlag(Zone.Snow);
+													bool flag46 = autoFisher.caughtItem == 0 && autoFisher.zone.HasFlag(Zone.Snow);
 													if (flag46)
 													{
-														bool flag47 = heightLevel < 2 && uncommon && questFish == 2467;
+														bool flag47 = autoFisher.heightLevel < 2 && autoFisher.uncommon && autoFisher.questFish == 2467;
 														if (flag47)
 														{
-															caughtItem = 2467;
+															autoFisher.caughtItem = 2467;
 														}
 														else
 														{
-															bool flag48 = heightLevel == 1 && uncommon && questFish == 2470;
+															bool flag48 = autoFisher.heightLevel == 1 && autoFisher.uncommon && autoFisher.questFish == 2470;
 															if (flag48)
 															{
-																caughtItem = 2470;
+																autoFisher.caughtItem = 2470;
 															}
 															else
 															{
-																bool flag49 = heightLevel >= 2 && uncommon && questFish == 2484;
+																bool flag49 = autoFisher.heightLevel >= 2 && autoFisher.uncommon && autoFisher.questFish == 2484;
 																if (flag49)
 																{
-																	caughtItem = 2484;
+																	autoFisher.caughtItem = 2484;
 																}
 																else
 																{
-																	bool flag50 = heightLevel > 1 && uncommon && questFish == 2466;
+																	bool flag50 = autoFisher.heightLevel > 1 && autoFisher.uncommon && autoFisher.questFish == 2466;
 																	if (flag50)
 																	{
-																		caughtItem = 2466;
+																		autoFisher.caughtItem = 2466;
 																	}
 																	else
 																	{
-																		bool flag51 = (common && Main.rand.Next(12) == 0) || (uncommon && Main.rand.Next(6) == 0);
+																		bool flag51 = (autoFisher.common && Main.rand.Next(12) == 0) || (autoFisher.uncommon && Main.rand.Next(6) == 0);
 																		if (flag51)
 																		{
-																			caughtItem = 3197;
+																			autoFisher.caughtItem = 3197;
 																		}
 																		else
 																		{
-																			if (uncommon)
+																			if (autoFisher.uncommon)
 																			{
-																				caughtItem = 2306;
+																				autoFisher.caughtItem = 2306;
 																			}
 																			else
 																			{
-																				if (common)
+																				if (autoFisher.common)
 																				{
-																					caughtItem = 2299;
+																					autoFisher.caughtItem = 2299;
 																				}
 																				else
 																				{
-																					bool flag52 = heightLevel > 1 && Main.rand.Next(3) == 0;
+																					bool flag52 = autoFisher.heightLevel > 1 && Main.rand.Next(3) == 0;
 																					if (flag52)
 																					{
-																						caughtItem = 2309;
+																						autoFisher.caughtItem = 2309;
 																					}
 																				}
 																			}
@@ -1027,53 +888,53 @@ namespace GoldensMisc.Projectiles
 															}
 														}
 													}
-													bool flag53 = caughtItem == 0 && zone.HasFlag(Zone.Jungle);
+													bool flag53 = autoFisher.caughtItem == 0 && autoFisher.zone.HasFlag(Zone.Jungle);
 													if (flag53)
 													{
-														bool flag54 = heightLevel == 1 && uncommon && questFish == 2452;
+														bool flag54 = autoFisher.heightLevel == 1 && autoFisher.uncommon && autoFisher.questFish == 2452;
 														if (flag54)
 														{
-															caughtItem = 2452;
+															autoFisher.caughtItem = 2452;
 														}
 														else
 														{
-															bool flag55 = heightLevel == 1 && uncommon && questFish == 2483;
+															bool flag55 = autoFisher.heightLevel == 1 && autoFisher.uncommon && autoFisher.questFish == 2483;
 															if (flag55)
 															{
-																caughtItem = 2483;
+																autoFisher.caughtItem = 2483;
 															}
 															else
 															{
-																bool flag56 = heightLevel == 1 && uncommon && questFish == 2488;
+																bool flag56 = autoFisher.heightLevel == 1 && autoFisher.uncommon && autoFisher.questFish == 2488;
 																if (flag56)
 																{
-																	caughtItem = 2488;
+																	autoFisher.caughtItem = 2488;
 																}
 																else
 																{
-																	bool flag57 = heightLevel >= 1 && uncommon && questFish == 2486;
+																	bool flag57 = autoFisher.heightLevel >= 1 && autoFisher.uncommon && autoFisher.questFish == 2486;
 																	if (flag57)
 																	{
-																		caughtItem = 2486;
+																		autoFisher.caughtItem = 2486;
 																	}
 																	else
 																	{
-																		bool flag58 = heightLevel > 1 && uncommon;
+																		bool flag58 = autoFisher.heightLevel > 1 && autoFisher.uncommon;
 																		if (flag58)
 																		{
-																			caughtItem = 2311;
+																			autoFisher.caughtItem = 2311;
 																		}
 																		else
 																		{
-																			if (uncommon)
+																			if (autoFisher.uncommon)
 																			{
-																				caughtItem = 2313;
+																				autoFisher.caughtItem = 2313;
 																			}
 																			else
 																			{
-																				if (common)
+																				if (autoFisher.common)
 																				{
-																					caughtItem = 2302;
+																					autoFisher.caughtItem = 2302;
 																				}
 																			}
 																		}
@@ -1082,79 +943,79 @@ namespace GoldensMisc.Projectiles
 															}
 														}
 													}
-													bool flag59 = caughtItem == 0 && zone.HasFlag(Zone.Shroom) && uncommon && questFish == 2475;
+													bool flag59 = autoFisher.caughtItem == 0 && autoFisher.zone.HasFlag(Zone.Shroom) && autoFisher.uncommon && autoFisher.questFish == 2475;
 													if (flag59)
 													{
-														caughtItem = 2475;
+														autoFisher.caughtItem = 2475;
 													}
 												}
-												bool flag60 = caughtItem == 0;
+												bool flag60 = autoFisher.caughtItem == 0;
 												if (flag60)
 												{
-													bool flag61 = heightLevel <= 1 && (position.X < 380 || position.X > Main.maxTilesX - 380) && poolSize > 1000;
+													bool flag61 = autoFisher.heightLevel <= 1 && (autoFisher.position.X < 380 || autoFisher.position.X > Main.maxTilesX - 380) && autoFisher.poolSize > 1000;
 													if (flag61)
 													{
-														bool flag62 = veryrare && Main.rand.Next(2) == 0;
+														bool flag62 = autoFisher.veryrare && Main.rand.Next(2) == 0;
 														if (flag62)
 														{
-															caughtItem = 2341;
+															autoFisher.caughtItem = 2341;
 														}
 														else
 														{
-															if (veryrare)
+															if (autoFisher.veryrare)
 															{
-																caughtItem = 2342;
+																autoFisher.caughtItem = 2342;
 															}
 															else
 															{
-																bool flag63 = rare && Main.rand.Next(5) == 0;
+																bool flag63 = autoFisher.rare && Main.rand.Next(5) == 0;
 																if (flag63)
 																{
-																	caughtItem = 2438;
+																	autoFisher.caughtItem = 2438;
 																}
 																else
 																{
-																	bool flag64 = rare && Main.rand.Next(3) == 0;
+																	bool flag64 = autoFisher.rare && Main.rand.Next(3) == 0;
 																	if (flag64)
 																	{
-																		caughtItem = 2332;
+																		autoFisher.caughtItem = 2332;
 																	}
 																	else
 																	{
-																		bool flag65 = uncommon && questFish == 2480;
+																		bool flag65 = autoFisher.uncommon && autoFisher.questFish == 2480;
 																		if (flag65)
 																		{
-																			caughtItem = 2480;
+																			autoFisher.caughtItem = 2480;
 																		}
 																		else
 																		{
-																			bool flag66 = uncommon && questFish == 2481;
+																			bool flag66 = autoFisher.uncommon && autoFisher.questFish == 2481;
 																			if (flag66)
 																			{
-																				caughtItem = 2481;
+																				autoFisher.caughtItem = 2481;
 																			}
 																			else
 																			{
-																				if (uncommon)
+																				if (autoFisher.uncommon)
 																				{
-																					caughtItem = 2316;
+																					autoFisher.caughtItem = 2316;
 																				}
 																				else
 																				{
-																					bool flag67 = common && Main.rand.Next(2) == 0;
+																					bool flag67 = autoFisher.common && Main.rand.Next(2) == 0;
 																					if (flag67)
 																					{
-																						caughtItem = 2301;
+																						autoFisher.caughtItem = 2301;
 																					}
 																					else
 																					{
-																						if (common)
+																						if (autoFisher.common)
 																						{
-																							caughtItem = 2300;
+																							autoFisher.caughtItem = 2300;
 																						}
 																						else
 																						{
-																							caughtItem = 2297;
+																							autoFisher.caughtItem = 2297;
 																						}
 																					}
 																				}
@@ -1170,34 +1031,34 @@ namespace GoldensMisc.Projectiles
 														bool flag68 = flag;
 														if (flag68)
 														{
-															bool flag69 = uncommon && questFish == 4393;
+															bool flag69 = autoFisher.uncommon && autoFisher.questFish == 4393;
 															if (flag69)
 															{
-																caughtItem = 4393;
+																autoFisher.caughtItem = 4393;
 															}
 															else
 															{
-																bool flag70 = uncommon && questFish == 4394;
+																bool flag70 = autoFisher.uncommon && autoFisher.questFish == 4394;
 																if (flag70)
 																{
-																	caughtItem = 4394;
+																	autoFisher.caughtItem = 4394;
 																}
 																else
 																{
-																	if (uncommon)
+																	if (autoFisher.uncommon)
 																	{
-																		caughtItem = 4410;
+																		autoFisher.caughtItem = 4410;
 																	}
 																	else
 																	{
 																		bool flag71 = Main.rand.Next(3) == 0;
 																		if (flag71)
 																		{
-																			caughtItem = 4402;
+																			autoFisher.caughtItem = 4402;
 																		}
 																		else
 																		{
-																			caughtItem = 4401;
+																			autoFisher.caughtItem = 4401;
 																		}
 																	}
 																}
@@ -1205,215 +1066,215 @@ namespace GoldensMisc.Projectiles
 														}
 													}
 												}
-												bool flag72 = caughtItem != 0;
+												bool flag72 = autoFisher.caughtItem != 0;
 												if (!flag72)
 												{
-													bool flag73 = heightLevel < 2 && uncommon && questFish == 2461;
+													bool flag73 = autoFisher.heightLevel < 2 && autoFisher.uncommon && autoFisher.questFish == 2461;
 													if (flag73)
 													{
-														caughtItem = 2461;
+														autoFisher.caughtItem = 2461;
 													}
 													else
 													{
-														bool flag74 = heightLevel == 0 && uncommon && questFish == 2453;
+														bool flag74 = autoFisher.heightLevel == 0 && autoFisher.uncommon && autoFisher.questFish == 2453;
 														if (flag74)
 														{
-															caughtItem = 2453;
+															autoFisher.caughtItem = 2453;
 														}
 														else
 														{
-															bool flag75 = heightLevel == 0 && uncommon && questFish == 2473;
+															bool flag75 = autoFisher.heightLevel == 0 && autoFisher.uncommon && autoFisher.questFish == 2473;
 															if (flag75)
 															{
-																caughtItem = 2473;
+																autoFisher.caughtItem = 2473;
 															}
 															else
 															{
-																bool flag76 = heightLevel == 0 && uncommon && questFish == 2476;
+																bool flag76 = autoFisher.heightLevel == 0 && autoFisher.uncommon && autoFisher.questFish == 2476;
 																if (flag76)
 																{
-																	caughtItem = 2476;
+																	autoFisher.caughtItem = 2476;
 																}
 																else
 																{
-																	bool flag77 = heightLevel < 2 && uncommon && questFish == 2458;
+																	bool flag77 = autoFisher.heightLevel < 2 && autoFisher.uncommon && autoFisher.questFish == 2458;
 																	if (flag77)
 																	{
-																		caughtItem = 2458;
+																		autoFisher.caughtItem = 2458;
 																	}
 																	else
 																	{
-																		bool flag78 = heightLevel < 2 && uncommon && questFish == 2459;
+																		bool flag78 = autoFisher.heightLevel < 2 && autoFisher.uncommon && autoFisher.questFish == 2459;
 																		if (flag78)
 																		{
-																			caughtItem = 2459;
+																			autoFisher.caughtItem = 2459;
 																		}
 																		else
 																		{
-																			bool flag79 = heightLevel == 0 && uncommon;
+																			bool flag79 = autoFisher.heightLevel == 0 && autoFisher.uncommon;
 																			if (flag79)
 																			{
-																				caughtItem = 2304;
+																				autoFisher.caughtItem = 2304;
 																			}
 																			else
 																			{
-																				bool flag80 = heightLevel > 0 && heightLevel < 3 && uncommon && questFish == 2455;
+																				bool flag80 = autoFisher.heightLevel > 0 && autoFisher.heightLevel < 3 && autoFisher.uncommon && autoFisher.questFish == 2455;
 																				if (flag80)
 																				{
-																					caughtItem = 2455;
+																					autoFisher.caughtItem = 2455;
 																				}
 																				else
 																				{
-																					bool flag81 = heightLevel == 1 && uncommon && questFish == 2479;
+																					bool flag81 = autoFisher.heightLevel == 1 && autoFisher.uncommon && autoFisher.questFish == 2479;
 																					if (flag81)
 																					{
-																						caughtItem = 2479;
+																						autoFisher.caughtItem = 2479;
 																					}
 																					else
 																					{
-																						bool flag82 = heightLevel == 1 && uncommon && questFish == 2456;
+																						bool flag82 = autoFisher.heightLevel == 1 && autoFisher.uncommon && autoFisher.questFish == 2456;
 																						if (flag82)
 																						{
-																							caughtItem = 2456;
+																							autoFisher.caughtItem = 2456;
 																						}
 																						else
 																						{
-																							bool flag83 = heightLevel == 1 && uncommon && questFish == 2474;
+																							bool flag83 = autoFisher.heightLevel == 1 && autoFisher.uncommon && autoFisher.questFish == 2474;
 																							if (flag83)
 																							{
-																								caughtItem = 2474;
+																								autoFisher.caughtItem = 2474;
 																							}
 																							else
 																							{
-																								bool flag84 = heightLevel > 1 && rare && Main.rand.Next(5) == 0;
+																								bool flag84 = autoFisher.heightLevel > 1 && autoFisher.rare && Main.rand.Next(5) == 0;
 																								if (flag84)
 																								{
 																									bool flag85 = Main.hardMode && Main.rand.Next(2) == 0;
 																									if (flag85)
 																									{
-																										caughtItem = 2437;
+																										autoFisher.caughtItem = 2437;
 																									}
 																									else
 																									{
-																										caughtItem = 2436;
+																										autoFisher.caughtItem = 2436;
 																									}
 																								}
 																								else
 																								{
-																									bool flag86 = heightLevel > 1 && legendary && Main.rand.Next(3) != 0;
+																									bool flag86 = autoFisher.heightLevel > 1 && autoFisher.legendary && Main.rand.Next(3) != 0;
 																									if (flag86)
 																									{
-																										caughtItem = 2308;
+																										autoFisher.caughtItem = 2308;
 																									}
 																									else
 																									{
-																										bool flag87 = heightLevel > 1 && veryrare && Main.rand.Next(2) == 0;
+																										bool flag87 = autoFisher.heightLevel > 1 && autoFisher.veryrare && Main.rand.Next(2) == 0;
 																										if (flag87)
 																										{
-																											caughtItem = 2320;
+																											autoFisher.caughtItem = 2320;
 																										}
 																										else
 																										{
-																											bool flag88 = heightLevel > 1 && rare;
+																											bool flag88 = autoFisher.heightLevel > 1 && autoFisher.rare;
 																											if (flag88)
 																											{
-																												caughtItem = 2321;
+																												autoFisher.caughtItem = 2321;
 																											}
 																											else
 																											{
-																												bool flag89 = heightLevel > 1 && uncommon && questFish == 2478;
+																												bool flag89 = autoFisher.heightLevel > 1 && autoFisher.uncommon && autoFisher.questFish == 2478;
 																												if (flag89)
 																												{
-																													caughtItem = 2478;
+																													autoFisher.caughtItem = 2478;
 																												}
 																												else
 																												{
-																													bool flag90 = heightLevel > 1 && uncommon && questFish == 2450;
+																													bool flag90 = autoFisher.heightLevel > 1 && autoFisher.uncommon && autoFisher.questFish == 2450;
 																													if (flag90)
 																													{
-																														caughtItem = 2450;
+																														autoFisher.caughtItem = 2450;
 																													}
 																													else
 																													{
-																														bool flag91 = heightLevel > 1 && uncommon && questFish == 2464;
+																														bool flag91 = autoFisher.heightLevel > 1 && autoFisher.uncommon && autoFisher.questFish == 2464;
 																														if (flag91)
 																														{
-																															caughtItem = 2464;
+																															autoFisher.caughtItem = 2464;
 																														}
 																														else
 																														{
-																															bool flag92 = heightLevel > 1 && uncommon && questFish == 2469;
+																															bool flag92 = autoFisher.heightLevel > 1 && autoFisher.uncommon && autoFisher.questFish == 2469;
 																															if (flag92)
 																															{
-																																caughtItem = 2469;
+																																autoFisher.caughtItem = 2469;
 																															}
 																															else
 																															{
-																																bool flag93 = heightLevel > 2 && uncommon && questFish == 2462;
+																																bool flag93 = autoFisher.heightLevel > 2 && autoFisher.uncommon && autoFisher.questFish == 2462;
 																																if (flag93)
 																																{
-																																	caughtItem = 2462;
+																																	autoFisher.caughtItem = 2462;
 																																}
 																																else
 																																{
-																																	bool flag94 = heightLevel > 2 && uncommon && questFish == 2482;
+																																	bool flag94 = autoFisher.heightLevel > 2 && autoFisher.uncommon && autoFisher.questFish == 2482;
 																																	if (flag94)
 																																	{
-																																		caughtItem = 2482;
+																																		autoFisher.caughtItem = 2482;
 																																	}
 																																	else
 																																	{
-																																		bool flag95 = heightLevel > 2 && uncommon && questFish == 2472;
+																																		bool flag95 = autoFisher.heightLevel > 2 && autoFisher.uncommon && autoFisher.questFish == 2472;
 																																		if (flag95)
 																																		{
-																																			caughtItem = 2472;
+																																			autoFisher.caughtItem = 2472;
 																																		}
 																																		else
 																																		{
-																																			bool flag96 = heightLevel > 2 && uncommon && questFish == 2460;
+																																			bool flag96 = autoFisher.heightLevel > 2 && autoFisher.uncommon && autoFisher.questFish == 2460;
 																																			if (flag96)
 																																			{
-																																				caughtItem = 2460;
+																																				autoFisher.caughtItem = 2460;
 																																			}
 																																			else
 																																			{
-																																				bool flag97 = heightLevel > 1 && uncommon && Main.rand.Next(4) != 0;
+																																				bool flag97 = autoFisher.heightLevel > 1 && autoFisher.uncommon && Main.rand.Next(4) != 0;
 																																				if (flag97)
 																																				{
-																																					caughtItem = 2303;
+																																					autoFisher.caughtItem = 2303;
 																																				}
 																																				else
 																																				{
-																																					bool flag98 = heightLevel > 1 && (uncommon || common || Main.rand.Next(4) == 0);
+																																					bool flag98 = autoFisher.heightLevel > 1 && (autoFisher.uncommon || autoFisher.common || Main.rand.Next(4) == 0);
 																																					if (flag98)
 																																					{
 																																						bool flag99 = Main.rand.Next(4) == 0;
 																																						if (flag99)
 																																						{
-																																							caughtItem = 2303;
+																																							autoFisher.caughtItem = 2303;
 																																						}
 																																						else
 																																						{
-																																							caughtItem = 2309;
+																																							autoFisher.caughtItem = 2309;
 																																						}
 																																					}
 																																					else
 																																					{
-																																						bool flag100 = uncommon && questFish == 2487;
+																																						bool flag100 = autoFisher.uncommon && autoFisher.questFish == 2487;
 																																						if (flag100)
 																																						{
-																																							caughtItem = 2487;
+																																							autoFisher.caughtItem = 2487;
 																																						}
 																																						else
 																																						{
-																																							bool flag101 = poolSize > 1000 && common;
+																																							bool flag101 = autoFisher.poolSize > 1000 && autoFisher.common;
 																																							if (flag101)
 																																							{
-																																								caughtItem = 2298;
+																																								autoFisher.caughtItem = 2298;
 																																							}
 																																							else
 																																							{
-																																								caughtItem = 2290;
+																																								autoFisher.caughtItem = 2290;
 																																							}
 																																						}
 																																					}
@@ -1451,9 +1312,91 @@ namespace GoldensMisc.Projectiles
 					}
 				}
 			}
-			return caughtItem;	
 		}
 
+		static void GetAutoFishingPondWidth(int x, int y, out int minX, out int maxX)
+		{
+			minX = x;
+			maxX = x;
+			while (minX > 10 && Main.tile[minX, y].LiquidAmount > 0 && !WorldGen.SolidTile(minX, y, false))
+			{
+				minX--;
+			}
+			while (maxX < Main.maxTilesX - 10 && Main.tile[maxX, y].LiquidAmount > 0 && !WorldGen.SolidTile(maxX, y, false))
+			{
+				maxX++;
+			}
+		}
+
+
+		static void GetAutoFishingPondState(int x, int y, out bool lava, out bool honey, out int numWaters, out int chumCount)
+		{
+			lava = false;
+			honey = false;
+			numWaters = 0;
+			chumCount = 0;
+			Point tileCoords = new(0, 0);
+			int minX;
+			int maxX;
+			GetAutoFishingPondWidth(x, y, out minX, out maxX);
+			for (int i = minX; i <= maxX; i++)
+			{
+				int num = y;
+				while (Main.tile[i, num].LiquidAmount > 0 && !WorldGen.SolidTile(i, num, false) && num < Main.maxTilesY - 10)
+				{
+					numWaters++;
+					num++;
+					bool flag = hasLava(Main.tile[i, num]);
+					if (flag)
+					{
+						lava = true;
+					}
+					else
+					{
+						bool flag2 = hasHoney(Main.tile[i, num]);
+						if (flag2)
+						{
+							honey = true;
+						}
+					}
+					tileCoords.X = i;
+					tileCoords.Y = num;
+					chumCount += Main.instance.ChumBucketProjectileHelper.GetChumsInLocation(tileCoords);
+				}
+			}
+			bool honeyBoost = honey;
+			if (honeyBoost)
+			{
+				numWaters = (int)((double)numWaters * 1.5);
+			}
+		}
+
+		public struct AutoFishingAttempt
+		{
+			public intPosition position;
+			public bool common;
+			public bool uncommon;
+			public bool rare;
+			public bool veryrare;
+			public bool legendary;
+			public bool crate;
+			public bool isJunk;
+			public bool inLava;
+			public bool inHoney;
+			public int poolSize;
+			public int waterTilesCount;
+			public int waterNeededToFish;
+			public float waterQuality;
+			public int chumsInWater;
+			public int fishingPower;
+			public Item baitItem;
+			public Zone zone;
+			public float atmosphere;
+			public int questFish;
+			public int heightLevel;
+			public int caughtItem;
+			public int rolledEnemySpawn; // unused
+		}
 		public override bool PreDrawExtras()
 		{
 			if(!TileEntity.ByID.ContainsKey((int)Projectile.ai[1]))
