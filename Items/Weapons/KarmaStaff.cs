@@ -43,8 +43,10 @@ namespace GoldensMisc.Items.Weapons
 		{
 			//projectile spawns at mouse cursor
 			position = Main.MouseWorld;
+			int index = Projectile.NewProjectile(source, position, speed, Item.shoot, damage, knockBack, player.whoAmI);
+			Main.projectile[index].originalDamage = Item.damage;
 			//don't shoot if player is right-clicking
-			return player.altFunctionUse != 2;
+			return false;//player.altFunctionUse != 2;
 		}
 		
 		public override bool CanUseItem(Player player)

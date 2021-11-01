@@ -397,7 +397,11 @@ namespace GoldensMisc
 
 	}
 
-
+	public struct intPosition
+    {
+		public int X;
+		public int Y;
+    }
 
 	[Flags]
 	public enum Zone

@@ -40,16 +40,16 @@ namespace GoldensMisc
 						nextSlot++;
 					}
 					break;
-				case NPCID.Mechanic:
-					if(ModContent.GetInstance<ServerConfig>().MechanicsRodOften && Main.hardMode && Main.moonPhase <= 4 && NPC.AnyNPCs(NPCID.Angler))
-					{
-						if(!MiscUtils.ChestHasItem(shop, ItemID.MechanicsRod))
-						{
-							shop.item[nextSlot].SetDefaults(ItemID.MechanicsRod);
-							nextSlot++;
-						}
-					}
-					break;
+				//case NPCID.Mechanic:
+				//	if(ModContent.GetInstance<ServerConfig>().MechanicsRodOften && Main.hardMode && Main.moonPhase <= 4 && NPC.AnyNPCs(NPCID.Angler))
+				//	{
+				//		if(!MiscUtils.ChestHasItem(shop, ItemID.MechanicsRod))
+				//		{
+				//			shop.item[nextSlot].SetDefaults(ItemID.MechanicsRod);
+				//			nextSlot++;
+				//		}
+				//	}
+				//	break;
 				case NPCID.Steampunker:
 					if(ModContent.GetInstance<ServerConfig>().ChestVacuum)
 					{

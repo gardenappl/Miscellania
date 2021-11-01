@@ -22,6 +22,7 @@ namespace GoldensMisc.Items.Tools
 			Item.width = 24;
 			Item.height = 24;
 			Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.UseSound = SoundID.Item6;
 			Item.useTime = 90;
 			Item.useAnimation = 90;
 			Item.rare = ItemRarityID.Pink;
