@@ -22,6 +22,7 @@ namespace GoldensMisc
 		{
 			hooks[HookType.CatchFish] = new List<MethodInfo>();
 			hooks[HookType.GetFishingLevel] = new List<MethodInfo>();
+			hooks[HookType.CatchEnemy] = new List<MethodInfo>();
 		}
 
 		public static void GetFishingLevel(AutofisherTE te, Item bait, ref int fishingLevel)
@@ -49,7 +50,19 @@ namespace GoldensMisc
 			junk = (bool)args[9];
 		}
 
-		
+		public static void CatchEnemy(AutofisherTE te, Zone zone, Item bait, int power, int liquidType, int poolSize, int worldLayer, ref int caughtType)
+		{
+			var fishingRod = new Item();
+			fishingRod.SetDefaults(ItemID.MechanicsRod, true);
+
+			object[] args = new object[] { te.Position.ToWorldCoordinates(), (int)zone, fishingRod, bait, power, liquidType, poolSize, worldLayer, caughtType};
+			var hookList = hooks[HookType.CatchEnemy];
+			foreach (var hook in hookList)
+				hook.Invoke(null, args);
+			caughtType = (int)args[8];
+		}
+
+
 		public static void RegisterHook(HookType type, MethodInfo hook)
 		{
 			hooks[type].Add(hook);
@@ -77,6 +90,7 @@ namespace GoldensMisc
 
 		public enum HookType
 		{
+			CatchEnemy,
 			GetFishingLevel,
 			CatchFish
 		}
