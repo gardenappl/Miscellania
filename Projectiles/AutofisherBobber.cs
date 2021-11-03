@@ -1582,7 +1582,7 @@ namespace GoldensMisc.Projectiles
 
 		public struct AutoFishingAttempt
 		{
-			public intPosition position;
+			public Point position;
 			public bool common;
 			public bool uncommon;
 			public bool rare;
