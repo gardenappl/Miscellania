@@ -144,7 +144,7 @@ ItemName.UndyingSpear=Spear of Undying Justice
 ItemTooltip.UndyingSpear=Rapidly throws piercing spears
 
 ItemName.Autofisher=Autofisher
-ItemTooltip.Autofisher=30% fishing power\nAutomatically catches fish and other items when placed near water, requires bait\nRight-click for more info\nUse an Item Vacuum to pick up caught items
+ItemTooltip.Autofisher=35% fishing power\nAutomatically catches fish and other items when placed near water, requires bait\nRight-click for more info\nUse an Item Vacuum to pick up caught items
 
 ItemName.ChestVacuum=Item Vacuum
 ItemTooltip.ChestVacuum=Sucks up nearby items and puts them in a chest below\nRight-click to enable Smart Stack mode
