@@ -1,0 +1,229 @@
+Mods: {
+	GoldensMisc: {
+		BuffName: {
+			CursedMemory: 被诅咒的记忆
+			OrbofLight: 远古光明珍珠
+		}
+
+		BuffDescription: {
+			CursedMemory: 最大生命值减半
+			OrbofLight: 一个发出微光的魔法小球
+		}
+
+		CommandUsage: 用法:
+
+		Command: {
+			WorldGen: {
+				Description:
+					'''
+					生成Miscellania世界特性
+					警告: 可能导致卡顿,并建造/生成结构建筑!
+					'''
+				HellforgeDisabled: 在配置中已禁用远古地狱熔炉!
+				ForgeDisabled: 在配置中已禁用地狱熔炉!
+			}
+		}
+
+		ItemName: {
+			DeathEmblem: 死亡纹章
+			GodStone: 神石
+			InertStone: 无效的石头
+			LifeStone: 治愈之石
+			ManaStone: 法力之石
+			DemonCrown: 恶魔皇冠
+			HeartLocket: 心之吊坠
+			MagnetismRing: 磁力戒指
+			NinjaGear: 忍者装备
+			OrbofLight: 远古光明珍珠
+			ReinforcedHorseshoe: 装甲马蹄
+			ReinforcedVest: 装甲之躯
+			UniversalMagnet: 普通的磁铁
+			AdamantiteDye: 反光金刚石染料
+			BaseballCap: 棒球帽
+			ChlorophyteDye: 反光叶绿染料
+			CobaltDye: 反光钴蓝染料
+			MatrixDye: 矩阵染料
+			MythrilDye: 反光秘银染料
+			OrichalcumDye: 反光山铜染料
+			PalladiumDye: 反光钯金染料
+			TitaniumDye: 反光钛金染料
+			VirtualDye: 虚拟染料
+			WormholeCrystal: 虫洞结晶
+			AncientForge: 远古熔炉
+			AncientHellforge: 远古地狱熔炉
+			RedChimney: 红色烟囱
+			RedFireplace: 红色壁炉
+			SandstoneSlabWall: 砂石板墙
+			IslandStaff: 空岛法杖
+			RodofWarping: 折跃法杖
+			WormholeCellPhone: 网络手机
+			WormholeDoubleMirror: 忆·虫洞之镜
+			WormholeIceMirror: 冰·虫洞之镜
+			WormholeMirror: 虫洞之镜
+			AmethystStaff: 紫水晶法杖
+			AncientMuramasa: 远古村正
+			BaseballBat: 棒球棒
+			DiamondStaff: 钻石法杖
+			EmeraldStaff: 祖母绿法杖
+			KarmaStaff: 命魂法杖
+			MagicSpear: 正义之矛
+			RubyStaff: 红宝石法杖
+			SapphireStaff: 蓝宝石法杖
+			TopazStaff: 黄晶玉法杖
+			UndyingSpear: 永恒·正义之矛
+			Autofisher: 自动钓竿
+			ChestVacuum: 物品吸取器
+			FishNet: 渔网
+		}
+
+		ItemTooltip: {
+			DeathEmblem:
+				'''
+				凝视它的眼睛,回到你最后的死亡之地
+				将在短时间内减少最大生命值
+				'''
+			GodStone:
+				'''
+				可无限使用
+				不会获得药水病
+				这是一个作弊项目
+				'''
+			InertStone: "'它似乎可以储存魔法能量'"
+			LifeStone: 可多次使用
+			ManaStone: 可多次使用
+			DemonCrown:
+				'''
+				赋予巨大的魔法力量
+				召唤一个红水晶为你而战
+				'''
+			HeartLocket: 受到伤害后提高移动速度及无敌时间
+			MagnetismRing:
+				'''
+				增加物品,钱币及魔力星的拾取范围
+				‘你真的很有吸引力’
+				'''
+			NinjaGear:
+				'''
+				允许冲撞敌人
+				有几率躲避攻击
+				'''
+			OrbofLight: 召唤一个散发微弱光芒的光明魔法球
+			ReinforcedHorseshoe:
+				'''
+				免疫摔落伤害
+				使你免疫火块及己方爆炸伤害
+				'''
+			ReinforcedVest: 使你免疫己方爆炸伤害
+			UniversalMagnet: 增加物品拾取范围
+			BaseballCap:
+				'''
+				'你们过得如何,孩子们?'
+				右键可旋转
+				'''
+			WormholeCrystal:
+				'''
+				'当你握着它的时候,你觉得它把你吸引住了...'
+				这种材料在Miscellania中暂时没有用处
+				你可以将其出售或保留以备将来的Mod更新
+				'''
+			IslandStaff:
+				'''
+				创造一个浮动岛
+				使用一次后将损坏
+				'''
+			RodofWarping:
+				'''
+				传送到鼠标位置
+				大大降低混沌状态的持续时间及伤害
+				'''
+			WormholeCellPhone:
+				'''
+				显示所有信息
+				允许你随意回家及传送队友
+				右键选择玩家
+				'''
+			WormholeDoubleMirror:
+				'''
+				盯着镜子便可回家
+				或传送队友
+				右键选择玩家
+				'''
+			WormholeIceMirror:
+				'''
+				盯着镜子便可回家
+				或传送队友
+				右键选择玩家
+				'''
+			WormholeMirror:
+				'''
+				可传送队友
+				右键选择玩家
+				'''
+			KarmaStaff: 召唤一个命魂向敌人射击激光
+			MagicSpear:
+				'''
+				迅速投掷穿刺之矛
+				哇啊呀呀呀!!
+				'''
+			UndyingSpear: 迅速投掷穿刺之矛
+			Autofisher:
+				'''
+				35%垂钓力
+				放置在靠近水的地方时自动钓鱼及钓取其他物品,需要诱饵
+				右键获取更多信息
+				使用物品吸取器来捡起钓上的物品
+				'''
+			ChestVacuum:
+				'''
+				放置在箱子上,并将附近的掉落物吸取进去
+				右键启用智能堆叠模式
+				'''
+			FishNet:
+				'''
+				放入水中时,慢慢捕捞鱼及其他物品
+				必须使用右键手动拿取
+				'''
+			MechanicsRod: 可合成为自动钓竿
+		}
+
+		LaputaCannotUse: 也许在这里这么做并不是个好主意.
+		LaputaTooHigh: 你距离地面太高了.
+		LaputaBlocked: 似乎被什么东西挡住了.
+
+		ProjectileName: {
+			GasterBlaster: 自动激光
+			GasterLaser: 命魂激光
+			Laputa: 空岛之光
+			MagicSpear: 正义之矛
+			MagicSpearMini: 迷你正义之矛
+			OrbofLight: 远古光明珍珠
+			RedBullet: 红色炮弹
+			RedCrystal: 红水晶
+			UndyingSpear: 永恒·正义之矛
+		}
+
+		NPCName: {
+			BaseballCaveBat: 棒球洞穴蝙蝠
+			BaseballGiantBat: 棒球巨型蝙蝠
+			BaseballHellBat: 棒球地狱蝙蝠
+			BaseballIceBat: 棒球冰霜蝙蝠
+			BaseballIlluminantBat: 棒球荧光蝙蝠
+			BaseballJungleBat: 棒球丛林蝙蝠
+			BaseballLavaBat: 棒球熔岩蝙蝠
+		}
+
+		CloseButton: 取消
+		HomeButton: 回家
+
+		ChestVacuum: {
+			SmartStackOn: 智能堆叠: 开启
+			SmartStackOn2: 物品吸取器只会吸取箱子中原有的物品
+			SmartStackOff: 智能堆叠: 关闭
+			SmartStackOff2: 物品吸取器将会吸取所有物品
+		}
+
+		Autofisher: {
+			NoBait: 缺少诱饵 (请将诱饵放在附近的箱子里)
+		}
+	}
+}

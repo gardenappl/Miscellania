@@ -144,7 +144,7 @@ ItemName.UndyingSpear=永恒·正义之矛
 ItemTooltip.UndyingSpear=迅速投掷穿刺之矛
 
 ItemName.Autofisher=自动钓竿
-ItemTooltip.Autofisher=30%垂钓力\n放置在靠近水的地方时自动钓鱼及钓取其他物品,需要诱饵\n右键获取更多信息\n使用物品吸取器来捡起钓上的物品
+ItemTooltip.Autofisher=35%垂钓力\n放置在靠近水的地方时自动钓鱼及钓取其他物品,需要诱饵\n右键获取更多信息\n使用物品吸取器来捡起钓上的物品
 
 ItemName.ChestVacuum=物品吸取器
 ItemTooltip.ChestVacuum=放置在箱子上,并将附近的掉落物吸取进去\n右键启用智能堆叠模式
