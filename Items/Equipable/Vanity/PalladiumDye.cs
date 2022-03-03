@@ -2,13 +2,19 @@
 using System;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
+using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Equipable.Vanity
 {
 	public class PalladiumDye : ModItem
 	{
+
+		public override void SetStaticDefaults()
+		{
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+		}
+
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().ExtraDyes;

@@ -22,6 +22,13 @@ namespace GoldensMisc.Items.Tools
             On.Terraria.Player.HasItem += PlayerHasItem;
         }
 
+        public static void Unload()
+        {
+            On.Terraria.Player.HasUnityPotion -= PlayerHasUnityPotion;
+            On.Terraria.Player.TakeUnityPotion -= PlayerTakeUnityPotion;
+            On.Terraria.Player.HasItem -= PlayerHasItem;
+        }
+
         public static bool HasWormholeItem(Player player)
         {
             return player.HasItem(ModContent.ItemType<WormholeMirror>()) ||

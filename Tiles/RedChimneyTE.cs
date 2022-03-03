@@ -54,7 +54,7 @@ namespace GoldensMisc.Tiles
 		public override bool IsTileValidForEntity(int i, int j)
 		{
 			var tile = Main.tile[i, j];
-			return tile.IsActive && tile.type == ModContent.TileType<RedChimney>() && tile.frameX == 0 && tile.frameY == 0;
+			return tile.HasTile && tile.TileType == ModContent.TileType<RedChimney>() && tile.TileFrameX == 0 && tile.TileFrameY == 0;
 		}
 
 		public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction, int alternate)

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
+using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Equipable
@@ -11,6 +11,11 @@ namespace GoldensMisc.Items.Equipable
 	[AutoloadEquip(EquipType.Neck)]
 	public class HeartLocket : ModItem
 	{
+		public override void SetStaticDefaults()
+		{
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+		}
+
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().HeartLocket;

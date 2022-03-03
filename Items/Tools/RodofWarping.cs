@@ -4,14 +4,15 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
+using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
-using GoldensMisc.Items.Materials;
+
 
 namespace GoldensMisc.Items.Tools
 {
 	public class RodofWarping : ModItem
 	{
+
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().RodofWarping;
@@ -20,6 +21,7 @@ namespace GoldensMisc.Items.Tools
 		public override void SetStaticDefaults()
 		{
 			Item.staff[Item.type] = true;
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 		
 		public override void SetDefaults()

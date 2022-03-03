@@ -62,7 +62,7 @@ namespace GoldensMisc
 				}
 				if (ModContent.GetInstance<ServerConfig>().NinjaGear)
 				{
-					if (recipe.TryGetIngredient(ItemID.Tabi, out Item ingredientTabi) && recipe.TryGetIngredient(ItemID.BlackBelt, out Item ingredientBelt) && !recipe.TryGetResult(ModContent.ItemType<NinjaGear>(), out Item result))
+					if (recipe.TryGetIngredient(ItemID.Tabi, out Item ingredientTabi) && recipe.TryGetIngredient(ItemID.BlackBelt, out Item ingredientBelt) && !recipe.TryGetResult(ModContent.ItemType<NinjaGear>(), out Item _))
 					{
 						recipe.RemoveIngredient(ingredientTabi);
 						recipe.RemoveIngredient(ingredientBelt);

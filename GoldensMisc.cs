@@ -34,8 +34,12 @@ namespace GoldensMisc
 		
 		public override void Load()
 		{
-			AutofisherHooks.Initialize();
-			VanillaTweaksLoaded = ModLoader.TryGetMod("VanillaTweaks", out Mod VanillaTweaks);
+
+            VanillaTweaksLoaded = ModLoader.TryGetMod("VanillaTweaks", out _);
+
+
+			if (ModContent.GetInstance<ServerConfig>().Autofisher)
+				AutofisherHooks.Initialize();
 
 			if (ModContent.GetInstance<ServerConfig>().WormholeMirror)
 				WormholeHacks.Load();
@@ -74,7 +78,12 @@ namespace GoldensMisc
 				helpfulHotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeIceMirror>());
 				helpfulHotkeysMod.Call("RegisterRecallItem", ModContent.ItemType<WormholeCellPhone>());
 			}
-			if(ModContent.GetInstance<ServerConfig>().ChestVacuum)
+			bool discordHotkeyModLoaded = ModLoader.TryGetMod("RodOfDiscordHotkey", out Mod discordHotkeyMod);
+			if (discordHotkeyModLoaded && ModContent.GetInstance<ServerConfig>().RodofWarping)
+			{
+				discordHotkeyMod.Call(ModContent.ItemType<RodofWarping>());
+			}
+			if (ModContent.GetInstance<ServerConfig>().ChestVacuum)
 			{
 				ModContent.GetInstance<Tiles.ChestVacuum>().SetDefaultsPostContent();
 			}
@@ -90,7 +99,10 @@ namespace GoldensMisc
 				TextureAssets.Item[ItemID.CellPhone] = CellPhoneTexture;
 				CellPhoneTexture = null;
 			}
-			AutofisherHooks.Unload();
+			if (ModContent.GetInstance<ServerConfig>().Autofisher)
+				AutofisherHooks.Unload();
+			if (ModContent.GetInstance<ServerConfig>().WormholeMirror)
+				WormholeHacks.Unload();
 		}
 		
 		public override void AddRecipeGroups()

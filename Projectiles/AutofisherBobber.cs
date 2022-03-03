@@ -137,7 +137,7 @@ namespace GoldensMisc.Projectiles
 							}
 							ItemLoader.CaughtFishStack(newItem);
 							newItem.newAndShiny = true;
-							Item.NewItem(te.Position.ToWorldCoordinates(0f, 0f), 48, 32, newItem.type, newItem.stack);
+							Item.NewItem(new EntitySource_TileEntity(te), te.Position.ToWorldCoordinates(0f, 0f), 48, 32, newItem.type, newItem.stack);
 						}
 						else
 						{ 
@@ -151,7 +151,7 @@ namespace GoldensMisc.Projectiles
 								}
 								else
 								{
-									int nPCi = NPC.NewNPC(p.X, p.Y, type);
+									int nPCi = NPC.NewNPC(new EntitySource_TileEntity(te),p.X, p.Y, type);
 									if (Main.npc[nPCi].boss)
 									{
 										if (Main.netMode == NetmodeID.SinglePlayer)
@@ -186,10 +186,6 @@ namespace GoldensMisc.Projectiles
 					int index1 = (int)(Projectile.Center.X + ((Projectile.width / 2 + 8) * Projectile.direction)) / 16;
 					int index2 = (int)(Projectile.Center.Y / 16f);
 					int index3 = (int)((Projectile.position.Y + Projectile.height) / 16f);
-					if(Main.tile[index1, index2] == null)
-						Main.tile[index1, index2] = new Tile();
-					if(Main.tile[index1, index3] == null)
-						Main.tile[index1, index3] = new Tile();
 					if(Projectile.velocity.Y > 0.0f)
 					{
 						Projectile.velocity.Y *= 0.5f;
@@ -1414,7 +1410,7 @@ namespace GoldensMisc.Projectiles
 			}
 		}
 
-		private void GetAutoFishingPondWidth(int x, int y, out int minX, out int maxX)
+		private static void GetAutoFishingPondWidth(int x, int y, out int minX, out int maxX)
 		{
 			minX = x;
 			maxX = x;
@@ -1429,7 +1425,7 @@ namespace GoldensMisc.Projectiles
 		}
 
 
-		private void GetAutoFishingPondState(int x, int y, out bool lava, out bool honey, out int numWaters, out int chumCount)
+		private static void GetAutoFishingPondState(int x, int y, out bool lava, out bool honey, out int numWaters, out int chumCount)
 		{
 			lava = false;
 			honey = false;
@@ -1444,13 +1440,13 @@ namespace GoldensMisc.Projectiles
 				{
 					numWaters++;
 					num++;
-					if (hasLava(Main.tile[i, num]))
+					if (HasLava(Main.tile[i, num]))
 					{
 						lava = true;
 					}
 					else
 					{
-						if (hasHoney(Main.tile[i, num]))
+						if (HasHoney(Main.tile[i, num]))
 						{
 							honey = true;
 						}
@@ -1611,7 +1607,7 @@ namespace GoldensMisc.Projectiles
 			if(!TileEntity.ByID.ContainsKey((int)Projectile.ai[1]))
 				return false;
 
-			var te = TileEntity.ByID[(int)Projectile.ai[1]] as AutofisherTE;
+            AutofisherTE te = TileEntity.ByID[(int)Projectile.ai[1]] as AutofisherTE;
 			if(te == null)
 				return false;
 			//Lighting.AddLight(Projectile.Center, 0.7f, 0.9f, 0.6f);
@@ -1637,7 +1633,7 @@ namespace GoldensMisc.Projectiles
 				//{
 				//	pPosY -= 12f;
 				//}
-				bool facingRight = Main.tile[te.Position.X, te.Position.Y].frameX == 0;
+				bool facingRight = Main.tile[te.Position.X, te.Position.Y].TileFrameX == 0;
 				Vector2 value = te.Position.ToWorldCoordinates(2, 0);
 				value -= new Vector2(6f, 4f); //brute-force fix for weird offset
 				if(facingRight)
@@ -1648,7 +1644,6 @@ namespace GoldensMisc.Projectiles
 				float projPosX = Projectile.position.X + (float)Projectile.width * 0.5f - value.X;
 				float projPosY = Projectile.position.Y + (float)Projectile.height * 0.5f - value.Y;
 				Math.Sqrt((double)(projPosX * projPosX + projPosY * projPosY));
-				float rotation2 = (float)Math.Atan2((double)projPosY, (double)projPosX) - 1.57f;
 				bool flag2 = true;
 				if(projPosX == 0f && projPosY == 0f)
 				{
@@ -1732,7 +1727,7 @@ namespace GoldensMisc.Projectiles
 								projPosX *= 1f - num4;
 							}
 						}
-						rotation2 = (float)Math.Atan2((double)projPosY, (double)projPosX) - 1.57f;
+						float rotation2 = (float)Math.Atan2((double)projPosY, (double)projPosX) - 1.57f;
 						Color color2 = Lighting.GetColor((int)value.X / 16, (int)(value.Y / 16f), FishingLineColor);
 						Main.spriteBatch.Draw(TextureAssets.FishingLine.Value, new Vector2(value.X - Main.screenPosition.X + (float)TextureAssets.FishingLine.Width() * 0.5f, value.Y - Main.screenPosition.Y + (float)TextureAssets.FishingLine.Height() * 0.5f), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, TextureAssets.FishingLine.Width(), (int)num)), color2, rotation2, new Vector2((float)TextureAssets.FishingLine.Width() * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
 					}

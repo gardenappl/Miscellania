@@ -56,7 +56,7 @@ namespace GoldensMisc.Tiles
 		{
 			Tile tile1 = Main.tile[i, j + 1];
 			Tile tile2 = Main.tile[i + 1, j + 1];
-			if ((tile2 != null || tile2.IsActive) && tile1.frameX != (tile2.frameX - 18))
+			if ((tile2 != null || tile2.HasTile) && tile1.TileFrameX != (tile2.TileFrameX - 18))
 			{
 				return false;
 			}
@@ -66,9 +66,9 @@ namespace GoldensMisc.Tiles
 			}
 		}
 
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        public override void KillMultiTile(int i, int j, int TileFrameX, int TileFrameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.ChestVacuum>());
+			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.ChestVacuum>());
             ModContent.GetInstance<ChestVacuumTE>().Kill(i, j);
 		}
 
@@ -78,7 +78,7 @@ namespace GoldensMisc.Tiles
 			int teY = j;
 
 			var tile = Main.tile[i, j];
-			if(tile.frameX != 0)
+			if(tile.TileFrameX != 0)
 				teX--;
 
 			var te = TileEntity.ByPosition[new Point16(teX, teY)] as ChestVacuumTE;

@@ -36,9 +36,9 @@ namespace GoldensMisc.Tiles
 			AddMapEntry(Color.Gray, CreateMapEntryName());
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+		public override void KillMultiTile(int i, int j, int TileFrameX, int TileFrameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.Autofisher>());
+			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.Autofisher>());
             ModContent.GetInstance<AutofisherTE>().Kill(i, j);
 		}
 
@@ -52,8 +52,8 @@ namespace GoldensMisc.Tiles
 		public override bool RightClick(int i, int j)
 		{
 			//Top left tile
-			int x = i - Main.tile[i, j].frameX % 54 / 18;
-			int y = j - Main.tile[i, j].frameY % 38 / 18;
+			int x = i - Main.tile[i, j].TileFrameX % 54 / 18;
+			int y = j - Main.tile[i, j].TileFrameY % 38 / 18;
 
 			try
 			{

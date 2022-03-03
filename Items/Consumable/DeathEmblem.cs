@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Localization;
+using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 using GoldensMisc.Buffs;
 
@@ -12,6 +12,12 @@ namespace GoldensMisc.Items.Consumable
 {
 	public class DeathEmblem : ModItem
 	{
+
+		public override void SetStaticDefaults()
+		{
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+		}
+
 		public override void SetDefaults()
 		{
 			Item.useTurn = true;

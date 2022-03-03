@@ -6,6 +6,7 @@ using Terraria.Graphics.Effects;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.GameContent.Creative;
 
 namespace GoldensMisc.Items.Tools
 {
@@ -14,6 +15,11 @@ namespace GoldensMisc.Items.Tools
 
     public class IslandStaff : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        }
+
         public override bool IsLoadingEnabled (Mod mod)
         {
             return false;
@@ -58,7 +64,7 @@ namespace GoldensMisc.Items.Tools
             {
                 for (int y = cloudY - 50; y < cloudY + 30; y++)
                 {
-                    if (Main.tile[x, y].IsActive || Main.tile[x, y].wall != 0)
+                    if (Main.tile[x, y].HasTile || Main.tile[x, y].WallType != 0)
                     {
                         Main.NewText(Language.GetTextValue("Mods.GoldensMisc.LaputaCannotUse"), 30, 200, 255);
                         Main.NewText(Language.GetTextValue("Mods.GoldensMisc.LaputaBlocked"), 30, 200, 255);
@@ -94,7 +100,7 @@ namespace GoldensMisc.Items.Tools
                 bool canPlaceTree = true;
                 for (int x = dirt.X - 1; x <= dirt.X + 1; x++)
                 {
-                    if (!Main.tile[x, dirt.Y].IsActive || Main.tile[x, dirt.Y].type != TileID.Grass)
+                    if (!Main.tile[x, dirt.Y].HasTile || Main.tile[x, dirt.Y].TileType != TileID.Grass)
                     {
                         canPlaceTree = false;
                     }
@@ -102,7 +108,7 @@ namespace GoldensMisc.Items.Tools
 
                 for (int x = dirt.X - 2; x <= dirt.X + 2; x++)
                 {
-                    if (Main.tile[x, dirt.Y - 1].IsActive)
+                    if (Main.tile[x, dirt.Y - 1].HasTile)
                     {
                         canPlaceTree = false;
                     }
@@ -127,17 +133,17 @@ namespace GoldensMisc.Items.Tools
             {
                 int x = cloudX + Main.rand.Next(-30, 30);
                 int y = cloudY;
-                if (!Main.tile[x, y].IsActive)
+                if (!Main.tile[x, y].HasTile)
                 {
                     attempts++;
                     continue;
                 }
-                while (Main.tile[x, y].IsActive)
+                while (Main.tile[x, y].HasTile)
                 {
                     y--;
                 }
 
-                if (Main.tile[x, y + 1].type == dirt && !Main.tile[x, y].IsActive)
+                if (Main.tile[x, y + 1].TileType == dirt && !Main.tile[x, y].HasTile)
                 {
                     return new Point(x, y + 1);
                 }

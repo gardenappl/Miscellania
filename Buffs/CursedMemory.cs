@@ -1,7 +1,7 @@
 ﻿
 using System;
 using Terraria;
-using Terraria.Localization;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Buffs
@@ -11,9 +11,9 @@ namespace GoldensMisc.Buffs
 
 		public override void SetStaticDefaults()
 		{
-			CanBeCleared = false;
+			BuffID.Sets.NurseCannotRemoveDebuff[Type] = false;
 			Main.debuff[Type] = true;
-			LongerExpertDebuff = true;
+			BuffID.Sets.LongerExpertDebuff[Type] = true;
 		}
 		
 		public override void Update(Player player, ref int buffIndex)
