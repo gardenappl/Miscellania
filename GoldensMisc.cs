@@ -37,10 +37,7 @@ namespace GoldensMisc
 
             VanillaTweaksLoaded = ModLoader.TryGetMod("VanillaTweaks", out _);
 
-
-			if (ModContent.GetInstance<ServerConfig>().Autofisher)
-				AutofisherHooks.Initialize();
-
+			AutofisherHooks.Initialize();
 			if (ModContent.GetInstance<ServerConfig>().WormholeMirror)
 				WormholeHacks.Load();
 
@@ -99,8 +96,9 @@ namespace GoldensMisc
 				TextureAssets.Item[ItemID.CellPhone] = CellPhoneTexture;
 				CellPhoneTexture = null;
 			}
-			if (ModContent.GetInstance<ServerConfig>().Autofisher)
-				AutofisherHooks.Unload();
+
+			AutofisherHooks.Unload();
+
 			if (ModContent.GetInstance<ServerConfig>().WormholeMirror)
 				WormholeHacks.Unload();
 		}
