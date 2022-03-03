@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent.Creative;
 using GoldensMisc.Projectiles;
 
 namespace GoldensMisc.Items.Equipable
@@ -10,7 +11,11 @@ namespace GoldensMisc.Items.Equipable
 	[AutoloadEquip(EquipType.Face)]
 	public class DemonCrown : ModItem
 	{
-			
+		public override void SetStaticDefaults()
+		{
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+		}
+
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().DemonCrown;

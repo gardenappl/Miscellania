@@ -39,9 +39,8 @@ namespace GoldensMisc
 		{
 			var startTile = beamStart.ToTileCoordinates();
 			var endTile = (beamStart + beamAngle.ToRotationVector2() * maxLength).ToTileCoordinates();
-			Tuple<int, int> collisionTile;
 			if(!Collision.TupleHitLine(startTile.X, startTile.Y, endTile.X, endTile.Y,
-									   0, 0, new List<Tuple<int, int>>(), out collisionTile))
+									   0, 0, new List<Tuple<int, int>>(), out Tuple<int, int> collisionTile))
 			{
 				return maxLength;
 			}
@@ -56,27 +55,27 @@ namespace GoldensMisc
 
 		public static class UI
 		{
-			public static readonly Color defaultUIBlue = new Color(73, 94, 171);
-			public static readonly Color defaultUIBlueMouseOver = new Color(63, 82, 151) * 0.7f;
+			public static readonly Color defaultUIBlue = new (73, 94, 171);
+			public static readonly Color defaultUIBlueMouseOver = new (44, 57, 105);
 
-			public static void FadedMouseOver(UIMouseEvent evt, UIElement listeningElement)
+			public static void FadedMouseOver(UIMouseEvent evt, UIElement _)
 			{
 				SoundEngine.PlaySound(SoundID.MenuTick);
 				((UIPanel)evt.Target).BackgroundColor = defaultUIBlue;
 			}
 
-			public static void FadedMouseOut(UIMouseEvent evt, UIElement listeningElement)
+			public static void FadedMouseOut(UIMouseEvent evt, UIElement _)
 			{
 				((UIPanel)evt.Target).BackgroundColor = defaultUIBlueMouseOver;
 			}
 
-			public static void CustomFadedMouseOver(Color customColor, UIMouseEvent evt, UIElement listeningElement)
+			public static void CustomFadedMouseOver(Color customColor, UIMouseEvent evt, UIElement _)
 			{
 				SoundEngine.PlaySound(SoundID.MenuTick);
 				((UIPanel)evt.Target).BackgroundColor = customColor;
 			}
 
-			public static void CustomFadedMouseOut(Color customColor, UIMouseEvent evt, UIElement listeningElement)
+			public static void CustomFadedMouseOut(Color customColor, UIMouseEvent evt, UIElement _)
 			{
 				((UIPanel)evt.Target).BackgroundColor = customColor;
 			}
@@ -99,7 +98,7 @@ namespace GoldensMisc
 				currentZone |= Zone.Jungle;
 			if(countedTiles[5] >= 200)
 				currentZone |= Zone.Shroom;
-			if(countedTiles[6] >= 250 && y > Main.worldSurface && Main.wallDungeon[Main.tile[x, y].wall])
+			if(countedTiles[6] >= 250 && y > Main.worldSurface && Main.wallDungeon[Main.tile[x, y].WallType])
 				currentZone |= Zone.Dungeon;
 			if(countedTiles[7] >= 1000)
 				currentZone |= Zone.Desert;
@@ -127,10 +126,10 @@ namespace GoldensMisc
 				for(int j = startY; j < endY; j++)
 				{
 					var tile = Main.tile[i, j];
-					if(tile == null || !tile.IsActive)
+					if(tile == null || !tile.HasTile)
 						continue;
 
-					switch(tile.type)
+					switch(tile.TileType)
 					{
 						case 109:
 						case 110:
@@ -169,7 +168,7 @@ namespace GoldensMisc
 							results[2] -= 5;
 							break;
 					}
-					switch(tile.type)
+					switch(tile.TileType)
 					{
 						case 147:
 						case 148:
@@ -266,6 +265,11 @@ namespace GoldensMisc
 			return false;
 		}
 
+		public static bool IsTheSameAs(Item item, Item compareItem)
+		{
+			return item.netID == compareItem.netID && item.type == compareItem.type;
+		}
+
 		public static Item PutItem(Chest chest, Item item, bool smartStack = false)
 		{
 			if(!IsActuallyAnItem(item))
@@ -278,7 +282,7 @@ namespace GoldensMisc
                 {
                     if (chest.item[index].type > ItemID.None && chest.item[index].stack > 0)
                     {
-                        if (item.IsTheSameAs(chest.item[index]))
+                        if (IsTheSameAs(item, chest.item[index]))
                         {
                             int num = chest.item[index].maxStack - chest.item[index].stack;
                             if (num > 0)
@@ -328,7 +332,7 @@ namespace GoldensMisc
 			inventory[i].SetDefaults(inventory[i].type + 1, false);
 			for(int i1 = 0; i1 < inventory.Length; ++i1)
 			{
-				if(inventory[i1].IsTheSameAs(inventory[i]) && i1 != i && (inventory[i1].type == inventory[i].type && inventory[i1].stack < inventory[i1].maxStack))
+				if(IsTheSameAs(inventory[i1], inventory[i]) && i1 != i && (inventory[i1].type == inventory[i].type && inventory[i1].stack < inventory[i1].maxStack))
 				{
 					++inventory[i1].stack;
 					inventory[i].SetDefaults(0, false);
@@ -363,16 +367,16 @@ namespace GoldensMisc
 			return zone;
 		}
 
-		public static bool hasHoney(Tile tile)
+		public static bool HasHoney(Tile tile)
 		{
-			return (tile.bTileHeader & 64) == 64;
+			return tile.LiquidType == LiquidID.Honey;
 		}
-		public static bool hasLava(Tile tile)
+		public static bool HasLava(Tile tile)
 		{
-			return (tile.bTileHeader & 32) == 32;
+			return tile.LiquidType == LiquidID.Lava;
 		}
 
-		public static bool magicMirrorRecall(Player player, Item item)
+		public static bool MagicMirrorRecall(Player player, Item item)
         {
 			if (Main.rand.Next(2) == 0)
 				Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0.0f, 0.0f, 150, Color.White, 1.1f);

@@ -5,12 +5,19 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.GameContent;
+using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Tools
 {
 	public class WormholeIceMirror : ModItem
 	{
+
+		public override void SetStaticDefaults()
+		{
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+		}
+
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().WormholeMirror;
@@ -31,7 +38,7 @@ namespace GoldensMisc.Items.Tools
 
 		public override bool? UseItem(Player player)
 		{
-			return MiscUtils.magicMirrorRecall(player, Item);
+			return MiscUtils.MagicMirrorRecall(player, Item);
 		}
 
 		public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

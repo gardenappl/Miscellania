@@ -41,7 +41,7 @@ namespace GoldensMisc.Tiles
 		public override bool IsTileValidForEntity(int i, int j)
 		{
 			var tile = Main.tile[i, j];
-			return tile.IsActive && tile.type == ModContent.TileType<Autofisher>() && (tile.frameX == 0 || tile.frameX == 54) && tile.frameY == 0;
+			return tile.HasTile && tile.TileType == ModContent.TileType<Autofisher>() && (tile.TileFrameX == 0 || tile.TileFrameX == 54) && tile.TileFrameY == 0;
 		}
 
 		public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction, int alternate)
@@ -61,7 +61,7 @@ namespace GoldensMisc.Tiles
 
 			if(Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				bool facingRight = Main.tile[Position.X, Position.Y].frameX == 0;
+				bool facingRight = Main.tile[Position.X, Position.Y].TileFrameX == 0;
 				var baitItem = GetCurrentBait();
 				if(baitItem == null)
 				{
@@ -85,7 +85,7 @@ namespace GoldensMisc.Tiles
 					if(Main.rand.Next(150) == 1)
 					{
 						FishingCooldown = 500;
-						int itemType = 0;
+						int itemType;
 						try
 						{
 							if(baitItem == null)
@@ -114,7 +114,7 @@ namespace GoldensMisc.Tiles
 			var item = new Item();
 			item.SetDefaults(ItemID.MechanicsRod, true);
 
-			int baitPower = 0;
+			int baitPower;
 			//int fishingPole = 30;
 			int fishingPole = item.fishingPole;
 
@@ -153,11 +153,11 @@ namespace GoldensMisc.Tiles
 
 		public Item GetCurrentBait()
 		{
-			bool facingRight = Main.tile[Position.X, Position.Y].frameX == 0;
+			bool facingRight = Main.tile[Position.X, Position.Y].TileFrameX == 0;
 
 			int chestX = facingRight ? Position.X - 1 : Position.X + 3;
 			int chestY = Position.Y;
-			if(Main.tile[chestX, chestY].frameX % 36 != 0)
+			if(Main.tile[chestX, chestY].TileFrameX % 36 != 0)
 				chestX--;
 			int chestID = Chest.FindChest(chestX, chestY);
 			if(chestID == -1)

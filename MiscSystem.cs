@@ -34,12 +34,12 @@ namespace GoldensMisc
 			}
 		}
 
-        public void AddHellforges(GenerationProgress progress = null, GameConfiguration configuration = null)
+        public static void AddHellforges(GenerationProgress progress = null, GameConfiguration configuration = null)
 		{
 			AddFurniture(progress, Language.GetTextValue("Mods.GoldensMisc.WorldGen.AncientHellforge"), ModContent.TileType<AncientHellforge>(), 1500, Main.maxTilesY - 250, Main.maxTilesY - 5, WallID.ObsidianBrickUnsafe, WallID.HellstoneBrickUnsafe);
 		}
 		
-		public void AddForges(GenerationProgress progress = null, GameConfiguration configuration = null)
+		public static void AddForges(GenerationProgress progress = null, GameConfiguration configuration = null)
 		{
 			AddFurniture(progress, Language.GetTextValue("Mods.GoldensMisc.WorldGen.AncientForge"), ModContent.TileType<AncientForge>(), 300, (int)Main.worldSurface, Main.maxTilesY - 300, WallID.Planked, WallID.BorealWood);
 		}
@@ -71,15 +71,15 @@ namespace GoldensMisc
 						int y = WorldGen.genRand.Next(minY, maxY);
 						foreach(int wallID in wallIDs)
 						{
-							if(Main.tile[x, y].wall == wallID)
+							if(Main.tile[x, y].WallType == wallID)
 							{
-								while (!Main.tile[x, y].IsActive)
+								while (!Main.tile[x, y].HasTile)
 								{
 									y++;
 								}
 								y--;
 								WorldGen.PlaceObject(x, y, (ushort)type, true);
-								if (Main.tile[x, y].type == (ushort)type)
+								if (Main.tile[x, y].TileType == (ushort)type)
 								{
 									generated++;
 									success = true;

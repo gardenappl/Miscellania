@@ -30,24 +30,24 @@ namespace GoldensMisc.Tiles
 			AnimationFrameHeight = 56;
 		}
 		
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+		public override void KillMultiTile(int i, int j, int TileFrameX, int TileFrameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 48, ModContent.ItemType<Items.Placeable.RedChimney>());
+			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<Items.Placeable.RedChimney>());
             ModContent.GetInstance<RedChimneyTE>().Kill(i, j);
 		}
 		
 		//Don't animate if deactivated
-		public override void AnimateIndividualTile(int type, int i, int j, ref int frameXOffset, ref int frameYOffset)
+		public override void AnimateIndividualTile(int type, int i, int j, ref int TileFrameXOffset, ref int TileFrameYOffset)
 		{
 			//Top left tile
-			int x = i - Main.tile[i, j].frameX / 18;
-			int y = j - Main.tile[i, j].frameY % AnimationFrameHeight / 18;
+			int x = i - Main.tile[i, j].TileFrameX / 18;
+			int y = j - Main.tile[i, j].TileFrameY % AnimationFrameHeight / 18;
 			try
 			{
 				var tileEntity = (RedChimneyTE)TileEntity.ByPosition[new Point16(x, y)];
 				if(tileEntity.CurrentState == RedChimneyTE.State.Deactivated)
 				{
-					frameYOffset = AnimationFrameHeight * 6;
+					TileFrameYOffset = AnimationFrameHeight * 6;
 				}
 			}
 			catch(KeyNotFoundException e)
@@ -65,8 +65,8 @@ namespace GoldensMisc.Tiles
 		public override void HitWire(int i, int j)
 		{
 			//Top left tile
-			int x = i - Main.tile[i, j].frameX / 18;
-			int y = j - Main.tile[i, j].frameY % AnimationFrameHeight / 18;
+			int x = i - Main.tile[i, j].TileFrameX / 18;
+			int y = j - Main.tile[i, j].TileFrameY % AnimationFrameHeight / 18;
 			
 			Wiring.SkipWire(x, y);
 			Wiring.SkipWire(x, y + 1);

@@ -3,13 +3,17 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.DataStructures;
+using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 using GoldensMisc.Projectiles;
+
 
 namespace GoldensMisc.Items.Weapons
 {
 	public class KarmaStaff : ModItem
 	{
+
+
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().GasterBlaster;
@@ -18,6 +22,7 @@ namespace GoldensMisc.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
 		}
 		
@@ -39,7 +44,7 @@ namespace GoldensMisc.Items.Weapons
 			Item.shoot = ModContent.ProjectileType<GasterBlaster>();
 		}
 		
-		public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 speed, int type, int damage, float knockBack)
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 speed, int type, int damage, float knockBack)
 		{
 			//projectile spawns at mouse cursor
 			position = Main.MouseWorld;

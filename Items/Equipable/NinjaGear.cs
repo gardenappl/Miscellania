@@ -3,13 +3,19 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
+using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Equipable
 {
 	public class NinjaGear : ModItem
 	{
+
+		public override void SetStaticDefaults()
+		{
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+		}
+
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().NinjaGear;
@@ -29,7 +35,7 @@ namespace GoldensMisc.Items.Equipable
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.blackBelt = true;
-			player.dash = 1;
+			player.dashType = 1;
 		}
 		
 		public override void AddRecipes()

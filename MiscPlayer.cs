@@ -63,13 +63,16 @@ namespace GoldensMisc
 		{
 			if(ExplosionResistant)
 			{
-				int projType = (int)damageSource.SourceProjectileType;
-				var proj = new Projectile();
-				proj.SetDefaults(projType);
-				if(proj.aiStyle == 16 && damageSource.SourcePlayerIndex == Player.whoAmI)
-					return false;
+				int? projType = damageSource.SourceProjectileType;
+				if (projType > 0 )
+                {
+					var proj = new Projectile();
+					proj.SetDefaults((int)projType);
+					if (proj.aiStyle == 16 && damageSource.SourcePlayerIndex == Player.whoAmI)
+						return false;
+				}
 			}
-			return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource);
+			return true;
 		}
 		
 		
