@@ -265,11 +265,6 @@ namespace GoldensMisc
 			return false;
 		}
 
-		public static bool IsTheSameAs(Item item, Item compareItem)
-		{
-			return item.netID == compareItem.netID && item.type == compareItem.type;
-		}
-
 		public static Item PutItem(Chest chest, Item item, bool smartStack = false)
 		{
 			if(!IsActuallyAnItem(item))
@@ -282,24 +277,24 @@ namespace GoldensMisc
                 {
                     if (chest.item[index].type > ItemID.None && chest.item[index].stack > 0)
                     {
-                        if (IsTheSameAs(item, chest.item[index]))
-                        {
-                            int num = chest.item[index].maxStack - chest.item[index].stack;
-                            if (num > 0)
-                            {
-                                if (num > item.stack)
-                                    num = item.stack;
-                                item.stack -= num;
-                                chest.item[index].stack += num;
-                                if (item.stack <= 0)
-                                {
-                                    DoCoins(index, chest.item);
-                                    item.SetDefaults(0, true);
-                                    return item;
-                                }
-                            }
-                            hasSameItem = true;
-                        }
+						if (item.type == chest.item[index].type)
+						{
+							int num = chest.item[index].maxStack - chest.item[index].stack;
+							if (num > 0)
+							{
+								if (num > item.stack)
+									num = item.stack;
+								item.stack -= num;
+								chest.item[index].stack += num;
+								if (item.stack <= 0)
+								{
+									DoCoins(index, chest.item);
+									item.SetDefaults(0, true);
+									return item;
+								}
+							}
+							hasSameItem = true;
+						}
                     }
                     else
                         hasEmptySpace = true;
@@ -332,8 +327,8 @@ namespace GoldensMisc
 			inventory[i].SetDefaults(inventory[i].type + 1, false);
 			for(int i1 = 0; i1 < inventory.Length; ++i1)
 			{
-				if(IsTheSameAs(inventory[i1], inventory[i]) && i1 != i && (inventory[i1].type == inventory[i].type && inventory[i1].stack < inventory[i1].maxStack))
-				{
+				if (i1 != i && inventory[i1].type == inventory[i].type && inventory[i1].stack < inventory[i1].maxStack)
+                {
 					++inventory[i1].stack;
 					inventory[i].SetDefaults(0, false);
 					inventory[i].active = false;
