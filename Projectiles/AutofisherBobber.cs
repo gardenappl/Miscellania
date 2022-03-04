@@ -357,7 +357,7 @@ namespace GoldensMisc.Projectiles
 				//Projectile.localAI[1] = (float)num10;
 
 				//Projectile.netUpdate = true;
-				GoldensMisc.Log(autoFisher.caughtItem + " " + autoFisher.caughtEnemy);
+				//GoldensMisc.Log(autoFisher.caughtItem + " " + autoFisher.caughtEnemy);
 				if (autoFisher.caughtEnemy == 0)
 				{
 					Projectile.ai[0] = autoFisher.caughtItem;

@@ -14,10 +14,11 @@ namespace GoldensMisc.Items.Weapons
 		{
 			return ModContent.GetInstance<ServerConfig>().AltStaffs;
 		}
-		
+
 		public override void SetStaticDefaults()
 		{
 			Item.staff[Item.type] = true;
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 		
 		public override void SetDefaults()
