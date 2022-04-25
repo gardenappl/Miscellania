@@ -34,16 +34,16 @@ namespace GoldensMisc.Projectiles
 			switch(Main.rand.Next(4))
 			{
 				case 0: //Shoot right
-					Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Left.X - 100, target.Left.Y, 5f, 0f, type, Projectile.damage / 2, 1f, Projectile.owner, 1, 1);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Left.X - 100, target.Left.Y, 5f, 0f, type, Projectile.damage / 2, 1f, Projectile.owner, 1, 1);
 					return;
 				case 1: //Shoot down
-					Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Top.X, target.Top.Y - 100, 0f, 5f, type, Projectile.damage / 2, 1f, Projectile.owner, 1, 1);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Top.X, target.Top.Y - 100, 0f, 5f, type, Projectile.damage / 2, 1f, Projectile.owner, 1, 1);
 					return;
 				case 2: //Shoot left
-					Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Right.X + 100, target.Right.Y, -5f, 0f, type, Projectile.damage / 2, 1f, Projectile.owner, 1, 1);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Right.X + 100, target.Right.Y, -5f, 0f, type, Projectile.damage / 2, 1f, Projectile.owner, 1, 1);
 					return;
 				case 3: //Shoot up
-					Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), target.Bottom.X, target.Bottom.Y + 100, 0f, -5f, type, Projectile.damage / 2, 1f, Projectile.owner, 1, 1);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Bottom.X, target.Bottom.Y + 100, 0f, -5f, type, Projectile.damage / 2, 1f, Projectile.owner, 1, 1);
 					return;
 			}
 		}

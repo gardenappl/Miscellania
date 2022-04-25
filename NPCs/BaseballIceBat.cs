@@ -31,7 +31,7 @@ namespace GoldensMisc.NPCs
 		
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if(spawnInfo.player.position.Y / 16f > Main.worldSurface && spawnInfo.player.ZoneSnow)
+			if(spawnInfo.Player.position.Y / 16f > Main.worldSurface && spawnInfo.Player.ZoneSnow)
 				return 0.005f;
 			return 0f;
 		}

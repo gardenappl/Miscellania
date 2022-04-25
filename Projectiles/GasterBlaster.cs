@@ -137,7 +137,7 @@ namespace GoldensMisc.Projectiles
 					Projectile laser;
 					if(BeamProj == -1 || Main.projectile[BeamProj] == null || Main.projectile[BeamProj].type != ModContent.ProjectileType<GasterLaser>())
 					{
-						int i = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GasterLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+						int i = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GasterLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 						laser = Main.projectile[i];
 						BeamProj = i;
 					}

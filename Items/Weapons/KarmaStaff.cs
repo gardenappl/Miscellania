@@ -64,7 +64,7 @@ namespace GoldensMisc.Items.Weapons
 			{
                 Item.UseSound = SoundID.Item78;
 			}
-			return base.CanUseItem(player);
+			return true;
 		}
 		
 		public override bool? UseItem(Player player)
@@ -73,7 +73,7 @@ namespace GoldensMisc.Items.Weapons
 			{
 				player.MinionNPCTargetAim(false);
 			}
-			return base.UseItem(player);
+			return null;
 		}
 		
 		public override bool AltFunctionUse(Player player)
