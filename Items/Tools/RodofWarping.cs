@@ -41,15 +41,12 @@ namespace GoldensMisc.Items.Tools
 		
 		public override bool? UseItem(Player player)
 		{
-			//player.itemTime = Item.useTime;
 			var teleportPos = new Vector2();
 			teleportPos.X = Main.mouseX + Main.screenPosition.X - player.width / 2;
 			teleportPos.Y = player.gravDir != 1 ? (Main.screenPosition.Y + Main.screenHeight - Main.mouseY) : (Main.mouseY + Main.screenPosition.Y - player.height);
 			
 			if (teleportPos.X > 50 && teleportPos.X < (double) (Main.maxTilesX * 16 - 50) && (teleportPos.Y > 50 && teleportPos.Y < (double) (Main.maxTilesY * 16 - 50)))
 			{
-				//int tileX = (int) (teleportPos.X / 16f);
-				//int tileY = (int) (teleportPos.Y / 16f);
 				if (!Collision.SolidCollision(teleportPos, player.width, player.height)) //removed the Jungle Temple check because it's a post-Moon Lord tool and we don't give a damn
 				{
 					player.Teleport(teleportPos, 1);
