@@ -95,7 +95,7 @@ namespace GoldensMisc.Projectiles
 					var shootVel = Main.npc[target].Center - Projectile.Center;
 					shootVel.Normalize();
 					shootVel *= 6f;
-					Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center, shootVel, ModContent.ProjectileType<RedBullet>(), Projectile.damage, Projectile.knockBack * 0.5f, Projectile.owner);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, shootVel, ModContent.ProjectileType<RedBullet>(), Projectile.damage, Projectile.knockBack * 0.5f, Projectile.owner);
 					ShootDelay = 50;
 				}
 			}

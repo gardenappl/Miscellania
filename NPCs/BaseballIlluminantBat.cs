@@ -38,7 +38,7 @@ namespace GoldensMisc.NPCs
 		
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if(spawnInfo.player.ZoneHallow)
+			if(spawnInfo.Player.ZoneHallow)
 				return SpawnCondition.Underground.Chance / 100f + SpawnCondition.Cavern.Chance / 100f;
 			return 0f;
 		}

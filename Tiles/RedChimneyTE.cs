@@ -38,15 +38,15 @@ namespace GoldensMisc.Tiles
 				int smokeType = Main.rand.Next(825, 828);
 				if (Main.rand.Next(4) == 0)
 				{
-					Gore.NewGore(smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.4f + 0.4f);
+					Gore.NewGore(null, smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.4f + 0.4f);
 				}
 				else if (Main.rand.Next(2) == 0)
 				{
-					Gore.NewGore(smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.3f + 0.3f);
+					Gore.NewGore(null, smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.3f + 0.3f);
 				}
 				else
 				{
-					Gore.NewGore(smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.2f + 0.2f);
+					Gore.NewGore(null, smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.2f + 0.2f);
 				}
 			}
 		}

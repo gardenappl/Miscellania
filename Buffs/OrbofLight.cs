@@ -21,7 +21,7 @@ namespace GoldensMisc.Buffs
 			bool projSpawned = player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.OrbofLight>()] > 0;
 			if(!projSpawned && player.whoAmI == Main.myPlayer)
 			{
-				Projectile.NewProjectile(player.GetProjectileSource_Buff(buffIndex), player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, ModContent.ProjectileType<Projectiles.OrbofLight>(), 0, 0f, player.whoAmI);
+				Projectile.NewProjectile(player.GetSource_Buff(buffIndex), player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, ModContent.ProjectileType<Projectiles.OrbofLight>(), 0, 0f, player.whoAmI);
 			}
 		}
 	}

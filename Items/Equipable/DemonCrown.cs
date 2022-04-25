@@ -38,7 +38,7 @@ namespace GoldensMisc.Items.Equipable
 			player.statManaMax2 += 40;
 			player.GetModPlayer<MiscPlayer>().DemonCrown = true;
 			if (player.ownedProjectileCounts[ModContent.ProjectileType<RedCrystal>()] == 0)
-				Projectile.NewProjectile(player.GetProjectileSource_Accessory(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<RedCrystal>(), 60, 8, player.whoAmI);
+				Projectile.NewProjectile(player.GetSource_Accessory(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<RedCrystal>(), 60, 8, player.whoAmI);
 		}
 	}
 }

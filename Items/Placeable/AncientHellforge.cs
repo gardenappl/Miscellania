@@ -35,22 +35,5 @@ namespace GoldensMisc.Items.Placeable
 			Item.value = Item.sellPrice(silver: 60);
 			Item.createTile = ModContent.TileType<Tiles.AncientHellforge>();
 		}
-		
-		public override void AddRecipes()
-		{
-//			var recipe = new ModRecipe(mod);
-//			recipe.SetResult(ItemID.AdamantiteForge);
-//			recipe.AddIngredient(ItemID.AdamantiteOre, 30);
-//			recipe.AddIngredient(this);
-//			recipe.AddTile(TileID.MythrilAnvil);
-//			recipe.AddRecipe();
-//			
-//			recipe = new ModRecipe(mod);
-//			recipe.SetResult(ItemID.TitaniumForge);
-//			recipe.AddIngredient(ItemID.TitaniumOre, 30);
-//			recipe.AddIngredient(this);
-//			recipe.AddTile(TileID.MythrilAnvil);
-//			recipe.AddRecipe();
-		}
 	}
 }

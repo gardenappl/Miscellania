@@ -71,7 +71,7 @@ namespace GoldensMisc.Tiles
 					Main.projectile[bobberProj].type != ModContent.ProjectileType<AutofisherBobber>())
 				{
 					var bobberPos = new Point(Position.X + (facingRight ? 2 : 0), Position.Y).ToWorldCoordinates();
-					bobberProj = Projectile.NewProjectile(null , bobberPos, new Vector2(facingRight ? 3f : -3f, 0f), ModContent.ProjectileType<AutofisherBobber>(), 0, 0, ai1: this.ID);
+					bobberProj = Projectile.NewProjectile(null, bobberPos, new Vector2(facingRight ? 3f : -3f, 0f), ModContent.ProjectileType<AutofisherBobber>(), 0, 0, ai1: this.ID);
 					Main.projectile[bobberProj].ai[1] = this.ID;
 					Main.projectile[bobberProj].netUpdate = true;
 					_fishingInfo = null;
