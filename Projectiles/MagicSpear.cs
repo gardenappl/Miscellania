@@ -55,7 +55,7 @@ namespace GoldensMisc.Projectiles
 		
 		public override void Kill(int timeLeft)
 		{
-			SoundEngine.PlaySound(SoundID.Item, Projectile.position, 10);
+			SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
 			for (int i = 0; i < 4; i++)
 			{
 				int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.BlueTorch, Projectile.velocity.X, Projectile.velocity.Y);

@@ -25,7 +25,7 @@ namespace GoldensMisc.Items.Consumable
 			Item.height = 18;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = 90;
-			Item.UseSound = new LegacySoundStyle(SoundID.MoonLord, 0);
+			Item.UseSound = SoundID.MoonLord;
 			Item.useAnimation = 90;
 			Item.rare = ItemRarityID.LightRed;
 			Item.value = Item.sellPrice(0, 0, 50);
@@ -40,7 +40,7 @@ namespace GoldensMisc.Items.Consumable
 		
 		public override bool? UseItem(Player player)
 		{
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0.0f, 0.0f, 150, Color.Red, 1.1f);
 			if (player.itemAnimation == Item.useAnimation / 2)
 			{
