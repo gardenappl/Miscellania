@@ -25,13 +25,6 @@ namespace GoldensMisc.Items.Consumable
 		byte uses = 0;
 		const byte maxUses = 90;
 
-		public override ModItem Clone(Item item)
-		{
-			LifeStone clone = (LifeStone)base.Clone(item);
-			clone.uses = 0;
-			return clone;
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 26;
