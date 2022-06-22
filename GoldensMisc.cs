@@ -26,7 +26,9 @@ namespace GoldensMisc
 	{
 		public static bool VanillaTweaksLoaded;
 		private static ReLogic.Content.Asset<Texture2D> CellPhoneTexture;
-		
+		private bool WormHoleHacksLoaded = false;
+		//0 is WormholeHacks
+
 		public GoldensMisc()
 		{
 			LegacyConfig.Load();
@@ -34,14 +36,17 @@ namespace GoldensMisc
 		
 		public override void Load()
 		{
-
+			
             VanillaTweaksLoaded = ModLoader.TryGetMod("VanillaTweaks", out _);
 
 			AutofisherHooks.Initialize();
 			if (ModContent.GetInstance<ServerConfig>().WormholeMirror)
+            {
 				WormholeHacks.Load();
-
-			if(!Main.dedServ)
+				WormHoleHacksLoaded = true;
+			}
+			
+			if (!Main.dedServ)
 			{
 				MiscGlowMasks.Load();
 				if (ModContent.GetInstance<ClientConfig>().CellPhoneResprite)
@@ -99,7 +104,7 @@ namespace GoldensMisc
 
 			AutofisherHooks.Unload();
 
-			if (ModContent.GetInstance<ServerConfig>().WormholeMirror)
+			if (WormHoleHacksLoaded == true)
 				WormholeHacks.Unload();
 		}
 		

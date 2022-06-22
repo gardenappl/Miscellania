@@ -60,8 +60,7 @@ namespace GoldensMisc.Projectiles
 			Projectile.width = 44;
 			Projectile.height = 48;
 			Projectile.friendly = true;
-//			Projectile.scale = 1.5f;
-			//Projectile.minion = true;
+			Projectile.DamageType = DamageClass.Summon;
 			Projectile.sentry = true;
 			Projectile.penetrate = -1;
 			Projectile.timeLeft = Projectile.SentryLifeTime;
