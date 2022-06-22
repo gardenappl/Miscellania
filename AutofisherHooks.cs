@@ -71,6 +71,7 @@ namespace GoldensMisc
 		public static void Unload()
 		{
 			hooks.Clear();
+			hooks = null;
 		}
 
 

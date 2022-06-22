@@ -35,6 +35,7 @@ namespace GoldensMisc.Projectiles
 			Projectile.timeLeft = 2;
 			Projectile.tileCollide = false;
 			Projectile.ignoreWater = true;
+			Projectile.DamageType = DamageClass.Summon;
 			Projectile.scale = 1.5f;
 			ProjectileID.Sets.SentryShot[Projectile.type] = true;
 		}
