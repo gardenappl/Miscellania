@@ -27,7 +27,6 @@ namespace GoldensMisc
 		public static bool VanillaTweaksLoaded;
 		private static ReLogic.Content.Asset<Texture2D> CellPhoneTexture;
 		private bool WormHoleHacksLoaded = false;
-		//0 is WormholeHacks
 
 		public GoldensMisc()
 		{
