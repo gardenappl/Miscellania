@@ -10,9 +10,9 @@ using GoldensMisc.Items.Weapons;
 
 namespace GoldensMisc
 {
-	public static class MiscRecipes
+	public class MiscRecipes : ModSystem
 	{
-		public static void AddRecipeGroups()
+		public override void AddRecipeGroups()
 		{
 			var recipeGroup = new RecipeGroup(() => Language.GetText("LegacyMisc.37") + " " + Lang.GetItemNameValue(ItemID.SilverBar), 
 				ItemID.SilverBar,
@@ -37,7 +37,7 @@ namespace GoldensMisc
 			}
 		}
 		
-		public static void PostAddRecipes()
+		public override void PostAddRecipes()
 		{
 
 			for (int i = 0; i < Recipe.numRecipes; i++)
