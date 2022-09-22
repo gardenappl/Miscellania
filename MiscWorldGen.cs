@@ -14,18 +14,8 @@ using Terraria.IO;
 
 namespace GoldensMisc
 {
-	public class MiscSystem : ModSystem
+	public class MiscWorldGen : ModSystem
 	{
-
-		public override void AddRecipeGroups()
-		{
-			MiscRecipes.AddRecipeGroups();
-		}
-
-		public override void PostAddRecipes()
-		{
-			MiscRecipes.PostAddRecipes();
-		}
 
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
