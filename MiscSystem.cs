@@ -16,6 +16,17 @@ namespace GoldensMisc
 {
 	public class MiscSystem : ModSystem
 	{
+
+		public override void AddRecipeGroups()
+		{
+			MiscRecipes.AddRecipeGroups();
+		}
+
+		public override void PostAddRecipes()
+		{
+			MiscRecipes.PostAddRecipes();
+		}
+
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
 			if(ModContent.GetInstance<ServerConfig>().AncientForges)
@@ -64,18 +75,41 @@ namespace GoldensMisc
 					if(progress != null)
 						progress.Set(i / toGenerate);
 					bool success = false;
-					int attempts = 0;
+					byte attempts = 0;
+					ushort successcount = 0;
 					while (!success)
 					{
+						
+
+						if (successcount < 65533)
+						{
+							successcount++;
+						}
+						else
+						{
+							successcount = ushort.MaxValue;
+							break;
+						}
+						
 						int x = WorldGen.genRand.Next(1, Main.maxTilesX);
 						int y = WorldGen.genRand.Next(minY, maxY);
 						foreach(int wallID in wallIDs)
 						{
 							if(Main.tile[x, y].WallType == wallID)
 							{
+								byte hasTileCount = 0;
 								while (!Main.tile[x, y].HasTile)
 								{
 									y++;
+									if (hasTileCount < 80)
+									{
+										hasTileCount++;
+									}
+									else
+									{
+										hasTileCount = byte.MaxValue;
+										break;
+									}
 								}
 								y--;
 								WorldGen.PlaceObject(x, y, (ushort)type, true);
@@ -87,7 +121,7 @@ namespace GoldensMisc
 								else
 								{
 									attempts++;
-									if (attempts >= 1000)
+									if (attempts > 254)
 									{
 										success = true;
 									}

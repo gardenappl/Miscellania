@@ -107,15 +107,6 @@ namespace GoldensMisc
 				WormholeHacks.Unload();
 		}
 		
-		public override void AddRecipeGroups()
-		{
-			MiscRecipes.AddRecipeGroups();
-		}
-		
-		public override void PostAddRecipes()
-		{
-			MiscRecipes.PostAddRecipes();
-		}
 
 		public override object Call(params object[] args)
 		{
@@ -152,19 +143,24 @@ namespace GoldensMisc
 				{
 					case MiscMessageType.PrintAutofisherInfo:
 						int id = reader.ReadInt32();
-						var te = (AutofisherTE)TileEntity.ByID[id];
-						ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(te.DisplayedFishingInfo), Color.White, whoAmI);
+						TileEntity.ByID.TryGetValue(id, out TileEntity aTE);
+						AutofisherTE autofisherTE = (AutofisherTE)aTE;
+						if (autofisherTE != null && autofisherTE.Type == ModContent.TileEntityType<AutofisherTE>())
+							ChatHelper.SendChatMessageToClient(NetworkText.FromLiteral(autofisherTE.DisplayedFishingInfo), Color.White, whoAmI);
 						break;
                     case MiscMessageType.AddItemByWayOfVacuum:
                         id = reader.ReadInt32();
-                        var vacuumTE = (ChestVacuumTE)TileEntity.ByID[id];
-                        vacuumTE.FindAndAddItemToChest();
+                        TileEntity.ByID.TryGetValue(id, out TileEntity vTE);
+						ChestVacuumTE vacuumTE = (ChestVacuumTE)vTE;
+						if (vacuumTE != null && vacuumTE.Type == ModContent.TileEntityType<ChestVacuumTE>())
+							vacuumTE.FindAndAddItemToChest();
                         break;
                     case MiscMessageType.UpdateVacuumSmartStack:
                         id = reader.ReadInt32();
-                        vacuumTE = (ChestVacuumTE)TileEntity.ByID[id];
-                        vacuumTE.smartStack = reader.ReadBoolean();
-                        vacuumTE.smartStackChanged = true;
+						TileEntity.ByID.TryGetValue(id, out vTE);
+						vacuumTE = (ChestVacuumTE)vTE;
+						if (vacuumTE != null && vacuumTE.Type == ModContent.TileEntityType<ChestVacuumTE>())
+							vacuumTE.smartStackChanged = true;
                         break;
                 }
 

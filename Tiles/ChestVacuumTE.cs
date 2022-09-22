@@ -120,11 +120,15 @@ namespace GoldensMisc.Tiles
                         }
                         else if (Main.netMode == NetmodeID.Server)
                         {
-                            var te = (ChestVacuumTE)TileEntity.ByPosition[Position];
-                            var netMessage = Mod.GetPacket();
-                            netMessage.Write((byte)MiscMessageType.AddItemByWayOfVacuum);
-                            netMessage.Write(te.ID);
-                            netMessage.Send();
+                            ByPosition.TryGetValue(Position, out TileEntity te);
+                            if (te != null)
+                            {
+                                var netMessage = Mod.GetPacket();
+                                netMessage.Write((byte)MiscMessageType.AddItemByWayOfVacuum);
+                                netMessage.Write(te.ID);
+                                netMessage.Send();
+                            }
+                            
                         }
                         NetMessage.SendData(MessageID.SyncItem, -1, -1, null, i);
                     }
