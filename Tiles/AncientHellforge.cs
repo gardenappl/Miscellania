@@ -27,7 +27,7 @@ namespace GoldensMisc.Tiles
 			TileObjectData.addTile(Type);
 			AddMapEntry(Color.Red, CreateMapEntryName());
 			//disableSmartCursor = true;
-			AdjTiles = new int[]{ TileID.Hellforge };
+			AdjTiles = new int[]{ TileID.Hellforge, TileID.Furnaces };
 		}
 
 		public override void KillMultiTile(int i, int j, int TileFrameX, int TileFrameY)
