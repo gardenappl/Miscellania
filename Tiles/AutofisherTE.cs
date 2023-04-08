@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -71,7 +72,7 @@ namespace GoldensMisc.Tiles
 					Main.projectile[bobberProj].type != ModContent.ProjectileType<AutofisherBobber>())
 				{
 					var bobberPos = new Point(Position.X + (facingRight ? 2 : 0), Position.Y).ToWorldCoordinates();
-					bobberProj = Projectile.NewProjectile(null, bobberPos, new Vector2(facingRight ? 3f : -3f, 0f), ModContent.ProjectileType<AutofisherBobber>(), 0, 0, ai1: this.ID);
+					bobberProj = Projectile.NewProjectile(new EntitySource_TileEntity(this), bobberPos, new Vector2(facingRight ? 3f : -3f, 0f), ModContent.ProjectileType<AutofisherBobber>(), 0, 0, ai1: this.ID);
 					Main.projectile[bobberProj].ai[1] = this.ID;
 					Main.projectile[bobberProj].netUpdate = true;
 					_fishingInfo = null;
@@ -82,7 +83,7 @@ namespace GoldensMisc.Tiles
 				}
 				else
 				{
-					if(Main.rand.Next(150) == 1)
+					if(Main.rand.NextBool(150))
 					{
 						FishingCooldown = 500;
 						int itemType;
@@ -187,7 +188,7 @@ namespace GoldensMisc.Tiles
 			int consumeChance = item.bait / 10 + 1;
 			if(item.type == ItemID.TruffleWorm)
 				item.stack--;
-			if(Main.rand.Next(consumeChance) == 0 && !(item.type == ItemID.TruffleWorm))
+			if(Main.rand.NextBool(consumeChance) && !(item.type == ItemID.TruffleWorm))
 				item.stack--;
 			if(item.stack <= 0)
 				item.SetDefaults(0);

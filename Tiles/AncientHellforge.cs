@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -42,7 +43,15 @@ namespace GoldensMisc.Tiles
 				Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, DustID.Torch);
 		}
 
-		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+        public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
+        {
+			MinPick = 0;
+			if (j > Main.maxTilesY - 300)
+				MinPick = 60;
+			return true;
+        }
+
+        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
 			float rand = 0f;
 			//float rand = (float)Main.rand.Next(28, 42) * 0.005f;

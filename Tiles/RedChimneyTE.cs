@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -27,26 +28,23 @@ namespace GoldensMisc.Tiles
 		
 		public override void Update()
 		{
-			if(CurrentState == State.Smoke && Main.rand.Next(9) == 0)
+			if(CurrentState == State.Smoke && Main.rand.NextBool(9))
 			{
-				var smokePos = new Vector2(Position.X * 16 + 16, Position.Y * 16 + 8);
-				var smokeVel = Vector2.Zero;
-				if (Main.windSpeedCurrent < 0f)
+				Vector2 smokePos = new (Position.X * 16 + 16, Position.Y * 16 + 8);
+				Vector2 smokeVel = Vector2.Zero;
+				int smokeType = Main.rand.Next(GoreID.ChimneySmoke1, GoreID.ChimneySmoke3);
+				byte rand = (byte)Main.rand.Next(4);
+				if (rand == 3)
 				{
-					smokeVel.X = -Main.windSpeedCurrent;
+					Gore.NewGore(new EntitySource_TileEntity(this), smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.4f + 0.4f);
 				}
-				int smokeType = Main.rand.Next(825, 828);
-				if (Main.rand.Next(4) == 0)
+				else if (rand == 2)
 				{
-					Gore.NewGore(null, smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.4f + 0.4f);
-				}
-				else if (Main.rand.Next(2) == 0)
-				{
-					Gore.NewGore(null, smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.3f + 0.3f);
+					Gore.NewGore(new EntitySource_TileEntity(this), smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.3f + 0.3f);
 				}
 				else
 				{
-					Gore.NewGore(null, smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.2f + 0.2f);
+					Gore.NewGore(new EntitySource_TileEntity(this), smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.2f + 0.2f);
 				}
 			}
 		}
@@ -70,12 +68,13 @@ namespace GoldensMisc.Tiles
 		
 		public override void SaveData(TagCompound tag)
 		{
-			tag["s"] = CurrentState;
+			tag["s"] = (byte)CurrentState;
 		}
 		
 		public override void LoadData(TagCompound tag)
 		{
-			CurrentState = (State)tag.GetByte("s");
+			if (tag.ContainsKey("s"))
+				CurrentState = (State)tag.GetByte("s");
 		}
 		
 		public override void NetSend(BinaryWriter writer)
