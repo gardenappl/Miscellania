@@ -3,6 +3,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace GoldensMisc.Projectiles
 {
@@ -23,13 +25,12 @@ namespace GoldensMisc.Projectiles
 			Projectile.penetrate = 3;
 			Projectile.DamageType = DamageClass.Magic;
 			Projectile.ignoreWater = true;
-			Projectile.glowMask = MiscGlowMasks.UndyingSpearProjectile;
 			AIType = ProjectileID.JavelinFriendly;
 		}
 		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			int type = Main.rand.Next(2) == 0 ? ModContent.ProjectileType<MagicSpearMini>() : ModContent.ProjectileType<MagicSpearMiniAlt>();
+			int type = Main.rand.NextBool(2) ? ModContent.ProjectileType<MagicSpearMini>() : ModContent.ProjectileType<MagicSpearMiniAlt>();
 			
 			switch(Main.rand.Next(4))
 			{
@@ -57,5 +58,16 @@ namespace GoldensMisc.Projectiles
 				Main.dust[dust].scale = 1.5f;
 			}
 		}
-	}
+
+        public override void PostDraw(Color lightColor)
+        {
+			Texture2D glowTexture = MiscGlowMasks.UndyingSpearProjectile;
+			lightColor = Color.White;
+			lightColor.A = 255;
+			Vector2 glowPosition = Projectile.position;
+			Rectangle glowTextureSize = new(0, 0, glowTexture.Width, glowTexture.Height);
+			Vector2 glowTextureOrigin = glowTexture.Size() * .5f;
+			Main.EntitySpriteDraw(glowTexture, glowPosition, glowTextureSize, lightColor, Projectile.rotation, glowTextureOrigin, Projectile.scale, SpriteEffects.None, 0);
+        }
+    }
 }
