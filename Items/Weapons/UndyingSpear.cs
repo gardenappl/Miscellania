@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
 
 namespace GoldensMisc.Items.Weapons
 {
-	public class UndyingSpear : ModItem
+	public class UndyingSpear : GlowingModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -42,26 +42,7 @@ namespace GoldensMisc.Items.Weapons
 			Item.noUseGraphic = true; //No swing animation
 			Item.DamageType = DamageClass.Magic;
 			Item.crit = 10;
-		}
-
-		public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
-		{
-			Texture2D glowTexture = MiscGlowMasks.UndyingSpear;
-			Color color = Color.White;
-			color.A = 255;
-			spriteBatch.Draw(glowTexture, position, frame, color, 0f, origin, scale, SpriteEffects.None, 0f);
-		}
-
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Texture2D glowTexture = MiscGlowMasks.UndyingSpear;
-			Color color = Color.White;
-			color.A = 255;
-			Rectangle glowTextureSize = new(0, 0, glowTexture.Width, glowTexture.Height);
-			Vector2 glowTextureOrigin = glowTexture.Size() * .5f;
-			Vector2 glowOffset = new ((float)(Item.width / 2) - glowTextureOrigin.X, (float)(Item.height - glowTexture.Height));
-			Vector2 glowPosition = Item.position - Main.screenPosition + glowTextureOrigin + glowOffset;
-			spriteBatch.Draw(glowTexture, glowPosition, glowTextureSize, color, rotation, glowTextureOrigin, scale, SpriteEffects.None, 0f);
+			GlowMask = MiscGlowMasks.UndyingSpear;
 		}
 
 		public override void AddRecipes()

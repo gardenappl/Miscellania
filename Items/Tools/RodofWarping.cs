@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GoldensMisc.Items.Tools
 {
-	public class RodofWarping : ModItem
+	public class RodofWarping : GlowingModItem
 	{
 
 		public override bool IsLoadingEnabled (Mod mod)
@@ -36,6 +36,7 @@ namespace GoldensMisc.Items.Tools
 			Item.UseSound = SoundID.Item8;
 			Item.rare = ItemRarityID.Red;
 			Item.value = Item.sellPrice(0, 20);
+			GlowMask = MiscGlowMasks.RodofWarping;
 		}
 		
 		public override bool? UseItem(Player player)
@@ -72,25 +73,6 @@ namespace GoldensMisc.Items.Tools
 			return true;
 		}
 
-		public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
-		{
-			Texture2D glowTexture = MiscGlowMasks.RodofWarping;
-			Color color = Color.White;
-			color.A = 255;
-			spriteBatch.Draw(glowTexture, position, frame, color, 0f, origin, scale, SpriteEffects.None, 0f);
-		}
-
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-		{
-			Texture2D glowTexture = MiscGlowMasks.RodofWarping;
-			Color color = Color.White;
-			color.A = 255;
-			Rectangle glowTextureSize = new(0, 0, glowTexture.Width, glowTexture.Height);
-			Vector2 glowTextureOrigin = glowTexture.Size() * .5f;
-			Vector2 glowOffset = new((float)(Item.width / 2) - glowTextureOrigin.X, (float)(Item.height - glowTexture.Height));
-			Vector2 glowPosition = Item.position - Main.screenPosition + glowTextureOrigin + glowOffset;
-			spriteBatch.Draw(glowTexture, glowPosition, glowTextureSize, color, rotation, glowTextureOrigin, scale, SpriteEffects.None, 0f);
-		}
 
 		public override void AddRecipes()
 		{
