@@ -42,17 +42,11 @@ namespace GoldensMisc
 
 	public abstract class GlowingModItem : ModItem
     {
-		private Texture2D _glowMask;
-
-		public Texture2D GlowMask 
-		{
-			get { return _glowMask; }
-			set { _glowMask = value; }
-		}
+		public Texture2D GlowMask;
 
 		public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{
-			Texture2D glowTexture = _glowMask;
+			Texture2D glowTexture = GlowMask;
 			Color color = Color.White;
 			color.A = 255;
 			spriteBatch.Draw(glowTexture, position, frame, color, 0f, origin, scale, SpriteEffects.None, 0f);
@@ -60,7 +54,7 @@ namespace GoldensMisc
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			Texture2D glowTexture = _glowMask;
+			Texture2D glowTexture = GlowMask;
 			Color color = Color.White;
 			color.A = 255;
 			Rectangle glowTextureSize = new(0, 0, glowTexture.Width, glowTexture.Height);
