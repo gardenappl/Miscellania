@@ -32,7 +32,6 @@ namespace GoldensMisc.Tiles
 		
 		public override void KillMultiTile(int i, int j, int TileFrameX, int TileFrameY)
 		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<Items.Placeable.RedChimney>());
             ModContent.GetInstance<RedChimneyTE>().Kill(i, j);
 		}
 		

@@ -10,11 +10,6 @@ namespace GoldensMisc.Items.Equipable
 {
 	public class UniversalMagnet : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-		}
-
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().Magnet;
@@ -31,7 +26,7 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.GetModPlayer<MiscPlayer>().Magnet = true;
+			player.treasureMagnet = true;
 		}
 	}
 }

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
+using Terraria.Localization;
+using static VanillaTweaks.VanillaTweaks;
 
 namespace GoldensMisc.Items.Placeable
 {
@@ -47,23 +49,24 @@ namespace GoldensMisc.Items.Placeable
 
 
 		}
-		
-//		public override void ModifyTooltips(List<TooltipLine> tooltips)
-//		{
-//			if(GoldensMisc.VanillaTweaksLoaded)
-//			{
-//				var modVanillaTweaks = ModLoader.GetMod("VanillaTweaks");
-//				object rename = modVanillaTweaks.Call("GetConfigValue", "SandstoneRename");
-//				if(rename is bool && (bool)rename)
-//				{
-//					int index = tooltips.FindIndex(line => line.mod == "Terraria" && line.Name == "ItemName");
-//					if(index != -1)
-//					{
-//						if(Language.ActiveCulture == GameCulture.English)
-//							tooltips[index].text = "Sand Slab Wall";
-//					}
-//				}
-//			}
-//		}
-	}
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+			if (GoldensMisc.VanillaTweaks != null)
+			{
+				if(sandstoneRename)
+				{
+					int index = tooltips.FindIndex(line => line.Mod == "Terraria" && line.Name == "ItemName");
+					if (index != -1)
+					{
+						tooltips[index].Text = Language.GetTextValue("Mods.VanillaTweaks.Items.SandstoneSlabWall.DisplayName");
+					}
+				}
+			}
+		}
+
+        [JITWhenModsEnabled("VanillaTweaks")]
+        public bool sandstoneRename => SandstoneRename;
+
+    }
 }

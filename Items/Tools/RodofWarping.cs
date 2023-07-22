@@ -4,9 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace GoldensMisc.Items.Tools
 {
@@ -21,7 +19,6 @@ namespace GoldensMisc.Items.Tools
 		public override void SetStaticDefaults()
 		{
 			Item.staff[Item.type] = true;
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 		
 		public override void SetDefaults()
@@ -36,12 +33,12 @@ namespace GoldensMisc.Items.Tools
 			Item.UseSound = SoundID.Item8;
 			Item.rare = ItemRarityID.Red;
 			Item.value = Item.sellPrice(0, 20);
-			GlowMask = MiscGlowMasks.RodofWarping;
+			GlowMask ??= MiscGlowMasks.RodofWarping;
 		}
 		
 		public override bool? UseItem(Player player)
 		{
-			var teleportPos = new Vector2();
+			Vector2 teleportPos = new ();
 			teleportPos.X = Main.mouseX + Main.screenPosition.X - player.width / 2;
 			teleportPos.Y = player.gravDir != 1 ? (Main.screenPosition.Y + Main.screenHeight - Main.mouseY) : (Main.mouseY + Main.screenPosition.Y - player.height);
 			
@@ -50,7 +47,7 @@ namespace GoldensMisc.Items.Tools
 				if (!Collision.SolidCollision(teleportPos, player.width, player.height)) //removed the Jungle Temple check because it's a post-Moon Lord tool and we don't give a damn
 				{
 					player.Teleport(teleportPos, 1);
-					NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float) player.whoAmI, teleportPos.X, teleportPos.Y, 1);
+					NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float) player.whoAmI, teleportPos.X, teleportPos.Y, 1);
 					if(ModContent.GetInstance<ServerConfig>().RodofWarpingChaosState > 0f)
 					{
 						if(player.chaosState)

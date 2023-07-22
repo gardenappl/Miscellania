@@ -1,5 +1,4 @@
 ﻿
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,14 +11,14 @@ namespace GoldensMisc.Items
 		 * Staff stats:
 		 * materials      |dmg|use time|velocity|knockback|mana|sell|autofire|pierce
 		 * --------------------------------------------------------------------------
-		 * Amethyst-Copper|14 |40      |6f      |3.25f    |3   |4   |false   |0
-		 * Amethyst-Tin   |14 |39      |6.25f   |3.5f     |4   |6   |false   |0
+		 * Amethyst-Copper|15 |37      |6f      |3.25f    |5   |4   |false   |0
+		 * Amethyst-Tin   |15 |36      |6.25f   |3.5f     |6   |6   |false   |0
 		 * --------------------------------------------------------------------------
-		 * Topaz-Copper   |15 |38      |6.5f    |3.25f    |3   |8   |false   |0
-		 * Topaz-Tin      |16 |37      |6.75f   |3.5f     |4   |10  |false   |0
+		 * Topaz-Copper   |16 |36      |6.5f    |3.25f    |5   |8   |false   |0
+		 * Topaz-Tin      |17 |35      |6.75f   |3.5f     |4   |10  |false   |0
 		 * --------------------------------------------------------------------------
-		 * Sapphire-Silver|17 |34      |7.5f    |4f       |5   |20  |true    |1
-		 * Sapphire-Tungsn|18 |33      |7.75f   |4f       |6   |25  |true    |1
+		 * Sapphire-Silver|18 |34      |7.5f    |4f       |6   |20  |true    |1
+		 * Sapphire-Tungsn|19 |33      |7.75f   |4f       |7   |25  |true    |1
 		 * --------------------------------------------------------------------------
 		 * Emerald-Silver |19 |32      |8f      |4.25f    |5   |30  |true    |1
 		 * Emerald-Tungsn |19 |31      |8.25f   |4.5f     |6   |35  |true    |1
@@ -40,15 +39,12 @@ namespace GoldensMisc.Items
 				switch(item.type)
 				{
 					case ItemID.TopazStaff:
-						item.damage = 16;
-						item.useTime = 37;
+						item.damage = 17;
+						item.useTime = 35;
 						item.useAnimation = 37;
 						item.shootSpeed = 6.75f;
 						item.knockBack = 3.5f;
 						item.value = Item.sellPrice(0, 0, 10);
-						break;
-					case ItemID.SapphireStaff:
-						item.autoReuse = true;
 						break;
 					case ItemID.EmeraldStaff:
 						item.useTime = 31;

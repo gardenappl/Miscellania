@@ -2,7 +2,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.Creative;
 
 namespace GoldensMisc.Items.Weapons
 {
@@ -17,17 +16,16 @@ namespace GoldensMisc.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			Item.staff[Item.type] = true;
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 		
 		public override void SetDefaults()
 		{
-			Item.mana = 4;
+			Item.mana = 6;
 			Item.UseSound = SoundID.Item43;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.damage = 14;
-			Item.useAnimation = 39;
-			Item.useTime = 39;
+			Item.damage = 15;
+			Item.useAnimation = 36;
+			Item.useTime = 36;
 			Item.width = 40;
 			Item.height = 40;
 			Item.shoot = ProjectileID.AmethystBolt;

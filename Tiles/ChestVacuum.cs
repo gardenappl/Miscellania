@@ -44,7 +44,7 @@ namespace GoldensMisc.Tiles
 			var anchorTileList = new List<int>(tileObjectData.AnchorAlternateTiles);
 			for(int i = TileID.Count; i < TileLoader.TileCount; i++)
 			{
-				if(TileLoader.ContainerName(i) != String.Empty)
+				if(TileID.Sets.IsAContainer[i] == true || Main.tileContainer[i] == true)
 				{
 					anchorTileList.Add(i);
 				}
@@ -68,7 +68,6 @@ namespace GoldensMisc.Tiles
 
         public override void KillMultiTile(int i, int j, int TileFrameX, int TileFrameY)
 		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.ChestVacuum>());
             ModContent.GetInstance<ChestVacuumTE>().Kill(i, j);
 		}
 

@@ -88,13 +88,13 @@ namespace GoldensMisc.Tiles
 
         public void FindAndAddItemToChest()
         {
-            var chest = Main.chest[Chest.FindChest(Position.X, Position.Y + 1)];
+            Chest chest = Main.chest[Chest.FindChest(Position.X, Position.Y + 1)];
             Vector2 myPos = Position.ToWorldCoordinates(16f, 8f);
             for (int i = 0; i < Main.maxItems; i++)
             {
-                Item item = null;
+                Item item;
                 item = Main.item[i];
-                if ((item.active) && (item.stack > 0) && (item.DistanceSQ(myPos) < PickupRadiusSq) && (item != null))
+                if (item != null && item.active && item.stack > 0 && (item.DistanceSQ(myPos) < PickupRadiusSq))
                 {
                     Vector2 itemPos = item.position;
                     int itemWidth = item.width;

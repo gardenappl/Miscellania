@@ -12,18 +12,13 @@ namespace GoldensMisc.Items.Consumable
 	public class LifeStone : ModItem
 	{
 
-		public override void SetStaticDefaults()
-		{
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-		}
-
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().MagicStones;
 		}
 		
-		byte uses = 0;
-		const byte maxUses = 90;
+		int uses = 0;
+		const int maxUses = 90;
 
 		public override void SetDefaults()
 		{
@@ -35,14 +30,9 @@ namespace GoldensMisc.Items.Consumable
 			Item.useTime = 30;
 			Item.useAnimation = 30;
 			Item.UseSound = SoundID.Item29;
-			Item.consumable = true;
+			Item.consumable = false;
 			Item.rare = ItemRarityID.LightRed;
 			Item.value = Item.sellPrice(0, 8);
-		}
-		
-		public override bool ConsumeItem(Player player)
-		{
-			return false;
 		}
 		
 		public override bool? UseItem(Player player)

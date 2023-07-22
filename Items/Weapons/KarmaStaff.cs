@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.DataStructures;
-using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 using GoldensMisc.Projectiles;
 
@@ -12,8 +11,6 @@ namespace GoldensMisc.Items.Weapons
 {
 	public class KarmaStaff : ModItem
 	{
-
-
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().GasterBlaster;
@@ -22,7 +19,6 @@ namespace GoldensMisc.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
 		}
 		

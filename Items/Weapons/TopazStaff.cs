@@ -1,9 +1,6 @@
 ﻿
-using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
@@ -18,17 +15,16 @@ namespace GoldensMisc.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			Item.staff[Item.type] = true;
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 		
 		public override void SetDefaults()
 		{
-			Item.mana = 3;
+			Item.mana = 5;
 			Item.UseSound = SoundID.Item43;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.damage = 15;
-			Item.useAnimation = 38;
-			Item.useTime = 38;
+			Item.damage = 16;
+			Item.useAnimation = 36;
+			Item.useTime = 36;
 			Item.width = 40;
 			Item.height = 40;
 			Item.shoot = ProjectileID.TopazBolt;

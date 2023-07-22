@@ -1,21 +1,12 @@
 ﻿
-using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 namespace GoldensMisc.Items.Weapons
 {
 	public class UndyingSpear : GlowingModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-		}
 
 		public override bool IsLoadingEnabled (Mod mod)
 		{
@@ -42,7 +33,7 @@ namespace GoldensMisc.Items.Weapons
 			Item.noUseGraphic = true; //No swing animation
 			Item.DamageType = DamageClass.Magic;
 			Item.crit = 10;
-			GlowMask = MiscGlowMasks.UndyingSpear;
+			GlowMask ??= MiscGlowMasks.UndyingSpear;
 		}
 
 		public override void AddRecipes()

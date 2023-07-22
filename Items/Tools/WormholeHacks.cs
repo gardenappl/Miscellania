@@ -15,18 +15,18 @@ namespace GoldensMisc.Items.Tools
         public static void Load()
         {
             //Very convenient methods, thank you, Terraria devs!
-            On.Terraria.Player.HasUnityPotion += PlayerHasUnityPotion;
-            On.Terraria.Player.TakeUnityPotion += PlayerTakeUnityPotion;
+            Terraria.On_Player.HasUnityPotion += PlayerHasUnityPotion;
+            Terraria.On_Player.TakeUnityPotion += PlayerTakeUnityPotion;
 
             //But why the fuck do you not use them sometimes?!
-            On.Terraria.Player.HasItem += PlayerHasItem;
+            Terraria.On_Player.HasItemInInventoryOrOpenVoidBag += PlayerHasItem;
         }
 
         public static void Unload()
         {
-            On.Terraria.Player.HasUnityPotion -= PlayerHasUnityPotion;
-            On.Terraria.Player.TakeUnityPotion -= PlayerTakeUnityPotion;
-            On.Terraria.Player.HasItem -= PlayerHasItem;
+            Terraria.On_Player.HasUnityPotion -= PlayerHasUnityPotion;
+            Terraria.On_Player.TakeUnityPotion -= PlayerTakeUnityPotion;
+            Terraria.On_Player.HasItemInInventoryOrOpenVoidBag -= PlayerHasItem;
         }
 
         public static bool HasWormholeItem(Player player)
@@ -37,7 +37,7 @@ namespace GoldensMisc.Items.Tools
                player.HasItem(ModContent.ItemType<WormholeCellPhone>());
         }
 
-        private static bool PlayerHasUnityPotion(On.Terraria.Player.orig_HasUnityPotion orig, Player self)
+        private static bool PlayerHasUnityPotion(Terraria.On_Player.orig_HasUnityPotion orig, Player self)
         {
             if (HasWormholeItem(self))
                 return true;
@@ -45,7 +45,7 @@ namespace GoldensMisc.Items.Tools
                 return orig(self);
         }
 
-        private static void PlayerTakeUnityPotion(On.Terraria.Player.orig_TakeUnityPotion orig, Player self)
+        private static void PlayerTakeUnityPotion(Terraria.On_Player.orig_TakeUnityPotion orig, Player self)
         {
             if (HasWormholeItem(self))
                 return;
@@ -53,7 +53,7 @@ namespace GoldensMisc.Items.Tools
                 orig(self);
         }
 
-        private static bool PlayerHasItem(On.Terraria.Player.orig_HasItem orig, Player self, int id)
+        private static bool PlayerHasItem(Terraria.On_Player.orig_HasItemInInventoryOrOpenVoidBag orig, Player self, int id)
         {
             if (id != ItemID.WormholePotion)
                 return orig(self, id);

@@ -32,8 +32,8 @@ namespace GoldensMisc.Tiles
 			{
 				Vector2 smokePos = new (Position.X * 16 + 16, Position.Y * 16 + 8);
 				Vector2 smokeVel = Vector2.Zero;
-				int smokeType = Main.rand.Next(GoreID.ChimneySmoke1, GoreID.ChimneySmoke3);
-				byte rand = (byte)Main.rand.Next(4);
+				int smokeType = Main.rand.Next(GoreID.ChimneySmoke1, GoreID.ChimneySmoke3 + 1);
+				int rand = Main.rand.Next(4);
 				if (rand == 3)
 				{
 					Gore.NewGore(new EntitySource_TileEntity(this), smokePos, smokeVel, smokeType, Main.rand.NextFloat() * 0.4f + 0.4f);

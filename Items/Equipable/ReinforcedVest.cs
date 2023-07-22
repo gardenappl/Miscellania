@@ -9,12 +9,6 @@ namespace GoldensMisc.Items.Equipable
 	[AutoloadEquip(EquipType.Body)]
 	public class ReinforcedVest : ModItem
 	{
-
-		public override void SetStaticDefaults()
-		{
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-		}
-
 		public override bool IsLoadingEnabled (Mod mod)
 		{
 			return ModContent.GetInstance<ServerConfig>().ReinforcedVest;

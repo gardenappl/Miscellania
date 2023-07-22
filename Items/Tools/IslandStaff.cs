@@ -6,7 +6,6 @@ using Terraria.Graphics.Effects;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Terraria.GameContent.Creative;
 
 namespace GoldensMisc.Items.Tools
 {
@@ -15,10 +14,6 @@ namespace GoldensMisc.Items.Tools
 
     public class IslandStaff : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-        }
 
         public override bool IsLoadingEnabled (Mod mod)
         {

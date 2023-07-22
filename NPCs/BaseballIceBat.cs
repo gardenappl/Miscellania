@@ -43,11 +43,11 @@ namespace GoldensMisc.NPCs
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BaseballCap>(), 3));
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
-			if(Main.rand.Next(2) == 0)
+			if(Main.rand.NextBool(2))
 				target.AddBuff(BuffID.Chilled, 20 * 60);
-			if(Main.rand.Next(10) == 0 && target.FindBuffIndex(BuffID.Frozen) >= 0)
+			if(Main.rand.NextBool(10) && target.FindBuffIndex(BuffID.Frozen) >= 0)
 				target.AddBuff(BuffID.Frozen, 1 * 60);
 		}
 	}

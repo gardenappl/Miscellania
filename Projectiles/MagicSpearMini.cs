@@ -45,13 +45,13 @@ namespace GoldensMisc.Projectiles
 			return Color.White;
 		}
 		
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if(timesSpawned > 2 || timesSpawned == -1)
 			{
 				return;
 			}
-			int type = Main.rand.Next(2) == 0 ? ModContent.ProjectileType<MagicSpearMini>() : ModContent.ProjectileType<MagicSpearMiniAlt>();
+			int type = Main.rand.NextBool(2) ? ModContent.ProjectileType<MagicSpearMini>() : ModContent.ProjectileType<MagicSpearMiniAlt>();
 
 			if (undying)
 			{

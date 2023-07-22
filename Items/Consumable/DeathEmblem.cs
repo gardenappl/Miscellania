@@ -12,12 +12,6 @@ namespace GoldensMisc.Items.Consumable
 {
 	public class DeathEmblem : ModItem
 	{
-
-		public override void SetStaticDefaults()
-		{
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-		}
-
 		public override void SetDefaults()
 		{
 			Item.useTurn = true;
@@ -56,7 +50,7 @@ namespace GoldensMisc.Items.Consumable
 				player.Teleport(player.lastDeathPostion, -69);
 				player.Center = player.lastDeathPostion;
 				if(Main.netMode == NetmodeID.SinglePlayer)
-					NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float) player.whoAmI, player.lastDeathPostion.X, player.lastDeathPostion.Y, 3);
+					NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float) player.whoAmI, player.lastDeathPostion.X, player.lastDeathPostion.Y, 3);
 				
 				player.AddBuff(ModContent.BuffType<CursedMemory>(), 120 * 60);
 				for (int index = 0; index < 70; ++index)
