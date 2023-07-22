@@ -13,10 +13,6 @@ namespace GoldensMisc.Items.Consumable
 		{
 			return ModContent.GetInstance<ServerConfig>().GodStone;
 		}
-		public override void SetStaticDefaults()
-		{
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-		}
 
 		public override void SetDefaults()
 		{
@@ -25,16 +21,12 @@ namespace GoldensMisc.Items.Consumable
 			Item.healLife = 1000;
 			Item.healMana = 500;
 			Item.potion = true;
+			Item.consumable = false;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.useTime = 30;
 			Item.useAnimation = 30;
 			Item.UseSound = SoundID.Item29;
 			Item.rare = ItemRarityID.Purple;
-		}
-		
-		public override bool ConsumeItem(Player player)
-		{
-			return false;
 		}
 		
 		public override bool? UseItem(Player player)

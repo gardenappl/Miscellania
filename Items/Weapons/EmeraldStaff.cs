@@ -1,9 +1,6 @@
 ﻿
-using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
@@ -18,7 +15,6 @@ namespace GoldensMisc.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			Item.staff[Item.type] = true;
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 		
 		public override void SetDefaults()

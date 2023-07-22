@@ -1,9 +1,6 @@
 ﻿
-using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
@@ -18,16 +15,15 @@ namespace GoldensMisc.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			Item.staff[Item.type] = true;
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 		
 		public override void SetDefaults()
 		{
 			Item.rare = ItemRarityID.Blue;
-			Item.mana = 6;
+			Item.mana = 7;
 			Item.UseSound = SoundID.Item43;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.damage = 18;
+			Item.damage = 19;
 			Item.useAnimation = 33;
 			Item.useTime = 33;
 			Item.width = 40;

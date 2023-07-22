@@ -28,7 +28,7 @@ namespace GoldensMisc.Projectiles
 			AIType = ProjectileID.JavelinFriendly;
 		}
 		
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			int type = Main.rand.NextBool(2) ? ModContent.ProjectileType<MagicSpearMini>() : ModContent.ProjectileType<MagicSpearMiniAlt>();
 			

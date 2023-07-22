@@ -340,7 +340,7 @@ namespace GoldensMisc
 
 		public static Zone GetZoneInfo(Player player)
 		{
-			var zone = Zone.None;
+			Zone zone = Zone.None;
 			if(player.ZoneCorrupt)
 				zone |= Zone.Corrupt;
 			if(player.ZoneCrimson)
@@ -373,7 +373,7 @@ namespace GoldensMisc
 
 		public static bool MagicMirrorRecall(Player player, Item item)
         {
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0.0f, 0.0f, 150, Color.White, 1.1f);
 			if (player.itemAnimation == item.useAnimation / 2)
 			{

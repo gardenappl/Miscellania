@@ -10,14 +10,10 @@ namespace GoldensMisc.Items.Equipable
 {
 	public class MagnetismRing : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-		}
 
 		public override bool IsLoadingEnabled (Mod mod)
 		{
-			return ModContent.GetInstance<ServerConfig>().Magnet;
+			return ModContent.GetInstance<ServerConfig>().MagnetismRing;
 		}
 		
 		public override void SetDefaults()
@@ -31,19 +27,30 @@ namespace GoldensMisc.Items.Equipable
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.GetModPlayer<MiscPlayer>().Magnet = true;
+			player.treasureMagnet = true;
 			player.goldRing = true;
 			player.manaMagnet = true;
 		}
 		
 		public override void AddRecipes()
 		{
-			CreateRecipe()
-				.AddIngredient(ModContent.ItemType<UniversalMagnet>())
-				.AddIngredient(ItemID.CelestialMagnet)
-				.AddIngredient(ItemID.GoldRing)
-				.AddTile(TileID.TinkerersWorkbench)
-				.Register();
+			if (ModContent.GetInstance<ServerConfig>().Magnet)
+			{
+				CreateRecipe()
+					.AddIngredient(ModContent.ItemType<UniversalMagnet>())
+					.AddIngredient(ItemID.CelestialMagnet)
+					.AddIngredient(ItemID.GoldRing)
+					.AddTile(TileID.TinkerersWorkbench)
+					.Register();
+
+				CreateRecipe()
+						.AddIngredient(ItemID.TreasureMagnet)
+						.AddIngredient(ItemID.CelestialMagnet)
+						.AddIngredient(ItemID.GoldRing)
+						.AddTile(TileID.TinkerersWorkbench)
+						.Register();
+			}
+
 		}
 	}
 }

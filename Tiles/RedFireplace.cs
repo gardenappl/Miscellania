@@ -33,11 +33,6 @@ namespace GoldensMisc.Tiles
 			AdjTiles = new int[]{ TileID.Fireplace };
 		}
 		
-		public override void KillMultiTile(int i, int j, int TileFrameX, int TileFrameY)
-		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.RedFireplace>());
-		}
-		
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
 			if(closer)

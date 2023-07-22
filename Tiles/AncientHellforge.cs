@@ -31,11 +31,6 @@ namespace GoldensMisc.Tiles
 			AdjTiles = new int[]{ TileID.Hellforge, TileID.Furnaces };
 		}
 
-		public override void KillMultiTile(int i, int j, int TileFrameX, int TileFrameY)
-		{
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.AncientHellforge>());
-		}
-
 		public override void RandomUpdate(int i, int j)
 		{
 			int amount = Main.rand.Next(1, 4);

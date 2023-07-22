@@ -1,13 +1,15 @@
 Mods: {
 	GoldensMisc: {
-		BuffName: {
-			CursedMemory: 被诅咒的记忆
-			OrbofLight: 远古光明珍珠
-		}
+		Buffs: {
+			CursedMemory: {
+				DisplayName: 被诅咒的记忆
+				Description: 最大生命值减半
+			}
 
-		BuffDescription: {
-			CursedMemory: 最大生命值减半
-			OrbofLight: 一个发出微光的魔法小球
+			OrbofLight: {
+				DisplayName: 远古光明珍珠
+				Description: 一个发出微光的魔法小球
+			}
 		}
 
 		CommandUsage: 用法:
@@ -24,192 +26,365 @@ Mods: {
 			}
 		}
 
-		ItemName: {
-			DeathEmblem: 死亡纹章
-			GodStone: 神石
-			InertStone: 无效的石头
-			LifeStone: 治愈之石
-			ManaStone: 法力之石
-			DemonCrown: 恶魔皇冠
-			HeartLocket: 心之吊坠
-			MagnetismRing: 磁力戒指
-			NinjaGear: 忍者装备
-			OrbofLight: 远古光明珍珠
-			ReinforcedHorseshoe: 装甲马蹄
-			ReinforcedVest: 装甲之躯
-			UniversalMagnet: 普通的磁铁
-			AdamantiteDye: 反光金刚石染料
-			BaseballCap: 棒球帽
-			ChlorophyteDye: 反光叶绿染料
-			CobaltDye: 反光钴蓝染料
-			MatrixDye: 矩阵染料
-			MythrilDye: 反光秘银染料
-			OrichalcumDye: 反光山铜染料
-			PalladiumDye: 反光钯金染料
-			TitaniumDye: 反光钛金染料
-			VirtualDye: 虚拟染料
-			WormholeCrystal: 虫洞结晶
-			AncientForge: 远古熔炉
-			AncientHellforge: 远古地狱熔炉
-			RedChimney: 红色烟囱
-			RedFireplace: 红色壁炉
-			SandstoneSlabWall: 砂石板墙
-			IslandStaff: 空岛法杖
-			RodofWarping: 折跃法杖
-			WormholeCellPhone: 网络手机
-			WormholeDoubleMirror: 忆·虫洞之镜
-			WormholeIceMirror: 冰·虫洞之镜
-			WormholeMirror: 虫洞之镜
-			AmethystStaff: 紫水晶法杖
-			AncientMuramasa: 远古村正
-			BaseballBat: 棒球棒
-			DiamondStaff: 钻石法杖
-			EmeraldStaff: 祖母绿法杖
-			KarmaStaff: 命魂法杖
-			MagicSpear: 正义之矛
-			RubyStaff: 红宝石法杖
-			SapphireStaff: 蓝宝石法杖
-			TopazStaff: 黄晶玉法杖
-			UndyingSpear: 永恒·正义之矛
-			Autofisher: 自动钓竿
-			ChestVacuum: 物品吸取器
-			FishNet: 渔网
-		}
+		Items: {
+			DeathEmblem: {
+				DisplayName: 死亡纹章
+				Tooltip:
+					'''
+					凝视它的眼睛,回到你最后的死亡之地
+					将在短时间内减少最大生命值
+					'''
+			}
 
-		ItemTooltip: {
-			DeathEmblem:
-				'''
-				凝视它的眼睛,回到你最后的死亡之地
-				将在短时间内减少最大生命值
-				'''
-			GodStone:
-				'''
-				可无限使用
-				不会获得药水病
-				这是一个作弊项目
-				'''
-			InertStone: "'它似乎可以储存魔法能量'"
-			LifeStone: 可多次使用
-			ManaStone: 可多次使用
-			DemonCrown:
-				'''
-				赋予巨大的魔法力量
-				召唤一个红水晶为你而战
-				'''
-			HeartLocket: 受到伤害后提高移动速度及无敌时间
-			MagnetismRing:
-				'''
-				增加物品,钱币及魔力星的拾取范围
-				‘你真的很有吸引力’
-				'''
-			NinjaGear:
-				'''
-				允许冲撞敌人
-				有几率躲避攻击
-				'''
-			OrbofLight: 召唤一个散发微弱光芒的光明魔法球
-			ReinforcedHorseshoe:
-				'''
-				免疫摔落伤害
-				使你免疫火块及己方爆炸伤害
-				'''
-			ReinforcedVest: 使你免疫己方爆炸伤害
-			UniversalMagnet: 增加物品拾取范围
-			BaseballCap:
-				'''
-				'你们过得如何,孩子们?'
-				右键可旋转
-				'''
-			WormholeCrystal:
-				'''
-				'当你握着它的时候,你觉得它把你吸引住了...'
-				这种材料在Miscellania中暂时没有用处
-				你可以将其出售或保留以备将来的Mod更新
-				'''
-			IslandStaff:
-				'''
-				创造一个浮动岛
-				使用一次后将损坏
-				'''
-			RodofWarping:
-				'''
-				传送到鼠标位置
-				大大降低混沌状态的持续时间及伤害
-				'''
-			WormholeCellPhone:
-				'''
-				显示所有信息
-				允许你随意回家及传送队友
-				右键选择玩家
-				'''
-			WormholeDoubleMirror:
-				'''
-				盯着镜子便可回家
-				或传送队友
-				右键选择玩家
-				'''
-			WormholeIceMirror:
-				'''
-				盯着镜子便可回家
-				或传送队友
-				右键选择玩家
-				'''
-			WormholeMirror:
-				'''
-				可传送队友
-				右键选择玩家
-				'''
-			KarmaStaff: 召唤一个命魂向敌人射击激光
-			MagicSpear:
-				'''
-				迅速投掷穿刺之矛
-				哇啊呀呀呀!!
-				'''
-			UndyingSpear: 迅速投掷穿刺之矛
-			Autofisher:
-				'''
-				35%垂钓力
-				放置在靠近水的地方时自动钓鱼及钓取其他物品,需要诱饵
-				右键获取更多信息
-				使用物品吸取器来捡起钓上的物品
-				'''
-			ChestVacuum:
-				'''
-				放置在箱子上,并将附近的掉落物吸取进去
-				右键启用智能堆叠模式
-				'''
-			FishNet:
-				'''
-				放入水中时,慢慢捕捞鱼及其他物品
-				必须使用右键手动拿取
-				'''
-			MechanicsRod: 可合成为自动钓竿
+			GodStone: {
+				DisplayName: 神石
+				Tooltip:
+					'''
+					可无限使用
+					不会获得药水病
+					这是一个作弊项目
+					'''
+			}
+
+			InertStone: {
+				DisplayName: 无效的石头
+				Tooltip: "'它似乎可以储存魔法能量'"
+			}
+
+			LifeStone: {
+				DisplayName: 治愈之石
+				Tooltip: 可多次使用
+			}
+
+			ManaStone: {
+				DisplayName: 法力之石
+				Tooltip: 可多次使用
+			}
+
+			DemonCrown: {
+				DisplayName: 恶魔皇冠
+				Tooltip:
+					'''
+					赋予巨大的魔法力量
+					召唤一个红水晶为你而战
+					'''
+			}
+
+			HeartLocket: {
+				DisplayName: 心之吊坠
+				Tooltip: 受到伤害后提高移动速度及无敌时间
+			}
+
+			MagnetismRing: {
+				DisplayName: 磁力戒指
+				Tooltip:
+					'''
+					增加物品,钱币及魔力星的拾取范围
+					‘你真的很有吸引力’
+					'''
+			}
+
+			NinjaGear: {
+				DisplayName: 忍者装备
+				Tooltip:
+					'''
+					允许冲撞敌人
+					有几率躲避攻击
+					'''
+			}
+
+			OrbofLight: {
+				DisplayName: 远古光明珍珠
+				Tooltip: 召唤一个散发微弱光芒的光明魔法球
+			}
+
+			ReinforcedHorseshoe: {
+				DisplayName: 装甲马蹄
+				Tooltip:
+					'''
+					免疫摔落伤害
+					使你免疫火块及己方爆炸伤害
+					'''
+			}
+
+			ReinforcedVest: {
+				DisplayName: 装甲之躯
+				Tooltip: 使你免疫己方爆炸伤害
+			}
+
+			UniversalMagnet: {
+				DisplayName: 普通的磁铁
+				Tooltip: 增加物品拾取范围
+			}
+
+			AdamantiteDye: {
+				DisplayName: 反光金刚石染料
+				// Tooltip: ""
+			}
+
+			BaseballCap: {
+				DisplayName: 棒球帽
+				Tooltip:
+					'''
+					'你们过得如何,孩子们?'
+					右键可旋转
+					'''
+			}
+
+			ChlorophyteDye: {
+				DisplayName: 反光叶绿染料
+				// Tooltip: ""
+			}
+
+			CobaltDye: {
+				DisplayName: 反光钴蓝染料
+				// Tooltip: ""
+			}
+
+			MatrixDye: {
+				DisplayName: 矩阵染料
+				// Tooltip: ""
+			}
+
+			MythrilDye: {
+				DisplayName: 反光秘银染料
+				// Tooltip: ""
+			}
+
+			OrichalcumDye: {
+				DisplayName: 反光山铜染料
+				// Tooltip: ""
+			}
+
+			PalladiumDye: {
+				DisplayName: 反光钯金染料
+				// Tooltip: ""
+			}
+
+			TitaniumDye: {
+				DisplayName: 反光钛金染料
+				// Tooltip: ""
+			}
+
+			VirtualDye: {
+				DisplayName: 虚拟染料
+				// Tooltip: ""
+			}
+
+			WormholeCrystal: {
+				DisplayName: 虫洞结晶
+				Tooltip:
+					'''
+					'当你握着它的时候,你觉得它把你吸引住了...'
+					这种材料在Miscellania中暂时没有用处
+					你可以将其出售或保留以备将来的Mod更新
+					'''
+			}
+
+			AncientForge: {
+				DisplayName: 远古熔炉
+				// Tooltip: ""
+			}
+
+			AncientHellforge: {
+				DisplayName: 远古地狱熔炉
+				// Tooltip: ""
+			}
+
+			RedChimney: {
+				DisplayName: 红色烟囱
+				// Tooltip: ""
+			}
+
+			RedFireplace: {
+				DisplayName: 红色壁炉
+				// Tooltip: ""
+			}
+
+			SandstoneSlabWall: {
+				DisplayName: 砂石板墙
+				// Tooltip: ""
+			}
+
+			IslandStaff: {
+				DisplayName: 空岛法杖
+				Tooltip:
+					'''
+					创造一个浮动岛
+					使用一次后将损坏
+					'''
+			}
+
+			RodofWarping: {
+				DisplayName: 折跃法杖
+				Tooltip:
+					'''
+					传送到鼠标位置
+					大大降低混沌状态的持续时间及伤害
+					'''
+			}
+
+			WormholeCellPhone: {
+				DisplayName: 网络手机
+				Tooltip:
+					'''
+					显示所有信息
+					允许你随意回家及传送队友
+					右键选择玩家
+					'''
+			}
+
+			WormholeDoubleMirror: {
+				DisplayName: 忆·虫洞之镜
+				Tooltip:
+					'''
+					盯着镜子便可回家
+					或传送队友
+					右键选择玩家
+					'''
+			}
+
+			WormholeIceMirror: {
+				DisplayName: 冰·虫洞之镜
+				Tooltip:
+					'''
+					盯着镜子便可回家
+					或传送队友
+					右键选择玩家
+					'''
+			}
+
+			WormholeMirror: {
+				DisplayName: 虫洞之镜
+				Tooltip:
+					'''
+					可传送队友
+					右键选择玩家
+					'''
+			}
+
+			AmethystStaff: {
+				DisplayName: 紫水晶法杖
+				// Tooltip: ""
+			}
+
+			AncientMuramasa: {
+				DisplayName: 远古村正
+				// Tooltip: ""
+			}
+
+			BaseballBat: {
+				DisplayName: 棒球棒
+				// Tooltip: ""
+			}
+
+			DiamondStaff: {
+				DisplayName: 钻石法杖
+				// Tooltip: ""
+			}
+
+			EmeraldStaff: {
+				DisplayName: 祖母绿法杖
+				// Tooltip: ""
+			}
+
+			KarmaStaff: {
+				DisplayName: 命魂法杖
+				Tooltip: 召唤一个命魂向敌人射击激光
+			}
+
+			MagicSpear: {
+				DisplayName: 正义之矛
+				Tooltip:
+					'''
+					迅速投掷穿刺之矛
+					哇啊呀呀呀!!
+					'''
+			}
+
+			RubyStaff: {
+				DisplayName: 红宝石法杖
+				// Tooltip: ""
+			}
+
+			SapphireStaff: {
+				DisplayName: 蓝宝石法杖
+				// Tooltip: ""
+			}
+
+			TopazStaff: {
+				DisplayName: 黄晶玉法杖
+				// Tooltip: ""
+			}
+
+			UndyingSpear: {
+				DisplayName: 永恒·正义之矛
+				Tooltip: 迅速投掷穿刺之矛
+			}
+
+			Autofisher: {
+				DisplayName: 自动钓竿
+				Tooltip:
+					'''
+					35%垂钓力
+					放置在靠近水的地方时自动钓鱼及钓取其他物品,需要诱饵
+					右键获取更多信息
+					使用物品吸取器来捡起钓上的物品
+					'''
+			}
+
+			ChestVacuum: {
+				DisplayName: 物品吸取器
+				Tooltip:
+					'''
+					放置在箱子上,并将附近的掉落物吸取进去
+					右键启用智能堆叠模式
+					'''
+			}
+
+			FishNet: {
+				DisplayName: 渔网
+				Tooltip:
+					'''
+					放入水中时,慢慢捕捞鱼及其他物品
+					必须使用右键手动拿取
+					'''
+			}
+
+			BaseballCapBackwards: {
+				// DisplayName: "{$Mods.GoldensMisc.ItemName.BaseballCap.DisplayName}"
+				// Tooltip: "{$Mods.GoldensMisc.ItemTooltip.BaseballCap.Tooltip}"
+			}
+
+			MechanicsRod.Tooltip: 可合成为自动钓竿
 		}
 
 		LaputaCannotUse: 也许在这里这么做并不是个好主意.
 		LaputaTooHigh: 你距离地面太高了.
 		LaputaBlocked: 似乎被什么东西挡住了.
 
-		ProjectileName: {
-			GasterBlaster: 自动激光
-			GasterLaser: 命魂激光
-			Laputa: 空岛之光
-			MagicSpear: 正义之矛
-			MagicSpearMini: 迷你正义之矛
-			OrbofLight: 远古光明珍珠
-			RedBullet: 红色炮弹
-			RedCrystal: 红水晶
-			UndyingSpear: 永恒·正义之矛
+		Projectiles: {
+			GasterBlaster.DisplayName: 自动激光
+			GasterLaser.DisplayName: 命魂激光
+			Laputa.DisplayName: 空岛之光
+			MagicSpear.DisplayName: 正义之矛
+			MagicSpearMini.DisplayName: 迷你正义之矛
+			OrbofLight.DisplayName: 远古光明珍珠
+			RedBullet.DisplayName: 红色炮弹
+			RedCrystal.DisplayName: 红水晶
+			UndyingSpear.DisplayName: 永恒·正义之矛
+			// AutofisherBobber.DisplayName: Autofisher Bobber
+			// MagicSpearMiniAlt.DisplayName: Mini Spear of Justice
 		}
 
-		NPCName: {
-			BaseballCaveBat: 棒球洞穴蝙蝠
-			BaseballGiantBat: 棒球巨型蝙蝠
-			BaseballHellBat: 棒球地狱蝙蝠
-			BaseballIceBat: 棒球冰霜蝙蝠
-			BaseballIlluminantBat: 棒球荧光蝙蝠
-			BaseballJungleBat: 棒球丛林蝙蝠
-			BaseballLavaBat: 棒球熔岩蝙蝠
+		NPCs: {
+			BaseballCaveBat.DisplayName: 棒球洞穴蝙蝠
+			BaseballGiantBat.DisplayName: 棒球巨型蝙蝠
+			BaseballHellBat.DisplayName: 棒球地狱蝙蝠
+			BaseballIceBat.DisplayName: 棒球冰霜蝙蝠
+			BaseballIlluminantBat.DisplayName: 棒球荧光蝙蝠
+			BaseballJungleBat.DisplayName: 棒球丛林蝙蝠
+			BaseballLavaBat.DisplayName: 棒球熔岩蝙蝠
 		}
 
 		CloseButton: 取消
@@ -222,8 +397,214 @@ Mods: {
 			SmartStackOff2: 物品吸取器将会吸取所有物品
 		}
 
-		Autofisher: {
-			NoBait: 缺少诱饵 (请将诱饵放在附近的箱子里)
+		Autofisher.NoBait: 缺少诱饵 (请将诱饵放在附近的箱子里)
+
+		WorldGen: {
+			// FurnitureGeneratorResults: Generated {0} out of {1}.
+			// AncientForge: Adding Ancient Forges...
+			// AncientHellforge: Adding Ancient Hellforges...
+		}
+
+		Tiles: {
+			// Autofisher.MapEntry: "{$Mods.GoldensMisc.ItemName.Autofisher.DisplayName}"
+			// AncientForge.MapEntry: "{$Mods.GoldensMisc.ItemName.AncientForge.DisplayName}"
+			// AncientHellforge.MapEntry: "{$Mods.GoldensMisc.ItemName.AncientHellforge.DisplayName}"
+			// ChestVacuum.MapEntry: "{$Mods.GoldensMisc.ItemName.ChestVacuum.DisplayName}"
+		}
+
+		Configs: {
+			// ServerBlocked: Only the server owner can change the config settings.
+			// MiscellaniaClient.DisplayName: Client-side only settings
+
+			ClientConfig: {
+				CellPhoneResprite: {
+					// $parentVal: Cell Phone resprite
+					// Desc: Changes the vanilla Cell Phone sprite to differentiate it from the Wormhole Cell Phone.
+					// Label: Cell Phone Resprite
+					// Tooltip: ""
+				}
+			}
+
+			// Miscellania.DisplayName: General settings
+
+			ServerConfig: {
+				Autofisher: {
+					// $parentVal: Autofisher
+					// Desc: Automatic fisher! Requires bait.
+					// Label: Autofisher
+					// Tooltip: ""
+				}
+
+				ChestVacuum: {
+					// $parentVal: Chest Vacuum
+					// Desc: Automatically puts items in chests!
+					// Label: Chest Vacuum
+					// Tooltip: ""
+				}
+
+				AltStaffs: {
+					// $parentVal: Alternative Staves
+					// Desc: Stat changes and new early game gem staves.
+					// Label: Alt Staffs
+					// Tooltip: ""
+				}
+
+				MagicStones: {
+					// $parentVal: Magic Stones
+					// Desc: Magic stones that replenish health and mana for a number of uses.
+					// Label: Magic Stones
+					// Tooltip: ""
+				}
+
+				GodStone: {
+					// $parentVal: God Stone
+					// Desc: Unobtainable God Mode item(use Cheat Sheet or another Mod.)
+					// Label: God Stone
+					// Tooltip: ""
+				}
+
+				DemonCrown: {
+					// $parentVal: Demon Crown
+					// Desc: A rare drop from Demons in Hardmode. Boosts your magical abilities and summons a Red Crystal to protect you.
+					// Label: Demon Crown
+					// Tooltip: ""
+				}
+
+				HeartLocket: {
+					// $parentVal: Heart Locket
+					// Desc: Heart Locket = Panic Necklace + Cross Necklace.
+					// Label: Heart Locket
+					// Tooltip: ""
+				}
+
+				Magnet: {
+					// $parentVal: Magnet
+					// Desc: Item magnet.
+					// Label: Magnet
+					// Tooltip: ""
+				}
+
+				MagnetismRing: {
+					// $parentVal: Magnetism Ring
+					// Desc: Magnetism Ring can be made out either treasure magnet or universal magnet.
+					// Label: Magnetism Ring
+					// Tooltip: ""
+				}
+
+				NinjaGear: {
+					// $parentVal: (Normal) Ninja Gear
+					/* Desc:
+						'''
+						Ninja Gear = Tabi + Black Belt
+						 Ninja Gear + Climbing Gear = Master Ninja Gear
+						''' */
+					// Label: Ninja Gear
+					// Tooltip: ""
+				}
+
+				ReinforcedVest: {
+					// $parentVal: Reinforced Vest
+					// Desc: Armor item that protects you from explosions.
+					// Label: Reinforced Vest
+					// Tooltip: ""
+				}
+
+				AncientForges: {
+					// $parentVal: Ancient Forges
+					// Desc: Ancient Forges and Hellforges (pre-1.2-style furnaces) spawn in the world.
+					// Label: Ancient Forges
+					// Tooltip: ""
+				}
+
+				RedBrickFurniture: {
+					// $parentVal: Red Brick Furniture
+					// Desc: Red Brick Chimney and Fireplace.
+					// Label: Red Brick Furniture
+					// Tooltip: ""
+				}
+
+				AncientMuramasa: {
+					// $parentVal: Ancient Muramasa
+					// Desc: Pre-1.2-style Muramasa, rare drop from the Dungeon.
+					// Label: Ancient Muramasa
+					// Tooltip: ""
+				}
+
+				GasterBlaster: {
+					// $parentVal: Skeletal Staff
+					// Desc: A stupid Undertale reference, also a powerful sentry summon.
+					// Label: Gaster Blaster
+					// Tooltip: ""
+				}
+
+				SpearofJustice: {
+					// $parentVal: Spear of Justice
+					// Desc: A neat Hardmode magic weapon.
+					// Label: Spearof Justice
+					// Tooltip: ""
+				}
+
+				WormholeMirror: {
+					// $parentVal: Wormhole Mirror
+					// Desc: Endless Wormhole Potion.
+					// Label: Wormhole Mirror
+					// Tooltip: ""
+				}
+
+				WormholePhone: {
+					// $parentVal: Wormhole Cell Phone
+					// Desc: Wormhole Mirror + Cell Phone
+					// Label: Wormhole Phone
+					// Tooltip: ""
+				}
+
+				RodofWarping: {
+					// $parentVal: Rod of Warping
+					// Desc: Post-lunar Rod of Discord
+					// Label: Rodof Warping
+					// Tooltip: ""
+				}
+
+				RodofWarpingChaosState: {
+					// $parentVal: Rod of Warping Chaos State duration
+					// Desc: (measured in seconds)
+					// Label: Rodof Warping Chaos State
+					// Tooltip: ""
+				}
+
+				EmblemofDeath: {
+					// $parentVal: Emblem of Death
+					// Desc: Item that teleports to your last place of death, but is dangerous to use.
+					// Label: Emblemof Death
+					// Tooltip: ""
+				}
+
+				BuildingMaterials: {
+					// $parentVal: Building Materials
+					// Desc: Sandstone Slab Wall
+					// Label: Building Materials
+					// Tooltip: ""
+				}
+
+				BaseballBats: {
+					// $parentVal: Baseball Bats
+					// Desc: Self-explanatory.
+					// Label: Baseball Bats
+					// Tooltip: ""
+				}
+
+				AncientOrb: {
+					// $parentVal: Orb of Ancient Light
+					// Desc: Pre-1.2-style Orb of Light, acts as a Hardmode upgrade to Shadow Orb.
+					// Label: Ancient Orb
+					// Tooltip: ""
+				}
+
+				ExtraDyes: {
+					// Label: New strange dyes
+					// Tooltip: ""
+				}
+			}
 		}
 	}
 }

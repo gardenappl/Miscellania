@@ -1,5 +1,4 @@
 ﻿
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -16,10 +15,9 @@ namespace GoldensMisc.Tiles
 		
 		public override void SetStaticDefaults()
 		{
-			Main.wallLargeFrames[Type] = (byte) 1;
+			Main.wallLargeFrames[Type] = 1;
 			Main.wallHouse[Type] = true;
 			DustType = DustID.Stone;
-			ItemDrop = ModContent.ItemType<Items.Placeable.SandstoneSlabWall>();
 			AddMapEntry(Color.Brown);
 		}
 		

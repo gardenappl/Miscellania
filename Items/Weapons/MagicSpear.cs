@@ -1,20 +1,13 @@
 ﻿
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
 namespace GoldensMisc.Items.Weapons
 {
 	public class MagicSpear : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-		}
 
 		public override bool IsLoadingEnabled (Mod mod)
 		{

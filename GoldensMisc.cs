@@ -24,9 +24,9 @@ namespace GoldensMisc
 {
 	public class GoldensMisc : Mod
 	{
-		public static bool VanillaTweaksLoaded;
 		private static ReLogic.Content.Asset<Texture2D> CellPhoneTexture;
 		private bool WormHoleHacksLoaded = false;
+		public static Mod VanillaTweaks = null;
 
 		public GoldensMisc()
 		{
@@ -36,7 +36,7 @@ namespace GoldensMisc
 		public override void Load()
 		{
 			
-            VanillaTweaksLoaded = ModLoader.TryGetMod("VanillaTweaks", out _);
+            ModLoader.TryGetMod("VanillaTweaks", out VanillaTweaks);
 
 			AutofisherHooks.Initialize();
 			if (ModContent.GetInstance<ServerConfig>().WormholeMirror)

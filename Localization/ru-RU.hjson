@@ -1,13 +1,15 @@
 Mods: {
 	GoldensMisc: {
-		BuffName: {
-			CursedMemory: Проклятые воспоминания
-			OrbofLight: Древняя сфера света
-		}
+		Buffs: {
+			CursedMemory: {
+				DisplayName: Проклятые воспоминания
+				Description: Уменьшают максиальное здоровье наполовину
+			}
 
-		BuffDescription: {
-			CursedMemory: Уменьшают максиальное здоровье наполовину
-			OrbofLight: Магическая сфера, излучающая свет
+			OrbofLight: {
+				DisplayName: Древняя сфера света
+				Description: Магическая сфера, излучающая свет
+			}
 		}
 
 		CommandUsage: Использование:
@@ -24,190 +26,363 @@ Mods: {
 			}
 		}
 
-		ItemName: {
-			DeathEmblem: Эмблема смерти
-			GodStone: Божественный камень
-			InertStone: Инертный камень
-			LifeStone: Лечебный камень
-			ManaStone: Камень маны
-			DemonCrown: Демоническая корона
-			HeartLocket: Медальон-сердце
-			MagnetismRing: Кольцо магнетизма
-			NinjaGear: Снаряжение ниндзя
-			OrbofLight: Древняя сфера света
-			ReinforcedHorseshoe: Бронеподкова
-			ReinforcedVest: Бронежилет
-			UniversalMagnet: Универсальный магнит
-			AdamantiteDye: Светоотражающий адамантитовый краситель
-			BaseballCap: Бейсбольная кепка
-			ChlorophyteDye: Светоотражающий хлорофитовый краситель
-			CobaltDye: Светоотражающий кобальтовый краситель
-			MatrixDye: Краситель матрицы
-			MythrilDye: Светоотражающий мифриловый краситель
-			OrichalcumDye: Светоотражающий орихалковый краситель
-			PalladiumDye: Светоотражающий палладиевый краситель
-			TitaniumDye: Светоотражающий титановый краситель
-			VirtualDye: Виртуальный краситель
-			WormholeCrystal: Кристалл-червоточина
-			AncientForge: Древняя кузница
-			AncientHellforge: Древняя адская кузница
-			RedChimney: Красный дымоход
-			RedFireplace: Красный камин
-			SandstoneSlabWall: Стена из песчаной пластины
-			IslandStaff: Посох Лапуты
-			RodofWarping: Жезл искажения
-			WormholeCellPhone: Телефон-червоточина
-			WormholeDoubleMirror: Волшебное зеркало-червоточина
-			WormholeIceMirror: Ледяное зеркало-червоточина
-			WormholeMirror: Зеркало-червоточина
-			AmethystStaff: Аметистовый посох
-			AncientMuramasa: Древняя Мурамаса
-			BaseballBat: Бейсбольная бита
-			DiamondStaff: Алмазный посох
-			EmeraldStaff: Изумрудный посох
-			KarmaStaff: Скелетный посох
-			MagicSpear: Посох правосудия
-			RubyStaff: Рубиновый посох
-			SapphireStaff: Сапфировый посох
-			TopazStaff: Топаховый посох
-			UndyingSpear: Копье бессмертного правосудия
-			Autofisher: Авто-рыбак
-			ChestVacuum: Предметосос
-			FishNet: Рыболовная сеть
-		}
+		Items: {
+			DeathEmblem: {
+				DisplayName: Эмблема смерти
+				Tooltip:
+					'''
+					Посмотри в глаза, чтобы вернуться в место своей последней смерти
+					Снизит максимальное количество здоровья на некоторое время
+					'''
+			}
 
-		ItemTooltip: {
-			DeathEmblem:
-				'''
-				Посмотри в глаза, чтобы вернуться в место своей последней смерти
-				Снизит максимальное количество здоровья на некоторое время
-				'''
-			GodStone:
-				'''
-				Не тратится при использовании
-				Не призводит к послезельевой болезни
-				Предмет для читеров
-				'''
-			InertStone: "'Имеет потенциал как храненитель магической энергии'"
-			LifeStone: Может быть использован несколько раз
-			ManaStone: Может быть использован несколько раз
-			DemonCrown:
-				'''
-				Даёт великую магическую силу
-				Призывает Красный кристалл, который сражается за вас
-				'''
-			HeartLocket:
-				'''
-				Увеличивает продолжительность неуязвимости после получения урона
-				После удара увеличивает скорость движения
-				'''
-			MagnetismRing:
-				'''
-				Увеличивает дистанцию взятия предметов, монет и звёзд маны
-				'Вы очень притягательны'
-				'''
-			NinjaGear:
-				'''
-				Позволяет совершать рывки
-				Дает шанс уклониться от атак
-				'''
-			OrbofLight: Создаёт волшебную светящуюся сферу
-			ReinforcedHorseshoe:
-				'''
-				Нейтрализует урон от падения
-				Дает невосприимчивость к огненным блокам и своей взрывчатке
-				'''
-			ReinforcedVest: Дает невосприимчивость к своей взрывчатке
-			UniversalMagnet: Увеличивает дистанцию взятия предметов
-			BaseballCap: Нажмите ПКМ, чтобы повернуть набок
-			WormholeCrystal:
-				'''
-				'Держа его в руке, вы чувствуете, что вас засасывет...'
-				На данный момент этот материал не имеет использований
-				Можете или продать, или оставить себе на случай будущих апдейтов
-				'''
-			IslandStaff:
-				'''
-				Создаёт парящий остров
-				Разрушается после одного использования
-				'''
-			RodofWarping:
-				'''
-				Телепортирует на позицию мыши
-				Значительно уменьшены длительность и урон Состояния хаоса
-				'''
-			WormholeCellPhone:
-				'''
-				Показывает всё
-				Позволяет в любой момент вернуться домой
-				или телепортироваться к участнику команды
-				Щелкните по их голове на полноэкранной карте
-				'''
-			WormholeDoubleMirror:
-				'''
-				Посмотри в зеркало, чтобы вернуться домой
-				или телепортироваться к участнику команды
-				Щелкните по их голове на полноэкранной карте
-				'''
-			WormholeIceMirror:
-				'''
-				Посмотри в зеркало, чтобы вернуться домой
-				или телепортироваться к участнику команды
-				Щелкните по их голове на полноэкранной карте
-				'''
-			WormholeMirror:
-				'''
-				Телепортирует вас к участнику команды
-				Щелкните по их голове на полноэкранной карте
-				'''
-			KarmaStaff: Призывает стационарный авто-бластер, стреляющий лазером во врагов
-			MagicSpear: Быстро метает пронзающие копья
-			UndyingSpear: Быстро метает пронзающие копья
-			Autofisher:
-				'''
-				Мастерство рыбакли 35%
-				Автоматически ловит рыбу и другие предметы, использует приманку
-				Нажмите ПКМ, чтобы увидеть дополнительную информацию
-				Используйте Предметосос, чтобы подобрать выпавшие предметы
-				'''
-			ChestVacuum:
-				'''
-				Поставьте на сундук
-				Всасывает ближайшие предметы и кладёт их в сундук
-				'''
-			FishNet:
-				'''
-				Поместите под воду
-				Редко ловит рыбу и другие предметы
-				Предметы должны быть собраны вручную нажатием ПКМ
-				'''
-			MechanicsRod: Можно соорудить Авто-рыбака
+			GodStone: {
+				DisplayName: Божественный камень
+				Tooltip:
+					'''
+					Не тратится при использовании
+					Не призводит к послезельевой болезни
+					Предмет для читеров
+					'''
+			}
+
+			InertStone: {
+				DisplayName: Инертный камень
+				Tooltip: "'Имеет потенциал как храненитель магической энергии'"
+			}
+
+			LifeStone: {
+				DisplayName: Лечебный камень
+				Tooltip: Может быть использован несколько раз
+			}
+
+			ManaStone: {
+				DisplayName: Камень маны
+				Tooltip: Может быть использован несколько раз
+			}
+
+			DemonCrown: {
+				DisplayName: Демоническая корона
+				Tooltip:
+					'''
+					Даёт великую магическую силу
+					Призывает Красный кристалл, который сражается за вас
+					'''
+			}
+
+			HeartLocket: {
+				DisplayName: Медальон-сердце
+				Tooltip:
+					'''
+					Увеличивает продолжительность неуязвимости после получения урона
+					После удара увеличивает скорость движения
+					'''
+			}
+
+			MagnetismRing: {
+				DisplayName: Кольцо магнетизма
+				Tooltip:
+					'''
+					Увеличивает дистанцию взятия предметов, монет и звёзд маны
+					'Вы очень притягательны'
+					'''
+			}
+
+			NinjaGear: {
+				DisplayName: Снаряжение ниндзя
+				Tooltip:
+					'''
+					Позволяет совершать рывки
+					Дает шанс уклониться от атак
+					'''
+			}
+
+			OrbofLight: {
+				DisplayName: Древняя сфера света
+				Tooltip: Создаёт волшебную светящуюся сферу
+			}
+
+			ReinforcedHorseshoe: {
+				DisplayName: Бронеподкова
+				Tooltip:
+					'''
+					Нейтрализует урон от падения
+					Дает невосприимчивость к огненным блокам и своей взрывчатке
+					'''
+			}
+
+			ReinforcedVest: {
+				DisplayName: Бронежилет
+				Tooltip: Дает невосприимчивость к своей взрывчатке
+			}
+
+			UniversalMagnet: {
+				DisplayName: Универсальный магнит
+				Tooltip: Увеличивает дистанцию взятия предметов
+			}
+
+			AdamantiteDye: {
+				DisplayName: Светоотражающий адамантитовый краситель
+				// Tooltip: ""
+			}
+
+			BaseballCap: {
+				DisplayName: Бейсбольная кепка
+				Tooltip: Нажмите ПКМ, чтобы повернуть набок
+			}
+
+			ChlorophyteDye: {
+				DisplayName: Светоотражающий хлорофитовый краситель
+				// Tooltip: ""
+			}
+
+			CobaltDye: {
+				DisplayName: Светоотражающий кобальтовый краситель
+				// Tooltip: ""
+			}
+
+			MatrixDye: {
+				DisplayName: Краситель матрицы
+				// Tooltip: ""
+			}
+
+			MythrilDye: {
+				DisplayName: Светоотражающий мифриловый краситель
+				// Tooltip: ""
+			}
+
+			OrichalcumDye: {
+				DisplayName: Светоотражающий орихалковый краситель
+				// Tooltip: ""
+			}
+
+			PalladiumDye: {
+				DisplayName: Светоотражающий палладиевый краситель
+				// Tooltip: ""
+			}
+
+			TitaniumDye: {
+				DisplayName: Светоотражающий титановый краситель
+				// Tooltip: ""
+			}
+
+			VirtualDye: {
+				DisplayName: Виртуальный краситель
+				// Tooltip: ""
+			}
+
+			WormholeCrystal: {
+				DisplayName: Кристалл-червоточина
+				Tooltip:
+					'''
+					'Держа его в руке, вы чувствуете, что вас засасывет...'
+					На данный момент этот материал не имеет использований
+					Можете или продать, или оставить себе на случай будущих апдейтов
+					'''
+			}
+
+			AncientForge: {
+				DisplayName: Древняя кузница
+				// Tooltip: ""
+			}
+
+			AncientHellforge: {
+				DisplayName: Древняя адская кузница
+				// Tooltip: ""
+			}
+
+			RedChimney: {
+				DisplayName: Красный дымоход
+				// Tooltip: ""
+			}
+
+			RedFireplace: {
+				DisplayName: Красный камин
+				// Tooltip: ""
+			}
+
+			SandstoneSlabWall: {
+				DisplayName: Стена из песчаной пластины
+				// Tooltip: ""
+			}
+
+			IslandStaff: {
+				DisplayName: Посох Лапуты
+				Tooltip:
+					'''
+					Создаёт парящий остров
+					Разрушается после одного использования
+					'''
+			}
+
+			RodofWarping: {
+				DisplayName: Жезл искажения
+				Tooltip:
+					'''
+					Телепортирует на позицию мыши
+					Значительно уменьшены длительность и урон Состояния хаоса
+					'''
+			}
+
+			WormholeCellPhone: {
+				DisplayName: Телефон-червоточина
+				Tooltip:
+					'''
+					Показывает всё
+					Позволяет в любой момент вернуться домой
+					или телепортироваться к участнику команды
+					Щелкните по их голове на полноэкранной карте
+					'''
+			}
+
+			WormholeDoubleMirror: {
+				DisplayName: Волшебное зеркало-червоточина
+				Tooltip:
+					'''
+					Посмотри в зеркало, чтобы вернуться домой
+					или телепортироваться к участнику команды
+					Щелкните по их голове на полноэкранной карте
+					'''
+			}
+
+			WormholeIceMirror: {
+				DisplayName: Ледяное зеркало-червоточина
+				Tooltip:
+					'''
+					Посмотри в зеркало, чтобы вернуться домой
+					или телепортироваться к участнику команды
+					Щелкните по их голове на полноэкранной карте
+					'''
+			}
+
+			WormholeMirror: {
+				DisplayName: Зеркало-червоточина
+				Tooltip:
+					'''
+					Телепортирует вас к участнику команды
+					Щелкните по их голове на полноэкранной карте
+					'''
+			}
+
+			AmethystStaff: {
+				DisplayName: Аметистовый посох
+				// Tooltip: ""
+			}
+
+			AncientMuramasa: {
+				DisplayName: Древняя Мурамаса
+				// Tooltip: ""
+			}
+
+			BaseballBat: {
+				DisplayName: Бейсбольная бита
+				// Tooltip: ""
+			}
+
+			DiamondStaff: {
+				DisplayName: Алмазный посох
+				// Tooltip: ""
+			}
+
+			EmeraldStaff: {
+				DisplayName: Изумрудный посох
+				// Tooltip: ""
+			}
+
+			KarmaStaff: {
+				DisplayName: Скелетный посох
+				Tooltip: Призывает стационарный авто-бластер, стреляющий лазером во врагов
+			}
+
+			MagicSpear: {
+				DisplayName: Посох правосудия
+				Tooltip: Быстро метает пронзающие копья
+			}
+
+			RubyStaff: {
+				DisplayName: Рубиновый посох
+				// Tooltip: ""
+			}
+
+			SapphireStaff: {
+				DisplayName: Сапфировый посох
+				// Tooltip: ""
+			}
+
+			TopazStaff: {
+				DisplayName: Топаховый посох
+				// Tooltip: ""
+			}
+
+			UndyingSpear: {
+				DisplayName: Копье бессмертного правосудия
+				Tooltip: Быстро метает пронзающие копья
+			}
+
+			Autofisher: {
+				DisplayName: Авто-рыбак
+				Tooltip:
+					'''
+					Мастерство рыбакли 35%
+					Автоматически ловит рыбу и другие предметы, использует приманку
+					Нажмите ПКМ, чтобы увидеть дополнительную информацию
+					Используйте Предметосос, чтобы подобрать выпавшие предметы
+					'''
+			}
+
+			ChestVacuum: {
+				DisplayName: Предметосос
+				Tooltip:
+					'''
+					Поставьте на сундук
+					Всасывает ближайшие предметы и кладёт их в сундук
+					'''
+			}
+
+			FishNet: {
+				DisplayName: Рыболовная сеть
+				Tooltip:
+					'''
+					Поместите под воду
+					Редко ловит рыбу и другие предметы
+					Предметы должны быть собраны вручную нажатием ПКМ
+					'''
+			}
+
+			BaseballCapBackwards: {
+				DisplayName: "{$Mods.GoldensMisc.ItemName.BaseballCap.DisplayName}"
+				Tooltip: "{$Mods.GoldensMisc.ItemTooltip.BaseballCap.Tooltip}"
+			}
+
+			MechanicsRod.Tooltip: Можно соорудить Авто-рыбака
 		}
 
 		LaputaCannotUse: Возможно, не стоит это делать здесь.
 		LaputaTooHigh: Вы находитесь слишком высоко над землёй.
 		LaputaBlocked: Что-то закрывает над вами небо.
 
-		NPCName: {
-			BaseballCaveBat: Бейсбольная пещерная летучая мышь
-			BaseballGiantBat: Бейсбольная гигантская летучая мышь
-			BaseballHellBat: Бейсбольная адская летучая мышь
-			BaseballIceBat: Бейсбольная ледяная летучая мышь
-			BaseballIlluminantBat: Бейсбольная светящаяся летучая мышь
-			BaseballJungleBat: Бейсбольная тропическая летучая мышь
-			BaseballLavaBat: Бейсбольная лавовая летучая мышь
+		Projectiles: {
+			GasterBlaster.DisplayName: Авто-бластер
+			GasterLaser.DisplayName: Лазер бластера
+			Laputa.DisplayName: Свет Лапутыы
+			MagicSpear.DisplayName: Копье правосудия
+			MagicSpearMini.DisplayName: Мини-копье правосудия
+			OrbofLight.DisplayName: Древняя сфера света
+			RedBullet.DisplayName: Красный снаряд
+			RedCrystal.DisplayName: Красный кристалл
+			UndyingSpear.DisplayName: Копье бессмертного правосудия
+			// AutofisherBobber.DisplayName: Autofisher Bobber
+			MagicSpearMiniAlt.DisplayName: Мини-копье правосудия
 		}
 
-		ProjectileName: {
-			GasterBlaster: Авто-бластер
-			GasterLaser: Лазер бластера
-			Laputa: Свет Лапутыы
-			MagicSpear: Копье правосудия
-			MagicSpearMini: Мини-копье правосудия
-			OrbofLight: Древняя сфера света
-			RedBullet: Красный снаряд
-			RedCrystal: Красный кристалл
-			UndyingSpear: Копье бессмертного правосудия
+		NPCs: {
+			BaseballCaveBat.DisplayName: Бейсбольная пещерная летучая мышь
+			BaseballGiantBat.DisplayName: Бейсбольная гигантская летучая мышь
+			BaseballHellBat.DisplayName: Бейсбольная адская летучая мышь
+			BaseballIceBat.DisplayName: Бейсбольная ледяная летучая мышь
+			BaseballIlluminantBat.DisplayName: Бейсбольная светящаяся летучая мышь
+			BaseballJungleBat.DisplayName: Бейсбольная тропическая летучая мышь
+			BaseballLavaBat.DisplayName: Бейсбольная лавовая летучая мышь
 		}
 
 		CloseButton: Закрыть
@@ -220,9 +395,7 @@ Mods: {
 			SmartStackOff2: Предметосос подбирает все предметы
 		}
 
-		Autofisher: {
-			NoBait: Нет приманки (положите приманку в сундук рядом с Авто-рыбаком)
-		}
+		Autofisher.NoBait: Нет приманки (положите приманку в сундук рядом с Авто-рыбаком)
 
 		WorldGen: {
 			FurnitureGeneratorResults: Сгенерировали {0} из {1}.
@@ -230,140 +403,209 @@ Mods: {
 			AncientHellforge: Добавляем древние адские кузницы...
 		}
 
-		Config: {
-			Server: Общие настройки
-			Client: Настройки клиента
+		Tiles: {
+			Autofisher.MapEntry: "{$Mods.GoldensMisc.ItemName.Autofisher.DisplayName}"
+			AncientForge.MapEntry: "{$Mods.GoldensMisc.ItemName.AncientForge.DisplayName}"
+			AncientHellforge.MapEntry: "{$Mods.GoldensMisc.ItemName.AncientHellforge.DisplayName}"
+			ChestVacuum.MapEntry: "{$Mods.GoldensMisc.ItemName.ChestVacuum.DisplayName}"
+		}
+
+		Configs: {
 			ServerBlocked: Только владелец сервера может менять эти настройки.
+			MiscellaniaClient.DisplayName: Настройки клиента
 
-			AltStaffs: {
-				$parentVal: Альтернативные посохи
-				Desc: Посохи из драгоценных камней имеют альтернативы для других металлов + чуть-чуть изменен баланс.
+			ClientConfig: {
+				CellPhoneResprite: {
+					// $parentVal: Cell Phone resprite
+					// Desc: Changes the vanilla Cell Phone sprite to differentiate it from the Wormhole Cell Phone.
+					Label: Новый спрайт Телефона
+					Tooltip: Меняет спрайт Телефона, чтобы отличить его от Телефона-червоточины.
+				}
 			}
 
-			MagicStones: {
-				$parentVal: Волшебные камни
-				Desc: Волшебные камни восстанавливают ману или здоровье определенное количество раз.
-			}
+			Miscellania.DisplayName: Общие настройки
 
-			GodStone: {
-				$parentVal: Божественный камень
-				Desc: Предмет для читеров (требуется Cheat Sheet или нечто подобное)
-			}
+			ServerConfig: {
+				Autofisher: {
+					// $parentVal: Autofisher
+					// Desc: Automatic fisher! Requires bait.
+					Label: Авто-рыбак
+					Tooltip: Автоматический рыбак! Потребляет наживку.
+				}
 
-			DemonCrown: {
-				$parentVal: Демоническая корона
-				Desc: Редкий дроп из Демонов в Хардмоде. Улучшает магические характеристики и призывает Красный кристалл, защищающий вас.
-			}
+				ChestVacuum: {
+					// $parentVal: Chest Vacuum
+					// Desc: Automatically puts items in chests!
+					Label: Предметосос
+					Tooltip: Автоматически кладет предметы в сундуки!
+				}
 
-			HeartLocket: {
-				$parentVal: Медальон-сердце
-				Desc: Медальон-сердце = Ожерелье паники + Золотой крестик.
-			}
+				AltStaffs: {
+					// $parentVal: Alternative Staves
+					// Desc: Stat changes and new early game gem staves.
+					Label: Альтернативные посохи
+					Tooltip: Посохи из драгоценных камней имеют альтернативы для других металлов + чуть-чуть изменен баланс.
+				}
 
-			Magnet: {
-				$parentVal: Магниты
-				Desc: Аксессуар, притягиывющий предметы (+ комбинации).
-			}
+				MagicStones: {
+					// $parentVal: Magic Stones
+					// Desc: Magic stones that replenish health and mana for a number of uses.
+					Label: Волшебные камни
+					Tooltip: Волшебные камни восстанавливают ману или здоровье определенное количество раз.
+				}
 
-			NinjaGear: {
-				$parentVal: (Обычное) Снаряжение ниндзя
-				Desc:
-					'''
-					Снаряжение ниндзя = Таби + Черный пояс
-					Снаряжение ниндзя + Альпинистский набор = Снаряжение мастера ниндзя
-					'''
-			}
+				GodStone: {
+					// $parentVal: God Stone
+					// Desc: Unobtainable God Mode item(use Cheat Sheet or another Mod.)
+					Label: Божественный камень
+					Tooltip: Предмет для читеров (требуется Cheat Sheet или нечто подобное)
+				}
 
-			ReinforcedVest: {
-				$parentVal: Бронежилет
-				Desc: Броня, защищающая вас от вашей взрывчатки.
-			}
+				DemonCrown: {
+					// $parentVal: Demon Crown
+					// Desc: A rare drop from Demons in Hardmode. Boosts your magical abilities and summons a Red Crystal to protect you.
+					Label: Демоническая корона
+					Tooltip: Редкий дроп из Демонов в Хардмоде. Улучшает магические характеристики и призывает Красный кристалл, защищающий вас.
+				}
 
-			AncientForges: {
-				$parentVal: Древние кузни
-				Desc: Древние кузницы и Древние адские кузницы.
-			}
+				HeartLocket: {
+					// $parentVal: Heart Locket
+					// Desc: Heart Locket = Panic Necklace + Cross Necklace.
+					Label: Медальон-сердце
+					Tooltip: Медальон-сердце = Ожерелье паники + Золотой крестик.
+				}
 
-			RedBrickFurniture: {
-				$parentVal: Мебель из красного кирпича
-				Desc: Дымоход и камин из красного кирпича.
-			}
+				Magnet: {
+					// $parentVal: Magnet
+					// Desc: Item magnet.
+					Label: Универсальный магнит
+					Tooltip: Альтернатива Магниту сокровищ, остаток из старой версии Miscellania
+				}
 
-			AncientMuramasa: {
-				$parentVal: Древняя Мурамаса
-				Desc: Мурамаса в стиле версии 1.0-1.1, редкий дроп из Гробницы.
-			}
+				MagnetismRing: {
+					// $parentVal: Magnetism Ring
+					// Desc: Magnetism Ring can be made out either treasure magnet or universal magnet.
+					Label: Кольцо магнетизма
+					Tooltip: Комбинация Магнита сокровищ, Небесного магнита и Золотого кольца
+				}
 
-			GasterBlaster: {
-				$parentVal: Скелетный посох
-				Desc: Тупая отсылка на Андертейл, и довольно мощный стационарный стражник.
-			}
+				NinjaGear: {
+					// $parentVal: (Normal) Ninja Gear
+					/* Desc:
+						'''
+						Ninja Gear = Tabi + Black Belt
+						 Ninja Gear + Climbing Gear = Master Ninja Gear
+						''' */
+					Label: (Обычное) Снаряжение ниндзя
+					Tooltip:
+						'''
+						Снаряжение ниндзя = Таби + Черный пояс
+						Снаряжение ниндзя + Альпинистский набор = Снаряжение мастера ниндзя
+						'''
+				}
 
-			SpearofJustice: {
-				$parentVal: Копье правосудия
-				Desc: Неплохое магическое оружие для раннего Хардмода.
-			}
+				ReinforcedVest: {
+					// $parentVal: Reinforced Vest
+					// Desc: Armor item that protects you from explosions.
+					Label: Бронежилет
+					Tooltip: Броня, защищающая вас от вашей взрывчатки.
+				}
 
-			WormholeMirror: {
-				$parentVal: Зеркало-червоточина
-				Desc: Бесконечное Зелье червоточины.
-			}
+				AncientForges: {
+					// $parentVal: Ancient Forges
+					// Desc: Ancient Forges and Hellforges (pre-1.2-style furnaces) spawn in the world.
+					Label: Древние кузни
+					Tooltip: Древние кузницы и Древние адские кузницы.
+				}
 
-			WormholePhone: {
-				$parentVal: Телефон-червоточина
-				Desc: Зеркало-червоточина + Телефон
-			}
+				RedBrickFurniture: {
+					// $parentVal: Red Brick Furniture
+					// Desc: Red Brick Chimney and Fireplace.
+					Label: Мебель из красного кирпича
+					Tooltip: Дымоход и камин из красного кирпича.
+				}
 
-			RodofWarping: {
-				$parentVal: Жезл искажения
-				Desc: Пост-лунарный Rod of Discord.
-			}
+				AncientMuramasa: {
+					// $parentVal: Ancient Muramasa
+					// Desc: Pre-1.2-style Muramasa, rare drop from the Dungeon.
+					Label: Древняя Мурамаса
+					Tooltip: Мурамаса в стиле версии 1.0-1.1, редкий дроп из Гробницы.
+				}
 
-			RodofWarpingChaosState: {
-				$parentVal: Длительность Состояния хаоса при использовании Жезла искажения
-				Desc: (в секундах)
-			}
+				GasterBlaster: {
+					// $parentVal: Skeletal Staff
+					// Desc: A stupid Undertale reference, also a powerful sentry summon.
+					Label: Скелетный посох
+					Tooltip: Тупая отсылка на Андертейл, и довольно мощный стационарный стражник.
+				}
 
-			EmblemofDeath: {
-				$parentVal: Эмблема смерти
-				Desc: Предмет, телепортирующий вас в последнее место смерти, но за такую услугу нужно заплатить...
-			}
+				SpearofJustice: {
+					// $parentVal: Spear of Justice
+					// Desc: A neat Hardmode magic weapon.
+					Label: Копье правосудия
+					Tooltip: Неплохое магическое оружие для раннего Хардмода.
+				}
 
-			BuildingMaterials: {
-				$parentVal: Стройматериалы
-				Desc: Стена из песчаной пластины
-			}
+				WormholeMirror: {
+					// $parentVal: Wormhole Mirror
+					// Desc: Endless Wormhole Potion.
+					Label: Зеркало-червоточина
+					Tooltip: Бесконечное Зелье червоточины.
+				}
 
-			BaseballBats: {
-				$parentVal: Бейсбольные биты
-				Desc: Тупой английский каламбур (на англ. "бита" = "bat", при этом "bat" - это также "летучая мышь", короче, забейте).
-			}
+				WormholePhone: {
+					// $parentVal: Wormhole Cell Phone
+					// Desc: Wormhole Mirror + Cell Phone
+					Label: Телефон-червоточина
+					Tooltip: Зеркало-червоточина + Телефон
+				}
 
-			AncientOrb: {
-				$parentVal: Сфера древнего света
-				Desc: Сфера света в стиле версий 1.0-1.1, хардмодный апгрейд Теневой сферы.
-			}
+				RodofWarping: {
+					// $parentVal: Rod of Warping
+					// Desc: Post-lunar Rod of Discord
+					Label: Жезл искажения
+					Tooltip: Пост-лунарный Rod of Discord, остаток из старой версии Miscellania
+				}
 
-			CellPhoneResprite: {
-				$parentVal: Новый спрайт Телефона
-				Desc: Меняет спрайт Телефона, чтобы отличить его от Телефона-червоточины.
-			}
+				RodofWarpingChaosState: {
+					// $parentVal: Rod of Warping Chaos State duration
+					// Desc: (measured in seconds)
+					Label: Длительность Состояния хаоса при использовании Жезла искажения
+					Tooltip: (в секундах)
+				}
 
-			ExtraDyes: Новые странные красители
+				EmblemofDeath: {
+					// $parentVal: Emblem of Death
+					// Desc: Item that teleports to your last place of death, but is dangerous to use.
+					Label: Эмблема смерти
+					Tooltip: Предмет, телепортирующий вас в последнее место смерти, но за такую услугу нужно заплатить...
+				}
 
-			Autofisher: {
-				$parentVal: Авто-рыбак
-				Desc: Автоматический рыбак! Потребляет наживку.
-			}
+				BuildingMaterials: {
+					// $parentVal: Building Materials
+					// Desc: Sandstone Slab Wall
+					Label: Стройматериалы
+					Tooltip: Стена из песчаной пластины
+				}
 
-			MechanicsRodOften: {
-				$parentVal: Увеличить шанс продажи Удочки механика
-				Desc: Полезно для крафта Авто-рыбака.
-			}
+				BaseballBats: {
+					// $parentVal: Baseball Bats
+					// Desc: Self-explanatory.
+					Label: Бейсбольные биты
+					Tooltip: Тупой английский каламбур (на англ. "бита" = "bat", при этом "bat" - это также "летучая мышь", короче, забейте).
+				}
 
-			ChestVacuum: {
-				$parentVal: Предметосос
-				Desc: Автоматически кладет предметы в сундуки!
+				AncientOrb: {
+					// $parentVal: Orb of Ancient Light
+					// Desc: Pre-1.2-style Orb of Light, acts as a Hardmode upgrade to Shadow Orb.
+					Label: Сфера древнего света
+					Tooltip: Сфера света в стиле версий 1.0-1.1, хардмодный апгрейд Теневой сферы.
+				}
+
+				ExtraDyes: {
+					Label: Новые странные красители
+					// Tooltip: ""
+				}
 			}
 		}
 	}

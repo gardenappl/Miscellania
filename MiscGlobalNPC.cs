@@ -15,29 +15,27 @@ namespace GoldensMisc
 {
 	public class MiscGlobalNPC : GlobalNPC
 	{
-		public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        public override void ModifyShop(NPCShop shop)
 		{
-			switch(type)
+			switch (shop.NpcType)
 			{
 				case NPCID.GoblinTinkerer:
-					if(ModContent.GetInstance<ServerConfig>().Magnet && Main.hardMode && !Main.dayTime)
+					if (ModContent.GetInstance<ServerConfig>().Magnet && shop.Name == "Shop")
 					{
-						shop.item[nextSlot].SetDefaults(ModContent.ItemType<UniversalMagnet>());
-						nextSlot++;
+						Condition magnetConditions = new("Mods.GoldensMisc.Conditions.MagnetCondition", () => !Condition.TimeDay.IsMet() && Condition.Hardmode.IsMet());
+						shop.Add<UniversalMagnet>(magnetConditions);
 					}
 					break;
 				case NPCID.Demolitionist:
-					if(ModContent.GetInstance<ServerConfig>().ReinforcedVest && Main.hardMode)
+					if (ModContent.GetInstance<ServerConfig>().ReinforcedVest && shop.Name == "Shop")
 					{
-						shop.item[nextSlot].SetDefaults(ModContent.ItemType<ReinforcedVest>());
-						nextSlot++;
+						shop.Add<ReinforcedVest>(Condition.Hardmode);
 					}
 					break;
 				case NPCID.Wizard:
-					if(ModContent.GetInstance<ServerConfig>().MagicStones && NPC.downedMechBossAny)
+					if (ModContent.GetInstance<ServerConfig>().MagicStones && shop.Name == "Shop")
 					{
-						shop.item[nextSlot].SetDefaults(ModContent.ItemType<InertStone>());
-						nextSlot++;
+						shop.Add<InertStone>(Condition.DownedMechBossAny);
 					}
 					break;
 				//case NPCID.Mechanic:
@@ -51,15 +49,15 @@ namespace GoldensMisc
 				//	}
 				//	break;
 				case NPCID.Steampunker:
-					if(ModContent.GetInstance<ServerConfig>().ChestVacuum)
+					if (ModContent.GetInstance<ServerConfig>().ChestVacuum && shop.Name == "Shop")
 					{
-						shop.item[nextSlot].SetDefaults(ModContent.ItemType<ChestVacuum>());
-						nextSlot++;
+						shop.Add<ChestVacuum>();
 					}
 					break;
 			}
 		}
-		
+
+
 		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
 		{
 			switch(npc.type)

@@ -42,6 +42,7 @@ namespace GoldensMisc
 
 	public abstract class GlowingModItem : ModItem
     {
+		[CloneByReference]
 		public Texture2D GlowMask;
 
 		public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
