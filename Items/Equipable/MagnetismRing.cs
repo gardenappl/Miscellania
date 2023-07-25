@@ -42,6 +42,7 @@ namespace GoldensMisc.Items.Equipable
 					.AddIngredient(ItemID.GoldRing)
 					.AddTile(TileID.TinkerersWorkbench)
 					.Register();
+			}
 
 				CreateRecipe()
 						.AddIngredient(ItemID.TreasureMagnet)
@@ -49,7 +50,6 @@ namespace GoldensMisc.Items.Equipable
 						.AddIngredient(ItemID.GoldRing)
 						.AddTile(TileID.TinkerersWorkbench)
 						.Register();
-			}
 
 		}
 	}
