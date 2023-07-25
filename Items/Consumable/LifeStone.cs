@@ -63,7 +63,7 @@ namespace GoldensMisc.Items.Consumable
 		
 		public override void NetSend(BinaryWriter writer)
 		{
-			writer.Write(uses);
+			writer.Write((byte)uses);
 		}
 		
 		public override void NetReceive(BinaryReader reader)
@@ -73,7 +73,7 @@ namespace GoldensMisc.Items.Consumable
 		
 		public override void SaveData(TagCompound tag)
 		{
-			tag["u"] = uses;
+			tag["u"] = (byte)uses;
 		}
 		
 		public override void LoadData(TagCompound tag)

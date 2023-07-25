@@ -10,9 +10,4 @@
   <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="VanillaTweaks">
-      <HintPath>..\VanillaTweaks\bin\Debug\net6.0\VanillaTweaks.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 </Project>

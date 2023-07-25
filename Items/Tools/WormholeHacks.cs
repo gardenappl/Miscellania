@@ -19,22 +19,22 @@ namespace GoldensMisc.Items.Tools
             Terraria.On_Player.TakeUnityPotion += PlayerTakeUnityPotion;
 
             //But why the fuck do you not use them sometimes?!
-            Terraria.On_Player.HasItemInInventoryOrOpenVoidBag += PlayerHasItem;
+            //Terraria.On_Player.HasItemInInventoryOrOpenVoidBag += PlayerHasItem;
         }
 
         public static void Unload()
         {
             Terraria.On_Player.HasUnityPotion -= PlayerHasUnityPotion;
             Terraria.On_Player.TakeUnityPotion -= PlayerTakeUnityPotion;
-            Terraria.On_Player.HasItemInInventoryOrOpenVoidBag -= PlayerHasItem;
+            //Terraria.On_Player.HasItemInInventoryOrOpenVoidBag -= PlayerHasItem;
         }
 
         public static bool HasWormholeItem(Player player)
         {
-            return player.HasItem(ModContent.ItemType<WormholeMirror>()) ||
-               player.HasItem(ModContent.ItemType<WormholeDoubleMirror>()) ||
-               player.HasItem(ModContent.ItemType<WormholeIceMirror>()) ||
-               player.HasItem(ModContent.ItemType<WormholeCellPhone>());
+            return player.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<WormholeMirror>()) ||
+               player.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<WormholeDoubleMirror>()) ||
+               player.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<WormholeIceMirror>()) ||
+               player.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<WormholeCellPhone>());
         }
 
         private static bool PlayerHasUnityPotion(Terraria.On_Player.orig_HasUnityPotion orig, Player self)
@@ -53,7 +53,7 @@ namespace GoldensMisc.Items.Tools
                 orig(self);
         }
 
-        private static bool PlayerHasItem(Terraria.On_Player.orig_HasItemInInventoryOrOpenVoidBag orig, Player self, int id)
+        /*private static bool PlayerHasItem(Terraria.On_Player.orig_HasItemInInventoryOrOpenVoidBag orig, Player self, int id)
         {
             if (id != ItemID.WormholePotion)
                 return orig(self, id);
@@ -70,6 +70,6 @@ namespace GoldensMisc.Items.Tools
                 }
             }
             return orig(self, id);
-        }
+        }*/
     }
 }

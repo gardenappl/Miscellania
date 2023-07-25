@@ -7,4 +7,3 @@ hideCode = false
 includeSource = true
 includePDB = true
 buildIgnore = .gitattributes, .gitignore, .git\*, Unused Art\*, .vs\*, .idea\*, bin\*, obj\*, Thumbs.db, readme.md
-weakReferences = VanillaTweaks@3.0.16
